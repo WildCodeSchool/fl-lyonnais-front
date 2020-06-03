@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 
 class Registration extends React.Component {
   constructor (props) {
@@ -17,21 +17,22 @@ class Registration extends React.Component {
       [e.target.name]: e.target.value
     });
   }
-
-  handleSubmitForm (e) {
-    e.preventDefault();
-    const url = '';
-    axios
-      .post(url, this.state)
-      .then(res => res.data)
-      .then(res => {
-        alert(`Fiche  "${res.freelance}" ajouté !`);
-      })
-      .catch(e => {
-        console.error(e);
-        alert(`Erreur lors de l'ajout de la fiche : ${e.message}`);
-      });
-  }
+  /*
+    handleSubmitForm (e) {
+      e.preventDefault();
+      const url = '';
+      axios
+        .post(url, this.state)
+        .then(res => res.data)
+        .then(res => {
+          alert(`Fiche  "${res.freelance}" ajouté !`);
+        })
+        .catch(e => {
+          console.error(e);
+          alert(`Erreur lors de l'ajout de la fiche : ${e.message}`);
+        });
+    }
+   */
 
   render () {
     return (
