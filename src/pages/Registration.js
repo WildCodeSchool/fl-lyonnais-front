@@ -108,7 +108,6 @@ class Registration extends React.Component {
               <input type='submit' value='Création de ma fiche' />
             </div>
 
-
           </fieldset>
         </form>
       </div>
