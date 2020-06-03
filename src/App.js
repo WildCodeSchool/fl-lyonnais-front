@@ -7,6 +7,7 @@ import Generic from './pages/Generic';
 import SearchResult from './pages/SearchResult';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
+import legalDisclaimer from './legal_disclaimer';
 
 const Apps = styled.div`
     text-align: center;
@@ -30,7 +31,7 @@ function App () {
             <Registration />
           </Route>
           <Route path='/generic'>
-            <Generic />
+            <Generic legalDisclaimer={legalDisclaimer} />
           </Route>
           <Route path='/search-results'>
             <SearchResult />

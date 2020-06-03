@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+//import '../styles/Registration.css';
 // import axios from 'axios';
 
 class Registration extends React.Component {
@@ -49,7 +50,7 @@ class Registration extends React.Component {
             <legend>Créer mon compte de Freelance à Lyon: </legend>
 
             <div className='FicheForm'>
-              <label htmlFor='FicheForm'>Nom: </label>
+              <label htmlFor='InfoForm'>Nom: </label>
               <input
                 type='text'
                 id='freelanceFirstname'
@@ -60,7 +61,7 @@ class Registration extends React.Component {
             </div>
 
             <div className='FicheForm'>
-              <label htmlFor='FicheForm'>Prénom: </label>
+              <label htmlFor='InfoForm'>Prénom: </label>
               <input
                 type='text'
                 id='freelanceName'
@@ -70,12 +71,12 @@ class Registration extends React.Component {
               />
             </div>
 
-            <div className='FicheForm'>
+            <div className='InfoForm'>
               <label htmlFor='FicheForm'>Adresse email professionnel: </label>
               <input
                 type='texte'
                 id='freelanceMail'
-                name='freelance'
+                name='email'
                 required
                 onChange={this.handleChange}
                 value={this.state.email}
@@ -83,7 +84,7 @@ class Registration extends React.Component {
             </div>
 
             <div className='FicheForm'>
-              <label htmlFor='FicheForm'>Mot de passe: </label>
+              <label htmlFor='InfoForm'>Mot de passe: </label>
               <input
                 type='text'
                 id='freelancePassword'
@@ -94,7 +95,7 @@ class Registration extends React.Component {
             </div>
 
             <div className='FicheForm'>
-              <label htmlFor='FicheForm'>Siret: </label>
+              <label htmlFor='InfoForm'>Siret: </label>
               <input
                 type='text'
                 id='freelanceSiret'
@@ -109,9 +110,9 @@ class Registration extends React.Component {
             </div>
 
           </fieldset>
-        </form>ldset>
-          </form>
-        <Footer />
+        </form>
+          
+      <Footer />
 
       </div>
             

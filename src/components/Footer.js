@@ -5,6 +5,7 @@ class Footer extends React.Component {
   render () {
     return (
       <footer className='footer'>
+        {/*TEST*/}<div>Pour tester les pages :<Link to='/'>Accueil | </Link><Link to='/detail'>Detail | </Link><Link to='/listing'>Listing | </Link><Link to='/registration'>Registration | </Link><Link to='/generic'>Generic</Link></div>
         <Link to='/'>Accueil | </Link>
         <Link to=''>Freelances à Lyon | </Link> 
         <Link to=''>À propos | </Link> 

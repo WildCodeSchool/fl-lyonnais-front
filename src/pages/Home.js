@@ -8,10 +8,10 @@ function Home () {
   return (
     <div className='home'>
       <Header />
-      <img src='' alt='' className='logoHome' />
-      <form>
+      <img src='https://www.1zoom.me/big2/37/236418-Sepik.jpg' width='200' alt='Logo du site Freelance Lyonnais' className='logoHome' />
+      <div className='form'>
         <SearchBar />
-      </form>
+      </div>
       <main>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aliquid, at cum cumque deleniti eligendi error eveniet expedita, in minima molestias nesciunt pariatur quae qui quo quos tempore voluptas?</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aliquid, at cum cumque deleniti eligendi error eveniet expedita, in minima molestias nesciunt pariatur quae qui quo quos tempore voluptas?</p>

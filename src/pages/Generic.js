@@ -7,19 +7,12 @@ function Generic (props) {
   return (
     <div className='Generic'>
       <Header />
-      <h1>Titre de la Page (title) </h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aliquid, at cum cumque deleniti
-       eligendi error eveniet expedita, in minima molestias nesciunt pariatur quae qui quo quos tempore voluptas?</p>
-
-      <h2>Titre de niveau 2 </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aliquid, at cum cumque deleniti
-       eligendi error eveniet expedita, in minima molestias nesciunt pariatur quae qui quo quos tempore voluptas?</p>
-
-      <h2>Titre de niveau 2 </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aliquid, at cum cumque deleniti
-       eligendi error eveniet expedita, in minima molestias nesciunt pariatur quae qui quo quos tempore voluptas?</p>
-
-       <Footer />
+      <h2>Mentions légales{props.legalDisclaimer[0].name} </h2>
+      <p>{props.legalDisclaimer[0].headquarters}</p>
+      <p>{props.legalDisclaimer.direction} <span>{props.legalDisclaimer[0].phone}</span></p>
+      <p>{props.legalDisclaimer[0].info}</p>
+      <br/>
+      <Footer />
     </div>
   );
 }
