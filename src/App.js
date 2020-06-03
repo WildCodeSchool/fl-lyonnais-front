@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Home from './pages/Home';
+import home from './pages/Home';
 import Detail from './pages/Detail';
 import Listing from './pages/Listing';
 import Registration from './pages/Registration';
@@ -15,7 +15,7 @@ function App () {
       <Router>
         <Switch>
           <Route exact path='/'>
-            <Home />
+            <home />
           </Route>
           <Route path='/detail'>
             <Detail />
