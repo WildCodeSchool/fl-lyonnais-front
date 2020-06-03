@@ -1,4 +1,9 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 // import axios from 'axios';
 
 class Registration extends React.Component {
@@ -34,7 +39,7 @@ class Registration extends React.Component {
 
   render () {
     return (
-      <div className='FormFiche'>
+      <div className='FicheForm'>
         <h1>Inscription </h1>
 
         <p> Présentation du concept de l'annuaire avec un paragraphe </p>
@@ -102,6 +107,8 @@ class Registration extends React.Component {
             <div className='FicheForm'>
               <input type='submit' value='Création de ma fiche' />
             </div>
+
+
           </fieldset>
         </form>
       </div>
