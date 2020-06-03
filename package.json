@@ -9,14 +9,22 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
-    "semistandard": "^14.2.0"
+    "react-scripts": "3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "semistandard --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "semistandard": {
+    "parser": "babel-eslint"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,22 +40,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/WildCodeSchool/fl-lyonnais-front.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/WildCodeSchool/fl-lyonnais-front/issues"
-  },
-  "homepage": "https://github.com/WildCodeSchool/fl-lyonnais-front#readme",
-  "description": "",
-  "devDependencies": {
-    "babel-eslint": "^8.2.6",
-    "eslint": "^4.19.1"
   }
 }

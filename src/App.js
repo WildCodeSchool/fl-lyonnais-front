@@ -5,7 +5,7 @@ import Detail from './pages/Detail';
 import Listing from './pages/Listing';
 import Registration from './pages/Registration';
 import Generic from './pages/Generic';
-import SearchResult from './pages/Research-result';
+import SearchResult from './pages/SearchResult';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App () {
