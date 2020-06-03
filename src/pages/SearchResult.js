@@ -6,6 +6,6 @@ function SearchResult (props) {
       I am SearchResult !
     </div>
   );
-};
+}
 
 export default SearchResult;

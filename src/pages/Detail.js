@@ -6,6 +6,6 @@ function Detail (props) {
       I am Detail !
     </div>
   );
-};
+}
 
 export default Detail;

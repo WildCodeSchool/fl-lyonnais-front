@@ -6,6 +6,6 @@ function Generic (props) {
       I am Generic !
     </div>
   );
-};
+}
 
 export default Generic;

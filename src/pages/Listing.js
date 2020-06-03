@@ -6,6 +6,6 @@ function Listing (props) {
       I am Generic !
     </div>
   );
-};
+}
 
 export default Listing;

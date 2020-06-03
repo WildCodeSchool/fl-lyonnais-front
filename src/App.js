@@ -6,11 +6,11 @@ import Registration from './pages/Registration';
 import Generic from './pages/Generic';
 import SearchResult from './pages/SearchResult';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Apps = styled.div`
     text-align: center;
-`
+`;
 
 function App () {
   return (
