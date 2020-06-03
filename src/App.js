@@ -1,21 +1,24 @@
 import React from 'react';
-import './App.css';
-import home from './pages/Home';
+import Home from './pages/Home';
 import Detail from './pages/Detail';
 import Listing from './pages/Listing';
 import Registration from './pages/Registration';
 import Generic from './pages/Generic';
 import SearchResult from './pages/SearchResult';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import styled from 'styled-components'
+
+const Apps = styled.div`
+    text-align: center;
+`
 
 function App () {
   return (
-    <div className='App'>
-      Les Freelances Lyonnais - Front office
+    <Apps>
       <Router>
         <Switch>
           <Route exact path='/'>
-            <home />
+            <Home />
           </Route>
           <Route path='/detail'>
             <Detail />
@@ -34,7 +37,7 @@ function App () {
           </Route>
         </Switch>
       </Router>
-    </div>
+    </Apps>
   );
 }
 

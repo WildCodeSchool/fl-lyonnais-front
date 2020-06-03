@@ -1,7 +1,8 @@
 import React from 'react'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 
-function home () {
+function Home () {
   return (
     <div className='home'>
       Les Freelances Lyonnais - Front office - Home
@@ -10,9 +11,9 @@ function home () {
       <form>
         <input type="text" className="searchBar" name=""/>
       </form>
+      <Footer/>
     </div>
   )
 }
 
-export default home;
-
+export default Home;
