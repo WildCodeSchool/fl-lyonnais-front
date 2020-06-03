@@ -8,11 +8,9 @@ class Registration extends React.Component {
       freelance: '',
       email: ''
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmitForm = this.handleSubmitForm.bind(this);
   }
 
-  handleChange (e) {
+  handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     });
