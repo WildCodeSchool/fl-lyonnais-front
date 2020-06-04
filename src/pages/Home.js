@@ -3,12 +3,15 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/Home.css';
 import SearchBar from '../components/SearchBar';
+import logo from '../images/logo.png';
 
-function Home () {
+function Home (props) {
   return (
     <div className='home'>
-      <Header />
-      <img src='https://www.1zoom.me/big2/37/236418-Sepik.jpg' width='200' alt='Logo du site Freelance Lyonnais' className='logoHome' />
+      <Header isHomePage={props.isHomePage} />
+      <div className='logo'>
+        <img src={logo} alt='Logo du site Freelance Lyonnais' className='logoHome' />
+      </div>
       <div className='form'>
         <SearchBar />
       </div>

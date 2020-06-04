@@ -7,19 +7,21 @@ import Generic from './pages/Generic';
 import SearchResult from './pages/SearchResult';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
-import legalDisclaimer from './legal_disclaimer';
+import legalDisclaimer from './components/legal_disclaimer';
+import './styles/variables.css';
 
 const Apps = styled.div`
     text-align: center;
 `;
 
 function App () {
+  const isHomePage = true;
   return (
     <Apps>
       <Router>
         <Switch>
           <Route exact path='/'>
-            <Home />
+            <Home isHomePage={isHomePage}/>
           </Route>
           <Route path='/detail'>
             <Detail />
@@ -30,7 +32,7 @@ function App () {
           <Route path='/registration'>
             <Registration />
           </Route>
-          <Route path='/generic'>
+          <Route path='/legaldisclaimer'>
             <Generic legalDisclaimer={legalDisclaimer} />
           </Route>
           <Route path='/search-results'>

@@ -112,7 +112,7 @@ export default function SignUp () {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
+      <Footer />
                   variant='outlined'
                   required
                   fullWidth

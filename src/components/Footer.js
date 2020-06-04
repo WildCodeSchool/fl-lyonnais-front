@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/Footer.css';
 
 class Footer extends React.Component {
   render () {
     return (
       <footer className='footer'>
-        {/*TEST*/}<div>Pour tester les pages :<Link to='/'>Accueil | </Link><Link to='/detail'>Detail | </Link><Link to='/listing'>Listing | </Link><Link to='/registration'>Registration | </Link><Link to='/generic'>Generic</Link></div>
-        <Link to='/'>Accueil | </Link>
-        <Link to=''>Freelances à Lyon | </Link> 
-        <Link to=''>À propos | </Link> 
-        <Link to=''>Mentions légales</Link> 
+        <Link className='footerLink' to='/'>Accueil</Link>
+        <Link className='footerLink' to='/listing'>Freelances à Lyon</Link> 
+        <Link className='footerLink' to='/aproposde'>À propos</Link> 
+        <Link className='footerLink' to='/legaldisclaimer'>Mentions légales</Link> 
       </footer>
     );
   }
