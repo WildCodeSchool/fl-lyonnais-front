@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import '../styles/Registration.css'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -41,6 +42,24 @@ export default function SignUp () {
   return (
     <div>
       <Header />
+      <div className='concept'>
+      <h1>Freelance à Lyon inscris toi dans l'annuaire</h1>
+        <br/>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aliquid, at cum cumque deleniti eligendi
+        error eveniet expedita, in minima molestias nesciunt pariatur quae qui quo quos tempore voluptas?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad cumque eos libero molestias
+        necessitatibus numquam pariatur quas quo, sequi. Ab consequatur, delectus dolor hic nemo numquam quaerat!
+        Ducimus, maiores.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi, cumque dolorem enim, est fugiat
+        id illum labore libero nesciunt nisi officiis quas quo quos recusandae voluptate? Est, rerum!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores et sunt tempora veniam. Aliquam animi
+        asperiores, aspernatur facilis magnam minima minus neque optio, quidem sequi totam veritatis! Obcaecati
+        officia, reiciendis.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, aperiam aspernatur assumenda autem, esse
+        et ipsum magnam modi odio quidem quo repudiandae sint, suscipit unde vel velit voluptates. Corporis, harum?
+      </p>
+      </div>
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <div className={classes.paper}>
