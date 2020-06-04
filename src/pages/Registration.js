@@ -15,19 +15,6 @@ import Container from '@material-ui/core/Container';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-function Copyright () {
-  return (
-    <Typography variant='body2' color='textSecondary' align='center'>
-      {'Copyright © '}
-      <Link color='inherit' href='/'>
-        Freelances Lyonnais
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -126,7 +113,7 @@ export default function SignUp () {
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value='allowExtraEmails' color='primary' />}
-                  label="Je souhaite recevoir de l'inspiration, des promotions marketing et des mises à jour par e-mail."
+                  label="J'accepte les conditions générales"
                 />
               </Grid>
             </Grid>
@@ -137,7 +124,7 @@ export default function SignUp () {
               color='primary'
               className={classes.submit}
             >
-              S'inscrire
+              Créer ma fiche freelance
             </Button>
             <Grid container justify='flex-end'>
               <Grid item>
@@ -151,7 +138,6 @@ export default function SignUp () {
         <Box mt={5} />
       </Container>
       <Footer />
-      <Copyright />
     </div>
   );
 }

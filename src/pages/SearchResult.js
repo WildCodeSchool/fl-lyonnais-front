@@ -1,8 +1,7 @@
 import React from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-//import '../styles/SearchResult.css';
-
+// import '../styles/SearchResult.css';
 
 function SearchResult (props) {
   return (
@@ -10,7 +9,7 @@ function SearchResult (props) {
       <Header />
 
       I am SearchResult !
-      
+
       <Footer />
     </div>
   );

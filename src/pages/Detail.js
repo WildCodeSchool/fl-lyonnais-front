@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-//import '../styles/Detail.css';
+// import '../styles/Detail.css';
 
 function Detail (props) {
   return (

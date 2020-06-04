@@ -7,9 +7,9 @@ class Footer extends React.Component {
     return (
       <footer className='footer'>
         <Link className='footerLink' to='/'>Accueil</Link>
-        <Link className='footerLink' to='/listing'>Freelances à Lyon</Link> 
-        <Link className='footerLink' to='/aproposde'>À propos</Link> 
-        <Link className='footerLink' to='/legaldisclaimer'>Mentions légales</Link> 
+        <Link className='footerLink' to='/listing'>Freelances à Lyon</Link>
+        <Link className='footerLink' to='/aproposde'>À propos</Link>
+        <Link className='footerLink' to='/legaldisclaimer'>Mentions légales</Link>
       </footer>
     );
   }

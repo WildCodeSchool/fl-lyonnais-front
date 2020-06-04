@@ -8,9 +8,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '25ch',
-    },
-  },
+      width: '25ch'
+    }
+  }
 }));
 
 export default function SearchBar () {
@@ -21,7 +21,7 @@ export default function SearchBar () {
   };
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    <form className={classes.root} noValidate autoComplete='off'>
       <div>
         <div className={classes.margin}>
           <Grid container spacing={0} alignItems='flex-end' justify='center'>
@@ -29,7 +29,7 @@ export default function SearchBar () {
               <SearchIcon />
             </Grid>
             <Grid item>
-              <TextField id="standard-name" label="Recherche" value={name} onChange={handleChange} />
+              <TextField id='standard-name' label='Recherche' value={name} onChange={handleChange} />
             </Grid>
           </Grid>
         </div>
