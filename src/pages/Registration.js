@@ -1,123 +1,158 @@
-import React from 'react';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-//import '../styles/Registration.css';
-// import axios from 'axios';
+import React from 'react'
+import Avatar from '@material-ui/core/Avatar'
+import Button from '@material-ui/core/Button'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import TextField from '@material-ui/core/TextField'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Checkbox from '@material-ui/core/Checkbox'
+import Link from '@material-ui/core/Link'
+import Grid from '@material-ui/core/Grid'
+import Box from '@material-ui/core/Box'
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 
-class Registration extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      freelance: '',
-      email: ''
-    };
-  }
-
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
-  /*
-    handleSubmitForm (e) {
-      e.preventDefault();
-      const url = '';
-      axios
-        .post(url, this.state)
-        .then(res => res.data)
-        .then(res => {
-          alert(`Fiche  "${res.freelance}" ajouté !`);
-        })
-        .catch(e => {
-          console.error(e);
-          alert(`Erreur lors de l'ajout de la fiche : ${e.message}`);
-        });
-    }
-   */
-
-  render () {
-    return (
-      <div className='FicheForm'>
-
-        <Header />
-        
-        <h1>Inscription </h1>
-
-        <p> Présentation du concept de l'annuaire avec un paragraphe </p>
-
-        <form onSubmit={this.handleSubmitForm}>
-          <fieldset>
-            <legend>Créer mon compte de Freelance à Lyon: </legend>
-
-            <div className='FicheForm'>
-              <label htmlFor='InfoForm'>Nom: </label>
-              <input
-                type='text'
-                id='freelanceFirstname'
-                name='freelance'
-                required
-                onChange={this.handleChange}
-              />
-            </div>
-
-            <div className='FicheForm'>
-              <label htmlFor='InfoForm'>Prénom: </label>
-              <input
-                type='text'
-                id='freelanceName'
-                name='freelance'
-                required
-                onChange={this.handleChange}
-              />
-            </div>
-
-            <div className='InfoForm'>
-              <label htmlFor='FicheForm'>Adresse email professionnel: </label>
-              <input
-                type='texte'
-                id='freelanceMail'
-                name='email'
-                required
-                onChange={this.handleChange}
-                value={this.state.email}
-              />
-            </div>
-
-            <div className='FicheForm'>
-              <label htmlFor='InfoForm'>Mot de passe: </label>
-              <input
-                type='text'
-                id='freelancePassword'
-                name='freelance'
-                required
-                onChange={this.handleChange}
-              />
-            </div>
-
-            <div className='FicheForm'>
-              <label htmlFor='InfoForm'>Siret: </label>
-              <input
-                type='text'
-                id='freelanceSiret'
-                name='freelance'
-                required
-                onChange={this.handleChange}
-              />
-            </div>
-            <hr />
-            <div className='FicheForm'>
-              <input type='submit' value='Création de ma fiche' />
-            </div>
-
-          </fieldset>
-        </form>
-          
-      <Footer />
-
-      </div>
-            
-    );
-  }
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
 }
 
-export default Registration;
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
+export default function SignUp() {
+  const classes = useStyles();
+
+  return (
+    <div>
+      <Header/>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline/>
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon/>
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Inscription
+          </Typography>
+          <form className={classes.form} noValidate>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="fname"
+                  name="firstName"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="Prénom"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Nom de famille"
+                  name="lastName"
+                  autoComplete="lname"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Adresse e-mail"
+                  name="email"
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Mot de passe"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="siret"
+                  label="Siret"
+                  type="siret"
+                  id="siret"
+                  autoComplete="siret"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControlLabel
+                  control={<Checkbox value="allowExtraEmails" color="primary"/>}
+                  label="Je souhaite recevoir de l'inspiration, des promotions marketing et des mises à jour par e-mail."
+                />
+              </Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              S'inscrire
+            </Button>
+            <Grid container justify="flex-end">
+              <Grid item>
+                <Link href="#" variant="body2">
+                  Vous avez déjà un compte? Se connecter
+                </Link>
+              </Grid>
+            </Grid>
+          </form>
+        </div>
+        <Box mt={5}>
+          <Footer/>
+          <Copyright/>
+        </Box>
+      </Container>
+    </div>
+  );
+}
