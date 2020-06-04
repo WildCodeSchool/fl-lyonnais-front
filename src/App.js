@@ -8,10 +8,12 @@ import SearchResult from './pages/SearchResult';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import legalDisclaimer from './components/legal_disclaimer';
-import './styles/variables.css';
 
 const Apps = styled.div`
     text-align: center;
+    --menu-bg-dark: #4050B3;
+    --bg-light: #f4f4f4;
+    --text-light: white;
 `;
 
 function App () {

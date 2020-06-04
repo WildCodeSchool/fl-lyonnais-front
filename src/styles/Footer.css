@@ -6,6 +6,8 @@
   background-color: var(--menu-bg-dark);
   height: 5vh;
   width: 100vw;
+  position:absolute;
+  bottom:0;
 }
 
 .footerLink {
