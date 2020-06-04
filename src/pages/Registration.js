@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import '../styles/Registration.css'
+import '../styles/Registration.css';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -43,9 +43,9 @@ export default function SignUp () {
     <div>
       <Header />
       <div className='concept'>
-      <h1>Freelance à Lyon inscris toi dans l'annuaire</h1>
-        <br/>
-      <p>
+        <h1>Freelance à Lyon inscris toi dans l'annuaire</h1>
+        <br />
+        <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aliquid, at cum cumque deleniti eligendi
         error eveniet expedita, in minima molestias nesciunt pariatur quae qui quo quos tempore voluptas?
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad cumque eos libero molestias
@@ -58,7 +58,7 @@ export default function SignUp () {
         officia, reiciendis.
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, aperiam aspernatur assumenda autem, esse
         et ipsum magnam modi odio quidem quo repudiandae sint, suscipit unde vel velit voluptates. Corporis, harum?
-      </p>
+        </p>
       </div>
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
