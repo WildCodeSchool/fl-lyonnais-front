@@ -19,8 +19,8 @@ function Copyright () {
   return (
     <Typography variant='body2' color='textSecondary' align='center'>
       {'Copyright © '}
-      <Link color='inherit' href='https://material-ui.com/'>
-        Your Website
+      <Link color='inherit' href='/'>
+        Freelances Lyonnais
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -112,7 +112,7 @@ export default function SignUp () {
                 />
               </Grid>
               <Grid item xs={12}>
-      <Footer />
+                <TextField
                   variant='outlined'
                   required
                   fullWidth
@@ -149,10 +149,10 @@ export default function SignUp () {
           </form>
         </div>
         <Box mt={5}>
-          <Footer />
-          <Copyright />
         </Box>
       </Container>
+      <Footer />
+      <Copyright />
     </div>
   );
 }
