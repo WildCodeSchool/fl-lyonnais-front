@@ -14,7 +14,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -193,8 +193,8 @@ export default function PrimarySearchAppBar () {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Button color="inherit"><Link style={{ textDecoration: 'none', color: 'white' }} to='/registration'>M'inscrire</Link></Button>
-            <Button color="inherit">Me connecter</Button>
+            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'white' }} to='/registration'>M'inscrire</Link></Button>
+            <Button color='inherit'>Me connecter</Button>
             <IconButton
               edge='end'
               aria-label='account of current user'
