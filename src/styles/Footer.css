@@ -7,3 +7,9 @@
   height: 5vh;
   width: 100vw;
 }
+
+.footerLink {
+  color: var(--text-light);
+  font-weight: bold;
+  text-decoration: none;
+}

@@ -194,7 +194,7 @@ export default function PrimarySearchAppBar (props) {
               />
             </div>
           }
-       
+
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'white' }} to='/registration'>M'inscrire</Link></Button>

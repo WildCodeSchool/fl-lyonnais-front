@@ -21,7 +21,7 @@ function App () {
       <Router>
         <Switch>
           <Route exact path='/'>
-            <Home isHomePage={isHomePage}/>
+            <Home isHomePage={isHomePage} />
           </Route>
           <Route path='/detail'>
             <Detail />
