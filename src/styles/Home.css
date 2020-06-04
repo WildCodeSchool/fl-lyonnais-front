@@ -15,8 +15,10 @@ body {
 .home main p {
   text-align: justify;
   margin: 5vw;
+  padding-top: 100px;
 }
 
 .home .logo {
   margin-top: 10px;
+  padding-top: 30px;
 }

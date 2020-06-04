@@ -16,9 +16,21 @@ function Home (props) {
         <SearchBar />
       </div>
       <main>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aliquid, at cum cumque deleniti eligendi error eveniet expedita, in minima molestias nesciunt pariatur quae qui quo quos tempore voluptas?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aliquid, at cum cumque deleniti eligendi error eveniet expedita, in minima molestias nesciunt pariatur quae qui quo quos tempore voluptas?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aliquid, at cum cumque deleniti eligendi error eveniet expedita, in minima molestias nesciunt pariatur quae qui quo quos tempore voluptas?</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aliquid, at cum cumque deleniti eligendi
+          error eveniet expedita, in minima molestias nesciunt pariatur quae qui quo quos tempore voluptas?
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad cumque eos libero molestias
+          necessitatibus numquam pariatur quas quo, sequi. Ab consequatur, delectus dolor hic nemo numquam quaerat!
+          Ducimus, maiores.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi, cumque dolorem enim, est fugiat
+          id illum labore libero nesciunt nisi officiis quas quo quos recusandae voluptate? Est, rerum!
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores et sunt tempora veniam. Aliquam animi
+          asperiores, aspernatur facilis magnam minima minus neque optio, quidem sequi totam veritatis! Obcaecati
+          officia, reiciendis.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, aperiam aspernatur assumenda autem, esse
+          et ipsum magnam modi odio quidem quo repudiandae sint, suscipit unde vel velit voluptates. Corporis, harum?
+
+        </p>
       </main>
       <Footer />
     </div>
