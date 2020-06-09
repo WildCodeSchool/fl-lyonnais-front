@@ -8,27 +8,31 @@ const Freelance = (props) => {
     <div className='freelance'>
       <figure className='ListingCard'>
 
-        <img className='photo' src={urlPhoto} alt={firstname} />
+        <div className='photo'>
+          <img src={urlPhoto} alt={firstname} />
+          {firstname} {lastname}
+        </div>
 
         <figcaption>
-          <blockquote>
-            <strong> Nom</strong> : {lastname}
-          </blockquote>
+     
+        <div className="dropdown">
+      <span>Plus d'information</span>
+     <div className="dropdown-content">
+  
+       <strong> Biographie</strong> : {bio}
+          
 
           <blockquote>
-            <strong> Prénom</strong> : {firstname}
-          </blockquote>
-
-          <blockquote>
-            <strong> Biographie</strong> : {bio}
-          </blockquote>
-
-          <blockquote>
+          <hr />
             <strong> Siret </strong> : {siret}
           </blockquote>
 
           <hr />
 
+
+        </div>
+    </div>
+          
           <blockquote>
             <h4> Contact</h4>
           </blockquote>
