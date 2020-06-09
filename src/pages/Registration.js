@@ -63,7 +63,7 @@ export default function SignUp () {
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
+          <Avatar style={{ backgroundColor: 'var(--red)' }} className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component='h1' variant='h5'>
@@ -142,6 +142,7 @@ export default function SignUp () {
               variant='contained'
               color='primary'
               className={classes.submit}
+              style={{ backgroundColor: 'var(--red)' }}
             >
               Créer ma fiche freelance
             </Button>

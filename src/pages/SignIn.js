@@ -43,7 +43,7 @@ export default function SignIn () {
       <Container style={{ paddingTop: '100px' }} component='main' maxWidth='xs'>
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
+          <Avatar style={{ backgroundColor: 'var(--red)' }} className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component='h1' variant='h5'>
@@ -82,12 +82,13 @@ export default function SignIn () {
               variant='contained'
               color='primary'
               className={classes.submit}
+              style={{ backgroundColor: 'var(--red)' }}
             >
             Se connecter
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href='#' variant='body2'>
+                <Link to='#' variant='body2'>
                   Mot de passe oublié?
                 </Link>
               </Grid>
