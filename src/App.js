@@ -9,6 +9,11 @@ import SignIn from './pages/SignIn';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import legalDisclaimer from './components/legal_disclaimer';
+import Bold from './font/BalooBhaina2-Bold.ttf';
+import ExtraBold from './font/BalooBhaina2-ExtraBold.ttf';
+import Medium from './font/BalooBhaina2-Medium.ttf';
+import Regular from './font/BalooBhaina2-Regular.ttf';
+import SemiBold from './font/BalooBhaina2-SemiBold.ttf';
 
 const Apps = styled.div`
     text-align: center;
@@ -18,6 +23,13 @@ const Apps = styled.div`
     --yellow: #F4B432;
     --red: #EB483E;
     --white: #FFFFFF;
+    @font-face {font-family: 'BB-bold'; src: url(${Bold});}
+    @font-face {font-family: 'BB-extraBold'; src: url(${ExtraBold});}
+    @font-face {font-family: 'BB-medium'; src: url(${Medium});}
+    @font-face {font-family: 'BB-regular'; src: url(${Regular});}
+    @font-face {font-family: 'BB-semiBold'; src: url(${SemiBold});}
+    font-family: 'BB-medium', serif;
+
 `;
 
 function App () {
