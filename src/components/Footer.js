@@ -32,11 +32,11 @@ export default function LabelBottomNavigation () {
   };
 
   return (
-    <BottomNavigation style={{backgroundColor : '#1730FF' }} value={value} onChange={handleChange} className={classes.stickToBottom} showLabels>
-      <BottomNavigationAction style={{color : '#FFFFFF'}} label='Accueil' value='Accueil' icon={<HomeIcon />} component={Link} to={pathMap[0]} />
-      <BottomNavigationAction style={{color : '#FFFFFF'}} label='Freelances à Lyon' value='Freelances à Lyon' icon={<FaceIcon />} component={Link} to={pathMap[1]} />
-      <BottomNavigationAction style={{color : '#FFFFFF'}} label='A propos' value='A propos' icon={<InfoIcon />} component={Link} to={pathMap[2]} />
-      <BottomNavigationAction style={{color : '#FFFFFF'}} label='Mentions légales' value='Mentions légales' icon={<GavelIcon />} component={Link} to={pathMap[3]} />
+    <BottomNavigation style={{ backgroundColor: '#1730FF' }} value={value} onChange={handleChange} className={classes.stickToBottom} showLabels>
+      <BottomNavigationAction style={{ color: '#FFFFFF' }} label='Accueil' value='Accueil' icon={<HomeIcon />} component={Link} to={pathMap[0]} />
+      <BottomNavigationAction style={{ color: '#FFFFFF' }} label='Freelances à Lyon' value='Freelances à Lyon' icon={<FaceIcon />} component={Link} to={pathMap[1]} />
+      <BottomNavigationAction style={{ color: '#FFFFFF' }} label='A propos' value='A propos' icon={<InfoIcon />} component={Link} to={pathMap[2]} />
+      <BottomNavigationAction style={{ color: '#FFFFFF' }} label='Mentions légales' value='Mentions légales' icon={<GavelIcon />} component={Link} to={pathMap[3]} />
     </BottomNavigation>
   );
 }
