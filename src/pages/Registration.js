@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import '../styles/Registration.css';
+import '../styles/Registration.scss';
 
 const useStyles = makeStyles((theme) => ({
   paper: {

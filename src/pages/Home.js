@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import '../styles/Home.css';
+import '../styles/Home.scss';
 import SearchBar from '../components/SearchBar';
 import logo from '../images/logo.png';
 

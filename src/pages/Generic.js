@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-// import '../styles/Generic.css';
+// import '../styles/Generic.scss';
 
 function Generic (props) {
   return (
