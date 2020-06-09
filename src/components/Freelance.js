@@ -14,25 +14,23 @@ const Freelance = (props) => {
         </div>
 
         <figcaption>
-     
-        <div className="dropdown">
-      <span>Plus d'information</span>
-     <div className="dropdown-content">
-  
-       <strong> Biographie</strong> : {bio}
-          
 
-          <blockquote>
-          <hr />
-            <strong> Siret </strong> : {siret}
-          </blockquote>
+          <div className='dropdown'>
+            <span>Plus d'information</span>
+            <div className='dropdown-content'>
 
-          <hr />
+              <strong> Biographie</strong> : {bio}
 
+              <blockquote>
+                <hr />
+                <strong> Siret </strong> : {siret}
+              </blockquote>
 
-        </div>
-    </div>
-          
+              <hr />
+
+            </div>
+          </div>
+
           <blockquote>
             <h4> Contact</h4>
           </blockquote>
