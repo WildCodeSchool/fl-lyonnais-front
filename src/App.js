@@ -5,15 +5,19 @@ import Listing from './pages/Listing';
 import Registration from './pages/Registration';
 import Generic from './pages/Generic';
 import SearchResult from './pages/SearchResult';
+import SignIn from './pages/SignIn';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import legalDisclaimer from './components/legal_disclaimer';
 
 const Apps = styled.div`
     text-align: center;
-    --menu-bg-dark: #4050B3;
-    --bg-light: #f4f4f4;
-    --text-light: white;
+    --blue: #1730FF;
+    --pink: #F4928F;
+    --green: #24A198;
+    --yellow: #F4B432;
+    --red: #EB483E;
+    --white: #FFFFFF;
 `;
 
 function App () {
@@ -33,6 +37,9 @@ function App () {
           </Route>
           <Route path='/registration'>
             <Registration />
+          </Route>
+          <Route path='/signin'>
+            <SignIn />
           </Route>
           <Route path='/legaldisclaimer'>
             <Generic legalDisclaimer={legalDisclaimer} />
