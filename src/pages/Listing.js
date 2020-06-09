@@ -65,13 +65,12 @@ const freelances = [
     phone: '05.03.38.34.76',
     bio: 'aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam',
     isActive: true
-  },
+  }
 ];
 
 function Listing (props) {
-
   // Construit une liste des freelances
-  const outputFreelances = freelances.map(freelance => <Freelance key={freelance.email} freelance={freelance} /> );
+  const outputFreelances = freelances.map(freelance => <Freelance key={freelance.email} freelance={freelance} />);
 
   return (
     <div className='Listing'>
