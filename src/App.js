@@ -6,7 +6,7 @@ import Registration from './pages/Registration';
 import Generic from './pages/Generic';
 import SearchResult from './pages/SearchResult';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import legalDisclaimer from './components/legal_disclaimer';
 import freelance from './JohnDoe';
 
@@ -20,7 +20,7 @@ function App () {
             <Home isHomePage={isHomePage} />
           </Route>
           <Route path='/detail'>
-            <Detail freelance={freelance}/>
+            <Detail freelance={freelance} />
           </Route>
           <Route path='/listing'>
             <Listing />

@@ -12,10 +12,10 @@ function Detail ({ freelance }) {
   return (
     <div>
       <Header />
-        <DetailBio freelance = {freelance}/>
-        <DetailReferences freelance = {freelance}/>
-          <DetailSkills freelance = {freelance}/>
-        <DetailContact freelance = {freelance}/>
+      <DetailBio freelance={freelance} />
+      <DetailReferences freelance={freelance} />
+      <DetailSkills freelance={freelance} />
+      <DetailContact freelance={freelance} />
       <Footer />
     </div>
   );

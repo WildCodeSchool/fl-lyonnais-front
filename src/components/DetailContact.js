@@ -1,6 +1,6 @@
 import React from 'react';
 
-function DetailContact(props) {
+function DetailContact (props) {
   return (
     <div>
       <h2>Mes coordonnées</h2>
@@ -16,6 +16,6 @@ function DetailContact(props) {
       </ul>
     </div>
   );
-};
+}
 
 export default DetailContact;

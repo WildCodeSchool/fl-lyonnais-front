@@ -1,0 +1,28 @@
+/* BIO */
+
+.detailphoto {
+  height: 10px;
+  width: auto;
+}
+
+/* REFERENCES */
+
+/* SKILLS */
+
+.mainSkills {
+  border: 2px solid black;
+}
+
+.mainSkills ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+}
+
+.mainSkills ul li {
+  text-decoration: none;
+}
+
+/* Contact */
+
