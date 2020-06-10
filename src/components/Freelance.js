@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react';
-//import '../styles/Freelance.css';
+import '../styles/Freelance.css';
 
 
 const Freelance = (props) => {
@@ -9,7 +9,7 @@ const Freelance = (props) => {
   return (
 
 
-  <Card className="freealance">
+  <Card className="freelance">
     <Image className="photo" src={urlPhoto} wrapped ui={false} />
     <Card.Content>
   <Card.Header className="card-header">{firstname}{lastname}</Card.Header>
@@ -34,7 +34,7 @@ const Freelance = (props) => {
   
   </Card>
 
-
+  
 
    );
 

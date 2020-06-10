@@ -2,8 +2,7 @@ import React from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Freelance from '../components/Freelance';
-
-// import '../styles/Listing.css';
+import '../styles/Listing.css';
 
 const freelances = [
   {
