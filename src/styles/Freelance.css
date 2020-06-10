@@ -1,8 +1,13 @@
-.freelance:hover {
+.card:hover {
   transform: scale(1.05);
-  width: 25%
+  width: 33%
 }
 
-.freelance {
-  
+.card {
+  flex-direction: column;
+  width: 33 %;
+  padding: 50px;
+  margin: 10px;
+  display: flex;
+	
 }

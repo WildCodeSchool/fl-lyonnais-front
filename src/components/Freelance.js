@@ -7,9 +7,9 @@ const Freelance = (props) => {
   const { urlPhoto, firstname, lastname, bio, siret, email, phone } = props.freelance;
 
   return (
-
-
+<div className="card">
   <Card className="freelance">
+
     <Image className="photo" src={urlPhoto} wrapped ui={false} />
     <Card.Content>
   <Card.Header className="card-header">{firstname}{lastname}</Card.Header>
@@ -33,8 +33,7 @@ const Freelance = (props) => {
     </Card.Content>
   
   </Card>
-
-  
+  </div>
 
    );
 
