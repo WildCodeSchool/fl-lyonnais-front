@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
+import
+import { AutoRotatingCarousel } from 'material-auto-rotating-carousel';
 
-function DetailReferences (props){
-  return(
-    <div>
+class DetailReferences extends Component {
+  render() {
+    return(
+      <div>
+        <AutoRotatingCarousel ModalProps='false' mobile='true'/>
+      </div>
+    );
+  };
+}
 
-    </div>
-      
-  );
-};
 
 export default DetailReferences;

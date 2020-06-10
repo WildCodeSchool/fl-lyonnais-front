@@ -10,17 +10,10 @@ import styled from 'styled-components';
 import legalDisclaimer from './components/legal_disclaimer';
 import freelance from './JohnDoe';
 
-const Apps = styled.div`
-    text-align: center;
-    --menu-bg-dark: #4050B3;
-    --bg-light: #f4f4f4;
-    --text-light: white;
-`;
-
 function App () {
   const isHomePage = true;
   return (
-    <Apps>
+    <div>
       <Router>
         <Switch>
           <Route exact path='/'>
@@ -43,7 +36,7 @@ function App () {
           </Route>
         </Switch>
       </Router>
-    </Apps>
+    </div>
   );
 }
 
