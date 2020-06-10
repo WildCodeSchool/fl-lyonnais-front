@@ -11,6 +11,7 @@
 
 .mainSkills {
   border: 2px solid black;
+  padding: 5px;
 }
 
 .mainSkills ul {
@@ -22,6 +23,7 @@
 
 .mainSkills ul li {
   text-decoration: none;
+  font-weight: 
 }
 
 /* Contact */
