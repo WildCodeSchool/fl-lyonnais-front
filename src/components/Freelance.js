@@ -8,14 +8,16 @@ const Freelance = (props) => {
 
   return (
 
-  <Card>
-    <Image src={urlPhoto} wrapped ui={false} />
+    <div className="freelance">
+
+  <Card className="ListingCard">
+    <Image className="photo" src={urlPhoto} wrapped ui={false} />
     <Card.Content>
-  <Card.Header>{firstname}{lastname}</Card.Header>
+  <Card.Header className="card-header">{firstname}{lastname}</Card.Header>
       <Card.Meta>
         <span className='siret'>Siret: {siret}</span>
       </Card.Meta>
-      <Card.Description>
+      <Card.Description className="card-informations">
         {bio}
       </Card.Description>
     </Card.Content>
@@ -28,8 +30,14 @@ const Freelance = (props) => {
         <Icon name='contact' />
         {phone}
       </p>
+      <button>
++ Afficher plus d'information
+</button>
     </Card.Content>
+  
   </Card>
+
+</div>
 
    );
 
