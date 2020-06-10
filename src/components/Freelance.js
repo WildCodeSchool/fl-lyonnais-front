@@ -8,9 +8,8 @@ const Freelance = (props) => {
 
   return (
 
-    <div className="freelance">
 
-  <Card className="ListingCard">
+  <Card className="freealance">
     <Image className="photo" src={urlPhoto} wrapped ui={false} />
     <Card.Content>
   <Card.Header className="card-header">{firstname}{lastname}</Card.Header>
@@ -30,14 +29,12 @@ const Freelance = (props) => {
         <Icon name='contact' />
         {phone}
       </p>
-      <button>
-+ Afficher plus d'information
-</button>
+      <button> + Afficher plus d'information </button>
     </Card.Content>
   
   </Card>
 
-</div>
+
 
    );
 
