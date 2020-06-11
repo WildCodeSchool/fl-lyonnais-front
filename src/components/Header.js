@@ -88,11 +88,7 @@ export default function PrimarySearchAppBar (props) {
               />
             </div>}
           <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/registration'>M'inscrire</Link></Button>
-            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/signin'>Me connecter</Link></Button>
-          </div>
-          <div className={classes.sectionMobile}>
+          <div>
             <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/registration'>M'inscrire</Link></Button>
             <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/signin'>Me connecter</Link></Button>
           </div>

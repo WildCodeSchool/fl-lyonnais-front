@@ -14,6 +14,8 @@ import ExtraBold from './font/BalooBhaina2-ExtraBold.ttf';
 import Medium from './font/BalooBhaina2-Medium.ttf';
 import Regular from './font/BalooBhaina2-Regular.ttf';
 import SemiBold from './font/BalooBhaina2-SemiBold.ttf';
+import Footer from './components/Footer'
+import Header from './components/Header'
 
 const Apps = styled.div`
     text-align: center;
@@ -29,7 +31,11 @@ const Apps = styled.div`
     @font-face {font-family: 'BB-regular'; src: url(${Regular});}
     @font-face {font-family: 'BB-semiBold'; src: url(${SemiBold});}
     font-family: 'BB-medium', serif;
-
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
 `;
 
 function App () {
@@ -37,29 +43,33 @@ function App () {
   return (
     <Apps>
       <Router>
-        <Switch>
-          <Route exact path='/'>
-            <Home isHomePage={isHomePage} />
-          </Route>
-          <Route path='/detail'>
-            <Detail />
-          </Route>
-          <Route path='/listing'>
-            <Listing />
-          </Route>
-          <Route path='/registration'>
-            <Registration />
-          </Route>
-          <Route path='/signin'>
-            <SignIn />
-          </Route>
-          <Route path='/legaldisclaimer'>
-            <Generic legalDisclaimer={legalDisclaimer} />
-          </Route>
-          <Route path='/search-results'>
-            <SearchResult />
-          </Route>
-        </Switch>
+        <Header />
+        <main style={{ flex: '1 0 auto'}}>
+          <Switch>
+            <Route exact path='/'>
+              <Home isHomePage={isHomePage} />
+            </Route>
+            <Route path='/detail'>
+              <Detail />
+            </Route>
+            <Route path='/listing'>
+              <Listing />
+            </Route>
+            <Route path='/registration'>
+              <Registration />
+            </Route>
+            <Route path='/signin'>
+              <SignIn />
+            </Route>
+            <Route path='/legaldisclaimer'>
+              <Generic legalDisclaimer={legalDisclaimer} />
+            </Route>
+            <Route path='/search-results'>
+              <SearchResult />
+            </Route>
+          </Switch>
+        </main>
+          <Footer />
       </Router>
     </Apps>
   );

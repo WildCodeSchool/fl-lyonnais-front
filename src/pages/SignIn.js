@@ -11,8 +11,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -39,7 +37,6 @@ export default function SignIn () {
 
   return (
     <div>
-      <Header />
       <Container style={{ paddingTop: '100px' }} component='main' maxWidth='xs'>
         <CssBaseline />
         <div className={classes.paper}>
@@ -101,7 +98,6 @@ export default function SignIn () {
           </form>
         </div>
       </Container>
-      <Footer />
     </div>
   );
 }
