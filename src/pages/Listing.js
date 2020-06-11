@@ -1,8 +1,6 @@
 import React from 'react';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
 import Freelance from '../components/Freelance2';
-import '../styles/Listing.css';
+import '../styles/Listing.scss';
 import freelances from './people';
 
 function Listing (props) {
@@ -11,18 +9,12 @@ function Listing (props) {
 
   return (
     <div className='Listing'>
-      <Header />
-
       <div className='everyFreelanceCards'>
         {outputFreelances}
         {outputFreelances}
         {outputFreelances}
         {outputFreelances}
-
       </div>
-
-      <Footer />
-
     </div>
   );
 }
