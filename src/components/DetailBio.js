@@ -6,7 +6,10 @@ function detailBio (props) {
     <div className="detailBio">
       <div className="detailBioPhotoName">
         <img src={props.freelance.url_photo} alt={`${props.freelance.lastname}`} className='detailPhoto' />
-        <h1>{props.freelance.firstname} {props.freelance.lastname}</h1>
+        <div className='detailnametitle'>
+          <h1>{props.freelance.firstname} {props.freelance.lastname}</h1>
+          <h2>{props.freelance.job_title}</h2>
+        </div>
       </div>
       <div>
         <p>{props.freelance.bio}</p>

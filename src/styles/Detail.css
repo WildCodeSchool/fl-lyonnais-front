@@ -1,18 +1,18 @@
 /* GLOBAL */
 
-@font-face {  
-  font-family: "BalooBhaina2";
-  src: url("../font/BalooBhaina2-Regular.ttf") format("ttf"),
-    url("../font/BalooBhaina2-Medium.ttf") format("ttf"), 
-    url("../font/BalooBhaina2-SemiBold.ttf") format("ttf"),
-    url("../font/BalooBhaina2-Bold.ttf") format("ttf"),
-    url("../font/BalooBhaina2-ExtraBold.ttf") format("ttf");
+.Detail {
+  margin-right: 10px;
 }
 
 /* BIO */
 
 .detailBioPhotoName {
   display: flex;
+}
+
+.detailnametitle {
+  align-self: center;
+  text-align: center;
 }
 
 .detailBioPhotoName h1 {
@@ -22,6 +22,7 @@
 .detailBio {
   display: flex;
   flex-direction: column;
+  margin-left: 5px;
 }
 
 .detailBio div p {
@@ -92,42 +93,46 @@
 .mainSkills ul li {
   list-style: none;
   font-size: 20px;
-  padding: auto;
+  padding: 5px 10px;
   border-radius: 3px;
   background-color: darksalmon;
+  border: 1px solid black;
 }
 
-.otherSkills {
+.otherSkills {  
+  margin-top: 10px;
   border: 2px solid black;
   padding: 5px;
 }
 
 .otherSkills ul {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
-  align-items: center;
   flex-direction: row;
 }
 
 .otherSkills ul li {
-  list-style: none;
-  padding: 1px;
+    list-style: none;
   border-radius: 3px;
+  padding: 5px 15px;
   background-color: darksalmon;
+  border: 1px solid black;
 }
 
 /* Contact */
 
 .detailcontact {
-  margin-top: 10px;
+  margin-top: 5px;
   font-size: 0.7em;
 }
 
+
 .Detailcontactemail {
-  margin : 10px 0;
-  font: blue;
+  margin : 5px 0;
+  color: #1730ff;
 }
 
 .Detailcontactsiret {
-  border: 2px solid red;
+
 }
