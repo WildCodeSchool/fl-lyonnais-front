@@ -1,0 +1,55 @@
+/* BIO */
+
+.detailPhoto {
+  height: 100px;
+  width: auto;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
+/* REFERENCES */
+
+/* SKILLS */
+
+.mainSkills {
+  border: 2px solid black;
+  padding: 5px;
+}
+
+.mainSkills ul {
+  display: flex;
+  justify-content: space-evenly;
+  justify-self: stretch;
+  align-items: center;
+  flex-direction: row;
+}
+
+.mainSkills ul li {
+  list-style: none;
+  font-size: 20px;
+  padding: auto;
+  border-radius: 3px;
+  background-color: darksalmon;
+}
+
+.otherSkills {
+  border: 2px solid black;
+  padding: 5px;
+}
+
+.otherSkills ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+}
+
+.otherSkills ul li {
+  list-style: none;
+  padding: 1px;
+  border-radius: 3px;
+  background-color: darksalmon;
+}
+
+/* Contact */
+

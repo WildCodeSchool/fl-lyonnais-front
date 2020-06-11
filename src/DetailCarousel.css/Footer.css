@@ -1,0 +1,15 @@
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 0.75em;
+  background-color: var(--menu-bg-dark);
+  height: 5vh;
+  width: 100vw;
+}
+
+.footerLink {
+  color: var(--text-light);
+  font-weight: bold;
+  text-decoration: none;
+}
