@@ -1,8 +1,46 @@
+/* GLOBAL */
+
+@font-face {  
+  font-family: "BalooBhaina2";
+  src: url("../font/BalooBhaina2-Regular.ttf") format("ttf"),
+    url("../font/BalooBhaina2-Medium.ttf") format("ttf"), 
+    url("../font/BalooBhaina2-SemiBold.ttf") format("ttf"),
+    url("../font/BalooBhaina2-Bold.ttf") format("ttf"),
+    url("../font/BalooBhaina2-ExtraBold.ttf") format("ttf");
+}
+
 /* BIO */
 
-.detailphoto {
-  height: 10px;
+.detailBioPhotoName {
+  display: flex;
+}
+
+.detailBioPhotoName h1 {
+  margin: auto;
+}
+
+.detailBio {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailBio div p {
+  padding: 5px;
+  text-align: justify;
+  margin: 10px 10px;
+  border-top: solid 1px darksalmon;
+  border-bottom: solid 1px darksalmon;
+}
+
+.detailPhoto {
+  height: 100px;
   width: auto;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  box-shadow: 1px 2px 15px black;
 }
 
 /* REFERENCES */

@@ -1,14 +1,21 @@
-import React, { Component } from 'react';
-import DetailCarousel from './DetailCarousel';
+import React from 'react';
+import '../styles/DetailReferences.css';
 
-class DetailReferences extends Component {
-  render () {
-    return (
-      <div>
-        <DetailCarousel ModalProps='false' mobile='true' />
-      </div>
-    );
-  }
+function DetailReferences ({freelance}) {
+  return (
+    <div className='carousel'>
+      {freelance.references.map(reference => {
+        return (
+          <div className='reference'>
+            <img src={reference.image} alt={reference.name}/>
+            <p>{reference.name}</p> 
+          </div>
+        )
+      })
+      }
+    </div>
+  );
 }
+
 
 export default DetailReferences;
