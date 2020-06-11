@@ -1,3 +1,13 @@
 .Listing {
     background-color: lightgray;
+    
+}
+.cards {
+ display:flex;
+ margin: auto ;
+ flex-direction: row;
+}
+.card:hover {
+    transform: scale(1.05);
+    width: 33%
 }

@@ -12,8 +12,9 @@ const freelances = [
     lastname: 'Doe',
     urlPhoto: require('../images/photos/01.jpg'),
     phone: '+33 6 00 00 00 00',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad',
-    isActive: true
+    bio: 'Honores quantum enim possit etiam Non si perducere diligas etiam possis quamvis P videndum consulem amplissimos fratrem si fratrem potuit tribuendum honores non L Non P ut efficere etiam autem sustinere tuos Scipio potuit ad tamen quantum adiuves omnes quantum Rupilium efficere deinde perducere amplissimos quantum videndum Quod deferre adiuves opt.',
+    isActive: true,
+    mainSkills: ['js', 'react', 'node']
   },
   {
     email: 'SavilleMartin@armyspy.com',
@@ -23,7 +24,8 @@ const freelances = [
     urlPhoto: require('../images/photos/02.jpg'),
     phone: '04.81.41.24.70',
     bio: 'minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit',
-    isActive: true
+    isActive: true,
+    mainSkills: ['js', 'react', 'node']
   },
   {
     email: 'GanelonCaya@teleworm.us',
@@ -33,7 +35,8 @@ const freelances = [
     urlPhoto: require('../images/photos/03.jpg'),
     phone: '01.30.70.17.62',
     bio: 'in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia',
-    isActive: true
+    isActive: true,
+    mainSkills: ['js', 'react', 'node']
   },
   {
     email: 'RolandLanteigne@teleworm.us',
@@ -43,7 +46,8 @@ const freelances = [
     urlPhoto: require('../images/photos/04.jpg'),
     phone: '03.02.16.17.25',
     bio: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa',
-    isActive: true
+    isActive: true,
+    mainSkills: ['js', 'react', 'node']
   },
   {
     email: 'AngeletteBaron@dayrep.com',
@@ -53,7 +57,8 @@ const freelances = [
     urlPhoto: require('../images/photos/05.jpg'),
     phone: '02.11.21.50.57',
     bio: 'quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit',
-    isActive: true
+    isActive: true,
+    mainSkills: ['js', 'react', 'node']
   },
   {
     email: 'BevisBergeron@teleworm.us',
@@ -63,7 +68,8 @@ const freelances = [
     urlPhoto: require('../images/photos/06.jpg'),
     phone: '05.03.38.34.76',
     bio: 'aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam',
-    isActive: true
+    isActive: true,
+    mainSkills: ['JS', 'React', 'Node']
   }
 ];
 
@@ -74,7 +80,11 @@ function Listing (props) {
   return (
     <div className='Listing'>
       <Header />
-      {outputFreelances}
+
+      <div className='cards'>
+        {outputFreelances}
+      </div>
+
       <Footer />
     </div>
   );
