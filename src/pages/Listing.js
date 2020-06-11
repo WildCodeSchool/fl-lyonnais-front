@@ -18,6 +18,7 @@ function Listing (props) {
         {outputFreelances}
         {outputFreelances}
         {outputFreelances}
+        
       </div>
 
       <Footer />
