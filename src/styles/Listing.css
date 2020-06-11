@@ -1,13 +1,12 @@
 .Listing {
     background-color: lightgray;
-    
+   
 }
-.cards {
- display:flex;
- margin: auto ;
- flex-direction: row;
-}
-.card:hover {
-    transform: scale(1.05);
-    width: 33%
+.everyFreelanceCards {
+  margin: auto ;
+  display: flexbox;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
 }

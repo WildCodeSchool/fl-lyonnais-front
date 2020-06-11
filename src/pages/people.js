@@ -1,9 +1,3 @@
-import React from 'react';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import Freelance from '../components/Freelance';
-import '../styles/Listing.css';
-
 const freelances = [
   {
     email: 'john.doe@wcs.com',
@@ -63,24 +57,4 @@ const freelances = [
   
 ];
 
-function Listing (props) {
-  // Construit une liste des freelances
-  const outputFreelances = freelances.map(freelance => <Freelance key={freelance.email} freelance={freelance} />);
-
-  return (
-    <div className='Listing'>
-      <Header />
-
-      <div className='everyFreelanceCards'>
-        {outputFreelances}
-        {outputFreelances}
-        {outputFreelances}
-        {outputFreelances}
-      </div>
-
-      <Footer />
-    </div>
-  );
-}
-
-export default Listing;
+export default freelances;
