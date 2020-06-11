@@ -29,11 +29,11 @@ const Freelance = (props) => {
             <Icon name='contact' />
             {phone}
           </p>
-          */}
-          <Card.Content>
+          
+          
           <button> + Plus d'informations </button>
         </Card.Content>
-        
+        */}
       </Card>
     </div>
 
