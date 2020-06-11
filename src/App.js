@@ -3,12 +3,10 @@ import Home from './pages/Home';
 import Detail from './pages/Detail';
 import Listing from './pages/Listing';
 import Registration from './pages/Registration';
-import Generic from './pages/Generic';
-import SearchResult from './pages/SearchResult';
+import LegalDisclaimer from './pages/LegalDisclaimer';
 import SignIn from './pages/SignIn';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
-import legalDisclaimer from './components/legal_disclaimer';
 import Bold from './font/BalooBhaina2-Bold.ttf';
 import ExtraBold from './font/BalooBhaina2-ExtraBold.ttf';
 import Medium from './font/BalooBhaina2-Medium.ttf';
@@ -16,7 +14,7 @@ import Regular from './font/BalooBhaina2-Regular.ttf';
 import SemiBold from './font/BalooBhaina2-SemiBold.ttf';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import freelance from './JohnDoe';
+import freelance from './test/JohnDoe';
 
 const Apps = styled.div`
     text-align: center;
@@ -63,10 +61,7 @@ function App () {
               <SignIn />
             </Route>
             <Route path='/legaldisclaimer'>
-              <Generic legalDisclaimer={legalDisclaimer} />
-            </Route>
-            <Route path='/search-results'>
-              <SearchResult />
+              <LegalDisclaimer />
             </Route>
           </Switch>
         </main>

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../JohnDoe';
+import '../test/JohnDoe';
 
 function detailBio (props) {
   return (
