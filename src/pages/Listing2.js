@@ -7,7 +7,6 @@ import Freelance2 from '../components/Freelance2';
 import '../styles/Listing2.css';
 import freelances from './people';
 
-
 function Listing2 (props) {
   // Construit une liste des freelances
   const outputFreelances = freelances.map(freelance => <Freelance2 key={freelance.email} freelance={freelance} />);

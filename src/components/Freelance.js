@@ -30,10 +30,10 @@ const Freelance = (props) => {
             {phone}
           </p>
           */}
-          <Card.Content>
+        <Card.Content>
           <button> + Plus d'informations </button>
         </Card.Content>
-        
+
       </Card>
     </div>
 

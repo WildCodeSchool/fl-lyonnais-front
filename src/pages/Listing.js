@@ -59,8 +59,8 @@ const freelances = [
     bio: 'quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit',
     isActive: true,
     mainSkills: ['JS', 'React', 'Node']
-  },
-  
+  }
+
 ];
 
 function Listing (props) {
