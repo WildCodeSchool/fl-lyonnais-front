@@ -25,11 +25,14 @@
 }
 
 .detailBio div p {
-  padding: 5px;
+  height: 20vh;
+  overflow: auto;
+  padding: 5px 10px 5px 5px;
   text-align: justify;
-  margin: 10px 10px;
-  border-top: solid 1px darksalmon;
-  border-bottom: solid 1px darksalmon;
+  margin: 10px 0px;
+  border-top: solid 2px darksalmon;
+  border-bottom: solid 2px darksalmon;
+  box-shadow: inset 0px 0px 16px 1px gray;
 }
 
 .detailPhoto {
@@ -44,6 +47,32 @@
 }
 
 /* REFERENCES */
+
+.carousel {
+  display: flex;
+  /* justify-content: center; */
+  overflow: auto;
+  box-shadow: inset 0px 0px 16px 9px white;
+  white-space: nowrap;
+  scrollbar-color: red yellow;
+}
+
+.carousel img {
+  width: 30vw;
+  margin : 10px 10px;
+  box-shadow: 1px 2px 15px black;
+  border-radius: 10px;
+}
+
+.carousel p {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.reference {
+  scrollbar-color: red yellow;
+  z-index: -1;
+}
 
 /* SKILLS */
 
@@ -89,3 +118,16 @@
 
 /* Contact */
 
+.detailcontact {
+  margin-top: 10px;
+  font-size: 0.7em;
+}
+
+.Detailcontactemail {
+  margin : 10px 0;
+  font: blue;
+}
+
+.Detailcontactsiret {
+  border: 2px solid red;
+}
