@@ -4,7 +4,7 @@ import '../styles/Detail.css';
 function detailSkills (props) {
   return (
     <div>
-      <h2>Mes compétences</h2>
+      <h2 className='detailh2'>Mes compétences</h2>
       <div className='mainSkills'>
         <ul>
           {props.freelance.mainSkills.map(mainSkill => {

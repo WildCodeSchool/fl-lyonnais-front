@@ -5,15 +5,24 @@
   margin-left: 10px;
 }
 
+.detailh2 {
+  text-align: center;
+  font-size: 1.5em;
+  color: #24a198;
+}
+
 /* BIO */
 
 .detailBioPhotoName {
   display: flex;
 }
 
+
 .detailnametitle {
   align-self: center;
   text-align: center;
+  margin: auto;
+  font-size: 1.2em;
 }
 
 .detailBio {
@@ -23,9 +32,9 @@
 }
 
 .detailBio div p {
-  height: 20vh;
+  height: auto;
   overflow: auto;
-  padding: 5px 10px 5px 5px;
+  padding: 10px;
   text-align: justify;
   margin: 10px 0px;
   box-shadow: inset 0px 0px 16px 1px gray;
@@ -33,13 +42,11 @@
 }
 
 .detailPhoto {
-  height: 100px;
-  width: auto;
+  height: auto;
+  width: 25vw;
   border-radius: 10px;
-  margin-left: 10px;
   margin-top: 10px;
   margin-right: 10px;
-  margin-bottom: 10px;
   box-shadow: 1px 2px 15px black;
 }
 
@@ -90,7 +97,8 @@
 .mainSkills ul li {
   list-style: none;
   font-size: 20px;
-  padding: 5px 10px;
+  font-weight: bold;
+  padding: 5px 20px;
   border-radius: 10px;
   background-color: #f6c156;
   border: 2px outset gray;
@@ -131,8 +139,12 @@
 }
 
 .Detailcontactemail {
-  margin : 20px 0;
+  margin : 10px 0;
   color: #1730ff;
+}
+
+.detailcompany {
+
 }
 
 .Detailcontactsiret {
@@ -149,84 +161,63 @@
     margin: auto;
   }
 
-  
-
   .detailBio div p {
-    margin: 10vw;
+    margin: 5vw;
     font-size: 1.1em;
-    overflow: visible;
+    overflow: auto;
+    height: auto;
   }
 
   .detailPhoto {
-    height: 100px;
-    width: auto;
-    border-radius: 10px;
-    margin-left: 10px;
-    margin-top: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    box-shadow: 1px 2px 15px black;
+    margin-left: 5vw;
+    margin-top: 3vw;
   }
 
   /* REFERENCES */
-
 
 .carousel img {
   width: 20vw;
 }
 
-
   /* SKILLS */
 
-.mainSkills {
-  border-radius: 5px;
-  border: 2px solid gray;
-  padding: 5px;
-}
-
-.mainSkills ul {
-  display: flex;
-  justify-content: space-evenly;
-  justify-self: stretch;
-  align-items: center;
-  flex-direction: row;
-}
 
 .mainSkills ul li {
-  list-style: none;
-  font-size: 20px;
-  padding: 5px 10px;
-  border-radius: 10px;
-  background-color: #f6c156;
-  border: 2px outset gray;
+  padding: 5px 20px;
+  font-size:2em;
 }
 
 .otherSkills {  
-  border-radius: 5px;
-  margin-top: 10px;
-  border: 2px solid gray;
-  padding: 5px;
-}
-
-.otherSkills ul {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  padding: 20px;
   justify-content: center;
 }
 
 .otherSkills ul li {
-  list-style: none;
-  border-radius: 10px;
-  padding: 5px 10px;
-  margin: 5px 5px;
-  background-color: #f6c156;
-  border: 2px outset gray;
+  padding: 5px 15px;
+  font-size:1.5em;
 }
 
-#detailskillstjm  {
-  font-size: 0.8em;
-  margin-bottom: 10px;
+
+/* CONTACT */
+
+.detailcontact ul {
+  display: flex;
+  justify-content: space-around;
+  list-style:none;
+  font-size: 2em;
+}
+
+.Detailcontactemail {
+  margin : 10px 0;
+  color: #1730ff;
+}
+
+.detailcompany {
+
+}
+
+.Detailcontactsiret {
+
 }
 
 }

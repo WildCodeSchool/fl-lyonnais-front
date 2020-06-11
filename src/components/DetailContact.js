@@ -4,12 +4,14 @@ import '../styles/Detail.css'
 function DetailContact (props) {
   return (
     <div>
-      <h2>Mes coordonnées</h2>
+      <h2 className='detailh2'>Mes coordonnées</h2>
       <div className='detailcontact'>
         <ul>
-          <li>{props.freelance.company}</li>
-          <li>{props.freelance.street}</li>
-          <li>{props.freelance.zip_code} - {props.freelance.city} - {props.freelance.country}</li>
+          <div className='detailcompany'>
+            <li>{props.freelance.company}</li>
+            <li>{props.freelance.street}</li>
+            <li>{props.freelance.zip_code} - {props.freelance.city} - {props.freelance.country}</li>
+          </div>
           <div className='Detailcontactemail'>
             <li>email : {props.freelance.email}</li>
             <li>Site web : {props.freelance.url_web_site}</li>
