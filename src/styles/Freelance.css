@@ -1,13 +1,17 @@
-.card:hover {
-  transform: scale(1.05);
-  width: 33%
-}
-
 .card {
-  flex-direction: column;
-  width: 33 %;
-  padding: 50px;
-  margin: 10px;
-  display: flex;
-	
-}
+    width: 25vw;
+    padding: 60px; 
+    margin: 15px;
+    display: inline-flex;
+      
+  }
+  
+   .card .freelance, .photo {
+    display: block;
+     
+   }
+   .card:hover {
+    transform: scale(1.05);
+    width: 25%
+
+  }
