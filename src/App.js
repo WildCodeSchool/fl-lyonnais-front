@@ -9,8 +9,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import legalDisclaimer from './components/legal_disclaimer';
 
-
-
 const Apps = styled.div`
     text-align: center;
     --menu-bg-dark: #4050B3;
@@ -21,11 +19,10 @@ const Apps = styled.div`
 function App () {
   const isHomePage = true;
 
-
   return (
     <Apps>
       <Router>
-      
+
         <Switch>
           <Route exact path='/'>
             <Home isHomePage={isHomePage} />
@@ -46,12 +43,10 @@ function App () {
             <SearchResult />
           </Route>
         </Switch>
-        
+
       </Router>
     </Apps>
   );
-  
- 
 }
 
 export default App;
