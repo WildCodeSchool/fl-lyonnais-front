@@ -2,6 +2,7 @@ import React from 'react';
 import Freelance from '../components/Freelance2';
 import '../styles/Listing.scss';
 import freelances from './people';
+import { Link } from 'react-router-dom';
 
 function Listing (props) {
   // Construit une liste des freelances
@@ -9,12 +10,14 @@ function Listing (props) {
 
   return (
     <div className='Listing'>
-      <div className='everyFreelanceCards'>
-        {outputFreelances}
-        {outputFreelances}
-        {outputFreelances}
-        {outputFreelances}
-      </div>
+      <Link to='/detail'>
+        <div className='everyFreelanceCards'>
+          {outputFreelances}
+          {outputFreelances}
+          {outputFreelances}
+          {outputFreelances}
+        </div>
+      </Link>
     </div>
   );
 }
