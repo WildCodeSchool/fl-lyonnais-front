@@ -10,3 +10,8 @@
   justify-content: space-between;
   align-items: flex-start;
 }
+.card:hover {
+  transform: scale(1.05);
+  width: 25%;
+
+}
