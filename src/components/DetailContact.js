@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Detail.css'
+import '../styles/Detail.css';
 
 function DetailContact (props) {
   return (

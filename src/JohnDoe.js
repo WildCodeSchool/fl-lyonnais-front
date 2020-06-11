@@ -30,31 +30,31 @@ const freelance = {
     image: 'https://enseignestickers.com/wp-content/uploads/2017/11/red-bull-1.jpg',
     link: 'https://www.redbull.com/fr-fr/'
   },
-    {
-      name: 'Redbull2',
-      image: 'https://enseignestickers.com/wp-content/uploads/2017/11/red-bull-1.jpg',
-      link: 'https://www.redbull.com/fr-fr/'
-    },
-    {
-      name: 'Redbull3',
-      image: 'https://enseignestickers.com/wp-content/uploads/2017/11/red-bull-1.jpg',
-      link: 'https://www.redbull.com/fr-fr/'
-    },
-    {
-      name: 'Redbull4',
-      image: 'https://enseignestickers.com/wp-content/uploads/2017/11/red-bull-1.jpg',
-      link: 'https://www.redbull.com/fr-fr/'
-    },
-    {
-      name: 'Redbull5',
-      image: 'https://enseignestickers.com/wp-content/uploads/2017/11/red-bull-1.jpg',
-      link: 'https://www.redbull.com/fr-fr/'
-    },
-    {
-      name: 'Redbull6',
-      image: 'https://enseignestickers.com/wp-content/uploads/2017/11/red-bull-1.jpg',
-      link: 'https://www.redbull.com/fr-fr/'
-    }
+  {
+    name: 'Redbull2',
+    image: 'https://enseignestickers.com/wp-content/uploads/2017/11/red-bull-1.jpg',
+    link: 'https://www.redbull.com/fr-fr/'
+  },
+  {
+    name: 'Redbull3',
+    image: 'https://enseignestickers.com/wp-content/uploads/2017/11/red-bull-1.jpg',
+    link: 'https://www.redbull.com/fr-fr/'
+  },
+  {
+    name: 'Redbull4',
+    image: 'https://enseignestickers.com/wp-content/uploads/2017/11/red-bull-1.jpg',
+    link: 'https://www.redbull.com/fr-fr/'
+  },
+  {
+    name: 'Redbull5',
+    image: 'https://enseignestickers.com/wp-content/uploads/2017/11/red-bull-1.jpg',
+    link: 'https://www.redbull.com/fr-fr/'
+  },
+  {
+    name: 'Redbull6',
+    image: 'https://enseignestickers.com/wp-content/uploads/2017/11/red-bull-1.jpg',
+    link: 'https://www.redbull.com/fr-fr/'
+  }
   ]
 };
 export default freelance;

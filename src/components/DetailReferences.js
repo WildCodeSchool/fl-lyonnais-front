@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/Detail.css';
 
-function DetailReferences ({freelance}) {
+function DetailReferences ({ freelance }) {
   return (
     <div>
       <h2 className='detailh2'>Mes Références</h2>
@@ -9,16 +9,14 @@ function DetailReferences ({freelance}) {
         {freelance.references.map(reference => {
           return (
             <div className='reference'>
-              <img src={reference.image} alt={reference.name}/>
-              <p>{reference.name}</p> 
+              <img src={reference.image} alt={reference.name} />
+              <p>{reference.name}</p>
             </div>
-          )
-        })
-        }
+          );
+        })}
       </div>
     </div>
   );
 }
-
 
 export default DetailReferences;
