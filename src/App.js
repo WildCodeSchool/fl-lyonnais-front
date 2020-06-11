@@ -16,6 +16,7 @@ import Regular from './font/BalooBhaina2-Regular.ttf';
 import SemiBold from './font/BalooBhaina2-SemiBold.ttf';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import freelance from './JohnDoe';
 
 const Apps = styled.div`
     text-align: center;
@@ -50,7 +51,7 @@ function App () {
               <Home isHomePage={isHomePage} />
             </Route>
             <Route path='/detail'>
-              <Detail />
+              <Detail freelance={freelance} />
             </Route>
             <Route path='/listing'>
               <Listing />
