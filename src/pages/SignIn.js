@@ -37,7 +37,7 @@ export default function SignIn () {
 
   return (
     <div>
-      <Container style={{ paddingTop: '100px' }} component='main' maxWidth='xs'>
+      <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar style={{ backgroundColor: 'var(--red)' }} className={classes.avatar}>
