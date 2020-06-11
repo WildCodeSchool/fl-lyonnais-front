@@ -17,8 +17,8 @@ function Detail ({ freelance }) {
         <DetailReferences freelance={freelance} />
         <DetailSkills freelance={freelance} />
         <DetailContact freelance={freelance} />
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }

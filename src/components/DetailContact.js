@@ -7,7 +7,6 @@ function DetailContact (props) {
       <h2>Mes coordonnées</h2>
       <div className='detailcontact'>
         <ul>
-          <li>Coordonnées professionnelles de {props.freelance.firstname} {props.freelance.lastname} :</li>
           <li>{props.freelance.company}</li>
           <li>{props.freelance.street}</li>
           <li>{props.freelance.zip_code} - {props.freelance.city} - {props.freelance.country}</li>
