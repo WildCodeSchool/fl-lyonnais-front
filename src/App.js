@@ -2,7 +2,6 @@ import React from 'react';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
 import Listing from './pages/Listing';
-import Listing2 from './pages/Listing2';
 import Registration from './pages/Registration';
 import Generic from './pages/Generic';
 import SearchResult from './pages/SearchResult';
@@ -31,9 +30,6 @@ function App () {
           </Route>
           <Route path='/listing'>
             <Listing />
-          </Route>
-          <Route path='/listing2'>
-            <Listing2 />
           </Route>
           <Route path='/registration'>
             <Registration />

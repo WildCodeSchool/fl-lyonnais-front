@@ -1,43 +1,32 @@
 import React from 'react';
-import { Card, Image } from 'semantic-ui-react';
-import '../styles/Freelance.css';
+import '../styles/Freelance.scss';
 
-const Freelance = (props) => {
+const Freelance2 = (props) => {
   const { urlPhoto, firstname, lastname, mainSkills } = props.freelance;
 
   return (
-    <div className='card'>
-      <Card className='freelance'>
+    <div className='container'>
+      <div className='card'>
 
-        <Image className='photo' src={urlPhoto} wrapped ui={false} />
-        <Card.Content>
-          <Card.Header className='card-header'>{firstname} {lastname}</Card.Header>
-          <Card.Meta>
-            <span className='mainSkills'>{mainSkills[0]} | {mainSkills[1]} | {mainSkills[2]}</span>
-          </Card.Meta>
-          {/* <Card.Description className="card-informations">
-            {bio}
-          </Card.Description> */}
-        </Card.Content>
-        {/*
-        <Card.Content extra>
-          <p>
-            <Icon name='contact' />
-            {email}
-          </p>
-          <p>
-            <Icon name='contact' />
-            {phone}
-          </p>
-          */}
-        <Card.Content>
-          <button> + Plus d'informations </button>
-        </Card.Content>
+        <div className='card-image'>
+          <img src={urlPhoto} alt='Orange' />
+        </div>
 
-      </Card>
+        <div className='card-body'>
+
+          <div className='card-name'>
+            <h4>{firstname} {lastname}</h4>
+          </div>
+
+          <div className='card-title'>
+            <p>{mainSkills[0]} / {mainSkills[2]} /{mainSkills[2]}</p>
+          </div>
+
+        </div>
+
+      </div>
     </div>
-
   );
 };
 
-export default Freelance;
+export default Freelance2;
