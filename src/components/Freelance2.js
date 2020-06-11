@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styles/Freelance.scss';
+import '../styles/Freelance2.scss';
 
-const Freelance2 = (props) => {
+const Freelance = (props) => {
   const { urlPhoto, firstname, lastname, mainSkills } = props.freelance;
 
   return (
@@ -19,7 +19,7 @@ const Freelance2 = (props) => {
           </div>
 
           <div className='card-title'>
-            <p>{mainSkills[0]} / {mainSkills[2]} /{mainSkills[2]}</p>
+            <p>{mainSkills[0]} | {mainSkills[2]} | {mainSkills[2]}</p>
           </div>
 
         </div>
@@ -29,4 +29,4 @@ const Freelance2 = (props) => {
   );
 };
 
-export default Freelance2;
+export default Freelance;

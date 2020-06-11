@@ -51,7 +51,7 @@ $image-height: 100px;
     left: 50%;
     transform: translate(-50%, -50%);
     
-    filter: grayscale(1);
+    /* filter: grayscale(1); */
     
     transition-property: filter width;
     transition-duration: .3s;
