@@ -14,8 +14,8 @@ import ExtraBold from './font/BalooBhaina2-ExtraBold.ttf';
 import Medium from './font/BalooBhaina2-Medium.ttf';
 import Regular from './font/BalooBhaina2-Regular.ttf';
 import SemiBold from './font/BalooBhaina2-SemiBold.ttf';
-import Footer from './components/Footer'
-import Header from './components/Header'
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 const Apps = styled.div`
     text-align: center;
@@ -44,7 +44,7 @@ function App () {
     <Apps>
       <Router>
         <Header />
-        <main style={{ flex: '1 0 auto'}}>
+        <main style={{ flex: '1 0 auto' }}>
           <Switch>
             <Route exact path='/'>
               <Home isHomePage={isHomePage} />
@@ -69,7 +69,7 @@ function App () {
             </Route>
           </Switch>
         </main>
-          <Footer />
+        <Footer />
       </Router>
     </Apps>
   );
