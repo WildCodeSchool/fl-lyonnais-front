@@ -4,8 +4,6 @@ import DetailReferences from '../components/DetailReferences';
 import DetailSkills from '../components/DetailSkills';
 import DetailContact from '../components/DetailContact';
 
-// import '../styles/Detail.scss';
-
 function Detail ({ freelance }) {
   return (
     <div>

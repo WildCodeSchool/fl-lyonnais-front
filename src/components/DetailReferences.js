@@ -8,7 +8,7 @@ function DetailReferences ({ freelance }) {
       <div className='carousel'>
         {freelance.references.map(reference => {
           return (
-            <div className='reference'>
+            <div className='reference' key={reference.id}>
               <img src={reference.image} alt={reference.name} />
               <p>{reference.name}</p>
             </div>

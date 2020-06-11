@@ -1,9 +1,8 @@
 import React from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-// import '../styles/SearchResult.scss';
 
-function SearchResult (props) {
+function SearchResult () {
   return (
     <div>
       <Header />

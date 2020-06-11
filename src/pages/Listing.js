@@ -4,7 +4,7 @@ import '../styles/Listing.scss';
 import freelances from './people';
 import { Link } from 'react-router-dom';
 
-function Listing (props) {
+function Listing () {
   // Construit une liste des freelances
   const outputFreelances = freelances.map(freelance => <Freelance key={freelance.email} freelance={freelance} />);
 

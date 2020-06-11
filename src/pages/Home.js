@@ -3,7 +3,7 @@ import '../styles/Home.scss';
 import SearchBar from '../components/SearchBar';
 import logo from '../images/logo.png';
 
-function Home (props) {
+function Home () {
   return (
     <div className='home'>
       <div className='logo'>
