@@ -1,84 +1,143 @@
 /* https://www.damienflandrin.fr/blog/post/tutoriel-realiser-une-carte-en-css */
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Source+Sans+Pro');
+@font-face {
+  font-family: 'balooBhaina2Regular';
+  src: url('../font/BalooBhaina2-Regular.ttf') format('truetype');
+}
+
 
 body {
   background: #eee;
   padding: 40px 0;
 }
 
-$card-size: 250px;
+$card-size: 37vw;
 $image-size: 100%;
 $image-height: 100px;
+$font-main: 'balooBhaina2Regular', sans-serif;
 
-.container {
+.freelance2 {
   display: inline-flex;
 
+  .container {
+
+    .card {
+      width: $card-size;
+      margin: 10px 20px;
+
+      background-color: white;
+      box-shadow: 0 5px 20px #555;
+      border-radius: 10px;
+
+      .card-image {
+
+        height: 45vw;
+
+        position: relative;
+        overflow: hidden;
+
+        img {
+          width: $image-size;
+
+          border-radius: 10px;
+
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+      }
+
+      .card-body {
+        text-align: center;
+        padding: 15px 20px;
+        box-sizing: border-box;
+
+        .card-name {
+          font-family: $font-main;
+
+          h4 {
+            font-size: 0.8rem;
+          }
+        }
+
+        .card-title {
+          p {
+            font-size: 0.7rem;
+          }
+        }
+
+        .card-name, .card-title {
+          text-align: center;
+          text-transform: uppercase;
+          font-weight: bold;
+        }
+
+        .card-name, .card-excerpt {
+          color: #777;
+        }
+      }
+    }
+  }
 }
 
-.card {
-  width: $card-size;
-  margin: 10px 20px;
+/* ******************************************************************* */
 
-  background-color: white;
-  box-shadow: 0 5px 20px #555;
-  border-radius: 10px;
+@media (min-width: 415px) {
 
-  &:hover {
-    .card-image {
-      img {
-        width: $image-size+20%;
-        filter: grayscale(0);
+  $card-size: 250px;
+
+  .freelance2 {
+
+    .container {
+
+      .card {
+        width: $card-size;
+
+        &:hover {
+          .card-image {
+            img {
+              width: $image-size+20%;
+              filter: grayscale(0);
+            }
+          }
+        }
+
+        .card-image {
+
+          height: 250px;
+
+          img {
+            width: $image-size;
+
+            filter: grayscale(1);
+
+            transition-property: filter;
+            transition-duration: .3s;
+          }
+
+        }
+
+        .card-body {
+
+          .card-name {
+            font-family: $font-main;
+  
+            h4 {
+              font-size: 1rem;
+            }
+          }
+  
+          .card-title {
+            p {
+              font-size: 1rem;
+            }
+          }
+
+        }
       }
     }
   }
 
-}
-
-.card-image {
-
-  height: 250px;
-
-  position: relative;
-  overflow: hidden;
-
-  img {
-    width: $image-size;
-
-    border-radius: 10px;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    /* filter: grayscale(1); */
-
-    transition-property: filter;
-    transition-duration: .3s;
-  }
-
-}
-
-.card-body {
-  text-align: center;
-  padding: 15px 20px;
-  box-sizing: border-box;
-}
-
-.card-name {
-  font-family: 'Source Sans Pro', sans-serif;
-}
-
-.card-title, .card-exceprt {
-  font-family: 'Source Sans Pro', sans-serif;
-}
-
-.card-name, .card-title {
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.card-name, .card-excerpt {
-  color: #777;
 }
