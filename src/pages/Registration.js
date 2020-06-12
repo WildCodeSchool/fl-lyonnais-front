@@ -12,9 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import '../styles/Registration.css';
+import '../styles/Registration.scss';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -41,7 +39,6 @@ export default function SignUp () {
 
   return (
     <div>
-      <Header />
       <div className='concept'>
         <h1>Freelance à Lyon inscris toi dans l'annuaire</h1>
         <br />
@@ -63,7 +60,7 @@ export default function SignUp () {
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
+          <Avatar style={{ backgroundColor: 'var(--red)' }} className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component='h1' variant='h5'>
@@ -142,6 +139,7 @@ export default function SignUp () {
               variant='contained'
               color='primary'
               className={classes.submit}
+              style={{ backgroundColor: 'var(--red)' }}
             >
               Créer ma fiche freelance
             </Button>
@@ -156,7 +154,6 @@ export default function SignUp () {
         </div>
         <Box mt={5} />
       </Container>
-      <Footer />
     </div>
   );
 }

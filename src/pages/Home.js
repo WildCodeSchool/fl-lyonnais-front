@@ -1,14 +1,11 @@
 import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import '../styles/Home.css';
+import '../styles/Home.scss';
 import SearchBar from '../components/SearchBar';
 import logo from '../images/logo.png';
 
-function Home (props) {
+function Home () {
   return (
     <div className='home'>
-      <Header isHomePage={props.isHomePage} />
       <div className='logo'>
         <img src={logo} alt='Logo du site Freelance Lyonnais' className='logoHome' />
       </div>
@@ -32,7 +29,6 @@ function Home (props) {
 
         </p>
       </main>
-      <Footer />
     </div>
   );
 }
