@@ -1,25 +1,26 @@
 import React from 'react';
-import '../styles/Detail.css';
+import '../styles/Detail.scss';
+const { generateKey } = require('../functionshelper');
 
 function detailSkills (props) {
   return (
     <div>
-      <h2>Mes compétences</h2>
+      <h2 className='detailh2'>Mes compétences</h2>
       <div className='mainSkills'>
         <ul>
           {props.freelance.mainSkills.map(mainSkill => {
-            return (<li>{mainSkill}</li>);
+            return (<li key={generateKey(mainSkill)}>{mainSkill}</li>);
           })}
         </ul>
       </div>
       <div className='otherSkills'>
         <ul>
           {props.freelance.otherSkills.map(otherSkill => {
-            return (<li>{otherSkill}</li>);
+            return (<li key={generateKey(otherSkill)}>{otherSkill}</li>);
           })}
         </ul>
       </div>
-      <p>TJM : à partir de {props.freelance.average_daily_rate} € par jour.</p>
+      <p id='detailskillstjm'>TJM : à partir de {props.freelance.average_daily_rate} € par jour.</p>
     </div>
   );
 }

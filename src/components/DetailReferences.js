@@ -1,18 +1,20 @@
 import React from 'react';
-import '../styles/DetailReferences.css';
+import '../styles/Detail.scss';
 
 function DetailReferences ({ freelance }) {
   return (
     <div>
-      <h1>Mes Références</h1>
-      {freelance.references.map(reference => {
-        return (
-          <div className='carousel'>
-            <p>{reference.name}</p>
-            <img src={reference.image} alt={reference.name} />
-          </div>
-        );
-      })}
+      <h2 className='detailh2'>Mes Références</h2>
+      <div className='carousel'>
+        {freelance.references.map(reference => {
+          return (
+            <div className='reference' key={reference.id}>
+              <img src={reference.image} alt={reference.name} />
+              <p>{reference.name}</p>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
