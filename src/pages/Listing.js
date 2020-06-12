@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function Listing () {
   // Construit une liste des freelances
-  const outputFreelances = freelances.map(freelance => <Freelance key={freelance.email} freelance={freelance} />);
+  const outputFreelances = freelances.map(freelance => <Freelance key={freelance.id} freelance={freelance} />);
 
   return (
     <div className='Listing'>

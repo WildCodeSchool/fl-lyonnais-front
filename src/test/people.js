@@ -1,5 +1,6 @@
 const freelances = [
   {
+    id: 1,
     email: 'john.doe@wcs.com',
     siret: '1234567890123',
     firstname: 'John',
@@ -11,6 +12,7 @@ const freelances = [
     mainSkills: ['JS', 'React', 'Node']
   },
   {
+    id: 2,
     email: 'SavilleMartin@armyspy.com',
     siret: '12345678901325',
     firstname: 'Martin',
@@ -22,6 +24,7 @@ const freelances = [
     mainSkills: ['JS', 'React', 'Node']
   },
   {
+    id: 3,
     email: 'GanelonCaya@teleworm.us',
     siret: '9876543210987',
     firstname: 'Caya',
@@ -33,6 +36,7 @@ const freelances = [
     mainSkills: ['JS', 'React', 'Node']
   },
   {
+    id: 4,
     email: 'RolandLanteigne@teleworm.us',
     siret: '5824673190546',
     firstname: 'Roland',
@@ -44,6 +48,7 @@ const freelances = [
     mainSkills: ['JS', 'React', 'Node']
   },
   {
+    id: 5,
     email: 'AngeletteBaron@dayrep.com',
     siret: '3574159820486',
     firstname: 'Angelette',
