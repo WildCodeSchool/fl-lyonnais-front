@@ -1,16 +1,18 @@
 import React from 'react';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-// import '../styles/Detail.css';
+import DetailBio from '../components/DetailBio';
+import DetailReferences from '../components/DetailReferences';
+import DetailSkills from '../components/DetailSkills';
+import DetailContact from '../components/DetailContact';
 
-function Detail (props) {
+function Detail ({ freelance }) {
   return (
     <div>
-      <Header />
-
-      I am Detail !
-
-      <Footer />
+      <div className='Detail'>
+        <DetailBio freelance={freelance} />
+        <DetailReferences freelance={freelance} />
+        <DetailSkills freelance={freelance} />
+        <DetailContact freelance={freelance} />
+      </div>
     </div>
   );
 }

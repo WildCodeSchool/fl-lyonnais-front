@@ -6,6 +6,7 @@
   background-color: var(--menu-bg-dark);
   height: 5vh;
   width: 100vw;
+  flex-shrink: 0;
 }
 
 .footerLink {
