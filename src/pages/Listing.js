@@ -10,12 +10,12 @@ function Listing () {
 
   return (
     <div className='Listing'>
-        <div className='everyFreelanceCards'>
-          {outputFreelances}
-          {outputFreelances}
-          {outputFreelances}
-          {outputFreelances}
-        </div>
+      <div className='everyFreelanceCards'>
+        {outputFreelances}
+        {outputFreelances}
+        {outputFreelances}
+        {outputFreelances}
+      </div>
     </div>
   );
 }
