@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
-import '../styles/Freelance.css';
+import '../styles/Freelance.scss';
 
 const Freelance = (props) => {
   const { urlPhoto, firstname, lastname, mainSkills } = props.freelance;
