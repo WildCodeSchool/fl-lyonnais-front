@@ -8,7 +8,7 @@
 .detailh2 {
   text-align: center;
   font-size: 1.5em;
-  color: #24a198;
+  color: var(--green);
 }
 
 /* BIO */
@@ -74,7 +74,7 @@
 }
 
 .reference {
-  scrollbar-color: red yellow;
+  // scrollbar-color: red yellow;
   z-index: -1;
 }
 
@@ -100,7 +100,7 @@
   font-weight: bold;
   padding: 5px 20px;
   border-radius: 10px;
-  background-color: #f6c156;
+  background-color: var(--yellow);
   border: 2px outset gray;
 }
 
@@ -122,7 +122,7 @@
   border-radius: 10px;
   padding: 5px 10px;
   margin: 5px 5px;
-  background-color: #f6c156;
+  background-color: var(--yellow);
   border: 2px outset gray;
 }
 
@@ -140,16 +140,16 @@
 
 .Detailcontactemail {
   margin: 10px 0;
-  color: #1730ff;
+  color: var(--blue)
 }
 
-.detailcompany {
+// .detailcompany {
 
-}
+// }
 
-.Detailcontactsiret {
+// .Detailcontactsiret {
 
-}
+// }
 
 /* /////////////////////////////// MEDIA QUERIES 750 PX /////////////////////////////// */
 
@@ -209,15 +209,15 @@
 
   .Detailcontactemail {
     margin: 10px 0;
-    color: #1730ff;
+    color: var(--blue);
   }
 
-  .detailcompany {
+//   .detailcompany {
 
-  }
+//   }
 
-  .Detailcontactsiret {
+//   .Detailcontactsiret {
 
-  }
+//   }
 
 }

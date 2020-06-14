@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Detail.scss';
+const { generateKey } = require('../functionshelper');
 
 function detailSkills (props) {
   return (
@@ -8,14 +9,14 @@ function detailSkills (props) {
       <div className='mainSkills'>
         <ul>
           {props.freelance.mainSkills.map(mainSkill => {
-            return (<li>{mainSkill}</li>);
+            return (<li key={generateKey(mainSkill)}>{mainSkill}</li>);
           })}
         </ul>
       </div>
       <div className='otherSkills'>
         <ul>
           {props.freelance.otherSkills.map(otherSkill => {
-            return (<li>{otherSkill}</li>);
+            return (<li key={generateKey(otherSkill)}>{otherSkill}</li>);
           })}
         </ul>
       </div>
