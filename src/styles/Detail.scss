@@ -8,7 +8,8 @@
 .detailh2 {
   text-align: center;
   font-size: 1.5em;
-  color: var(--green);
+  color: var(--black);
+  text-align: left;
 }
 
 /* BIO */
@@ -114,6 +115,7 @@
 .otherSkills ul {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   flex-direction: row;
 }
 
@@ -129,17 +131,16 @@
 #detailskillstjm {
   font-size: 0.8em;
   margin-bottom: 10px;
+  text-align: left;
 }
 
 /* CONTACT */
 
 .detailcontact {
-  margin-top: 5px;
   font-size: 0.7em;
 }
 
 .Detailcontactemail {
-  margin: 10px 0;
   color: var(--blue)
 }
 
@@ -197,27 +198,26 @@
     font-size: 1.5em;
   }
 
-
   /* CONTACT */
 
   .detailcontact ul {
     display: flex;
     justify-content: space-around;
+    align-items: flex-start;
     list-style: none;
     font-size: 2em;
   }
 
-  .Detailcontactemail {
-    margin: 10px 0;
-    color: var(--blue);
-  }
+  // .Detailcontactemail {
+ 
+  // }
 
-//   .detailcompany {
+  // .detailcompany {
 
-//   }
+  // }
 
-//   .Detailcontactsiret {
+  // .Detailcontactsiret {
 
-//   }
+  // }
 
-// }
+}
