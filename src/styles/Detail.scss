@@ -162,12 +162,17 @@
     margin: auto;
   }
 
+  .detailBio {
+    display: flex;
+  }
+
   .detailBio div p {
     margin: 5vw;
     font-size: 1.1em;
     overflow: auto;
     height: auto;
   }
+
 
   .detailPhoto {
     margin-left: 5vw;
