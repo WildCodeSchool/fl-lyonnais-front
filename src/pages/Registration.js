@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import '../styles/Registration.scss';
-
+import { validateEmail } from '../functionshelper';
 import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
@@ -50,16 +50,25 @@ export default function SignUp () {
   const handlesubmit = (e) => {
     e.preventDefault();
     const url = 'http://localhost:3000/registration';
-    console.log(infosRegistration);
-    axios
-      .post(url, infosRegistration)
-      .then(res => res.data)
-      .then(function () {
-        console.log('Your movie has been added !');
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    const { firstname, lastname, email, siret, password } = infosRegistration;
+    if (!firstname || !lastname || !email || !siret || !password) {
+      alert('Merci de compléter tous les champs');
+    } else if (!validateEmail(email)) { alert('Merci d\'insérer un email valide'); }
+
+    // else if (isNaN(typeof parseInt(siret))) { alert('Merci d\'insérer un siret valide')}
+
+    else {
+      console.log(infosRegistration);
+      axios
+        .post(url, infosRegistration)
+        .then(res => res.data)
+        .then(function () {
+          console.log('Your movie has been added !');
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   };
 
   return (
