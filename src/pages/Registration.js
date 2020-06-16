@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import '../styles/Registration.scss';
+
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -36,6 +38,29 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp () {
   const classes = useStyles();
+
+  const [infosRegistration, setInfosRegistration] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+    siret: 0
+  });
+
+  const handlesubmit = (e) => {
+    e.preventDefault();
+    const url = 'http://localhost:3000/registration';
+    console.log(infosRegistration);
+    axios
+      .post(url, infosRegistration)
+      .then(res => res.data)
+      .then(function () {
+        console.log('Your movie has been added !');
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
@@ -66,7 +91,7 @@ export default function SignUp () {
           <Typography component='h1' variant='h5'>
             Inscription
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={handlesubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -78,6 +103,8 @@ export default function SignUp () {
                   id='firstName'
                   label='Prénom'
                   autoFocus
+                  onChange={(e) => setInfosRegistration({ ...infosRegistration, firstname: e.target.value })}
+                  value={infosRegistration.firstname}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -89,6 +116,8 @@ export default function SignUp () {
                   label='Nom de famille'
                   name='lastName'
                   autoComplete='lname'
+                  onChange={(e) => setInfosRegistration({ ...infosRegistration, lastname: e.target.value })}
+                  value={infosRegistration.lastname}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -100,6 +129,8 @@ export default function SignUp () {
                   label='Adresse e-mail'
                   name='email'
                   autoComplete='email'
+                  onChange={(e) => setInfosRegistration({ ...infosRegistration, email: e.target.value })}
+                  value={infosRegistration.email}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -112,6 +143,8 @@ export default function SignUp () {
                   type='password'
                   id='password'
                   autoComplete='current-password'
+                  onChange={(e) => setInfosRegistration({ ...infosRegistration, password: e.target.value })}
+                  value={infosRegistration.password}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -124,6 +157,8 @@ export default function SignUp () {
                   type='siret'
                   id='siret'
                   autoComplete='siret'
+                  onChange={(e) => setInfosRegistration({ ...infosRegistration, siret: e.target.value })}
+                  value={infosRegistration.siret}
                 />
               </Grid>
               <Grid item xs={12}>
