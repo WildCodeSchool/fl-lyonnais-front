@@ -58,7 +58,7 @@ export default function SignUp () {
         console.log('Your movie has been added !');
       })
       .catch(error => {
-        alert(error);
+        console.log(error);
       });
   };
 
