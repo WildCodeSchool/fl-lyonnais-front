@@ -29,7 +29,7 @@ $font-main: 'balooBhaina2Regular', sans-serif;
     .card {
       width: $card-size;
       margin: 20px 20px;
-      background-color: lightcoral;
+      background-color: rgb(167, 29, 114);
       box-shadow: 0 5px 20px #555;
       border-radius: 10px;
       margin: 60px;
@@ -67,6 +67,7 @@ $font-main: 'balooBhaina2Regular', sans-serif;
         .card-title {
           p {
             font-size: 0.8rem;
+            color:white;
           }
         }
 
