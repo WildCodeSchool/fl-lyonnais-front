@@ -28,11 +28,10 @@ $font-main: 'balooBhaina2Regular', sans-serif;
 
     .card {
       width: $card-size;
-      margin: 20px 20px;
+      margin: 10px 10px;
       background-color: rgb(167, 29, 114);
       box-shadow: 0 5px 20px #555;
-      border-radius: 10px;
-      margin: 60px;
+      border-bottom-left-radius: 50px;
 
       .card-image {
 
@@ -42,7 +41,6 @@ $font-main: 'balooBhaina2Regular', sans-serif;
 
         img {
           width: $image-size;
-          border-radius: 10px;
           position: absolute;
           top: 50%;
           left: 50%;
