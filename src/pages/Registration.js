@@ -49,7 +49,7 @@ export default function SignUp () {
 
   const handlesubmit = (e) => {
     e.preventDefault();
-    const url = 'http://localhost:3000/registration';
+    const url = 'http://localhost:3000/user';
     console.log(infosRegistration);
     if (validateEmail(infosRegistration.email)) {
       axios

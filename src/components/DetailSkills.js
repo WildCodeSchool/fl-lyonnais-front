@@ -6,7 +6,7 @@ function detailSkills (props) {
   return (
     <div>
       <h2 className='detailh2'>Mes compétences</h2>
-      <div className="detailskills">
+      <div className='detailskills'>
         <div className='mainSkills'>
           <ul>
             {props.freelance.mainSkills.map(mainSkill => {
@@ -22,8 +22,8 @@ function detailSkills (props) {
           </ul>
         </div>
       </div>
-      
-      <p id='detailskillstjm'>TJM : à partir de <span className="detailskillstjmprice">{props.freelance.average_daily_rate}</span> € par jour.</p>
+
+      <p id='detailskillstjm'>TJM : à partir de <span className='detailskillstjmprice'>{props.freelance.average_daily_rate}</span> € par jour.</p>
     </div>
   );
 }
