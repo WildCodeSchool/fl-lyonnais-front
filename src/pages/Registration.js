@@ -16,8 +16,6 @@ import '../styles/Registration.scss';
 import { validateEmail } from '../functionshelper';
 import axios from 'axios';
 
-
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -53,15 +51,19 @@ export default function SignUp () {
     e.preventDefault();
     const url = 'http://localhost:3000/registration';
     console.log(infosRegistration);
-    axios
-      .post(url, infosRegistration)
-      .then(res => res.data)
-      .then(function () {
-        console.log('Your movie has been added !');
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    if (validateEmail(infosRegistration.email)) {
+      axios
+        .post(url, infosRegistration)
+        .then(res => res.data)
+        .then(function () {
+          console.log('Your movie has been added !');
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } else {
+      alert('renseigner un email valide');
+    }
   };
 
   return (
