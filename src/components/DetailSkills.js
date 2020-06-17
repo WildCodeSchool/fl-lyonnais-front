@@ -20,7 +20,7 @@ function detailSkills (props) {
           })}
         </ul>
       </div>
-      <p id='detailskillstjm'>TJM : à partir de {props.freelance.average_daily_rate} € par jour.</p>
+      <p id='detailskillstjm'>TJM : à partir de <span className="detailskillstjmprice">{props.freelance.average_daily_rate}</span> € par jour.</p>
     </div>
   );
 }
