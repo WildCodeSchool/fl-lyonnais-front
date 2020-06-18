@@ -1,21 +1,33 @@
 /* GLOBAL */
 
-/* .Detail {
-  margin-right: 10px;
-  margin-left: 10px;
-} */
+* .Detail {
+background-color:white ;
+} 
 
 .detailh2 {
   text-align: center;
   font-size: 1.5em;
   border-top: solid 1px black;
   margin-top: 10px;
+  background-color: #24A198;
+  margin: 60px;
 }
 
 /* BIO */
 
 .detailBioPhotoName {
   display: flex;
+  
+}
+.detailBio {
+  background-color: #d3d3d385;
+  margin:60px;
+
+}
+.detailtextebio {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 30px;
 }
 
 .detailnametitle {
@@ -24,33 +36,15 @@
   margin: auto;
 }
 
-.detailnametitle h1 {
-  margin: auto;
-  font-size: 1.5em;
-  text-align: center;
-}
-
-.detailBio {
-  display: flex;
-  flex-direction: column;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-.detailBio div p {
-  height: auto;
-  overflow: auto;
-  padding: 10px;
-  text-align: justify;
-  margin: 10px 0;
-}
 
 .detailPhoto {
-  height: auto;
-  width: 25vw;
+  height: 100px;
+  width: 18vw;
   padding-left: 10 px;
   margin-top: 10px;
   margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 25px;
 }
 
 /* REFERENCES */
@@ -60,10 +54,12 @@
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
+  margin: 60px;
+  background-color: #d3d3d385;
 }
 
 .carousel img {
-  width: 30vw;
+  width: 15vw;
   margin: 10px 10px;
   border: solid 1px black;
 }
@@ -73,83 +69,32 @@
   margin-bottom: 10px;
 }
 
-
-/* SKILLS */
+/* COMPETENCES */
 
 .detailskills {
-  display: flex;
+  background-color: #d3d3d385;
+  margin:60px;
+
+
+}
+.detailtable {
+  border-collapse: collapse;
+  width: 100%;
 }
 
-.mainSkills {
-  width: 50vw;
-  height: auto;
-}
-
-.mainSkills h3 {
-  text-decoration: underline;
-}
-
-.mainSkills ul {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.mainSkills ul li {
-  list-style: none;
-  justify-content: flex-start;
-}
-
-.otherSkills {
-  width: 50vw;
-  height: auto;
-}
-
-.otherSkills h3 {
-  text-decoration: underline;
-}
-
-.otherSkills ul {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-
-.otherSkills ul li {
-  list-style: none;
-  padding: 5px 10px;
-  margin: 5px 5px;
-}
-
-#detailskillstjm {
-  font-size: 1em;
-  margin: 5px 0px 5px 5px;
+th, td {
+  padding: 8px;
   text-align: left;
-}
-
-.detailskillstjmprice {
-  font-weight: bold;
+  border-bottom: 3px solid #EB483E;
 }
 
 /* CONTACT */
 
 .detailcontact {
-  font-size: 1em;
-  display: flex;
-  margin-left: 5px;
-  text-align: left;
+  background-color: #d3d3d385;
+  margin: 60px;
+
 }
-
-.Detailcontactemail {
-  color: var(--blue);
-  text-decoration: underline;
-}
-
-// .detailcompany {
-// }
-
-// .Detailcontactsiret {
-// }
 
 /* /////////////////////////////// MEDIA QUERIES 750 PX /////////////////////////////// */
 
@@ -161,77 +106,19 @@
     margin: auto;
   }
 
-  .detailBio {
-    display: flex;
-  }
-
-  .detailBio div p {
-    margin: 5vw;
-    font-size: 1.1em;
-    overflow: auto;
-    height: auto;
-  }
-
 
   .detailPhoto {
-    margin-left: 5vw;
+    margin-left: 5px;
     margin-top: 3vw;
-  }
-
-  /* REFERENCES */
-
-  .carousel img {
+    height: 250px;
     width: 20vw;
+    margin-bottom: 10px;
   }
-
-  /* SKILLS */
-
-
-  .mainSkills ul li {
-    padding: 5px 20px;
-    font-size: 2em;
+  .detailtextebio {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 2px;
+    
   }
-
-  .otherSkills {
-    padding: 20px;
-    justify-content: center;
-  }
-
-  .otherSkills ul li {
-    padding: 5px 15px;
-    font-size: 1.5em;
-  }
-
-  /* CONTACT */
-
-  .detailcontact ul {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    list-style: none;
-    font-size: 2em;
-  }
-
-  // .Detailcontactemail {
-
-  // }
-
-  // .detailcompany {
-
-  // }
-
-  // .Detailcontactsiret {
-
-  // }
-
+  
 }
-
-  //
-
-  // .detailcompany {
-
-  // }
-
-  // .Detailcontactsiret {
-
-  // }
