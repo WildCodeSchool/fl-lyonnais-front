@@ -1,15 +1,15 @@
+
 /* https://www.damienflandrin.fr/blog/post/tutoriel-realiser-une-carte-en-css */
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Source+Sans+Pro');
 @font-face {
-  font-family: 'balooBhaina2Regular';
-  src: url('../font/BalooBhaina2-Regular.ttf') format('truetype');
+font-family: 'balooBhaina2Regular';
+src: url('../font/BalooBhaina2-Regular.ttf') format('truetype');
 }
-
 
 body {
   background: #eee;
-  padding: 40px 0;
-}
+  padding: 30px 20px;
+  }
 
 $card-size: 37vw;
 $image-size: 100%;
@@ -28,8 +28,8 @@ $font-main: 'balooBhaina2Regular', sans-serif;
 
     .card {
       width: $card-size;
-      margin: 10px 18px;
-      background-color: rgb(167, 29, 114);
+      margin: 10px 10px;
+      background-color: #24A198;;
       box-shadow: 0 5px 20px #555;
       border-bottom-left-radius: 50px;
 
@@ -42,7 +42,7 @@ $font-main: 'balooBhaina2Regular', sans-serif;
         img {
           width: $image-size;
           position: absolute;
-          top: 50%;
+          top: 35%;
           left: 50%;
           transform: translate(-50%, -50%);
         }
@@ -50,24 +50,24 @@ $font-main: 'balooBhaina2Regular', sans-serif;
       }
 
       .card-body {
-        text-align: center;
-        padding: 25px 20px;
-        box-sizing: border-box;
+          text-align: center;
+          padding: 10px 20px;
+          box-sizing: border-box;
 
         .card-name {
-          font-family: $font-main;
+            font-family: $font-main;
 
-          h4 {
-            font-size: 0.9rem;
-          }
+        h4 {
+          font-size: 0.9rem;
         }
+      } 
 
         .card-title {
           p {
             font-size: 0.8rem;
             color:white;
-          }
         }
+      }
 
         .card-name, .card-title {
           text-align: center;
@@ -87,47 +87,43 @@ $font-main: 'balooBhaina2Regular', sans-serif;
 
 @media (min-width: 415px) {
 
-  $card-size: 300px;
+  $card-size: 250px;
 
   .freelance2 {
 
     .container {
 
       .card {
-        width: $card-size;
+      width: $card-size;
+      margin: 55px;
 
+      .card-image {
 
-        .card-image {
+      height: 280px;
 
-          height: 380px;
-          
+      img {
+      width: $image-size;
 
-          img {
-            width: $image-size;
+      }
 
-          }
-
-        }
+      }
 
         .card-body {
 
           .card-name {
             font-family: $font-main;
-  
             h4 {
               font-size: 1rem;
-            }
+            }  
           }
-  
+
           .card-title {
             p {
               font-size: 1rem;
             }
           }
-
         }
       }
     }
   }
-
 }
