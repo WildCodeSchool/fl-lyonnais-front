@@ -8,10 +8,8 @@
 .detailh2 {
   text-align: center;
   font-size: 1.5em;
-  color: var(--pink);
-  border-bottom: solid 2px var(--pink);
-  border-bottom-left-radius: 20px;
-  margin: 10px;
+  border-top: solid 1px black;
+  margin-top: 10px;
 }
 
 /* BIO */
@@ -20,12 +18,16 @@
   display: flex;
 }
 
-
 .detailnametitle {
   align-self: center;
-  text-align: center;
+  justify-content: center;
   margin: auto;
-  font-size: 1.2em;
+}
+
+.detailnametitle h1 {
+  margin: auto;
+  font-size: 1.5em;
+  text-align: center;
 }
 
 .detailBio {
@@ -41,38 +43,29 @@
   padding: 10px;
   text-align: justify;
   margin: 10px 0;
-  border-left: solid 1px gray;
-  // box-shadow: inset 0 0 16px 1px gray;
-  // border-radius: 5px;
 }
 
 .detailPhoto {
   height: auto;
   width: 25vw;
-  border-radius: 10px;
+  padding-left: 10 px;
   margin-top: 10px;
   margin-right: 10px;
-  box-shadow: 1px 2px 15px black;
 }
 
 /* REFERENCES */
 
 .carousel {
   display: flex;
-  /* justify-content: center; */
   overflow-x: auto;
   overflow-y: hidden;
-  box-shadow: inset 0 0 16px 9px white;
   white-space: nowrap;
-  z-index: 10;
 }
 
 .carousel img {
   width: 30vw;
   margin: 10px 10px;
-  box-shadow: 1px 2px 15px black;
-  border-radius: 10px;
-  z-index: -1;
+  border: solid 1px black;
 }
 
 .carousel p {
@@ -88,10 +81,6 @@
 }
 
 .mainSkills {
-  // border-radius: 5px;
-  border-right: 2px solid gray;
-  // padding: 10px;
-  // margin: 0 5px 0 5px;
   width: 50vw;
   height: auto;
 }
@@ -102,25 +91,16 @@
 
 .mainSkills ul {
   display: flex;
-  // align-items: flex-start;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .mainSkills ul li {
   list-style: none;
-  font-size: 20px;
-  font-weight: bold;
-  border-radius: 10px;
-  border: 2px outset lightgray;
-  margin: 5px 3px;
+  justify-content: flex-start;
 }
 
 .otherSkills {
-  // border-radius: 5px;
-  border-left: 2px solid gray;
-  // padding: 20px;
-  // margin: 10px 5px 0 5px;
   width: 50vw;
   height: auto;
 }
@@ -132,40 +112,29 @@
 .otherSkills ul {
   display: flex;
   flex-wrap: wrap;
-  // justify-content: space-evenly;
   flex-direction: row;
 }
 
 .otherSkills ul li {
   list-style: none;
-  border-radius: 10px;
   padding: 5px 10px;
   margin: 5px 5px;
-  // background-color: var(--yellow);
-  border: 2px outset lightgray;
 }
 
 #detailskillstjm {
   font-size: 1em;
   margin: 5px 0px 5px 5px;
   text-align: left;
-  padding-top: 10px;
 }
 
 .detailskillstjmprice {
   font-weight: bold;
-  border: solid 1px var(--green);
-  padding: 5px 10px 1px 10px;
-  border-radius: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  box-shadow: inset 5px 0 var(--green);
 }
 
 /* CONTACT */
 
 .detailcontact {
-  font-size: 0.7em;
+  font-size: 1em;
   display: flex;
   margin-left: 5px;
   text-align: left;
@@ -173,6 +142,7 @@
 
 .Detailcontactemail {
   color: var(--blue);
+  text-decoration: underline;
 }
 
 // .detailcompany {
