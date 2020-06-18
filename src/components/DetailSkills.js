@@ -8,6 +8,7 @@ function detailSkills (props) {
       <h2 className='detailh2'>Mes compétences</h2>
       <div className='detailskills'>
         <div className='mainSkills'>
+          <h3>Principales</h3>
           <ul>
             {props.freelance.mainSkills.map(mainSkill => {
               return (<li key={generateKey(mainSkill)}>{mainSkill}</li>);
@@ -15,6 +16,7 @@ function detailSkills (props) {
           </ul>
         </div>
         <div className='otherSkills'>
+          <h3>Autres</h3>
           <ul>
             {props.freelance.otherSkills.map(otherSkill => {
               return (<li key={generateKey(otherSkill)}>{otherSkill}</li>);

@@ -41,8 +41,9 @@
   padding: 10px;
   text-align: justify;
   margin: 10px 0;
-  box-shadow: inset 0 0 16px 1px gray;
-  border-radius: 5px;
+  border-left: solid 1px gray;
+  // box-shadow: inset 0 0 16px 1px gray;
+  // border-radius: 5px;
 }
 
 .detailPhoto {
@@ -82,42 +83,56 @@
 
 /* SKILLS */
 
+.detailskills {
+  display: flex;
+}
+
 .mainSkills {
-  border-radius: 5px;
-  border: 2px solid gray;
-  padding: 10px;
-  margin: 0 5px 0 5px;
+  // border-radius: 5px;
+  border-right: 2px solid gray;
+  // padding: 10px;
+  // margin: 0 5px 0 5px;
+  width: 50vw;
+  height: auto;
+}
+
+.mainSkills h3 {
+  text-decoration: underline;
 }
 
 .mainSkills ul {
   display: flex;
-  justify-content: space-evenly;
-  justify-self: stretch;
-  align-items: center;
-  flex-direction: row;
+  // align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .mainSkills ul li {
   list-style: none;
   font-size: 20px;
   font-weight: bold;
-  padding: 8px 20px 5px 20px;
   border-radius: 10px;
-  background-color: var(--yellow);
-  border: 2px outset gray;
+  border: 2px outset lightgray;
+  margin: 5px 3px;
 }
 
 .otherSkills {
-  border-radius: 5px;
-  border: 2px solid gray;
-  padding: 20px;
-  margin: 10px 5px 0 5px;
+  // border-radius: 5px;
+  border-left: 2px solid gray;
+  // padding: 20px;
+  // margin: 10px 5px 0 5px;
+  width: 50vw;
+  height: auto;
+}
+
+.otherSkills h3 {
+  text-decoration: underline;
 }
 
 .otherSkills ul {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
   flex-direction: row;
 }
 
@@ -126,8 +141,8 @@
   border-radius: 10px;
   padding: 5px 10px;
   margin: 5px 5px;
-  background-color: var(--yellow);
-  border: 2px outset gray;
+  // background-color: var(--yellow);
+  border: 2px outset lightgray;
 }
 
 #detailskillstjm {
@@ -139,13 +154,12 @@
 
 .detailskillstjmprice {
   font-weight: bold;
-  border: solid 1px black;
+  border: solid 1px var(--green);
   padding: 5px 10px 1px 10px;
   border-radius: 10px;
   margin-left: 5px;
   margin-right: 5px;
-  background-color: var(--yellow);
-  color: white;
+  box-shadow: inset 5px 0 var(--green);
 }
 
 /* CONTACT */
