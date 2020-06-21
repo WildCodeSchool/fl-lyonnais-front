@@ -55,9 +55,6 @@ export default function SignUp () {
       axios
         .post(url, infosRegistration)
         .then(res => res.data)
-        .then(function () {
-          console.log('Your movie has been added !');
-        })
         .catch(error => {
           console.log(error);
         });
