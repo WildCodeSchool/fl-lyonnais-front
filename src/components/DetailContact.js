@@ -6,21 +6,21 @@ function DetailContact (props) {
     <div>
       <h2 className='detailh2'>Mes coordonnées</h2>
       <div className='detailcontact'>
-        <ul>
+        
           <div className='detailcompany'>
-            <li>{props.freelance.company}</li>
-            <li>{props.freelance.street}</li>
-            <li>{props.freelance.zip_code} - {props.freelance.city} - {props.freelance.country}</li>
+            <p>{props.freelance.company}</p>
+            <p>{props.freelance.street}</p>
+            <p>{props.freelance.zip_code} - {props.freelance.city} - {props.freelance.country}</p>
           </div>
           <div className='Detailcontactemail'>
-            <li>email : {props.freelance.email}</li>
-            <li>Site web : {props.freelance.url_web_site}</li>
+            <p>email : {props.freelance.email}</p>
+            <p>Site web : {props.freelance.url_web_site}</p>
           </div>
           <div className='Detailcontactsiret'>
-            <li>SIRET : {props.freelance.siret}</li>
-            <li>Numéro de TVA : {props.freelance.vat_number}</li>
+            <p>SIRET : {props.freelance.siret}</p>
+            <p>Numéro de TVA : {props.freelance.vat_number}</p>
           </div>
-        </ul>
+       
       </div>
     </div>
   );
