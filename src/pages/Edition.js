@@ -7,6 +7,7 @@ import { Col } from 'react-bootstrap';
 import '../styles/Edition.css';
 import '../components/PasswordModal';
 import axios from 'axios';
+import { isSiret } from '../functionshelper'
 
 function PasswordModal(props) {
   const {
@@ -21,7 +22,7 @@ function PasswordModal(props) {
   const externalCloseBtn = <button className='close' style={{ position: 'absolute', top: '15px', right: '15px' }} onClick={toggle}>&times;</button>;
   return (
     <div>
-      <Button color='primary' onClick={toggle}><h3>Changer de mot de passe</h3></Button>
+      <Button color='link' onClick={toggle}><h3>Changer de mot de passe</h3></Button>
       <Modal isOpen={modal} toggle={toggle} className={className} external={externalCloseBtn}>
         <ModalHeader>Changement de mot de passe</ModalHeader>
         <ModalBody>
@@ -75,17 +76,18 @@ function Edition(props) {
 
   const handlesubmit = (e) => {
     e.preventDefault();
-    console.log(infosEdition)
-    const url = 'http://localhost:3000/freelance';
-      axios
-        .post(url, infosEdition)
-        .then(res => res.data)
-        .then(function () {
-          console.log('Your movie has been added !');
-        })
-        .catch(error => {
-          console.log(error);
-        });
+    console.log(infosEdition);
+    console.log(isSiret('1234567891123A'));
+    // const url = 'http://localhost:3000/freelance';
+    //   axios
+    //     .post(url, infosEdition)
+    //     .then(res => res.data)
+    //     .then(function () {
+    //       console.log('Your movie has been added !');
+    //     })
+    //     .catch(error => {
+    //       console.log(error);
+    //     });
   };
 
 
@@ -100,7 +102,7 @@ function Edition(props) {
         value={infosEdition.firstname}/>
         </Form.Group>
 
-        <Form.Group as={Col} controlid='formGridlastname' classname='e'>
+        <Form.Group as={Col} controlid='formGridlastname'>
           <Form.Label>Nom</Form.Label>
           <Form.Control type='lastname' placeholder='Doe' onChange={(e) => setInfosEdition({ ...infosEdition, lastname: e.target.value })}
         value={infosEdition.lastname} />
