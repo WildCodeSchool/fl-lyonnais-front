@@ -16,9 +16,24 @@ h2 {
   margin: auto;
 }
 
-.editioninputs {
-  border: 2px solid blue;
-  color: red;
-  font-size: 3rem;
+
+@media screen and ((min-width: 768px) and (max-width: 1024px)) {
+  /* MEDIA QUERIES EDITION */
+
+  .edition {
+    width: 70%;
+    margin: 20px auto;
+  }
+  #e {
+    margin-bottom: 40px;
+    border: 2px solid red;
+  }
 }
 
+ @media screen and (min-width: 1024px) {
+
+  .edition {
+    width: 70%;
+    margin: 3% auto;
+  }
+} 

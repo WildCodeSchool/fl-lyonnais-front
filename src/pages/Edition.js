@@ -76,8 +76,7 @@ function Edition(props) {
   const handlesubmit = (e) => {
     e.preventDefault();
     console.log(infosEdition)
-    const url = 'http://localhost:3000/user';
-    console.log(infosEdition);
+    const url = 'http://localhost:3000/freelance';
       axios
         .post(url, infosEdition)
         .then(res => res.data)
@@ -89,18 +88,19 @@ function Edition(props) {
         });
   };
 
+
   return (
     <div className='edition'>
       <Form onSubmit = {handlesubmit}>
         {/* <Form.Row> */}
         <h2>Informations</h2>
-        <Form.Group as={Col}  controlid='formGridfirstname'>
+        <Form.Group as={Col}  controlid='formGridfirstname' >
           <Form.Label>Prénom</Form.Label>
-          <Form.Control  type='firstname' placeholder='John' onChange={(e) => setInfosEdition({ ...infosEdition, firstname: e.target.value })}
+          <Form.Control id='e' type='firstname' placeholder='John' onChange={(e) => setInfosEdition({ ...infosEdition, firstname: e.target.value })}
         value={infosEdition.firstname}/>
         </Form.Group>
 
-        <Form.Group as={Col} controlid='formGridlastname' >
+        <Form.Group as={Col} controlid='formGridlastname' classname='e'>
           <Form.Label>Nom</Form.Label>
           <Form.Control type='lastname' placeholder='Doe' onChange={(e) => setInfosEdition({ ...infosEdition, lastname: e.target.value })}
         value={infosEdition.lastname} />
@@ -108,9 +108,9 @@ function Edition(props) {
         {/* </Form.Row> */}
 
         {/* <h2>Photo de profil</h2> */}
-        <Form.Group as={Col} controlid='formGridlastname' >
+        <Form.Group as={Col} controlid='formGridurl_photo' >
           <Form.Label>Url photo</Form.Label>
-          <Form.Control type='url_photo' placeholder='url_photo' onChange={(e) => setInfosEdition({ ...infosEdition, url_photo: e.target.value })}
+          <Form.Control type='url_photo'  placeholder='url_photo' onChange={(e) => setInfosEdition({ ...infosEdition, url_photo: e.target.value })}
         value={infosEdition.url_photo}/>
         </Form.Group>
         <FormGroup controlid='formGridpicture' className='profilpic' >
