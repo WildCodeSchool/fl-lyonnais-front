@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.10.1",
     "@material-ui/icons": "^4.9.1",
+    "@storybook/cli": "^5.3.19",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -15,6 +16,7 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "save": "^2.4.0",
     "semantic-ui-react": "^0.88.2",
     "styled-components": "^5.1.1"
   },
@@ -49,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "@storybook/react": "^5.3.19",
     "babel-eslint": "^10.1.0",
     "husky": "^4.2.5"
   }

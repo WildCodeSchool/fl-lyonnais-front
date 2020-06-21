@@ -51,7 +51,7 @@ export default function SignUp () {
     e.preventDefault();
     const url = 'http://localhost:3000/registration';
     console.log(infosRegistration);
-    if (validateEmail(infosRegistration.email)) {
+    if (validateEmail(infosRegistration.email) || infosRegistration.firstname) {
       axios
         .post(url, infosRegistration)
         .then(res => res.data)
