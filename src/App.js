@@ -13,7 +13,7 @@ import Medium from './font/BalooBhaina2-Medium.ttf';
 import Regular from './font/BalooBhaina2-Regular.ttf';
 import SemiBold from './font/BalooBhaina2-SemiBold.ttf';
 import Footer from './components/Footer';
-import Edition from './components/Edition.js';
+import Edition from './components/testform/Edition.js';
 import Header from './components/Header';
 import freelance from './test/JohnDoe';
 
@@ -58,8 +58,8 @@ function App () {
             <Route path='/registration'>
               <Registration />
             </Route>
-            <Route path='/editing'>
-              <Editation />
+            <Route path='/edition'>
+              <Edition />
             </Route>
             <Route path='/signin'>
               <SignIn />
