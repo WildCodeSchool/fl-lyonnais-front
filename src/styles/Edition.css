@@ -8,3 +8,10 @@
 h2 {
   text-decoration: underline;
 }
+
+
+.profilpic {
+  /* border: 2px solid red; */
+  width: 92%;
+  margin: auto;
+}
