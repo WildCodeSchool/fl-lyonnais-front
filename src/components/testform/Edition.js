@@ -29,7 +29,7 @@ function Edition(props) {
         </div>
 
         <h2>Votre biographie</h2>
-        <Form.Group controlId="exampleForm.ControlTextearea1">
+        <Form.Group as={Col} controlId="exampleForm.ControlTextearea1">
           <Form.Label>Example textarea</Form.Label>
           <Form.Control as="textarea" rows="3" />
         </Form.Group>
@@ -74,24 +74,41 @@ function Edition(props) {
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridsiret">
-        <Form.Label>SIRET</Form.Label>
+          <Form.Label>SIRET</Form.Label>
           <Form.Control type="siret" placeholder="123453" />
         </Form.Group>
-        
+
         <Form.Group as={Col} controlId="formGridtva">
-        <Form.Label>TVA</Form.Label>
+          <Form.Label>TVA</Form.Label>
           <Form.Control type="tva" placeholder="1234567187633eedede" />
         </Form.Group>
+
+        <h2>Changer de mot de passe</h2>
+
+        <Form.Group as={Col} controlId="formBasicCurrentPassword">
+          <Form.Label>Mot de passe actuel</Form.Label>
+          <Form.Control type="currentpassword" placeholder="mot de passe actuel" />
+        </Form.Group>
+
+        <Form.Group as={Col} controlId="formBasicCurrentPassword">
+          <Form.Label>Nouveau mot de passe</Form.Label>
+          <Form.Control type="newpassword" placeholder="nouveau mot de passe" />
+        </Form.Group>
         
+        <Form.Group as={Col} controlId="formBasicCurrentPassword">
+          <Form.Label>Confirmer mot de passe</Form.Label>
+          <Form.Control type="newpasswordconfirmed" placeholder="confirmer mot de passe" />
+        </Form.Group>
 
-
-        <Form.Group id="formGridCheckbox">
+        <Form.Group as={Col} id="formGridCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
 
         <Button variant="primary" type="submit">
           Submit
         </Button>
+
+
 
 
         {/* <div className="mb-3">
