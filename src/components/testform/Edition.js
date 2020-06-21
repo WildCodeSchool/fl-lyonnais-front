@@ -108,18 +108,6 @@ function Edition(props) {
           Submit
         </Button>
 
-
-
-
-        {/* <div className="mb-3">
-          <Form.File id="formcheck-api-custom" custom>
-            <Form.File.Input isValid />
-            <Form.File.Label data-browse="Button text">
-              
-      </Form.File.Label>
-            <Form.Control.Feedback type="valid">Importer une photo</Form.Control.Feedback>
-          </Form.File>
-        </div> */}
       </Form>
     </div>
 
