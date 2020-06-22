@@ -28,7 +28,7 @@ function PasswordModal (props) {
 
           <Form.Group as={Col} controlid='formBasicCurrentPassword'>
             <Form.Label>Mot de passe actuel</Form.Label>
-            <Form.Control type='currentpassword' placeholder='********' />
+            <Form.Control type='currentpassword' placeholder='' />
           </Form.Group>
 
           <Form.Group as={Col} controlid='formBasicCurrentPassword'>
@@ -42,7 +42,7 @@ function PasswordModal (props) {
           </Form.Group>
         </ModalBody>
         <ModalFooter>
-          <Button color='primary' onClick={toggle}>Confirmer</Button>{' '}
+          <Button style={{ backgroundColor: 'var(--red)', border: 'solid 1px var(--red)' }} onClick={toggle}>Confirmer</Button>{' '}
           <Button color='secondary' onClick={toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>
