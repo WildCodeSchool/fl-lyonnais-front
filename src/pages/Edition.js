@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 // import { Button } from 'react-bootstrap';
 // import { Form } from 'react-bootstrap'
 import { Col } from 'react-bootstrap';
-import '../styles/Edition.css';
+import '../styles/Edition.scss';
 import '../components/PasswordModal';
 import axios from 'axios';
 import { isSiret } from '../functionshelper';
@@ -76,15 +76,15 @@ function Edition (props) {
     console.log(infosEdition);
     console.log(isSiret('1234567891123A'));
     const url = 'http://localhost:3000/freelance';
-      axios
-        .post(url, infosEdition)
-        .then(res => res.data)
-        .then(function () {
-          console.log('Your movie has been added !');
-        })
-        .catch(error => {
-          console.log(error);
-        });
+    axios
+      .post(url, infosEdition)
+      .then(res => res.data)
+      .then(function () {
+        console.log('Your movie has been added !');
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   return (
