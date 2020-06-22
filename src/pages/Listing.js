@@ -31,12 +31,11 @@ class Listing extends Component {
 
     return (
       <div className='Listing'>
-
-        <Link to='/detail'>
-          <ul className='everyFreelanceCards'>
+        <ul className='everyFreelanceCards'>
+          <li>
             {freelances.map(freelance => <Freelance key={generateKey(freelance)} id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />)}
-          </ul>
-        </Link>
+          </li>
+        </ul>
       </div>
     );
   }

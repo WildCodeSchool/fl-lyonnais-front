@@ -14,13 +14,15 @@ $font-main: 'balooBhaina2Regular', sans-serif;
 
 .freelance2:hover {
   transform: scale(1.09);
-
+  z-index: 1;
 }
 
 .freelance2 {
   display: inline-flex;
 
   .container {
+
+    margin: 20px 10px 20px 10px;
 
     .card {
       width: $card-size;
