@@ -18,13 +18,15 @@ $font-main: 'balooBhaina2Regular', sans-serif;
 
 .freelance2:hover {
   transform: scale(1.09);
-
+  z-index: 1;
 }
 
 .freelance2 {
   display: inline-flex;
 
   .container {
+
+    padding: 0;
 
     .card {
       width: $card-size;
@@ -81,7 +83,7 @@ $font-main: 'balooBhaina2Regular', sans-serif;
 
 /* ******************************************************************* */
 
-@media (min-width: 415px) {
+/* @media (min-width: 415px) {
 
   $card-size: 250px;
 
@@ -121,4 +123,4 @@ $font-main: 'balooBhaina2Regular', sans-serif;
       }
     }
   }
-}
+} */
