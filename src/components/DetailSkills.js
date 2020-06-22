@@ -5,13 +5,13 @@ const { generateKey } = require('../functionshelper');
 function detailSkills (props) {
   return (
     <div>
-      <h2 className='detailh2'>Mes compétences</h2>
+      <h3 className='detailh2'>Mes compétences</h3>
       <div className='detailskills'>
         <div className='mainSkills'>
           <table className='detailtable'>
             <tr>
               <th><h3>Principales</h3></th>
-              <th><h2>Autres</h2></th>
+              <th><h3>Autres</h3></th>
             </tr>
             <tr>
               <td>{props.freelance.mainSkills.map(mainSkill => {
