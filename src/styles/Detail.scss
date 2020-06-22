@@ -10,7 +10,7 @@
   border-top: solid 2px black;
   margin-top: 10px;
   background-color: #24A198;
-  margin: 60px;
+  margin: 20px;
   padding:5px;
 
   }
@@ -19,23 +19,28 @@
   
   .detailBio {
   background-color: #d3d3d385;
-  margin:60px;
+  margin:20px;
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   
+  
   }
+
   .detailtextebio {
   margin-left: 10px;;
   margin-right: 10px;
   margin-bottom: 10px;
   background-color: #ffffff78;
+  text-align: justify;
   }
   
   .detailnametitle {
   align-self: center;
   justify-content: center;
   margin: auto;
+  
+  
   }
   
   .detailPhoto {
@@ -55,7 +60,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
-  margin: 60px;
+  margin: 20px;
   background-color: #d3d3d385;
   
   }
@@ -79,7 +84,7 @@
   .detailskills {
   background-color: #d3d3d385;
   border-style: groove;
-  margin:60px;
+  margin:20px;
   }
   
   .detailtable {
@@ -98,7 +103,7 @@
   .detailcontact {
   background-color: #d3d3d385;
   border-style: ridge;
-  margin: 60px;
+  margin: 20px;
   }
   
   /* /////////////////////////////// MEDIA QUERIES 750 PX /////////////////////////////// */
@@ -121,6 +126,7 @@
     flex-direction: column;
     margin:100px;
     background-color: white;
+    font-size: 0.9em;
   }
 
 
@@ -131,7 +137,7 @@
   .detailPhoto {
   
     display: flex;
-    height: 280px;
+    height: auto;
     width: 20vw;
   }
   
@@ -147,6 +153,10 @@
 
   .carousel {
     margin:100px;
+    overflow-x: visible;
+    overflow-y: visible;
+    display: flex;
+    flex-wrap: wrap;
   }
   
   .carousel img {
