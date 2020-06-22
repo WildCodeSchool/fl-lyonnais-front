@@ -8,24 +8,28 @@ function detailSkills (props) {
       <h2 className='detailh2'>Mes compétences</h2>
       <div className='detailskills'>
         <div className='mainSkills'>
-          <h3>Principales</h3>
-          <ul>
-            {props.freelance.mainSkills.map(mainSkill => {
-              return (<li key={generateKey(mainSkill)}>{mainSkill}</li>);
-            })}
-          </ul>
+          <table className='detailtable'>
+            <tr>
+              <th><h3>Principales</h3></th>
+              <th><h2>Autres</h2></th>
+            </tr>
+            <tr>
+              <td>{props.freelance.mainSkills.map(mainSkill => {
+                return (<p key={generateKey(mainSkill)}>{mainSkill}</p>);
+              })}
+              </td>
+              <td>{props.freelance.otherSkills.map(otherSkill => {
+                return (<p key={generateKey(otherSkill)}>{otherSkill}</p>);
+              })}
+              </td>
+
+            </tr>
+          </table>
+
         </div>
-        <div className='otherSkills'>
-          <h3>Autres</h3>
-          <ul>
-            {props.freelance.otherSkills.map(otherSkill => {
-              return (<li key={generateKey(otherSkill)}>{otherSkill}</li>);
-            })}
-          </ul>
-        </div>
+        <p id='detailskillstjm'>TJM : à partir de <span className='detailskillstjmprice'>{props.freelance.average_daily_rate}</span> € par jour.</p>
       </div>
 
-      <p id='detailskillstjm'>TJM : à partir de <span className='detailskillstjmprice'>{props.freelance.average_daily_rate}</span> € par jour.</p>
     </div>
   );
 }

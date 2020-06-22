@@ -13,6 +13,7 @@ import Medium from './font/BalooBhaina2-Medium.ttf';
 import Regular from './font/BalooBhaina2-Regular.ttf';
 import SemiBold from './font/BalooBhaina2-SemiBold.ttf';
 import Footer from './components/Footer';
+import Edition from './pages/Edition.js';
 import Header from './components/Header';
 import freelance from './test/JohnDoe';
 
@@ -51,16 +52,22 @@ function App () {
             <Route path='/detail'>
               <Detail freelance={freelance} />
             </Route>
-            <Route path='/listing'>
+            <Route path='/liste_freelance'>
               <Listing />
             </Route>
-            <Route path='/registration'>
+            <Route path='/inscription'>
               <Registration />
             </Route>
-            <Route path='/signin'>
+            <Route path='/compte'>
+              <Edition />
+            </Route>
+            <Route path='/edition_compte'>
+              <Edition />
+            </Route>
+            <Route path='/connexion'>
               <SignIn />
             </Route>
-            <Route path='/legaldisclaimer'>
+            <Route path='/mentions_legales'>
               <LegalDisclaimer />
             </Route>
           </Switch>

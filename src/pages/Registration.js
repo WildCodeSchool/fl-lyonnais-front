@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
+import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -13,9 +13,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import '../styles/Registration.scss';
-import { validateEmail } from '../functionshelper';
+import { validateEmail, isSiret } from '../functionshelper';
 import axios from 'axios';
-
+import AlertDialogSlide from '../components/AlertDialogSlide';
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -48,21 +48,19 @@ export default function SignUp () {
   });
 
   const handlesubmit = (e) => {
+    // Function à créer pour gérer champs vides, sensibilité de la case
     e.preventDefault();
     const url = 'http://localhost:3000/user';
     console.log(infosRegistration);
-    if (validateEmail(infosRegistration.email)) {
+    if (validateEmail(infosRegistration.email) || isSiret(infosRegistration.siret)) {
       axios
         .post(url, infosRegistration)
         .then(res => res.data)
-        .then(function () {
-          console.log('Your movie has been added !');
-        })
         .catch(error => {
           console.log(error);
         });
     } else {
-      alert('renseigner un email valide');
+      alert('Champ manquant ou un email valide');
     }
   };
 
@@ -179,12 +177,13 @@ export default function SignUp () {
               color='primary'
               className={classes.submit}
               style={{ backgroundColor: 'var(--red)' }}
+              to='/edition_compte'
             >
-              Créer ma fiche freelance
+                Créer ma fiche freelance
             </Button>
             <Grid container justify='flex-end'>
               <Grid item>
-                <Link href='#' variant='body2'>
+                <Link to='/connexion' variant='body2'>
                   Vous avez déjà un compte? Se connecter
                 </Link>
               </Grid>

@@ -90,7 +90,7 @@ export default function SignIn () {
                 </Link>
               </Grid>
               <Grid item>
-                <Link to='/registration' variant='body2'>
+                <Link to='/inscription' variant='body2'>
                   {"Vous n'avez pas de compte? S'inscrire"}
                 </Link>
               </Grid>

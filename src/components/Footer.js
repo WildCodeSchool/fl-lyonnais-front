@@ -9,9 +9,9 @@ import FaceIcon from '@material-ui/icons/Face';
 
 const pathMap = [
   '/',
-  '/listing',
+  '/liste_freelance',
   '/aproposde',
-  '/legaldisclaimer'
+  '/mentions_legales'
 ];
 
 export default function LabelBottomNavigation () {
