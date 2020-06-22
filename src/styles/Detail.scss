@@ -40,11 +40,7 @@ background-color:white ;
 .detailPhoto {
   height: 100px;
   width: 18vw;
-  padding-left: 10 px;
-  margin-top: 10px;
-  margin-right: 10px;
-  margin-left: 10px;
-  margin-bottom: 25px;
+  margin: 10px 10px 25px;
 }
 
 /* REFERENCES */
@@ -70,12 +66,9 @@ background-color:white ;
 }
 
 /* COMPETENCES */
-
 .detailskills {
   background-color: #d3d3d385;
   margin:60px;
-
-
 }
 .detailtable {
   border-collapse: collapse;
@@ -93,7 +86,6 @@ th, td {
 .detailcontact {
   background-color: #d3d3d385;
   margin: 60px;
-
 }
 
 /* /////////////////////////////// MEDIA QUERIES 750 PX /////////////////////////////// */
@@ -114,11 +106,10 @@ th, td {
     width: 20vw;
     margin-bottom: 10px;
   }
+
   .detailtextebio {
     margin-left: 25px;
     margin-right: 25px;
     margin-bottom: 2px;
-    
   }
-  
 }

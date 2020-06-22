@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 // import { Button } from 'react-bootstrap';
 // import { Form } from 'react-bootstrap'
 import { Col } from 'react-bootstrap';
-import '../styles/Edition.css';
+import '../styles/Edition.scss';
 import '../components/PasswordModal';
 import axios from 'axios';
 import { isSiret } from '../functionshelper';
