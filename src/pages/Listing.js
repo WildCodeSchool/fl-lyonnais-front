@@ -4,7 +4,7 @@ import '../styles/Listing.scss';
 // import freelances from '../test/people';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { generateKey } from '../functionshelper'
+import { generateKey } from '../functionshelper';
 
 class Listing extends Component {
   constructor (props) {
