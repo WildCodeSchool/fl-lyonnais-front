@@ -13,9 +13,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import '../styles/Registration.scss';
-import { validateEmail } from '../functionshelper';
+import { validateEmail, isSiret } from '../functionshelper';
 import axios from 'axios';
-
+// import AlertDialogSlide from '../components/AlertDialogSlide';
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -48,10 +48,11 @@ export default function SignUp () {
   });
 
   const handlesubmit = (e) => {
+    // Function à créer pour gérer champs vides, sensibilité de la case
     e.preventDefault();
     const url = 'http://localhost:3000/user';
     console.log(infosRegistration);
-    if (validateEmail(infosRegistration.email) || infosRegistration.firstname) {
+    if (validateEmail(infosRegistration.email) || isSiret(infosRegistration.siret)) {
       axios
         .post(url, infosRegistration)
         .then(res => res.data)
@@ -59,7 +60,7 @@ export default function SignUp () {
           console.log(error);
         });
     } else {
-      alert('renseigner un email valide');
+      alert('Champ manquant ou un email valide');
     }
   };
 
@@ -181,7 +182,7 @@ export default function SignUp () {
             </Button>
             <Grid container justify='flex-end'>
               <Grid item>
-                <Link href='#' variant='body2'>
+                <Link href='/connexion' variant='body2'>
                   Vous avez déjà un compte? Se connecter
                 </Link>
               </Grid>

@@ -52,19 +52,22 @@ function App () {
             <Route path='/detail'>
               <Detail freelance={freelance} />
             </Route>
-            <Route path='/listing'>
+            <Route path='/liste_freelance'>
               <Listing />
             </Route>
-            <Route path='/registration'>
+            <Route path='/inscription'>
               <Registration />
             </Route>
-            <Route path='/edition'>
+            <Route path='/compte'>
               <Edition />
             </Route>
-            <Route path='/signin'>
+            <Route path='/edition_compte'>
+              <Edition />
+            </Route>
+            <Route path='/connexion'>
               <SignIn />
             </Route>
-            <Route path='/legaldisclaimer'>
+            <Route path='/mentions_legales'>
               <LegalDisclaimer />
             </Route>
           </Switch>

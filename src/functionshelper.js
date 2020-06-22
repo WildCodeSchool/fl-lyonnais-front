@@ -7,17 +7,10 @@ export function validateEmail (email) {
 }
 
 export function validateNumber (num) {
-  const re = /^[0-9]*$/ ;
+  const re = /^[0-9]*$/;
   return re.test(Number(num));
 }
 
-export function isSiret (siret ) {
-  // console.log(validateNumber(siret));
-  // console.log(siret.split(''));
-  
-  return !!(validateNumber (siret) && siret.toString().length === 14)
-} 
-
-// export function isSiret2 (siret ) {
-//   !(validateNumber(siret) && siret.length<=14) && return false
-// }
+export function isSiret (siret) {
+  return !!(validateNumber(siret) && siret.toString().length === 14);
+}

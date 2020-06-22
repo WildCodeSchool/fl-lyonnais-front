@@ -9,12 +9,12 @@ function detailBio (props) {
         <div className='detailnametitle'>
           <h1>{props.freelance.firstname} {props.freelance.lastname}</h1>
           <h1>{props.freelance.job_title}</h1>
-          <fieldset className='detailtextebio'> 
-            
+          <fieldset className='detailtextebio'>
+
             <p>{props.freelance.bio}</p>
-           
-           </fieldset>
-        </div>    
+
+          </fieldset>
+        </div>
       </div>
     </div>
   );

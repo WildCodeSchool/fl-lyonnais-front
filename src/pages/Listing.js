@@ -4,6 +4,7 @@ import '../styles/Listing.scss';
 // import freelances from '../test/people';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { generateKey } from '../functionshelper'
 
 class Listing extends Component {
   constructor (props) {
@@ -33,7 +34,7 @@ class Listing extends Component {
 
         <Link to='/detail'>
           <ul className='everyFreelanceCards'>
-            {freelances.map(freelances => <Freelance id={freelances.id} firstname={freelances.firstname} lastname={freelances.lastname} urlPhoto={freelances.url_photo} job_title={freelances.job_title} />)}
+            {freelances.map(freelance => <Freelance key={generateKey(freelance)} id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />)}
           </ul>
         </Link>
       </div>
