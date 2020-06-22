@@ -4,10 +4,10 @@
 
 .everyFreelanceCards {
   margin: auto;
-  display: flexbox;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: flex-start;
   width: auto;
   height: initial;
