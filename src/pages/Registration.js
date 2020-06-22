@@ -15,7 +15,7 @@ import Container from '@material-ui/core/Container';
 import '../styles/Registration.scss';
 import { validateEmail, isSiret } from '../functionshelper';
 import axios from 'axios';
-// import AlertDialogSlide from '../components/AlertDialogSlide';
+import AlertDialogSlide from '../components/AlertDialogSlide';
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
