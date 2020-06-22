@@ -4,7 +4,7 @@ import '../styles/Detail.scss';
 function DetailReferences ({ freelance }) {
   return (
     <div>
-      <h2 className='detailh2'>Mes Références</h2>
+      <h3 className='detailh2'>Mes Références</h3>
       <div className='carousel'>
         {freelance.references.map(reference => {
           return (
