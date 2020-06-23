@@ -22,3 +22,26 @@ body {
   margin-top: 10px;
   padding-top: 30px;
 }
+
+h1 {
+  color:#1730FF;
+  text-align: center;
+}
+
+h5 {
+  background-color: #24A198;
+  margin:10px;
+  letter-spacing: 2px;
+}
+
+@media screen and (min-width: 750px) { 
+
+  h5 {
+    
+   background-color: #24A198;
+   margin:100px;
+   letter-spacing: 10px;
+}
+   
+  
+}

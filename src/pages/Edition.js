@@ -9,6 +9,7 @@ import '../components/PasswordModal';
 import axios from 'axios';
 import { isSiret } from '../functionshelper';
 
+
 function PasswordModal (props) {
   const {
     className
@@ -42,7 +43,7 @@ function PasswordModal (props) {
           </Form.Group>
         </ModalBody>
         <ModalFooter>
-          <Button style={{ backgroundColor: 'var(--red)' }} onClick={toggle}>Confirmer</Button>{' '}
+          <Button style={{ backgroundColor: 'var(--red)', border: 'solid 1px var(--red)' }} onClick={toggle}>Confirmer</Button>{' '}
           <Button color='secondary' onClick={toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>
@@ -93,6 +94,7 @@ function Edition (props) {
   return (
     <div className='edition'>
       <Form onSubmit={handlesubmit}>
+        
         {/* <Form.Row> */}
         <h2>Informations</h2>
         <Form.Group as={Col} controlid='formGridfirstname'>
@@ -241,7 +243,7 @@ function Edition (props) {
         <Button color='danger' type='submit'>
           Enregistrer
         </Button>
-
+        
       </Form>
     </div>
 
