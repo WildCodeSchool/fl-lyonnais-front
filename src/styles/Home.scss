@@ -53,19 +53,22 @@ h3 {
     letter-spacing: 10px;
   }
 
-  h5 {
-    margin: 11vh;
-    height: auto;
-  }
 
   .homepage {
     border-style: ridge;
-    margin:30vh;
+    margin:5vh 10vh 5vh 10vh;
     height:auto;
+
+    
   }
 
   .paragraphe {
   margin-bottom: 4vh;
   height: auto;
+
+  p {
+    font-size: 1.4em;
   }
+  }
+
 }
