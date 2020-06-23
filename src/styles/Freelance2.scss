@@ -7,14 +7,12 @@ body {
   background: #eee;
   }
 
-$card-size: 37vw;
+$card-width: 37vw;
 $image-size: 100%;
-$image-height: 100px;
 $font-main: 'balooBhaina2Regular', sans-serif;
 
 .freelance2:hover {
   transform: scale(1.09);
-  z-index: 1;
 }
 
 .freelance2 {
@@ -25,19 +23,20 @@ $font-main: 'balooBhaina2Regular', sans-serif;
     margin: 20px 10px 20px 10px;
 
     .card {
-      width: $card-size;
+      width: $card-width;
+      height: 30vh;
       background-color: #24A198;;
       box-shadow: 0 5px 20px #555;
 
       .card-image {
-
+        width: $image-size;
         position: relative;
         overflow: hidden;
+        height: auto;
 
         img {
           width: $image-size;
-          position: absolute;
-          transform: translate(-50%, 0%);
+          position: relative;
         }
 
       }
@@ -60,6 +59,7 @@ $font-main: 'balooBhaina2Regular', sans-serif;
           p {
             font-size: 0.8rem;
             color:white;
+            margin: 0;
         }
       }
 
@@ -79,42 +79,60 @@ $font-main: 'balooBhaina2Regular', sans-serif;
 
 /* ******************************************************************* */
 
-@media (min-width: 415px) {
+@media (min-width: 500px) {
 
-  $card-size: 250px;
+  $card-width: 10vw;
+  $image-size: 100%;
 
-  .freelance2 {
+  .container {
 
-    .container {
-
-      .card {
-      width: $card-size;
+    .card {
+      width: $card-width;
+      height: 30vh;
 
       .card-image {
+        width: $image-size;
+        position: relative;
+        overflow: hidden;
+        height: auto;
 
-      height: 280px;
-
-      img {
-      width: $image-size;
+        img {
+          width: $image-size;
+          position: relative;
+        }
 
       }
 
-      }
+      .card-body {
+          text-align: center;
+          padding: 10px 20px;
+          box-sizing: border-box;
 
-        .card-body {
-
-          .card-name {
+        .card-name {
             font-family: $font-main;
-            h4 {
-              font-size: 1rem;
-            }  
-          }
 
-          .card-title {
-            p {
-              font-size: 1rem;
-            }
-          }
+        h4 {
+          font-size: 0.9rem;
+          margin: 0px;
+        }
+      } 
+
+        .card-title {
+          p {
+            font-size: 0.8rem;
+            color:white;
+            margin: 0;
+        }
+      }
+
+        .card-name, .card-title {
+          text-align: center;
+          text-transform: uppercase;
+          font-weight: bold;
+        }
+
+        .card-name, .card-excerpt {
+          color:black;
         }
       }
     }
