@@ -91,6 +91,7 @@ function Edition (props) {
   return (
     <div className='edition'>
       <Form onSubmit={handlesubmit}>
+        
         {/* <Form.Row> */}
         <h2>Informations</h2>
         <Form.Group as={Col} controlid='formGridfirstname'>
@@ -210,7 +211,7 @@ function Edition (props) {
         <Button color='danger' type='submit'>
           Enregistrer
         </Button>
-
+        
       </Form>
     </div>
 

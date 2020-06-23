@@ -44,7 +44,7 @@ export default function SignIn () {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component='h1' variant='h5'>
-          Sign in
+          Connexion
           </Typography>
           <form className={classes.form} noValidate>
             <TextField
@@ -71,7 +71,7 @@ export default function SignIn () {
             />
             <FormControlLabel
               control={<Checkbox value='remember' color='primary' />}
-              label='Remember me'
+              label='Se souvenir de moi'
             />
             <Button
               type='submit'

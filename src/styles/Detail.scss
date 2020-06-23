@@ -12,6 +12,7 @@
   background-color: #24A198;
   margin: 20px;
   padding:5px;
+  
 
   }
   
@@ -26,6 +27,7 @@
   
   
   }
+ 
 
   .detailtextebio {
   margin-left: 10px;;
@@ -47,10 +49,10 @@
   height: 110px;
   width: 30vw;
   padding-left: 10 px;
-  margin-top: 10px;
-  margin-right: 10px;
-  margin-left: 10px;
-  margin-bottom: 25px;
+  margin-top: 15px;
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-bottom: 15px;
   }
   
   /* REFERENCES */
@@ -115,8 +117,8 @@
     font-size: 1.5em;
     align-self: center;
     justify-content: center;
-    background-color: #d3d3d385;
     margin-left: 400px;
+    margin-top: 80px;
     
 
   }
@@ -125,7 +127,7 @@
     
     flex-direction: column;
     margin:100px;
-    background-color: white;
+    background-color: #d3d3d385;
     font-size: 0.9em;
   }
 
@@ -138,13 +140,14 @@
   
     display: flex;
     height: auto;
-    width: 20vw;
+    width: 19vw;
+    float: left;
   }
   
   .detailtextebio {
     margin-left: 15px;
     margin-right: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
    
   
   }
