@@ -16,7 +16,7 @@ import Footer from './components/Footer';
 import Edition from './pages/Edition.js';
 import Header from './components/Header';
 import freelance from './test/JohnDoe';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Apps = styled.div`
     text-align: center;
