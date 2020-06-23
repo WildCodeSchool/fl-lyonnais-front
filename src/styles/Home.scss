@@ -9,8 +9,9 @@ body {
 .homepage {
 
   border-style: ridge;
-  margin:60px;
+  margin:4vh;
   height: auto;
+  
 }
 
 .home .form {
@@ -44,6 +45,8 @@ h3 {
   letter-spacing: 2px;
 }
 
+//////////////          MEDIA QUERIE          /////////////////////////
+
 @media screen and (min-width: 750px) { 
 
   h3 {
@@ -57,7 +60,7 @@ h3 {
 
   .homepage {
     border-style: ridge;
-    margin:5vh;
+    margin:30vh;
     height:auto;
   }
 
