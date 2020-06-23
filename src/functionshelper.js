@@ -14,3 +14,8 @@ export function validateNumber (num) {
 export function isSiret (siret) {
   return !!(validateNumber(siret) && siret.toString().length === 14);
 }
+
+export function onlyLetters (input) {
+  return input.match(/^[A-Za-z]+$/)
+}
+

@@ -10,8 +10,8 @@ function detailSkills (props) {
         <div className='mainSkills'>
           <table className='detailtable'>
             <tr>
-              <th><h3>Principales</h3></th>
-              <th><h3>Autres</h3></th>
+              <th><h4>Principales</h4></th>
+              <th><h4>Autres</h4></th>
             </tr>
             <tr>
               <td>{props.freelance.mainSkills.map(mainSkill => {

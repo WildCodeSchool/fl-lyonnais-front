@@ -69,7 +69,10 @@ function Edition (props) {
 
     projet_name: '',
     emailpro: '', // présent dans le wireframe mais dans aucune BDD
-    company_name: ''// idem mail pro
+
+    street: '',
+    zip_code: '',
+    city: ''
   });
 
   const handlesubmit = (e) => {
@@ -109,7 +112,12 @@ function Edition (props) {
             value={infosEdition.lastname}
           />
         </Form.Group>
-        {/* </Form.Row> */}
+
+        <Form.Group as={Col} controlid='formGridactivity'>
+          <Form.Label>Titre</Form.Label>
+          <Form.Control type='job_title' placeholder='titre' onChange={(e) => setInfosEdition({ ...infosEdition, job_title: e.target.value })} value={infosEdition.job_title} />
+        </Form.Group>
+        {/* </Form.Row>
 
         {/* <h2>Photo de profil</h2> */}
 
@@ -126,7 +134,7 @@ function Edition (props) {
             value={infosEdition.bio}
           />
         </Form.Group>
-
+        /
         <Form.Group as={Col} controlid='formGridavgdailyrate'>
           <Form.Label>TJM</Form.Label>
           <Form.Control
@@ -171,6 +179,30 @@ function Edition (props) {
             value={infosEdition.emailpro}
           />
         </Form.Group>
+
+        <Form.Group as={Col} controlid='formGridstreet'>
+          <Form.Label>Rue</Form.Label>
+          <Form.Control
+            type='street' placeholder='nom de la rue' onChange={(e) => setInfosEdition({ ...infosEdition, street: e.target.value })}
+            value={infosEdition.street}
+          />
+        </Form.Group>
+        <Form.Group as={Col} controlid='formGridzip_code'>
+          <Form.Label>Code postal</Form.Label>
+          <Form.Control
+            type='zip_code' placeholder='code postal' onChange={(e) => setInfosEdition({ ...infosEdition, zip_code: e.target.value })}
+            value={infosEdition.zip_code}
+          />
+        </Form.Group>
+
+        <Form.Group as={Col} controlid='formGridzipville'>
+          <Form.Label>Ville</Form.Label>
+          <Form.Control
+            type='city' placeholder='ville' onChange={(e) => setInfosEdition({ ...infosEdition, city: e.target.value })}
+            value={infosEdition.city}
+          />
+        </Form.Group>
+
         {/* <Form.Group as={Col} controlid='formGridcompanyname'>
           <Form.Label>Nom de l’entreprise</Form.Label>
           <Form.Control type='company_name' placeholder='Redbull' onChange={(e) => setInfosEdition({ ...infosEdition, company_name: e.target.value })}
@@ -185,10 +217,10 @@ function Edition (props) {
           <Form.Control type='phone_number' placeholder='123884440' onChange={(e) => setInfosEdition({ ...infosEdition, phone_number: e.target.value })} value={infosEdition.phone_number} />
         </Form.Group>
 
-        <Form.Group as={Col} controlid='formGridactivity'>
+        {/* <Form.Group as={Col} controlid='formGridactivity'>
           <Form.Label>Domaine d’activité</Form.Label>
           <Form.Control type='activity' placeholder='energy drink' onChange={(e) => setInfosEdition({ ...infosEdition, activity: e.target.value })} value={infosEdition.activity} />
-        </Form.Group>
+        </Form.Group> */}
 
         <Form.Group as={Col} controlid='formGridsiret'>
           <Form.Label>SIRET</Form.Label>

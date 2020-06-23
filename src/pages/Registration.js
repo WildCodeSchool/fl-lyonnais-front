@@ -13,9 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import '../styles/Registration.scss';
-import { validateEmail, isSiret } from '../functionshelper';
+import { validateEmail, isSiret, onlyLetters } from '../functionshelper';
 import axios from 'axios';
-import AlertDialogSlide from '../components/AlertDialogSlide';
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -51,8 +50,9 @@ export default function SignUp () {
     // Function à créer pour gérer champs vides, sensibilité de la case
     e.preventDefault();
     const url = 'http://localhost:3000/user';
-    console.log(infosRegistration);
-    if (validateEmail(infosRegistration.email) || isSiret(infosRegistration.siret)) {
+    console.log(onlyLetters(infosRegistration.firstname));
+
+    if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret) && onlyLetters(infosRegistration.firstname) && onlyLetters(infosRegistration.lastname)) {
       axios
         .post(url, infosRegistration)
         .then(res => res.data)
@@ -60,7 +60,7 @@ export default function SignUp () {
           console.log(error);
         });
     } else {
-      alert('Champ manquant ou un email valide');
+      alert('Champ manquant, email non valide, siret invalide');
     }
   };
 
