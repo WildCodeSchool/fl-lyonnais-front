@@ -16,6 +16,6 @@ export function isSiret (siret) {
 }
 
 export function onlyLetters (input) {
-  return input.match(/[a-z]/i)
+  return input.match(/^[A-Za-z]+$/)
 }
 
