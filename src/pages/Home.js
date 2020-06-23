@@ -16,7 +16,7 @@ function Home () {
         
         <h1> Bienvenue chez Les Freelances Lyonnais </h1>
         
- 
+ <div className="paragraphe">
 <h3>Qui se cache derrière Les Freelances Lyonnais ? </h3>
 <h5>
 Si vous êtes arrivé.e.s sur cette page, c’est que vous en connaissez au moins un.e :)
@@ -24,6 +24,9 @@ Vous avez apprécié la qualité de son travail, sa proximité géographique, et
  
 Imaginez maintenant qu’on vous dise qu’on connaît 1800 autres professionnel.le.s comme ça ?  
  </h5>
+ </div>
+
+ <div className="paragraphe">
 
 <h3>Lyon, c’est un petit réseau, et ça tombe bien. </h3>
 <h5>
@@ -32,6 +35,8 @@ Les Freelances Lyonnais l’ont compris, et jouent sur cette dynamique pour trou
  
 Ce réseau offre des rendez-vous mensuels pour réseauter et se tenir à jour sur les actualités professionnelles locales.  Notre groupe Facebook nous permet de consulter en tout temps ces 1800 professionnel.le.s et aller chercher les réponses, ressources et conseils qui font la différence. 
 </h5>
+</div>
+<div className="paragraphe">
 <h3>Un arsenal de compétences dans lequel piocher </h3>
 
 <h5>
@@ -41,6 +46,7 @@ Ce Freelance bénéficie de l’appui de son réseau pour aller chercher un comp
 
 
         </h5>
+        </div>
       </main>
     </div>
   );
