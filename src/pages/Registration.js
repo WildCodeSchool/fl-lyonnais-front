@@ -51,8 +51,8 @@ export default function SignUp () {
     // Function à créer pour gérer champs vides, sensibilité de la case
     e.preventDefault();
     const url = 'http://localhost:3000/user';
-    console.log(infosRegistration);
-    if (validateEmail(infosRegistration.email) || isSiret(infosRegistration.siret)) {
+    console.log(isSiret(infosRegistration.siret));
+    if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret)) {
       axios
         .post(url, infosRegistration)
         .then(res => res.data)
@@ -60,7 +60,7 @@ export default function SignUp () {
           console.log(error);
         });
     } else {
-      alert('Champ manquant ou un email valide');
+      alert('Champ manquant, email non valide, siret invalide');
     }
   };
 
