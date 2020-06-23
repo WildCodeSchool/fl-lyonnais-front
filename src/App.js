@@ -70,7 +70,6 @@ function App() {
   }
   let userNameFromToken = null
   if (token) {
-    alert('ouiiiiiiiiiii')
     userNameFromToken = jwtDecode(token).sub || null
   }
 
