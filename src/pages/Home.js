@@ -13,7 +13,6 @@ function Home () {
         <SearchBar />
       </div>
       <main className="homepage">
-        
         <h1> Bienvenue chez Les Freelances Lyonnais </h1>
         
  <div className="paragraphe">
