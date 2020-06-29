@@ -45,8 +45,7 @@ class Listing extends Component {
         <InfiniteScroll
           dataLength={freelances.length} //This is important field to render the next data
           next={this.fetchData}
-          hasMore={true}
-        >
+          hasMore={true}>
             <ul className='everyFreelanceCards'>
               <li>
                 {freelances.map(freelance => <Freelance key={generateKey(freelance)} id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />)}
