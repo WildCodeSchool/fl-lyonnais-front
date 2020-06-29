@@ -37,22 +37,23 @@ body {
   margin-bottom: 5vh;
   height: auto;
 }
+.paragrapheh3 {
+  margin:10px;
+  letter-spacing: 2px;
+}
 
 h1 {
   color:#1730FF;
   text-align: center;
 }
 
-h3 {
-  margin:10px;
-  letter-spacing: 2px;
-}
+
 
 //////////////          MEDIA QUERIE          /////////////////////////
 
 @media screen and (min-width: 750px) { 
 
-  h3 {
+  .paragraphe h3 {
     letter-spacing: 10px;
   }
 

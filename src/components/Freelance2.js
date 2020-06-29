@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../styles/Listing.scss';
 
 const Freelance = (props) => {
+  
   return (
     <div className='freelance2'>
       <div className='container'>
