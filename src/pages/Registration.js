@@ -15,6 +15,7 @@ import Container from '@material-ui/core/Container';
 import '../styles/Registration.scss';
 import { validateEmail, isSiret, onlyLetters } from '../functionshelper';
 import axios from 'axios';
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),

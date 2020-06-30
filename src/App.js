@@ -5,6 +5,7 @@ import Listing from './pages/Listing';
 import Registration from './pages/Registration';
 import LegalDisclaimer from './pages/LegalDisclaimer';
 import SignIn from './pages/SignIn';
+import Edition from './pages/Edition.js';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import Bold from './font/BalooBhaina2-Bold.ttf';
@@ -13,10 +14,8 @@ import Medium from './font/BalooBhaina2-Medium.ttf';
 import Regular from './font/BalooBhaina2-Regular.ttf';
 import SemiBold from './font/BalooBhaina2-SemiBold.ttf';
 import Footer from './components/Footer';
-import Edition from './pages/Edition.js';
 import Header from './components/Header';
 import freelance from './test/JohnDoe';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Apps = styled.div`
     text-align: center;
@@ -40,37 +39,20 @@ const Apps = styled.div`
 `;
 
 function App () {
-  const isHomePage = true;
   return (
     <Apps>
       <Router>
         <Header />
         <main style={{ flex: '1 0 auto' }}>
           <Switch>
-            <Route exact path='/'>
-              <Home isHomePage={isHomePage} />
-            </Route>
-            <Route path='/detail/:id'>
-              <Detail freelance={freelance} />
-            </Route>
-            <Route path='/liste_freelance'>
-              <Listing />
-            </Route>
-            <Route path='/inscription'>
-              <Registration />
-            </Route>
-            <Route path='/compte'>
-              <Edition />
-            </Route>
-            <Route path='/edition_compte'>
-              <Edition />
-            </Route>
-            <Route path='/connexion'>
-              <SignIn />
-            </Route>
-            <Route path='/mentions_legales'>
-              <LegalDisclaimer />
-            </Route>
+            <Route exact path='/'><Home /></Route>
+            <Route path='/detail/:id'><Detail freelance={freelance} /></Route>
+            <Route path='/liste_freelance'><Listing /></Route>
+            <Route path='/inscription'><Registration /></Route>
+            <Route path='/compte'><Edition /></Route>
+            <Route path='/edition_compte'><Edition /></Route>
+            <Route path='/connexion'><SignIn /></Route>
+            <Route path='/mentions_legales'><LegalDisclaimer /></Route>
           </Switch>
         </main>
         <Footer />
