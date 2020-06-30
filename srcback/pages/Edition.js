@@ -1,5 +1,6 @@
-
+ 
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,101 +9,83 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-import AddressForm from '../components/FormEdition/AddressForm';
-import References from '../components/FormEdition/References';
-import Tags from '../components/FormEdition/Tags';
-import InfosPro from '../components/FormEdition/InfosPro';
-import EditionContext from '../components/FormEdition/EditionContext'
-import {useStyles} from '../components/stylesMatUi';
+import AddressForm from './AddressForm';
+import PaymentForm from './PaymentForm';
+import Review from './Review';
 
-class EditionContextProvider extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstname: '',
-      lastname: '',
-      // données BDD freelance
-      url_photo: '',    
-      phone_number: '',
-      average_daily_rate: 0,
-      url_web_site: '',
-      job_title: '',
-      bio: '',
-      vat_number: '',
-      last_modification_date: '2019-03-15',
-      is_active: 1,
-      address_id: '',
-      email: '', // présent dans le wireframe mais dans aucune BDD
-      
-      street: '',
-      zip_code: '',
-      city: '',
-      // References
-      project_name: [],
-      //Tag
-      tag_name: [],
-    };
-  }
-
-  handleAdressFormChange = (e) => {
-    const targetProp = e.target.name.toLowerCase();
-    this.setState({ ...this.state, [targetProp]: e.target.value })
-  }
-
-  handleReferencesName = (items) => {
-    // const projetName = this.state.project_name.slice()
-    // projetName.push(item).flat([Infinity])
-    this.setState({project_name: items})
-  }
-  handleTag = (e) => {
-    const newtagName = this.state.tag_name;
-    if (!e.target.innerText) {
-      newtagName.pop()
-      this.setState({tag_name: newtagName })
-    } else {
-      newtagName.push(e.target.innerText)
-      this.setState({tag_name: newtagName })
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        <EditionContext.Provider value={{ ...this.state, handleAdressFormChange: this.handleAdressFormChange, handleReferencesName:this.handleReferencesName, handleTag:this.handleTag}}>
-          {this.props.children}
-        </EditionContext.Provider>
-      </div>
-    );
-  };
+function Edition() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
 }
 
-const steps = ['Informations', 'Références', 'Compétences', 'Professionnelles'];
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    position: 'relative',
+  },
+  layout: {
+    width: 'auto',
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
+      width: 600,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
+  },
+  paper: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+    padding: theme.spacing(2),
+    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+      marginTop: theme.spacing(6),
+      marginBottom: theme.spacing(6),
+      padding: theme.spacing(3),
+    },
+  },
+  stepper: {
+    padding: theme.spacing(3, 0, 5),
+  },
+  buttons: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  button: {
+    marginTop: theme.spacing(3),
+    marginLeft: theme.spacing(1),
+  },
+}));
 
+const steps = ['Informations', 'Payment details', 'Review your order'];
 
-export default function Edition(props) {
+function getStepContent(step) {
+  switch (step) {
+    case 0:
+      return <AddressForm />;
+    case 1:
+      return <PaymentForm />;
+    case 2:
+      return <Review />;
+    default:
+      throw new Error('Unknown step');
+  }
+}
+
+export default function Checkout() {
   const classes = useStyles();
-    function getStepContent(step) {
-      switch (step) {
-        case 0:
-          return <AddressForm />;
-        case 1:
-          return <References />;
-        case 2:
-          return <Tags />;
-        case 3:
-          return <InfosPro />;
-        default:
-          throw new Error('Unknown step');
-      }
-    }
   const [activeStep, setActiveStep] = React.useState(0);
 
-  const handleNext = (e) => {
+  const handleNext = () => {
     setActiveStep(activeStep + 1);
-    // if (e.target.innerText.toLowerCase() === 'enregistrer') {
-    //   alert('yeaaaaaaaaaaaaaaaa')
-    // }
   };
 
   const handleBack = () => {
@@ -113,14 +96,17 @@ export default function Edition(props) {
     <React.Fragment>
       <CssBaseline />
       <AppBar position="absolute" color="default" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Gestion de votre compte
+        {/* <Toolbar>
+          <Typography variant="h6" color="primary" noWrap>
+          Gestion de votre compte
           </Typography>
-        </Toolbar>
+        </Toolbar> */}
       </AppBar>
       <main className={classes.layout}>
         <Paper className={classes.paper}>
+          <Typography component="h1" variant="h5" align="center">
+            Gestion de votre compte
+          </Typography>
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (
               <Step key={label}>
@@ -132,34 +118,36 @@ export default function Edition(props) {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
-                  Vos informations ont bien été prises en compte
+                  Thank you for your order.
+                </Typography>
+                <Typography variant="subtitle1">
+                  Your order number is #2001539. We have emailed your order confirmation, and will
+                  send you an update when your order has shipped.
                 </Typography>
               </React.Fragment>
             ) : (
-                <EditionContextProvider>
-                  <React.Fragment>
-                    {getStepContent(activeStep)}
-                    <div className={classes.buttons}>
-                      {activeStep !== 0 && (
-                        <Button onClick={handleBack} className={classes.button}>
-                          Back
-                        </Button>
-                      )}
-                      <Button
-                        variant="contained"
-                        name="enregistrer"
-                        color="primary"
-                        onClick={handleNext}
-                        className={classes.button}
-                      >
-                        {activeStep === steps.length - 1 ? 'Enregistrer' : 'Next'}
-                      </Button>
-                    </div>
-                  </React.Fragment>
-                </EditionContextProvider>
-              )}
+              <React.Fragment>
+                {getStepContent(activeStep)}
+                <div className={classes.buttons}>
+                  {activeStep !== 0 && (
+                    <Button onClick={handleBack} className={classes.button}>
+                      Back
+                    </Button>
+                  )}
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleNext}
+                    className={classes.button}
+                  >
+                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                  </Button>
+                </div>
+              </React.Fragment>
+            )}
           </React.Fragment>
         </Paper>
+        {/* <Copyright /> */}
       </main>
     </React.Fragment>
   );
@@ -178,6 +166,7 @@ export default function Edition(props) {
 
 
 // import React, { useState } from 'react';
+// import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, CustomInput } from 'reactstrap';
 // import Form from 'react-bootstrap/Form';
 // // import { Button } from 'react-bootstrap';
 // // import { Form } from 'react-bootstrap'
@@ -188,7 +177,46 @@ export default function Edition(props) {
 // import { isSiret } from '../functionshelper';
 
 
+// function PasswordModal (props) {
+//   const {
+//     className
+//   } = props;
 
+//   const [modal, setModal] = useState(false);
+
+//   const toggle = () => setModal(!modal);
+
+//   const externalCloseBtn = <button className='close' style={{ position: 'absolute', top: '15px', right: '15px' }} onClick={toggle}>&times;</button>;
+//   return (
+//     <div>
+//       <Button color='link' onClick={toggle}><h3>Changer de mot de passe</h3></Button>
+//       <Modal isOpen={modal} toggle={toggle} className={className} external={externalCloseBtn}>
+//         <ModalHeader>Changement de mot de passe</ModalHeader>
+//         <ModalBody>
+
+//           <Form.Group as={Col} controlid='formBasicCurrentPassword'>
+//             <Form.Label>Mot de passe actuel</Form.Label>
+//             <Form.Control type='currentpassword' placeholder='' />
+//           </Form.Group>
+
+//           <Form.Group as={Col} controlid='formBasicCurrentPassword'>
+//             <Form.Label>Nouveau mot de passe</Form.Label>
+//             <Form.Control type='newpassword' placeholder='' />
+//           </Form.Group>
+
+//           <Form.Group as={Col} controlid='formBasicCurrentPassword'>
+//             <Form.Label>Confirmer mot de passe</Form.Label>
+//             <Form.Control type='newpasswordconfirmed' placeholder='' />
+//           </Form.Group>
+//         </ModalBody>
+//         <ModalFooter>
+//           <Button style={{ backgroundColor: 'var(--red)', border: 'solid 1px var(--red)' }} onClick={toggle}>Confirmer</Button>{' '}
+//           <Button color='secondary' onClick={toggle}>Cancel</Button>
+//         </ModalFooter>
+//       </Modal>
+//     </div>
+//   );
+// }
 
 // function Edition (props) {
 //   const [infosEdition, setInfosEdition] = useState({
@@ -233,7 +261,7 @@ export default function Edition(props) {
 //   return (
 //     <div className='edition'>
 //       <Form onSubmit={handlesubmit}>
-
+        
 //         {/* <Form.Row> */}
 //         <h2>Informations</h2>
 //         <Form.Group as={Col} controlid='formGridfirstname'>
@@ -382,7 +410,7 @@ export default function Edition(props) {
 //         <Button color='danger' type='submit'>
 //           Enregistrer
 //         </Button>
-
+        
 //       </Form>
 //     </div>
 
