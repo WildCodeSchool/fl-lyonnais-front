@@ -18,7 +18,7 @@ export default function AddressForm() {
             required
             id="firstName"
             name="prenom"
-            label="First name"
+            label="Prenom"
             fullWidth
             autoComplete="given-name"
             value={firstname}
@@ -30,7 +30,7 @@ export default function AddressForm() {
             required
             id="lastName"
             name="nom"
-            label="Last name"
+            label="Nom"
             fullWidth
             autoComplete="family-name"
             value={lastname}

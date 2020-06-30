@@ -76,7 +76,7 @@ class References extends React.Component {
 
     return (
       <div className='references'>
-        <body>
+        <div>
           <p className="prescrition-title">Renseigner vos références</p>
           <RefsList
             items={this.state.items}
@@ -98,60 +98,10 @@ class References extends React.Component {
             </Grid>
             {/* <AddButton type="submit" /> */}
           </form>
-        </body>
+        </div>
       </div>
     );
   }
 }
 
-
-
-
 export default References;
-
-
-// import Typography from '@material-ui/core/Typography';
-// import Grid from '@material-ui/core/Grid';
-// import TextField from '@material-ui/core/TextField';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import Checkbox from '@material-ui/core/Checkbox';
-// import UploadButtons from './UploadButtons';
-// export default function Refs() {
-//   return (
-//     <React.Fragment>
-//       <Grid container spacing={3}>
-//         <Grid item xs={12}>
-//           <TextField required id="projet1" label="Projet" fullWidth autoComplete="cc-projet" />
-//         </Grid>
-//         <Grid item xs={12} sm={6} justifyContent="center">
-//         <Typography variant="h6" gutterBottom color="primary">
-//           Photo du projet
-//           </Typography>
-//           <UploadButtons />
-//         </Grid>
-//       </Grid>
-//       <Grid container spacing={3}>
-//         <Grid item xs={12}>
-//           <TextField required id="projet2" label="Projet" fullWidth autoComplete="cc-projet" />
-//         </Grid>
-//         <Grid item xs={12} sm={6} justifyContent="center">
-//         <Typography variant="h6" gutterBottom color="primary">
-//           Photo du projet
-//           </Typography>
-//           <UploadButtons />
-//         </Grid>
-//         <Grid container spacing={3}>
-//         <Grid item xs={12}>
-//           <TextField required id="projet3" label="Projet" fullWidth autoComplete="cc-projet" />
-//         </Grid>
-        // <Grid item xs={12} sm={6} justifyContent="center">
-        // <Typography variant="h6" gutterBottom color="primary">
-        //   Photo des projets
-        //   </Typography>
-        //   <UploadButtons />
-        // </Grid>
-//       </Grid>
-//       </Grid>
-//     </React.Fragment>
-//   );
-// }

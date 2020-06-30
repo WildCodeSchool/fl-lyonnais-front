@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function InfosPro() {
+function InfosPro() {
   const classes = useStyles();
   const { url_web_site, vat_number, phone_number, handleAdressFormChange } = useContext(EditionContext);
   return (
@@ -31,20 +31,20 @@ export default function InfosPro() {
         </Typography>
         <Grid container spacing={3} alignItems="flex-start">
           <Grid item xs={12}>
-            <TextField required id="projet1" name="url_web_site" label="url site pro" value={url_web_site} fullWidth autoComplete="cc-projet" 
+            <TextField required id="url_web_site" name="url_web_site" label="url site pro" value={url_web_site} fullWidth autoComplete="cc-projet" 
             onChange={(e) => handleAdressFormChange(e)}
             />
           </Grid>
         </Grid>
         <Grid container spacing={3} alignItems="flex-start">
           <Grid item xs={12}>
-            <TextField required id="projet1" type="number" name="phone_number" label="N° téléphone" value={phone_number} 
+            <TextField required id="phone_number" type="number" name="phone_number" label="N° téléphone" value={phone_number} 
             onChange={(e) => handleAdressFormChange(e)}fullWidth autoComplete="cc-projet" />
           </Grid>
         </Grid>
         <Grid container spacing={3} alignItems="flex-start">
           <Grid item xs={12}>
-            <TextField required id="projet1" type="number" name='vat_number' label="Numéro de TVA" value={vat_number} fullWidth autoComplete="cc-projet" 
+            <TextField required id="vat_number" type="number" name='vat_number' label="Numéro de TVA" value={vat_number} fullWidth autoComplete="cc-projet" 
             onChange={(e) => handleAdressFormChange(e)}
             />
           </Grid>
@@ -53,3 +53,5 @@ export default function InfosPro() {
     </React.Fragment>
   );
 }
+
+export default InfosPro

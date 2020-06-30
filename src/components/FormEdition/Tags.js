@@ -19,15 +19,18 @@ const useStyles = makeStyles((theme) => ({
 export default function Tags() {
   const [tagList,setTagList] = useState([]);
   const url = 'http://localhost:3000/tag';
-  useEffect( async () => {
-    const result = await axios.get(url);
-    setTagList(result.data.data)
-  }, [])
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(url)
+      setTagList(result.data.data);
+    };
+    fetchData();
+  }, []);
+
 
 
 const { tag_name, handleTag } = useContext(EditionContext);
 const classes = useStyles();
-
 return (
 
   <React.Fragment>
