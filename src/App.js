@@ -5,7 +5,6 @@ import Listing from './pages/Listing';
 import Registration from './pages/Registration';
 import LegalDisclaimer from './pages/LegalDisclaimer';
 import SignIn from './pages/SignIn';
-import Edition from './pages/Edition.js';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import Bold from './font/BalooBhaina2-Bold.ttf';
@@ -49,8 +48,6 @@ function App () {
             <Route path='/detail/:id'><Detail freelance={freelance} /></Route>
             <Route path='/liste_freelance'><Listing /></Route>
             <Route path='/inscription'><Registration /></Route>
-            <Route path='/compte'><Edition /></Route>
-            <Route path='/edition_compte'><Edition /></Route>
             <Route path='/connexion'><SignIn /></Route>
             <Route path='/mentions_legales'><LegalDisclaimer /></Route>
           </Switch>
