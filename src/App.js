@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
 import Listing from './pages/Listing';
 import Registration from './pages/Registration';
 import LegalDisclaimer from './pages/LegalDisclaimer';
 import SignIn from './pages/SignIn';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route  } from 'react-router-dom';
 import styled from 'styled-components';
 import Bold from './font/BalooBhaina2-Bold.ttf';
 import ExtraBold from './font/BalooBhaina2-ExtraBold.ttf';
@@ -13,8 +13,12 @@ import Medium from './font/BalooBhaina2-Medium.ttf';
 import Regular from './font/BalooBhaina2-Regular.ttf';
 import SemiBold from './font/BalooBhaina2-SemiBold.ttf';
 import Footer from './components/Footer';
+import Edition from './pages/Edition.js';
 import Header from './components/Header';
 import freelance from './test/JohnDoe';
+import AuthContext from './Auth/AuthContext';
+import jwtDecode from 'jwt-decode';
+
 
 const Apps = styled.div`
     text-align: center;
@@ -38,35 +42,65 @@ const Apps = styled.div`
 `;
 
 function App () {
-  const isHomePage = true;
+  const [token, setToken] = useState(localStorage.getItem('authToken'));
+  const setTokenInLocalStorage = (token) => {
+    localStorage.setItem('authToken', token);
+    setToken(token);
+  };
+  let userNameFromToken = null;
+  if (token) {
+    userNameFromToken = jwtDecode(token).sub || null;
+  }
+
   return (
     <Apps>
-      <Router>
-        <Header />
-        <main style={{ flex: '1 0 auto' }}>
-          <Switch>
-            <Route exact path='/'>
-              <Home isHomePage={isHomePage} />
-            </Route>
-            <Route path='/detail'>
-              <Detail freelance={freelance} />
-            </Route>
-            <Route path='/listing'>
-              <Listing />
-            </Route>
-            <Route path='/registration'>
-              <Registration />
-            </Route>
-            <Route path='/signin'>
-              <SignIn />
-            </Route>
-            <Route path='/legaldisclaimer'>
-              <LegalDisclaimer />
-            </Route>
-          </Switch>
-        </main>
-        <Footer />
-      </Router>
+      <AuthContext.Provider value={
+        {
+          token: token,
+          saveToken: (token) => (setTokenInLocalStorage(token))
+        }
+      }
+      >
+        <div className='App'>
+          {userNameFromToken &&
+            <div>
+              <p>Welcome back {userNameFromToken} !</p>
+              <button onClick={() => setTokenInLocalStorage('')}>Log out</button>
+            </div>}
+          <Router>
+            <Header />
+            <main style={{ flex: '1 0 auto' }}>
+              <Switch>
+                <Route exact path='/'>
+                  <Home />
+                </Route>
+                <Route path='/detail'>
+                  <Detail freelance={freelance} />
+                </Route>
+                <Route path='/liste_freelance'>
+                  <Listing />
+                </Route>
+                <Route path='/inscription'>
+                  <Registration />
+                </Route>
+                <Route path='/compte'>
+                  <Edition />
+                </Route>
+                <Route path='/edition_compte'>
+                  <Edition />
+                </Route>
+                <Route path='/connexion'>
+                  <SignIn />
+                </Route>
+                <Route path='/mentions_legales'>
+                  <LegalDisclaimer />
+                </Route>
+              </Switch>
+            </main>
+            <Footer />
+          </Router>
+        </div>
+      </AuthContext.Provider>
     </Apps>
   );
 }
