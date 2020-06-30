@@ -29,7 +29,7 @@ class Listing extends Component {
       .then(response => response.data)
       .then(data => {
         this.setState({
-          freelances: data.data,
+          freelances: data.data
         });
       });
   }

@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom';
 import '../styles/Listing.scss';
 
 const Freelance = (props) => {
-
   return (
     <div className='freelance2'>
       <div className='container'>
         <Link to={`/detail/${props.id}`}>
-        <div className='card'>
+          <div className='card'>
 
             <div className='card-image'>
               <img src={props.urlPhoto} alt='Orange' />
@@ -25,7 +24,7 @@ const Freelance = (props) => {
               </div>
 
             </div>
-        </div>
+          </div>
         </Link>
       </div>
     </div>
