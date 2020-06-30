@@ -44,9 +44,7 @@ export default function SignIn (props) {
     event.preventDefault();
     const payload = { email, password };
     API.post('/connexion', payload).then((res) => {
-      alert('registered !');
       history.push('/')
-      // props.history.location.pathname.push('/');
     })
       .catch(err => alert('erreur sur les identifiants'));
   };

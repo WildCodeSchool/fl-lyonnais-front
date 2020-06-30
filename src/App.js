@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
 import Listing from './pages/Listing';
 import Registration from './pages/Registration';
 import LegalDisclaimer from './pages/LegalDisclaimer';
 import SignIn from './pages/SignIn';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route  } from 'react-router-dom';
 import styled from 'styled-components';
 import Bold from './font/BalooBhaina2-Bold.ttf';
 import ExtraBold from './font/BalooBhaina2-ExtraBold.ttf';
@@ -18,8 +18,7 @@ import Header from './components/Header';
 import freelance from './test/JohnDoe';
 import AuthContext from './Auth/AuthContext';
 import jwtDecode from 'jwt-decode';
-import SecretPage from './Auth/SecretPage';
-import history from './history';
+
 
 const Apps = styled.div`
     text-align: center;
@@ -42,26 +41,6 @@ const Apps = styled.div`
     padding: 0;
 `;
 
-function PrivateRoute ({ children, ...rest }) {
-  const { token } = useContext(AuthContext);
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        token ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/connexion',
-              state: { from: location }
-            }}
-          />
-      )}
-    />
-  );
-}
-
 function App () {
   const [token, setToken] = useState(localStorage.getItem('authToken'));
   const setTokenInLocalStorage = (token) => {
@@ -73,7 +52,6 @@ function App () {
     userNameFromToken = jwtDecode(token).sub || null;
   }
 
-  const isHomePage = true;
   return (
     <Apps>
       <AuthContext.Provider value={
@@ -89,12 +67,12 @@ function App () {
               <p>Welcome back {userNameFromToken} !</p>
               <button onClick={() => setTokenInLocalStorage('')}>Log out</button>
             </div>}
-          <Router history={history}>
+          <Router>
             <Header />
             <main style={{ flex: '1 0 auto' }}>
               <Switch>
                 <Route exact path='/'>
-                  <Home isHomePage={isHomePage} />
+                  <Home />
                 </Route>
                 <Route path='/detail'>
                   <Detail freelance={freelance} />
@@ -114,9 +92,6 @@ function App () {
                 <Route path='/connexion'>
                   <SignIn />
                 </Route>
-                <PrivateRoute path='/mentions_legales'>
-                  <SecretPage />
-                </PrivateRoute>
                 <Route path='/mentions_legales'>
                   <LegalDisclaimer />
                 </Route>
