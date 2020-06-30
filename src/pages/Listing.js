@@ -1,6 +1,6 @@
 // Link to the website of the InfiniteScroll component : https://www.npmjs.com/package/react-infinite-scroll-component
 import React, { Component } from 'react';
-import Freelance from '../components/Freelance2';
+import Freelance from '../components/Freelance';
 import '../styles/Listing.scss';
 import axios from 'axios';
 import { generateKey } from '../functionshelper';

@@ -50,7 +50,7 @@ function App () {
             <Route exact path='/'>
               <Home isHomePage={isHomePage} />
             </Route>
-            <Route path='/detail'>
+            <Route path='/detail/:id'>
               <Detail freelance={freelance} />
             </Route>
             <Route path='/liste_freelance'>
