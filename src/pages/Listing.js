@@ -28,11 +28,11 @@ class Listing extends Component {
 
   componentDidMount () {
     axios
-      .get('https://bridge.buddyweb.fr/api/freelancers/test')
+      .get('http://localhost:3000/freelance')
       .then(response => response.data)
       .then(data => {
         this.setState({
-          freelances: data
+          freelances: data.data,
         });
       });
   }
