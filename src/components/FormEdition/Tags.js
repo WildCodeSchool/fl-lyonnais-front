@@ -13,20 +13,16 @@ const useStyles = makeStyles((theme) => ({
       marginTop: theme.spacing(3),
     },
     height: 300,
-
   },
 }));
 
 export default function Tags() {
-  const [skillsList2,setSkillList2] = useState([]);
+  const [tagList,setTagList] = useState([]);
   const url = 'http://localhost:3000/tag';
-  
-  console.log('axios tags')
   useEffect( async () => {
     const result = await axios.get(url);
-    setSkillList2(result.data.data)
+    setTagList(result.data.data)
   }, [])
-    console.log(skillsList2, 'yeahhhhhh')
 
 
 const { tag_name, handleTag } = useContext(EditionContext);
@@ -39,7 +35,7 @@ return (
       <Autocomplete
         multiple
         id="tags-filled"
-        options={skillsList.map((option) => option.skill)}
+        options={tagList.map((option) => option.name)}
         defaultValue={[]}
         value={tag_name[0]}
         onChange={handleTag}
@@ -58,18 +54,3 @@ return (
 );
 }
 
-const skillsList = [
-  { skill: 'Javascript' },
-  { skill: 'React' },
-  { skill: 'PHP' },
-  { skill: 'Vue' },
-  { skill: 'HTML' },
-  { skill: 'CSS' },
-  { skill: 'Bootstrap' },
-  { skill: 'Front-end' },
-  { skill: 'Back-end' },
-  { skill: 'Java' },
-  { skill: 'Full-stack' },
-  { skill: 'Design' },
-  { skill: 'UX/UI' },
-]; 

@@ -17,7 +17,7 @@ export default function AddressForm() {
           <TextField
             required
             id="firstName"
-            name="firstName"
+            name="prenom"
             label="First name"
             fullWidth
             autoComplete="given-name"
@@ -29,7 +29,7 @@ export default function AddressForm() {
           <TextField
             required
             id="lastName"
-            name="lastName"
+            name="nom"
             label="Last name"
             fullWidth
             autoComplete="family-name"
@@ -42,7 +42,7 @@ export default function AddressForm() {
             required
             id="address1"
             name="street"
-            label="Rue et nuémro"
+            label="Rue"
             fullWidth
             autoComplete="shipping address-line1"
             value={street}
