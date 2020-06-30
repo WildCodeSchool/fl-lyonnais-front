@@ -1,22 +1,22 @@
-import React, {useState, useEffect} from 'react'
-import API from './API'
+import React, { useState, useEffect } from 'react';
+import API from './API';
 
-export default function SecretPage(props) {
-  const [secret, setSecret] = useState(null)
-  const [error, setError] = useState(null)
+export default function SecretPage (props) {
+  const [secret, setSecret] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     API.get('/secret').then(res => res.data).then(data => {
-      setSecret(data.secret)
+      setSecret(data.secret);
     }).catch(err => {
-      setError('Unauthorized')
-    })
-  })
+      setError('Unauthorized');
+    });
+  });
 
-  if (error) return error 
+  if (error) return error;
   return (
     <div>
       The secret is {secret}
     </div>
-  )
-} 
+  );
+}

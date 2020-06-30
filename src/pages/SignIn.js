@@ -11,8 +11,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import API from '../Auth/API'
-
+import API from '../Auth/API';
+import history from '../history';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -36,16 +36,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn () {
   const classes = useStyles();
-  const [email,setEmail] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-    const payload = {email, password}
+    event.preventDefault();
+    const payload = { email, password };
     API.post('/connexion', payload).then((res) => {
-      alert('registered !')
+      alert('registered !');
+      history.push('/');
     })
-  }
+      .catch(err => alert('erreur sur les identifiants'));
+  };
 
   return (
     <div>
@@ -70,7 +72,7 @@ export default function SignIn () {
               autoComplete='email'
               autoFocus
               value={email}
-              onChange={ (e) => {setEmail(e.target.value)}}
+              onChange={(e) => { setEmail(e.target.value); }}
             />
             <TextField
               variant='outlined'
@@ -83,7 +85,7 @@ export default function SignIn () {
               id='password'
               autoComplete='current-password'
               vlaue={password}
-              onChange={(e) => { setPassword(e.target.value)}}
+              onChange={(e) => { setPassword(e.target.value); }}
             />
             <FormControlLabel
               control={<Checkbox value='remember' color='primary' />}
@@ -117,4 +119,3 @@ export default function SignIn () {
     </div>
   );
 }
-

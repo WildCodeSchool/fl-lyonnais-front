@@ -16,9 +16,10 @@ import Footer from './components/Footer';
 import Edition from './pages/Edition.js';
 import Header from './components/Header';
 import freelance from './test/JohnDoe';
-import AuthContext from './Auth/AuthContext'
+import AuthContext from './Auth/AuthContext';
 import jwtDecode from 'jwt-decode';
-import SecretPage from './Auth/SecretPage'
+import SecretPage from './Auth/SecretPage';
+import history from './history';
 
 const Apps = styled.div`
     text-align: center;
@@ -41,36 +42,35 @@ const Apps = styled.div`
     padding: 0;
 `;
 
-function PrivateRoute({ children, ...rest }) {
-  const { token } = useContext(AuthContext)
+function PrivateRoute ({ children, ...rest }) {
+  const { token } = useContext(AuthContext);
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        !!token ? (
+        token ? (
           children
         ) : (
-            <Redirect
-              to={{
-                pathname: "/connexion",
-                state: { from: location }
-              }}
-            />
-          )
-      }
+          <Redirect
+            to={{
+              pathname: '/connexion',
+              state: { from: location }
+            }}
+          />
+      )}
     />
   );
 }
 
-function App() {
-  const [token, setToken] = useState(localStorage.getItem('authToken'))
+function App () {
+  const [token, setToken] = useState(localStorage.getItem('authToken'));
   const setTokenInLocalStorage = (token) => {
-    localStorage.setItem('authToken', token)
-    setToken(token)
-  }
-  let userNameFromToken = null
+    localStorage.setItem('authToken', token);
+    setToken(token);
+  };
+  let userNameFromToken = null;
   if (token) {
-    userNameFromToken = jwtDecode(token).sub || null
+    userNameFromToken = jwtDecode(token).sub || null;
   }
 
   const isHomePage = true;
@@ -81,15 +81,15 @@ function App() {
           token: token,
           saveToken: (token) => (setTokenInLocalStorage(token))
         }
-      }>
-        <div className="App">
+      }
+      >
+        <div className='App'>
           {userNameFromToken &&
             <div>
               <p>Welcome back {userNameFromToken} !</p>
               <button onClick={() => setTokenInLocalStorage('')}>Log out</button>
-            </div>
-          }
-          <Router>
+            </div>}
+          <Router history={history}>
             <Header />
             <main style={{ flex: '1 0 auto' }}>
               <Switch>
@@ -114,7 +114,7 @@ function App() {
                 <Route path='/connexion'>
                   <SignIn />
                 </Route>
-                <PrivateRoute path="/mentions_legales">
+                <PrivateRoute path='/mentions_legales'>
                   <SecretPage />
                 </PrivateRoute>
                 <Route path='/mentions_legales'>

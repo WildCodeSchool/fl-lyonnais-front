@@ -56,6 +56,8 @@ export default function SignUp () {
       axios
         .post(url, infosRegistration)
         .then(res => res.data)
+        .then(data => alert('yooooooooooo')
+        )
         .catch(error => {
           console.log(error);
         });
