@@ -1,11 +1,8 @@
-// Link to the website of the InfiniteScroll component : https://www.npmjs.com/package/react-infinite-scroll-component
 import React, { Component } from 'react';
 import Freelance from '../components/Freelance';
 import '../styles/Listing.scss';
 import axios from 'axios';
 import { generateKey } from '../functionshelper';
-// import InfiniteScroll from 'react-infinite-scroll-component';
-import ScrollButton from '../components/ScrollButton';
 import BasicPagination from '../components/Pagination';
 
 const elementsPerPage = 10;
@@ -48,7 +45,6 @@ class Listing extends Component {
             {freelances.map(freelance => <Freelance key={generateKey(freelance)} id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />)}
           </li>
         </ul>
-        <ScrollButton />
         <BasicPagination />
       </div>
     );
