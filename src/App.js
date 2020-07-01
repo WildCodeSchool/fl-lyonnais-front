@@ -14,7 +14,6 @@ import Regular from './font/BalooBhaina2-Regular.ttf';
 import SemiBold from './font/BalooBhaina2-SemiBold.ttf';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import freelance from './test/JohnDoe';
 
 const Apps = styled.div`
     text-align: center;
@@ -45,7 +44,7 @@ function App () {
         <main style={{ flex: '1 0 auto' }}>
           <Switch>
             <Route exact path='/'><Home /></Route>
-            <Route path='/detail/:id'><Detail freelance={freelance} /></Route>
+            <Route path='/detail/:id'><Detail /></Route>
             <Route path='/liste_freelance'><Listing /></Route>
             <Route path='/inscription'><Registration /></Route>
             <Route path='/connexion'><SignIn /></Route>
