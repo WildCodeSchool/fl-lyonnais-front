@@ -1,5 +1,5 @@
 
-import React, {useContext} from 'react';
+import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,11 +13,69 @@ import AddressForm from '../components/FormEdition/AddressForm';
 import References from '../components/FormEdition/References';
 import Tags from '../components/FormEdition/Tags';
 import InfosPro from '../components/FormEdition/InfosPro';
+import EditionContext from '../components/FormEdition/EditionContext';
 import { makeStyles } from '@material-ui/core/styles';
-import { useHistory } from 'react-router-dom';
-import EditionContext from '../components/FormEdition/EditionContext'
-import EditionContextProvider from '../components/FormEdition/EditionContextProvider';
-import API from '../API';
+// import { useStyles } from '../components/stylesMatUi';
+
+class EditionContextProvider extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstname: '',
+      lastname: '',
+      // données BDD freelance
+      url_photo: '',
+      phone_number: '',
+      average_daily_rate: 0,
+      url_web_site: '',
+      job_title: '',
+      bio: '',
+      vat_number: '',
+      last_modification_date: '2019-03-15',
+      is_active: 1,
+      address_id: '',
+      email: '', // présent dans le wireframe mais dans aucune BDD
+
+      street: '',
+      zip_code: '',
+      city: '',
+      // References
+      project_name: [],
+      //Tag
+      tag_name: [],
+    };
+  }
+
+  handleAdressFormChange = (e) => {
+    const targetProp = e.target.name.toLowerCase();
+    this.setState({ ...this.state, [targetProp]: e.target.value })
+  }
+
+  handleReferencesName = (items) => {
+    this.setState({ project_name: items })
+  }
+  handleTag = (e) => {
+    const newtagName = this.state.tag_name;
+    if (!e.target.innerText) {
+      newtagName.pop()
+      this.setState({ tag_name: newtagName })
+    } else {
+      newtagName.push(e.target.innerText)
+      this.setState({ tag_name: newtagName })
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <EditionContext.Provider value={{ ...this.state, handleAdressFormChange: this.handleAdressFormChange, handleReferencesName: this.handleReferencesName, handleTag: this.handleTag }}>
+          {this.props.children}
+        </EditionContext.Provider>
+      </div>
+    );
+  };
+}
+
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -73,22 +131,12 @@ function getStepContent(step) {
 }
 
 export default function Edition(props) {
-  const history = useHistory();
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const { idTagList } = useContext(EditionContext)
-  const handleNext = (e) => {
-    setActiveStep(activeStep + 1);
-    if (e.target.innerText.toLowerCase() === 'enregistrer') {
-      const payload = idTagList;
-      console.log(idTagList);
-      API.post('/freelances',payload).then( (res) => {
-        history.push('/');
-        alert('Ready to post')
-      })
-   }
-  };
 
+  const handleNext = () => {
+    setActiveStep(activeStep + 1);
+  };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
@@ -121,12 +169,13 @@ export default function Edition(props) {
                 </Typography>
               </React.Fragment>
             ) : (
+                <EditionContextProvider>
                   <React.Fragment>
                     {getStepContent(activeStep)}
                     <div className={classes.buttons}>
                       {activeStep !== 0 && (
                         <Button onClick={handleBack} className={classes.button}>
-                          Retour
+                          Back
                         </Button>
                       )}
                       <Button
@@ -136,10 +185,11 @@ export default function Edition(props) {
                         onClick={handleNext}
                         className={classes.button}
                       >
-                        {activeStep === steps.length - 1 ? 'Enregistrer' : 'Suivant'}
+                        {activeStep === steps.length - 1 ? 'Enregistrer' : 'Next'}
                       </Button>
                     </div>
                   </React.Fragment>
+                </EditionContextProvider>
               )}
           </React.Fragment>
         </Paper>

@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 function InfosPro() {
   const classes = useStyles();
-  const { average_daily_rate, url_web_site, vat_number, phone_number, handleAdressFormChange } = useContext(EditionContext);
+  const { url_web_site, vat_number, phone_number, handleAdressFormChange } = useContext(EditionContext);
   return (
     <React.Fragment>
       <div className={classes.height}>
@@ -45,13 +45,6 @@ function InfosPro() {
         <Grid container spacing={3} alignItems="flex-start">
           <Grid item xs={12}>
             <TextField required id="vat_number" type="number" name='vat_number' label="Numéro de TVA" value={vat_number} fullWidth autoComplete="cc-projet" 
-            onChange={(e) => handleAdressFormChange(e)}
-            />
-          </Grid>
-        </Grid>
-        <Grid container spacing={3} alignItems="flex-start">
-          <Grid item xs={12}>
-            <TextField required id="average_daily_rate" type="number" name='average_daily_rate' label="Taux journalier moyen" value={average_daily_rate} fullWidth autoComplete="cc-projet" 
             onChange={(e) => handleAdressFormChange(e)}
             />
           </Grid>

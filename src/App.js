@@ -16,7 +16,7 @@ import Footer from './components/Footer';
 import Edition from './pages/Edition.js';
 import Header from './components/Header';
 import freelance from './test/JohnDoe';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import EditionContextProvider from './components/FormEdition/EditionContextProvider';
 
 const Apps = styled.div`
     text-align: center;
@@ -39,42 +39,44 @@ const Apps = styled.div`
     padding: 0;
 `;
 
-function App () {
+function App() {
   const isHomePage = true;
   return (
     <Apps>
-      <Router>
-        <Header />
-        <main style={{ flex: '1 0 auto' }}>
-          <Switch>
-            <Route exact path='/'>
-              <Home isHomePage={isHomePage} />
-            </Route>
-            <Route path='/detail'>
-              <Detail freelance={freelance} />
-            </Route>
-            <Route path='/liste_freelance'>
-              <Listing />
-            </Route>
-            <Route path='/inscription'>
-              <Registration />
-            </Route>
-            <Route path='/compte'>
-              <Edition />
-            </Route>
-            <Route path='/edition_compte'>
-              <Edition />
-            </Route>
-            <Route path='/connexion'>
-              <SignIn />
-            </Route>
-            <Route path='/mentions_legales'>
-              <LegalDisclaimer />
-            </Route>
-          </Switch>
-        </main>
-        <Footer />
-      </Router>
+      <EditionContextProvider>
+        <Router>
+          <Header />
+          <main style={{ flex: '1 0 auto' }}>
+            <Switch>
+              <Route exact path='/'>
+                <Home isHomePage={isHomePage} />
+              </Route>
+              <Route path='/detail'>
+                <Detail freelance={freelance} />
+              </Route>
+              <Route path='/liste_freelance'>
+                <Listing />
+              </Route>
+              <Route path='/inscription'>
+                <Registration />
+              </Route>
+              <Route path='/compte'>
+                <Edition />
+              </Route>
+              <Route path='/edition_compte'>
+                <Edition />
+              </Route>
+              <Route path='/connexion'>
+                <SignIn />
+              </Route>
+              <Route path='/mentions_legales'>
+                <LegalDisclaimer />
+              </Route>
+            </Switch>
+          </main>
+          <Footer />
+        </Router>
+      </EditionContextProvider>
     </Apps>
   );
 }

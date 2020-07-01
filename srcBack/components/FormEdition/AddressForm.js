@@ -9,7 +9,7 @@ import EditionContext from './EditionContext';
 
 export default function AddressForm() {
 
-  const { job_title,firstname, lastname, street, zip_code, city, bio, handleAdressFormChange } = useContext(EditionContext);
+  const { firstname, lastname, street, zip_code, city, bio, handleAdressFormChange } = useContext(EditionContext);
   return (
     <React.Fragment>
       <Grid container spacing={3}>
@@ -37,19 +37,7 @@ export default function AddressForm() {
             onChange={(e) => handleAdressFormChange(e)}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="job_title"
-            name="job_title"
-            label="Poste"
-            fullWidth
-            autoComplete="job_title"
-            value={job_title}
-            onChange={(e) => handleAdressFormChange(e)}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12}>
           <TextField
             required
             id="address1"
