@@ -1,20 +1,19 @@
 import React from 'react';
-import '../test/JohnDoe';
 
 function detailBio (props) {
   return (
     <div className='detailBio'>
       <div className='detailBioPhotoName'>
 
-        <img src={props.freelance.url_photo} alt={`${props.freelance.lastname}`} className='detailPhoto' />
+        <img src={props.freelances.url_photo} alt={`${props.freelances.lastname}`} className='detailPhoto' />
 
         <div className='detailnametitle'>
 
-          <h1>{props.freelance.firstname} {props.freelance.lastname}</h1>
-          <h1>{props.freelance.job_title}</h1>
+          <h1>{props.freelances.firstname} {props.freelances.lastname}</h1>
+          <h1>{props.freelances.job_title}</h1>
           <fieldset className='detailtextebio'>
 
-            <p>{props.freelance.bio}</p>
+            <p>{props.freelances.bio}</p>
 
           </fieldset>
         </div>
