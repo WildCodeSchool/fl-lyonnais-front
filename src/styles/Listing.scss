@@ -4,8 +4,8 @@ src: url('../font/BalooBhaina2-Regular.ttf') format('truetype');
 }
 
 .Listing {
-  background-color: #eeeeff;
-
+  background: #eef9fe;
+  
   ul {
     padding-bottom: 15px;
   }
@@ -23,10 +23,6 @@ src: url('../font/BalooBhaina2-Regular.ttf') format('truetype');
   list-style: none;
   padding-left: 0;
 }
-
-body {
-  background: #eef9fe;
-  }
 
 $card-width: 170px;
 $image-size: 100%;
@@ -59,7 +55,7 @@ $font-main: 'balooBhaina2Regular', sans-serif;
 
     .card {
       width: $card-width;
-      background-color: #eef9fe;
+      background-color: white;
       box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
       border-radius: 5px;
 
