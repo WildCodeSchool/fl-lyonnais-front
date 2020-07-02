@@ -1,5 +1,5 @@
 
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -15,13 +15,13 @@ import Tags from '../components/FormEdition/Tags';
 import InfosPro from '../components/FormEdition/InfosPro';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
-import EditionContext from '../components/FormEdition/EditionContext'
+import EditionContext from '../components/FormEdition/EditionContext';
 import EditionContextProvider from '../components/FormEdition/EditionContextProvider';
 import API from '../API';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    position: 'relative',
+    position: 'relative'
   },
   layout: {
     width: 'auto',
@@ -30,8 +30,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
       width: 600,
       marginLeft: 'auto',
-      marginRight: 'auto',
-    },
+      marginRight: 'auto'
+    }
   },
   paper: {
     marginTop: theme.spacing(3),
@@ -40,24 +40,24 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
       marginTop: theme.spacing(6),
       marginBottom: theme.spacing(6),
-      padding: theme.spacing(3),
-    },
+      padding: theme.spacing(3)
+    }
   },
   stepper: {
-    padding: theme.spacing(3, 0, 5),
+    padding: theme.spacing(3, 0, 5)
   },
   buttons: {
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-end'
   },
   button: {
     marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(1),
-  },
+    marginLeft: theme.spacing(1)
+  }
 }));
 
-const steps = ['Informations', 'Références', 'Compétences','Infos Personnelles'];
-function getStepContent(step) {
+const steps = ['Informations', 'Références', 'Compétences', 'Infos Personnelles'];
+function getStepContent (step) {
   switch (step) {
     case 0:
       return <AddressForm />;
@@ -72,34 +72,33 @@ function getStepContent(step) {
   }
 }
 
-export default function Edition(props) {
+export default function Edition (props) {
   const history = useHistory();
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const { idTagList } = useContext(EditionContext)
+  const payload = useContext(EditionContext);
+
   const handleNext = (e) => {
     setActiveStep(activeStep + 1);
     if (e.target.innerText.toLowerCase() === 'enregistrer') {
-      const payload = idTagList;
-      console.log(idTagList);
-      API.post('/freelances',payload).then( (res) => {
+      console.log(payload);
+      API.post('http://localhost:3000/freelances/account', payload).then((res) => {
         history.push('/');
-        alert('Ready to post')
-      })
-   }
+        alert('Ready to post');
+      });
+    }
   };
-
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
 
   return (
-    <React.Fragment>
+    <>
       <CssBaseline />
-      <AppBar position="absolute" color="default" className={classes.appBar}>
+      <AppBar position='absolute' color='default' className={classes.appBar}>
         <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
+          <Typography variant='h6' color='inherit' noWrap>
             Gestion de votre compte
           </Typography>
         </Toolbar>
@@ -113,37 +112,37 @@ export default function Edition(props) {
               </Step>
             ))}
           </Stepper>
-          <React.Fragment>
+          <>
             {activeStep === steps.length ? (
-              <React.Fragment>
-                <Typography variant="h5" gutterBottom>
+              <>
+                <Typography variant='h5' gutterBottom>
                   Vos informations ont bien été prises en compte
                 </Typography>
-              </React.Fragment>
+              </>
             ) : (
-                  <React.Fragment>
-                    {getStepContent(activeStep)}
-                    <div className={classes.buttons}>
-                      {activeStep !== 0 && (
-                        <Button onClick={handleBack} className={classes.button}>
+              <>
+                {getStepContent(activeStep)}
+                <div className={classes.buttons}>
+                  {activeStep !== 0 && (
+                    <Button onClick={handleBack} className={classes.button}>
                           Retour
-                        </Button>
-                      )}
-                      <Button
-                        variant="contained"
-                        name="enregistrer"
-                        color="primary"
-                        onClick={handleNext}
-                        className={classes.button}
-                      >
-                        {activeStep === steps.length - 1 ? 'Enregistrer' : 'Suivant'}
-                      </Button>
-                    </div>
-                  </React.Fragment>
-              )}
-          </React.Fragment>
+                    </Button>
+                  )}
+                  <Button
+                    variant='contained'
+                    name='enregistrer'
+                    color='primary'
+                    onClick={handleNext}
+                    className={classes.button}
+                  >
+                    {activeStep === steps.length - 1 ? 'Enregistrer' : 'Suivant'}
+                  </Button>
+                </div>
+              </>
+            )}
+          </>
         </Paper>
       </main>
-    </React.Fragment>
+    </>
   );
 }

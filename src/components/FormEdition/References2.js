@@ -74,17 +74,6 @@ class References extends React.Component {
     });
   }
 
-  componentDidMount () {
-    const { handleReferencesName } = this.context;
-    handleReferencesName(this.state.items.slice());
-  }
-
-  componentWillUnmount () {
-    const { handleReferencesName } = this.context;
-    handleReferencesName(this.state.items.slice());
-  }
-
-  com
   render () {
     return (
       <div className='references'>

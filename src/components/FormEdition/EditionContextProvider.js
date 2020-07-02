@@ -1,9 +1,8 @@
 import React from 'react';
-import EditionContext from './EditionContext'
-
+import EditionContext from './EditionContext';
 
 class EditionContextProvider extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       firstname: '',
@@ -25,47 +24,56 @@ class EditionContextProvider extends React.Component {
       zip_code: '',
       city: '',
       // References
-      project_name: [],
-      //Tag
+      nameReferenceList: [],
+      imageReferenceList: [],
+      urlReferenceList: [],
+      // Tag
       tagNameChosen: [],
-      idTagList: [],
+      idTagList: []
     };
   }
 
   handleAdressFormChange = (e) => {
     const targetProp = e.target.name.toLowerCase();
-    this.setState({ ...this.state, [targetProp]: e.target.value })
+    this.setState({ ...this.state, [targetProp]: e.target.value });
   }
 
   handleReferencesName = (items) => {
-    this.setState({ project_name: items })
+    this.setState({ project_name: items });
   }
 
-
   addIdTagIdsChosen = (id) => {
-    this.setState({ idTagList: id })
+    this.setState({ idTagList: id });
   }
 
   handleTag = (e) => {
     const newtagName = this.state.tagNameChosen;
     if (!e.target.innerText) {
-      newtagName.pop()
-      this.setState({ tagNameChosen: newtagName })
+      newtagName.pop();
+      this.setState({ tagNameChosen: newtagName });
     } else {
-      newtagName.push(e.target.innerText)
-      this.setState({ tagNameChosen: newtagName })
+      newtagName.push(e.target.innerText);
+      this.setState({ tagNameChosen: newtagName });
     }
   }
 
-  render() {
+  // fetchDataToApi = () => {
+  //   const payload = idTagList;
+  //   console.log(idTagList);
+  //   API.post('/freelances/account',payload).then( (res) => {
+  //     history.push('/');
+  //     alert('Ready to post')
+  // }
+
+  render () {
     return (
       <div>
-        <EditionContext.Provider value={{ ...this.state, handleAdressFormChange: this.handleAdressFormChange, handleReferencesName: this.handleReferencesName, handleTag: this.handleTag, handleTagId:this.handleTagId,addIdTagIdsChosen:this.addIdTagIdsChosen }}>
+        <EditionContext.Provider value={{ ...this.state, handleAdressFormChange: this.handleAdressFormChange, handleTag: this.handleTag, handleTagId: this.handleTagId, addIdTagIdsChosen: this.addIdTagIdsChosen, handleReferencesName: this.handleReferencesName }}>
           {this.props.children}
         </EditionContext.Provider>
       </div>
     );
-  };
+  }
 }
 
-export default EditionContextProvider
+export default EditionContextProvider;

@@ -1,16 +1,16 @@
-import React from "react";
-import "../../styles/RefsList.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import FlipMove from "react-flip-move";
+import React from 'react';
+import '../../styles/RefsList.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import FlipMove from 'react-flip-move';
 
-function RefsList(props) {
+function RefsList (props) {
   const items = props.items;
   const listItems = items.map((item) => {
     return (
-      <div className="list" key={item.key}>
+      <div className='list' key={item.key}>
         <p>
           <input
-            type="text"
+            type='text'
             id={item.key}
             value={item.text}
             onChange={(e) => {
@@ -19,11 +19,11 @@ function RefsList(props) {
           />
           <span>
             <FontAwesomeIcon
-              className="faicons"
+              className='faicons'
               onClick={() => {
                 props.deleteItem(item.key);
               }}
-              icon="trash"
+              icon='trash'
             />
           </span>
         </p>
@@ -33,7 +33,7 @@ function RefsList(props) {
   });
   return (
     <div>
-      <FlipMove duration={300} easing="ease-in-out">
+      <FlipMove duration={300} easing='ease-in-out'>
         {listItems}
       </FlipMove>
     </div>

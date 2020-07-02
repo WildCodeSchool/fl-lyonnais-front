@@ -20,10 +20,10 @@ class Listing extends Component {
   fetchData = async () => {
     const newOffSet = this.state.offSet + 1;
     this.setState({ offSet: newOffSet });
-    await this.load(newOffSet * elementsPerPage, (newOffSet + 1) * elementsPerPage)
-    console.log(this.state.dataResults)
+    await this.load(newOffSet * elementsPerPage, (newOffSet + 1) * elementsPerPage);
+    console.log(this.state.dataResults);
   }
-  
+
   componentDidMount () {
     axios
       .get('https://bridge.buddyweb.fr/api/freelancers/test')
@@ -38,20 +38,18 @@ class Listing extends Component {
   render () {
     const { freelances } = this.state;
 
-    
-
     return (
       <div className='Listing'>
         <InfiniteScroll
-          dataLength={freelances.length} //This is important field to render the next data
+          dataLength={freelances.length} // This is important field to render the next data
           next={this.fetchData}
-          hasMore={true}
+          hasMore
         >
-            <ul className='everyFreelanceCards'>
-              <li>
-                {freelances.map(freelance => <Freelance key={generateKey(freelance)} id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />)}
-              </li>
-            </ul>
+          <ul className='everyFreelanceCards'>
+            <li>
+              {freelances.map(freelance => <Freelance key={generateKey(freelance)} id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />)}
+            </li>
+          </ul>
         </InfiniteScroll>
       </div>
     );

@@ -7,34 +7,34 @@ import PhotoCamera from '@material-ui/icons/PhotoCamera';
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
-      margin: theme.spacing(1),
-    },
+      margin: theme.spacing(1)
+    }
   },
   input: {
-    display: 'none',
-  },
+    display: 'none'
+  }
 }));
 
-export default function UploadButtons() {
+export default function UploadButtons () {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <input
-        accept="image/*"
+        accept='image/*'
         className={classes.input}
-        id="contained-button-file"
+        id='contained-button-file'
         multiple
-        type="file"
+        type='file'
       />
-      <label htmlFor="contained-button-file">
-        <Button variant="contained" color="primary" component="span">
+      <label htmlFor='contained-button-file'>
+        <Button variant='contained' color='primary' component='span'>
           Upload
         </Button>
       </label>
-      <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
-      <label htmlFor="icon-button-file">
-        <IconButton    aria-label="upload picture" component="span">
+      <input accept='image/*' className={classes.input} id='icon-button-file' type='file' />
+      <label htmlFor='icon-button-file'>
+        <IconButton aria-label='upload picture' component='span'>
           <PhotoCamera />
         </IconButton>
       </label>

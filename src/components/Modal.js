@@ -12,23 +12,23 @@ import Typography from '@material-ui/core/Typography';
 const styles = (theme) => ({
   root: {
     margin: 0,
-    padding: theme.spacing(2),
+    padding: theme.spacing(2)
   },
   closeButton: {
     position: 'absolute',
     right: theme.spacing(1),
     top: theme.spacing(1),
-    color: theme.palette.grey[500],
-  },
+    color: theme.palette.grey[500]
+  }
 });
 
 const DialogTitle = withStyles(styles)((props) => {
   const { children, classes, onClose, ...other } = props;
   return (
     <MuiDialogTitle disableTypography className={classes.root} {...other}>
-      <Typography variant="h6">{children}</Typography>
+      <Typography variant='h6'>{children}</Typography>
       {onClose ? (
-        <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+        <IconButton aria-label='close' className={classes.closeButton} onClick={onClose}>
           <CloseIcon />
         </IconButton>
       ) : null}
@@ -38,18 +38,18 @@ const DialogTitle = withStyles(styles)((props) => {
 
 const DialogContent = withStyles((theme) => ({
   root: {
-    padding: theme.spacing(2),
-  },
+    padding: theme.spacing(2)
+  }
 }))(MuiDialogContent);
 
 const DialogActions = withStyles((theme) => ({
   root: {
     margin: 0,
-    padding: theme.spacing(1),
-  },
+    padding: theme.spacing(1)
+  }
 }))(MuiDialogActions);
 
-export default function Modal() {
+export default function Modal () {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -61,11 +61,11 @@ export default function Modal() {
 
   return (
     <div>
-      <Button variant="outlined" bg="primary" onClick={handleClickOpen}>
+      <Button variant='outlined' bg='primary' onClick={handleClickOpen}>
         Changer de mot de passe
       </Button>
-      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-        <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+      <Dialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={open}>
+        <DialogTitle id='customized-dialog-title' onClose={handleClose}>
           Modal title
         </DialogTitle>
         <DialogContent dividers>
@@ -84,7 +84,7 @@ export default function Modal() {
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
+          <Button autoFocus onClick={handleClose} color='primary'>
             Save changes
           </Button>
         </DialogActions>

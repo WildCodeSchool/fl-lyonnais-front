@@ -39,7 +39,7 @@ const Apps = styled.div`
     padding: 0;
 `;
 
-function App() {
+function App () {
   const isHomePage = true;
   return (
     <Apps>

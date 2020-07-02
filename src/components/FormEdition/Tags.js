@@ -10,37 +10,37 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: 500,
     '& > * + *': {
-      marginTop: theme.spacing(3),
+      marginTop: theme.spacing(3)
     },
-    height: 300,
-  },
+    height: 300
+  }
 }));
 
-export default function Tags() {
+export default function Tags () {
   const [tagList, setTagList] = useState([]);
   const url = 'http://localhost:3000/tags';
   useEffect(() => {
-       async function getData() {
-        await axios.get(url)
-        .then(res =>  res.data)
-        .then(data => setTagList(data.data))
-      }
-      getData();
-  },[])
-  
+    async function getData () {
+      await axios.get(url)
+        .then(res => res.data)
+        .then(data => setTagList(data.data));
+    }
+    getData();
+  }, []);
+
   const { tagNameChosen, handleTag, idTagList, addIdTagIdsChosen } = useContext(EditionContext);
   const classes = useStyles();
-  
-      const handleIdtag = (e) => {
-        handleTag(e)
-          const tagInputName = e.target.innerText.toLowerCase();
-          const ids = tagList.filter( tag => (tag.name.toLowerCase() === tagInputName))[0].id;
-          ids ? idTagList.push(ids) : alert('Merci de sélectionner une compétence');
-          addIdTagIdsChosen(idTagList)
-      } 
+
+  const handleIdtag = (e) => {
+    handleTag(e);
+    const tagInputName = e.target.innerText.toLowerCase();
+    const ids = tagList.filter(tag => (tag.name.toLowerCase() === tagInputName))[0].id;
+    ids ? idTagList.push(ids) : alert('Merci de sélectionner une compétence');
+    addIdTagIdsChosen(idTagList);
+  };
   return (
 
-    <React.Fragment>
+    <>
       <div className={classes.root}>
         <Autocomplete
           multiple
@@ -52,15 +52,13 @@ export default function Tags() {
           freeSolo
           renderTags={(value, getTagProps) =>
             value.map((option, index) => (
-              <Chip variant="outlined" label={option} {...getTagProps({ index })} />
-            ))
-          }
+              <Chip variant='outlined' label={option} {...getTagProps({ index })} />
+            ))}
           renderInput={(params) => (
-            <TextField {...params} variant="filled" label="compétences" placeholder="Favorites" />
+            <TextField {...params} variant='filled' label='compétences' placeholder='Favorites' />
           )}
         />
       </div>
-    </React.Fragment>
+    </>
   );
 }
-
