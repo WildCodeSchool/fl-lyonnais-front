@@ -16,7 +16,7 @@ const Freelance = (props) => {
             <div className='card-body'>
 
               <div className='card-name'>
-                <h4>{props.firstname}</h4> <h4>{props.lastname}</h4>
+                <h4>{props.firstname} {props.lastname}</h4>
               </div>
 
               <div className='card-title'>

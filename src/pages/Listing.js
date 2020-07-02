@@ -13,7 +13,7 @@ const Listing = () => {
   useEffect(() => {
     const fetchFreelances = async () => {
       setLoading(true);
-      const res = await axios.get('http://localhost:3000/freelance');
+      const res = await axios.get('http://localhost:7777/freelances');
       setFreelances(res.data.data);
       setLoading(false);
     };

@@ -50,7 +50,7 @@ export default function SignUp () {
   const handlesubmit = (e) => {
     // Function à créer pour gérer champs vides, sensibilité de la case
     e.preventDefault();
-    const url = 'http://localhost:7777/user';
+    const url = 'http://localhost:7777/users';
     console.log(infosRegistration);
     if (validateEmail(infosRegistration.email) || isSiret(infosRegistration.siret)) {
       axios

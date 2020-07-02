@@ -20,6 +20,8 @@ src: url('../font/BalooBhaina2-Regular.ttf') format('truetype');
   align-items: flex-start;
   width: auto;
   height: initial;
+  list-style: none;
+  padding-left: 0;
 }
 
 body {
@@ -110,9 +112,11 @@ $font-main: 'balooBhaina2Regular', sans-serif;
 .pagination {
   display: -ms-flexbox;
   display: flex;
+  justify-content: center;
   padding-left: 0;
   list-style: none;
   border-radius: .25rem;
+  margin: auto;
 }
 
 .page-link {
