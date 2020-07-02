@@ -16,7 +16,7 @@ class Detail extends Component {
 
   componentDidMount () {
     axios
-      .get(process.env.REACT_APP_API_URL + '/freelance/2')
+      .get(process.env.REACT_APP_API_URL + '/freelances/2')
       .then(response => response.data)
       .then(data => {
         this.setState({
