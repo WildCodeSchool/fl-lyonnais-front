@@ -1,5 +1,5 @@
 body {
- margin:0;
+  margin:0;
 }
 
 .home {
@@ -9,11 +9,15 @@ body {
 }
 
 .homepage {
-  border-style: ridge;
+  // border: 1px solid var(--blue);
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 10vh;
   height: auto;
+  width: calc(90% - 60px);
   max-width: 1024px;
+  background-color:white;
+  padding:30px;
 }
 
 .home .form {
@@ -24,7 +28,6 @@ body {
 
 .home main p {
   text-align: justify;
-  margin: 3vh;
   padding-top: 0px;
 }
 
@@ -33,13 +36,30 @@ body {
   padding-top: 30px;
 }
 
+.logoHome {
+  height: 100px;
+}
+
 .paragraphe {
   margin-bottom: 5vh;
   height: auto;
 }
-.paragrapheh3 {
-  margin:10px;
+
+.paragraphe h3 {
   letter-spacing: 2px;
+  position: relative;
+  text-align:left;
+  color: var(--blue);
+}
+
+.paragraphe h3::after {
+  position:absolute;
+  content:'';
+  left:0px;
+  bottom:-8px;
+  width:20px;
+  height:1px;
+  background-color:var(--blue);
 }
 
 h1 {
@@ -53,27 +73,7 @@ h1 {
 
 @media screen and (min-width: 750px) { 
 
-  .paragraphe h3 {
-    color: var(--green);
-    text-align: center;
-  }
-
-
-  .homepage {
-    border-style: ridge;
-    margin: auto auto 10px;
-    height: auto;
-
-    
-  }
-
-  .paragraphe {
-  margin-bottom: 4vh;
-  height: auto;
-
   p {
-    font-size: 1.4em;
+    font-size: 1.1em;
   }
-  }
-
 }
