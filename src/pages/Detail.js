@@ -16,12 +16,12 @@ class Detail extends Component {
 
   componentDidMount () {
     axios
-      .get('http://localhost:3000/freelances/2')
+      .get(process.env.REACT_APP_API_URL + '/freelance/2')
       .then(response => response.data)
       .then(data => {
         this.setState({
           freelances: data.data,
-          tags: data.tags,
+          tags: data.tags
         });
       });
   }
