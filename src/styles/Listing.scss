@@ -25,7 +25,7 @@ src: url('../font/BalooBhaina2-Regular.ttf') format('truetype');
 }
 
 body {
-  background: #eee;
+  background: #eef9fe;
   }
 
 $card-width: 170px;
@@ -34,11 +34,24 @@ $card-height: 280px;
 $font-main: 'balooBhaina2Regular', sans-serif;
 
 .freelance2:hover {
-  transform: scale(1.09);
+  transform: scale(1.03);
+}
+.freelance2:hover .container .card {
+  box-shadow:1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+.freelance2 .container .card .card-image::after {
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:calc(100% - 13px);
+  background-image:linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
 }
 
 .freelance2 {
   display: inline-flex;
+  transition: all 0.2s ease-in-out;
 
   .container {
 
@@ -46,15 +59,26 @@ $font-main: 'balooBhaina2Regular', sans-serif;
 
     .card {
       width: $card-width;
-      height: $card-height;
-      background-color: #24A198;;
-      box-shadow: 0 5px 20px #555;
+      background-color: #eef9fe;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+      border-radius: 5px;
 
       .card-image {
         width: $image-size;
         position: relative;
         overflow: hidden;
         height: auto;
+        border-radius: 5px;
+        
+      .card-image::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 13px);
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+      }
 
         img {
           width: $image-size;
@@ -74,14 +98,16 @@ $font-main: 'balooBhaina2Regular', sans-serif;
           font-size: 0.9rem;
           margin: 0px;
           text-decoration: none;
+          color:var(--blue);
         }
       } 
 
         .card-title {
           p {
             font-size: 0.8rem;
-            color:white;
+            color:#222222;
             margin: 0;
+            padding-bottom: 15px;
         }
       }
 
