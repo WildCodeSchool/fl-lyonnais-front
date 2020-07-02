@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
 import Listing from './pages/Listing';
@@ -14,6 +14,8 @@ import Regular from './font/BalooBhaina2-Regular.ttf';
 import SemiBold from './font/BalooBhaina2-SemiBold.ttf';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import AuthContext from './Auth/AuthContext';
+import jwtDecode from 'jwt-decode';
 
 const Apps = styled.div`
     text-align: center;
@@ -37,22 +39,35 @@ const Apps = styled.div`
 `;
 
 function App () {
+  const [token, setToken] = useState(localStorage.getItem('authToken'));
+  const setTokenInLocalStorage = (token) => {
+    localStorage.setItem('authToken', token);
+    setToken(token);
+  };
+  let userNameFromToken = null;
+  if (token) {
+    userNameFromToken = jwtDecode(token).sub || null;
+  }
+
   return (
     <Apps>
-      <Router>
-        <Header />
-        <main style={{ flex: '1 0 auto' }}>
-          <Switch>
-            <Route exact path='/'><Home /></Route>
-            <Route path='/detail/:id'><Detail /></Route>
-            <Route path='/liste_freelance'><Listing /></Route>
-            <Route path='/inscription'><Registration /></Route>
-            <Route path='/connexion'><SignIn /></Route>
-            <Route path='/mentions_legales'><LegalDisclaimer /></Route>
-          </Switch>
-        </main>
-        <Footer />
-      </Router>
+      <AuthContext.Provider value={{ token: token, saveToken: (token) => (setTokenInLocalStorage(token)) }}>
+        {userNameFromToken && <div><p>Welcome back {userNameFromToken} !</p><button onClick={() => setTokenInLocalStorage('')}>Log out</button></div>}
+        <Router>
+          <Header />
+          <main style={{ flex: '1 0 auto' }}>
+            <Switch>
+              <Route exact path='/'><Home /></Route>
+              <Route path='/detail/:id'><Detail /></Route>
+              <Route path='/liste_freelance'><Listing /></Route>
+              <Route path='/inscription'><Registration /></Route>
+              <Route path='/connexion'><SignIn /></Route>
+              <Route path='/mentions_legales'><LegalDisclaimer /></Route>
+            </Switch>
+          </main>
+          <Footer />
+        </Router>
+      </AuthContext.Provider>
     </Apps>
   );
 }

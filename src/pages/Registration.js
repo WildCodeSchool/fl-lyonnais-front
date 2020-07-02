@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import '../styles/Registration.scss';
-import { validateEmail, isSiret, onlyLetters } from '../functionshelper';
+import { validateEmail, isSiret } from '../functionshelper';
 import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
@@ -50,18 +50,19 @@ export default function SignUp () {
   const handlesubmit = (e) => {
     // Function à créer pour gérer champs vides, sensibilité de la case
     e.preventDefault();
-    const url = 'http://localhost:3000/user';
-    console.log(onlyLetters(infosRegistration.firstname));
-
-    if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret) && onlyLetters(infosRegistration.firstname) && onlyLetters(infosRegistration.lastname)) {
+    const url = 'http://localhost:7777/user';
+    console.log(infosRegistration);
+    if (validateEmail(infosRegistration.email) || isSiret(infosRegistration.siret)) {
       axios
         .post(url, infosRegistration)
         .then(res => res.data)
+        .then(data => alert('yooooooooooo')
+        )
         .catch(error => {
           console.log(error);
         });
     } else {
-      alert('Champ manquant, email non valide, siret invalide');
+      alert('Champ manquant ou un email valide');
     }
   };
 

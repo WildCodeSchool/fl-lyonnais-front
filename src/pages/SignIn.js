@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import { useHistory, Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import { Link } from 'react-router-dom';
+
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import API from '../Auth/API';
+import AuthContext from '../Auth/AuthContext';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -32,8 +35,23 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SignIn () {
+export default function SignIn (props) {
+  const { saveToken } = useContext(AuthContext);
+  const history = useHistory();
   const classes = useStyles();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const payload = { email, password };
+    API.post('/connexion', payload).then((res) => {
+      history.push('/');
+      // res.data.token;
+      saveToken(res.data.token);
+    })
+      .catch(err => alert('erreur sur les identifiants'));
+  };
 
   return (
     <div>
@@ -46,7 +64,7 @@ export default function SignIn () {
           <Typography component='h1' variant='h5'>
           Connexion
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <TextField
               variant='outlined'
               margin='normal'
@@ -57,6 +75,8 @@ export default function SignIn () {
               name='email'
               autoComplete='email'
               autoFocus
+              value={email}
+              onChange={(e) => { setEmail(e.target.value); }}
             />
             <TextField
               variant='outlined'
@@ -68,6 +88,8 @@ export default function SignIn () {
               type='password'
               id='password'
               autoComplete='current-password'
+              vlaue={password}
+              onChange={(e) => { setPassword(e.target.value); }}
             />
             <FormControlLabel
               control={<Checkbox value='remember' color='primary' />}
