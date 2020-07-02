@@ -14,12 +14,8 @@ function detailSkills (props) {
               <th><h4>Autres</h4></th>
             </tr>
             <tr>
-              <td>{mainSkills.map(mainSkill => {
-                return (<p key={generateKey(mainSkill)}>{mainSkill}</p>);
-              })}
-              </td>
-              <td>{otherSkills.map(otherSkill => {
-                return (<p key={generateKey(otherSkill)}>{otherSkill}</p>);
+              <td>{props.tags.map(tag => {
+                return (<p key={generateKey(tag.id)}>{tag.name}</p>);
               })}
               </td>
 
@@ -34,6 +30,3 @@ function detailSkills (props) {
   );
 }
 export default detailSkills;
-
-const mainSkills = ['js', 'react', 'node'];
-const otherSkills = ['html', 'css', 'redux', 'express', 'design', 'devops', 'docker'];

@@ -9,30 +9,31 @@ class Detail extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      freelances: []
+      freelances: [],
+      tags: []
     };
   }
 
   componentDidMount () {
     axios
-      .get('http://localhost:3000/freelance/2')
+      .get('http://localhost:3000/freelances/2')
       .then(response => response.data)
       .then(data => {
         this.setState({
-          freelances: data.data
+          freelances: data.data,
+          tags: data.tags,
         });
       });
   }
 
   render () {
-    const { freelances } = this.state;
-
+    const { freelances, tags } = this.state;
     return (
       <div>
         <div className='Detail'>
           <DetailBio freelances={freelances} />
           <DetailReferences freelances={freelances} />
-          <DetailSkills freelances={freelances} />
+          <DetailSkills tags={tags} freelances={freelances} />
           <DetailContact freelances={freelances} />
         </div>
       </div>

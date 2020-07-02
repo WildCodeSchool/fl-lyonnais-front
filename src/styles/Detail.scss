@@ -1,8 +1,6 @@
 /* GLOBAL */
-
-
   
-  .detailh2 {
+.detailh2 {
   text-align: center;
   font-size: 1.5em;
   border-top: solid 2px black;
@@ -10,40 +8,32 @@
   background-color: #24A198;
   margin: 20px;
   padding:5px;
-  
-
-  }
+}
   
   /* BIO */
   
-  .detailBio {
+.detailBio {
   background-color: #d3d3d385;
   margin:20px;
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
-  
-  
-  }
- 
+}
 
-  .detailtextebio {
+.detailtextebio {
   margin-left: 10px;;
   margin-right: 10px;
   margin-bottom: 10px;
   text-align: justify;
-
-  }
+}
   
-  .detailnametitle {
+.detailnametitle {
   align-self: center;
   justify-content: center;
   margin: auto;
+}
   
-  
-  }
-  
-  .detailPhoto {
+.detailPhoto {
   height: 130px;
   width: 35vw;
   padding-left: 10 px;
@@ -51,71 +41,64 @@
   margin-right: 15px;
   margin-left: 15px;
   margin-bottom: 15px;
-  }
+}
   
   /* REFERENCES */
   
-  .carousel {
+.carousel {
   display: flex;
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
   margin: 20px;
   background-color: #d3d3d385;
-  
-  }
+}
 
-  .reference {
+.reference {
   margin-top: 10px;
-
-  }
+}
   
-  .carousel img {
+.carousel img {
   width: 15vw;
   margin: 10px 10px;
   border: solid 1px black;
-  }
+}
   
-  .carousel p {
+.carousel p {
   text-align: center;
   margin-bottom: 10px;
-
-  }
+}
   
   /* COMPETENCES */
 
-  .detailskills {
+.detailskills {
   background-color: #d3d3d385;
   border-style: groove;
   margin:20px;
-
-  }
+}
   
-  .detailtable {
+.detailtable {
   border-collapse: collapse;
   width: 100%;
-
-  }
+}
   
-  th, td {
+th, td {
   padding: 8px;
   text-align: left;
   border: 2px solid #EB483E;
-
-  }
+}
   
   /* CONTACT */
   
-  .detailcontact {
+.detailcontact {
   background-color: #d3d3d385;
   border-style: ridge;
   margin: 20px;
-
-  }
+}
   
   /* /////////////////////////////// MEDIA QUERIES 750 PX /////////////////////////////// */
   
-  @media screen and (min-width: 750px) {
+@media screen and (min-width: 750px) {
   /* MEDIA QUERIES BIO */
   
   .detailnametitle {
@@ -128,34 +111,28 @@
   }
 
   .detailBio {
-    
     flex-direction: column;
     margin:100px;
     background-color: #d3d3d385;
     font-size: 0.9em;
-
   }
 
 
   .detailh2 {
     margin:100px;
-
   }
 
   .detailPhoto {
-  
     display: flex;
     height: auto;
     width: 19vw;
     float: left;
-    
   }
   
   .detailtextebio {
     margin-left: 15px;
     margin-right: 15px;
     margin-bottom: 15px;
-   
   }
 
   /* MEDIA QUERIES REFERENCES*/
@@ -166,13 +143,11 @@
     overflow-y: visible;
     display: flex;
     flex-wrap: wrap;
-
   }
   
   .carousel img {
     width: 240px;
     margin: 13px;
-
   }
   
   
@@ -181,7 +156,6 @@
   .detailskills {
     border-style: groove;
     margin:100px;
-    
   }
   
   
@@ -190,8 +164,6 @@
   .detailcontact {
     border-style: ridge;
     margin:100px;
-
-   }
-
   }
+}
   
