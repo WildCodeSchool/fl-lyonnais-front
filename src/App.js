@@ -16,6 +16,9 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import AuthContext from './Auth/AuthContext';
 import jwtDecode from 'jwt-decode';
+import UserIdContextProvider from './components/UserIdContextProvider'
+
+
 
 const Apps = styled.div`
     text-align: center;
@@ -38,26 +41,6 @@ const Apps = styled.div`
     padding: 0;
 `;
 
-const UserIdContext = createContext();
-
-class UserIdContextProvider extends React.Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      userId: null
-
-    };
-  }
-
-  render () {
-    return (
-      <UserIdContext.Provider value={this.state}>
-        {this.props.children}
-      </UserIdContext.Provider>
-    );
-  }
-}
-
 function App () {
   const [token, setToken] = useState(localStorage.getItem('authToken'));
   const setTokenInLocalStorage = (token) => {
@@ -71,25 +54,25 @@ function App () {
 
   return (
     <Apps>
+      <UserIdContextProvider>
       <AuthContext.Provider value={{ token: token, saveToken: (token) => (setTokenInLocalStorage(token)) }}>
         {userNameFromToken && <div><p>Welcome back {userNameFromToken} !</p><button onClick={() => setTokenInLocalStorage('')}>Log out</button></div>}
         <Router>
           <Header />
           <main style={{ flex: '1 0 auto' }}>
             <Switch>
-              <UserIdContextProvider>
                 <Route exact path='/'><Home /></Route>
-                <Route path='/detail/:id'><Detail /></Route>
-                <Route path='/liste_freelance'><Listing /></Route>
+                  <Route path='/detail/:id'><Detail /></Route>
+                  <Route path='/liste_freelance'><Listing /></Route>
                 <Route path='/inscription'><Registration /></Route>
                 <Route path='/connexion'><SignIn /></Route>
                 <Route path='/mentions_legales'><LegalDisclaimer /></Route>
-              </UserIdContextProvider>
             </Switch>
           </main>
           <Footer />
         </Router>
       </AuthContext.Provider>
+      </UserIdContextProvider>
     </Apps>
   );
 }
