@@ -1,22 +1,26 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Pagination from '@material-ui/lab/Pagination';
+import { Link } from 'react-router-dom'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      marginTop: theme.spacing(2),
-      margin: 'auto',
-      width: '342px'
-    }
+const Pagination = ({ freelancesPerPage, totalFreelances, paginate }) => {
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(totalFreelances / freelancesPerPage); i++) {
+    pageNumbers.push(i);
   }
-}));
 
-export default function BasicPagination () {
-  const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <Pagination count={10} color='primary' />
-    </div>
+    <nav>
+      <ul className='pagination'>
+        {pageNumbers.map(number => (
+          <li key={number}>
+            <Link onClick={() => paginate(number)} to='#' className='page-link'>
+              {number}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
-}
+};
+
+export default Pagination;

@@ -1,54 +1,52 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Freelance from '../components/Freelance';
 import '../styles/Listing.scss';
+import Pagination from '../components/Pagination';
 import axios from 'axios';
-import { generateKey } from '../functionshelper';
-import BasicPagination from '../components/Pagination';
 
-const elementsPerPage = 10;
+const Listing = () => {
+  const [freelances, setFreelances] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [freelancesPerPage] = useState(15);
 
-class Listing extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      freelances: [],
-      offSet: 0
+  useEffect(() => {
+    const fetchFreelances = async () => {
+      setLoading(true);
+      const res = await axios.get('http://localhost:3000/freelance');
+      setFreelances(res.data.data);
+      setLoading(false);
     };
+
+    fetchFreelances();
+  }, []);
+
+  if (loading) {
+    return <h2>Loading...</h2>;
   }
 
-  fetchData = async () => {
-    const newOffSet = this.state.offSet + 1;
-    this.setState({ offSet: newOffSet });
-    await this.load(newOffSet * elementsPerPage, (newOffSet + 1) * elementsPerPage);
-    console.log(this.state.dataResults);
-  }
+  // Get current freelances
+  const indexOfLastFreelance = currentPage * freelancesPerPage;
+  const indexOfFirstFreelance = indexOfLastFreelance - freelancesPerPage;
+  const currentFreelances = freelances.slice(indexOfFirstFreelance, indexOfLastFreelance);
 
-  componentDidMount () {
-    axios
-      .get('http://localhost:3000/freelance')
-      .then(response => response.data)
-      .then(data => {
-        this.setState({
-          freelances: data.data
-        });
-      });
-  }
+  // Change page
+  const paginate = pageNumber => setCurrentPage(pageNumber);
 
-  render () {
-    const { freelances } = this.state;
-
-    return (
-      <div className='Listing'>
-
-        <ul className='everyFreelanceCards'>
-          <li>
-            {freelances.map(freelance => <Freelance key={generateKey(freelance)} id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />)}
-          </li>
-        </ul>
-        <BasicPagination />
-      </div>
-    );
-  }
-}
+  return (
+    <div className='Listing'>
+      <ul className='everyFreelanceCards'>
+        <li>
+          {currentFreelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))}
+        </li>
+      </ul>
+      <Pagination
+        freelancesPerPage={freelancesPerPage}
+        totalFreelances={freelances.length}
+        paginate={paginate}
+      />
+    </div>
+  );
+};
 
 export default Listing;
