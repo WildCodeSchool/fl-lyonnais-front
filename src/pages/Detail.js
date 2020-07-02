@@ -33,8 +33,10 @@ class Detail extends Component {
         <div className='Detail'>
           <DetailBio freelances={freelances} />
           <DetailReferences freelances={freelances} />
-          <DetailSkills tags={tags} freelances={freelances} />
-          <DetailContact freelances={freelances} />
+          <div className="responsiveSkillsContact">
+            <DetailSkills tags={tags} freelances={freelances} />
+            <DetailContact freelances={freelances} />
+          </div>
         </div>
       </div>
     );
