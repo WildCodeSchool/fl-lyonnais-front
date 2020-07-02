@@ -4,7 +4,7 @@ import '../styles/Detail.scss';
 function DetailContact (props) {
   return (
     <div>
-      <h3 className='detailh2'>Mes coordonnées</h3>
+      <h2 className='detailh2'>Mes coordonnées</h2>
       <div className='detailcontact'>
 
         <div className='detailcompany'>

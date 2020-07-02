@@ -5,23 +5,14 @@ const { generateKey } = require('../functionshelper');
 function detailSkills (props) {
   return (
     <div>
-      <h3 className='detailh2'>Mes compétences</h3>
+      <h2 className='detailh2'>Mes compétences</h2>
       <div className='detailskills'>
         <div className='mainSkills'>
-          <table className='detailtable'>
-            <tr>
-              <th><h4>Principales</h4></th>
-              <th><h4>Autres</h4></th>
-            </tr>
-            <tr>
-              <td>{props.tags.map(tag => {
-                return (<p key={generateKey(tag.id)}>{tag.name}</p>);
+          <ul>
+              {props.tags.map(tag => {
+                return (<li key={generateKey(tag.id)}>{tag.name}</li>);
               })}
-              </td>
-
-            </tr>
-          </table>
-
+          </ul>
         </div>
         <p id='detailskillstjm'>TJM : à partir de <span className='detailskillstjmprice'>{props.freelances.average_daily_rate}</span> € par jour.</p>
       </div>
