@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
 import Listing from './pages/Listing';
@@ -38,6 +38,26 @@ const Apps = styled.div`
     padding: 0;
 `;
 
+const UserIdContext = createContext();
+
+class UserIdContextProvider extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      userId: null
+
+    };
+  }
+
+  render () {
+    return (
+      <UserIdContext.Provider value={this.state}>
+        {this.props.children}
+      </UserIdContext.Provider>
+    );
+  }
+}
+
 function App () {
   const [token, setToken] = useState(localStorage.getItem('authToken'));
   const setTokenInLocalStorage = (token) => {
@@ -57,12 +77,14 @@ function App () {
           <Header />
           <main style={{ flex: '1 0 auto' }}>
             <Switch>
-              <Route exact path='/'><Home /></Route>
-              <Route path='/detail/:id'><Detail /></Route>
-              <Route path='/liste_freelance'><Listing /></Route>
-              <Route path='/inscription'><Registration /></Route>
-              <Route path='/connexion'><SignIn /></Route>
-              <Route path='/mentions_legales'><LegalDisclaimer /></Route>
+              <UserIdContextProvider>
+                <Route exact path='/'><Home /></Route>
+                <Route path='/detail/:id'><Detail /></Route>
+                <Route path='/liste_freelance'><Listing /></Route>
+                <Route path='/inscription'><Registration /></Route>
+                <Route path='/connexion'><SignIn /></Route>
+                <Route path='/mentions_legales'><LegalDisclaimer /></Route>
+              </UserIdContextProvider>
             </Switch>
           </main>
           <Footer />
