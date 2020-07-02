@@ -6,7 +6,7 @@ const Freelance = (props) => {
   return (
     <div className='freelance2'>
       <div className='container'>
-        <Link to={`/detail/${props.id}`}>
+        <Link style={{ textDecoration: 'none' }} to={`/detail/${props.id}`}>
           <div className='card'>
 
             <div className='card-image'>
