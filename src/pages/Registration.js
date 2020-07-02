@@ -49,13 +49,14 @@ export default function SignUp () {
   const handlesubmit = (e) => {
     // Function à créer pour gérer champs vides, sensibilité de la case
     e.preventDefault();
-    const url = 'http://localhost:3000/user';
+    const url = 'http://localhost:3000/users';
     console.log(onlyLetters(infosRegistration.firstname));
 
     if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret) && onlyLetters(infosRegistration.firstname) && onlyLetters(infosRegistration.lastname)) {
       axios
         .post(url, infosRegistration)
         .then(res => res.data)
+        .then(data => alert('Inscrit !!!'))
         .catch(error => {
           console.log(error);
         });
