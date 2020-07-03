@@ -1,12 +1,11 @@
 import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
@@ -48,7 +47,7 @@ export default function SignIn (props) {
     API.post('/connexion', payload).then((res) => {
       history.push('/');
       // res.data.token;
-      saveToken(res.data.token)
+      saveToken(res.data.token);
     })
       .catch(err => alert('erreur sur les identifiants'));
   };
@@ -62,7 +61,7 @@ export default function SignIn (props) {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component='h1' variant='h5'>
-          Sign in
+          Connexion
           </Typography>
           <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <TextField
@@ -71,7 +70,7 @@ export default function SignIn (props) {
               required
               fullWidth
               id='email'
-              label='Email Address'
+              label='Adresse email'
               name='email'
               autoComplete='email'
               autoFocus
@@ -84,7 +83,7 @@ export default function SignIn (props) {
               required
               fullWidth
               name='password'
-              label='Password'
+              label='Mot de passe'
               type='password'
               id='password'
               autoComplete='current-password'
@@ -93,7 +92,7 @@ export default function SignIn (props) {
             />
             <FormControlLabel
               control={<Checkbox value='remember' color='primary' />}
-              label='Remember me'
+              label='Se souvenir de moi'
             />
             <Button
               type='submit'

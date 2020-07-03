@@ -4,21 +4,20 @@ import '../styles/Detail.scss';
 function DetailContact (props) {
   return (
     <div>
-      <h2 className='detailh2'>Mes coordonnées</h2>
+      <h3 className='detailh2'>Mes coordonnées</h3>
       <div className='detailcontact'>
 
         <div className='detailcompany'>
-          <p>{props.freelance.company}</p>
-          <p>{props.freelance.street}</p>
-          <p>{props.freelance.zip_code} - {props.freelance.city} - {props.freelance.country}</p>
+          <p>{props.freelances.street}</p>
+          <p>{props.freelances.zip_code} - {props.freelances.city} - {props.freelances.country}</p>
         </div>
         <div className='Detailcontactemail'>
-          <p>email : {props.freelance.email}</p>
-          <p>Site web : {props.freelance.url_web_site}</p>
+          <p>email : {props.freelances.email}</p>
+          <p>Site web : {props.freelances.url_web_site}</p>
         </div>
         <div className='Detailcontactsiret'>
-          <p>SIRET : {props.freelance.siret}</p>
-          <p>Numéro de TVA : {props.freelance.vat_number}</p>
+          <p>SIRET : {props.freelances.siret}</p>
+          <p>Numéro de TVA : {props.freelances.vat_number}</p>
         </div>
 
       </div>

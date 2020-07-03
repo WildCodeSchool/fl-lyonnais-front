@@ -1,45 +1,52 @@
-import React, { Component } from 'react';
-import Freelance from '../components/Freelance2';
+import React, { useState, useEffect } from 'react';
+import Freelance from '../components/Freelance';
 import '../styles/Listing.scss';
-// import freelances from '../test/people';
-import { Link } from 'react-router-dom';
+import Pagination from '../components/Pagination';
 import axios from 'axios';
-import { generateKey } from '../functionshelper';
 
-class Listing extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      freelances: []
+const Listing = () => {
+  const [freelances, setFreelances] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [freelancesPerPage] = useState(15);
+
+  useEffect(() => {
+    const fetchFreelances = async () => {
+      setLoading(true);
+      const res = await axios.get(process.env.REACT_APP_API_URL + '/freelance');
+      setFreelances(res.data.data);
+      setLoading(false);
     };
+
+    fetchFreelances();
+  }, []);
+
+  if (loading) {
+    return <h2>Loading...</h2>;
   }
 
-  componentDidMount () {
-    axios
-      .get('https://bridge.buddyweb.fr/api/freelancers/test')
-      .then(response => response.data)
-      .then(data => {
-        this.setState({
-          freelances: data
+  // Get current freelances
+  const indexOfLastFreelance = currentPage * freelancesPerPage;
+  const indexOfFirstFreelance = indexOfLastFreelance - freelancesPerPage;
+  const currentFreelances = freelances.slice(indexOfFirstFreelance, indexOfLastFreelance);
 
-        });
-      });
-  }
+  // Change page
+  const paginate = pageNumber => setCurrentPage(pageNumber);
 
-  render () {
-    const { freelances } = this.state;
-
-    return (
-      <div className='Listing'>
-
-        <Link to='/detail'>
-          <ul className='everyFreelanceCards'>
-            {freelances.map(freelance => <Freelance key={generateKey(freelance)} id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />)}
-          </ul>
-        </Link>
-      </div>
-    );
-  }
-}
+  return (
+    <div className='Listing'>
+      <ul className='everyFreelanceCards'>
+        <li>
+          {currentFreelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))}
+        </li>
+      </ul>
+      <Pagination
+        freelancesPerPage={freelancesPerPage}
+        totalFreelances={freelances.length}
+        paginate={paginate}
+      />
+    </div>
+  );
+};
 
 export default Listing;

@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Freelance2.scss';
+import '../styles/Listing.scss';
 
 const Freelance = (props) => {
   return (
     <div className='freelance2'>
       <div className='container'>
-        <div className='card'>
-          <Link to={`/detail/${props.id}`}>
+        <Link style={{ textDecoration: 'none' }} to={`/detail/${props.id}`}>
+          <div className='card'>
 
             <div className='card-image'>
               <img src={props.urlPhoto} alt='Orange' />
@@ -24,8 +24,8 @@ const Freelance = (props) => {
               </div>
 
             </div>
-          </Link>
-        </div>
+          </div>
+        </Link>
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ import Container from '@material-ui/core/Container';
 import '../styles/Registration.scss';
 import { validateEmail, isSiret } from '../functionshelper';
 import axios from 'axios';
-import AlertDialogSlide from '../components/AlertDialogSlide';
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -50,7 +50,7 @@ export default function SignUp () {
   const handlesubmit = (e) => {
     // Function à créer pour gérer champs vides, sensibilité de la case
     e.preventDefault();
-    const url = 'http://localhost:7777/user';
+    const url = process.env.REACT_APP_API_URL + '/user';
     console.log(infosRegistration);
     if (validateEmail(infosRegistration.email) || isSiret(infosRegistration.siret)) {
       axios

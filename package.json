@@ -5,10 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.10.1",
     "@material-ui/icons": "^4.9.1",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/react-transition-group": "^4.4.0",
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "axios": "^0.19.2",
     "jwt-decode": "^2.2.0",
     "node-sass": "^4.14.1",
@@ -16,8 +13,6 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "reactstrap": "^8.4.1",
-    "semantic-ui-react": "^0.88.2",
     "styled-components": "^5.1.1"
   },
   "scripts": {
@@ -52,8 +47,6 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "bootstrap": "^4.5.0",
-    "husky": "^4.2.5",
-    "react-bootstrap": "^1.0.1"
+    "husky": "^4.2.5"
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Generate an unique key :
 export const generateKey = (data) => `${data}_${new Date().getTime()}`;
 
@@ -13,4 +14,8 @@ export function validateNumber (num) {
 
 export function isSiret (siret) {
   return !!(validateNumber(siret) && siret.toString().length === 14);
+}
+
+export function onlyLetters (input) {
+  return input.match(/^[A-Za-z]+$/);
 }
