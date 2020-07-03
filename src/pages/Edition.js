@@ -16,7 +16,6 @@ import InfosPro from '../components/FormEdition/InfosPro';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import EditionContext from '../components/FormEdition/EditionContext';
-import EditionContextProvider from '../components/FormEdition/EditionContextProvider';
 import API from '../API';
 
 const useStyles = makeStyles((theme) => ({

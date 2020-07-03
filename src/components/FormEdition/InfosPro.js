@@ -4,6 +4,8 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import EditionContext from './EditionContext';
+import { validURL } from '../../functionshelper';
+
 
 const useStyles = makeStyles((theme) => ({
   height: {
@@ -56,7 +58,7 @@ function InfosPro () {
         <Grid container spacing={3} alignItems='flex-start'>
           <Grid item xs={12}>
             <TextField
-              required id='average_daily_rate' type='number' name='average_daily_rate' label='Taux journalier moyen' value={average_daily_rate} fullWidth autoComplete='cc-projet'
+              required id='average_daily_rate' type='number' name='average_daily_rate' label='Taux journalier moyen en € HT' value={average_daily_rate} fullWidth autoComplete='cc-projet'
               onChange={(e) => handleAdressFormChange(e)}
             />
           </Grid>
