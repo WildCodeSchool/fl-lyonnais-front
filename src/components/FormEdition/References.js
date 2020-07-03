@@ -32,8 +32,6 @@ class References extends React.Component {
     const newItem = this.state.currentItem;
     if (newItem.text !== '') {
       const items = [...this.state.items, newItem];
-      const { handleReferencesName } = this.context;
-      handleReferencesName(this.state.items);
       this.setState({
         items: items,
         currentItem: {
@@ -42,6 +40,8 @@ class References extends React.Component {
         }
       });
     }
+    const { handleReferencesName } = this.context;
+    handleReferencesName(this.state.items);
   }
 
   handleInput (e) {
@@ -75,16 +75,16 @@ class References extends React.Component {
   }
 
   componentDidMount () {
-    const { handleReferencesName } = this.context;
-    handleReferencesName(this.state.items.slice());
+    const { nameReferenceList } = this.context;
+    this.setState( {items : nameReferenceList})
   }
 
-  componentWillUnmount () {
-    const { handleReferencesName } = this.context;
-    handleReferencesName(this.state.items.slice());
-  }
+  // componentWillUnmount () {
+  //   // const { handleReferencesName } = this.context;
+  //   // handleReferencesName(this.state.items.slice());
+  // }
 
-  com
+  
   render () {
     return (
       <div className='references'>

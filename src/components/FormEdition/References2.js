@@ -1,108 +1,106 @@
-import React, { useContext } from 'react';
-import '../../styles/References.css';
-import RefsList from './RefsList';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import UploadButtons from '../UploadButtons';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import EditionContext from './EditionContext';
+import React from 'react';
 
-library.add(faTrash);
 
-class References extends React.Component {
-  static contextType = EditionContext;
-  constructor (props) {
-    super(props);
-    this.state = {
-      items: [],
-      currentItem: {
-        text: '',
-        key: ''
-      }
+class References2 extends React.Component {
+  state = {
+    rows: [{}]
+  };
+  handleChange = idx => e => {
+    const { name, value } = e.target;
+    const rows = [...this.state.rows];
+    rows[idx] = {
+      [name]: value
     };
-    this.addItem = this.addItem.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-    this.deleteItem = this.deleteItem.bind(this);
-    this.setUpdate = this.setUpdate.bind(this);
-  }
-
-  addItem (e) {
-    e.preventDefault();
-    const newItem = this.state.currentItem;
-    if (newItem.text !== '') {
-      const items = [...this.state.items, newItem];
-      const { handleReferencesName } = this.context;
-      handleReferencesName(this.state.items);
-      this.setState({
-        items: items,
-        currentItem: {
-          text: '',
-          key: ''
-        }
-      });
-    }
-  }
-
-  handleInput (e) {
     this.setState({
-      currentItem: {
-        text: e.target.value,
-        key: Date.now()
-      }
+      rows
     });
-  }
-
-  deleteItem (key) {
-    const filteredItems = this.state.items.filter((item) => item.key !== key);
+  };
+  handleAddRow = () => {
+    const item = {
+      name: "",
+      mobile: ""
+    };
     this.setState({
-      items: filteredItems
+      rows: [...this.state.rows, item]
     });
-  }
-
-  setUpdate (text, key) {
-    console.log('items:' + this.state.items);
-    const items = this.state.items;
-    items.map((item) => {
-      if (item.key === key) {
-        console.log(item.key + '    ' + key);
-        item.text = text;
-      }
-    });
+  };
+  handleRemoveRow = () => {
     this.setState({
-      items: items
+      rows: this.state.rows.slice(0, -1)
     });
+  };
+  handleRemoveSpecificRow = (idx) => () => {
+    const rows = [...this.state.rows]
+    rows.splice(idx, 1)
+    this.setState({ rows })
   }
-
-  render () {
+  render() {
     return (
-      <div className='references'>
-        <div>
-          <p className='prescrition-title'>Renseigner vos références</p>
-          <RefsList
-            items={this.state.items}
-            deleteItem={this.deleteItem}
-            setUpdate={this.setUpdate}
-          />
-          <form id='to-do-form' onSubmit={this.addItem}>
-            <input
-              type='text'
-              placeholder='Entrer un projet'
-              value={this.state.currentItem.text}
-              onChange={this.handleInput}
-            />
-            <Grid item xs={12} justifyContent='center'>
-              <Typography variant='h6' gutterBottom color='primary'>
-                Photo des projets
-              </Typography>
-              <UploadButtons className='uploadbutton' />
-            </Grid>
-            {/* <AddButton type="submit" /> */}
-          </form>
+      <div>
+        <div className="container">
+          <div className="row clearfix">
+            <div className="col-md-12 column">
+              <table
+                className="table table-bordered table-hover"
+                id="tab_logic"
+              >
+                <thead>
+                  <tr>
+                    <th className="text-center"> # </th>
+                    <th className="text-center"> Name </th>
+                    <th className="text-center"> Mobile </th>
+                    <th />
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.rows.map((item, idx) => (
+                    <tr id="addr0" key={idx}>
+                      <td>{idx}</td>
+                      <td>
+                        <input
+                          type="text"
+                          name="name"
+                          value={this.state.rows[idx].name}
+                          onChange={this.handleChange(idx)}
+                          className="form-control"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          name="mobile"
+                          value={this.state.rows[idx].mobile}
+                          onChange={this.handleChange(idx)}
+                          className="form-control"
+                        />
+                      </td>
+                      <td>
+                        <button
+                          className="btn btn-outline-danger btn-sm"
+                          onClick={this.handleRemoveSpecificRow(idx)}
+                        >
+                          Remove
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <button onClick={this.handleAddRow} className="btn btn-primary">
+                Add Row
+              </button>
+              <button
+                onClick={this.handleRemoveRow}
+                className="btn btn-danger float-right"
+              >
+                Delete Last Row
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default References;
+export default References2

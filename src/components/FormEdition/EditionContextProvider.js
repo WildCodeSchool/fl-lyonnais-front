@@ -39,7 +39,7 @@ class EditionContextProvider extends React.Component {
   }
 
   handleReferencesName = (items) => {
-    this.setState({ project_name: items });
+    this.setState({ nameReferenceList: items });
   }
 
   addIdTagIdsChosen = (id) => {
