@@ -84,7 +84,7 @@ export default function Edition (props) {
       console.log(payload);
       API.post('http://localhost:3000/freelances/account', payload).then((res) => {
         history.push('/');
-        alert('Ready to post');
+        alert('Informations enregistrées vous allez être redirigés vers votre fiche de détail');
       });
     }
   };
