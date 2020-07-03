@@ -12,8 +12,8 @@ function DetailContact (props) {
           <p>{props.freelances.zip_code} - {props.freelances.city} - {props.freelances.country}</p>
         </div>
         <div className='Detailcontactemail'>
-          <p>email : {props.freelances.email}</p>
-          <p>Site web : {props.freelances.url_web_site}</p>
+          <a href="mailto: {props.freelances.email}"><p>email</p></a>
+          <a href={props.freelances.url_web_site}><p>Site web</p></a>
         </div>
         <div className='Detailcontactsiret'>
           <p>SIRET : {props.freelances.siret}</p>
