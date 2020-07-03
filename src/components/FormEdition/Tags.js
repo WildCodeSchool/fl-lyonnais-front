@@ -4,6 +4,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import EditionContext from './EditionContext';
+import Link from '@material-ui/core/Link';  
 import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
@@ -16,11 +17,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Tags () {
+export default function Tags() {
   const [tagList, setTagList] = useState([]);
   const url = 'http://localhost:3000/tags';
   useEffect(() => {
-    async function getData () {
+    async function getData() {
       await axios.get(url)
         .then(res => res.data)
         .then(data => setTagList(data.data));
@@ -38,6 +39,9 @@ export default function Tags () {
     ids ? idTagList.push(ids) : alert('Merci de sélectionner une compétence');
     addIdTagIdsChosen(idTagList);
   };
+  const handleLinkClic = () => {
+    alert('Chat de Pierre en attente')
+  }
   return (
 
     <>
@@ -58,6 +62,13 @@ export default function Tags () {
             <TextField {...params} variant='filled' label='compétences' placeholder='Favorites' />
           )}
         />
+        <Link
+          component="button"
+          variant="body2"
+          onClick={handleLinkClic}
+        >
+          Il manque une compétence ?
+          </Link>
       </div>
     </>
   );

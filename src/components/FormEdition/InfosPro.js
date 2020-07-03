@@ -4,7 +4,8 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import EditionContext from './EditionContext';
-import { validURL } from '../../functionshelper';
+import { isValidURL } from '../../functionshelper';
+import { isFrenchMobile } from '../../functionshelper';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -42,7 +43,7 @@ function InfosPro () {
         <Grid container spacing={3} alignItems='flex-start'>
           <Grid item xs={12}>
             <TextField
-              required id='phone_number' type='number' name='phone_number' label='N° téléphone' value={phone_number}
+              required id='phone_number'  name='phone_number' label='N° téléphone' value={phone_number}
               onChange={(e) => handleAdressFormChange(e)} fullWidth autoComplete='cc-projet'
             />
           </Grid>

@@ -1,5 +1,6 @@
 import React from 'react';
 import EditionContext from './EditionContext';
+import { isFrenchMobile } from '../../functionshelper';
 
 class EditionContextProvider extends React.Component {
   constructor (props) {
@@ -34,7 +35,12 @@ class EditionContextProvider extends React.Component {
   }
 
   handleAdressFormChange = (e) => {
+    //Vérification tel et url
+    const {phone_number, url_web_site} = this.state;
     const targetProp = e.target.name.toLowerCase();
+    if ((targetProp === phone_number) && !isFrenchMobile(phone_number)) {
+      alert('Wrong tel')
+    }
     this.setState({ ...this.state, [targetProp]: e.target.value });
   }
 
