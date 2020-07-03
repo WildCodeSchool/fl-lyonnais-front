@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import SearchInput from '../components/SearchInput';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -27,6 +28,7 @@ export default function PrimarySearchAppBar (props) {
           <Typography className={classes.title} variant='h6' noWrap>
             <Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/'>Freelances Lyonnais</Link>
           </Typography>
+          <SearchInput/>
           <div className={classes.grow} />
           <div>
             <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/inscription'>M'inscrire</Link></Button>
