@@ -9,13 +9,14 @@ class Detail extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      freelances: []
+      freelances: [],
+      tags: []
     };
   }
 
   componentDidMount () {
     axios
-      .get(process.env.REACT_APP_API_URL + '/freelance/2')
+      .get(process.env.REACT_APP_API_URL + '/freelances/2')
       .then(response => response.data)
       .then(data => {
         this.setState({
@@ -26,15 +27,16 @@ class Detail extends Component {
   }
 
   render () {
-    const { freelances } = this.state;
-
+    const { freelances, tags } = this.state;
     return (
       <div>
         <div className='Detail'>
           <DetailBio freelances={freelances} />
           <DetailReferences freelances={freelances} />
-          <DetailSkills freelances={freelances} />
-          <DetailContact freelances={freelances} />
+          <div className="responsiveSkillsContact">
+            <DetailSkills tags={tags} freelances={freelances} />
+            <DetailContact freelances={freelances} />
+          </div>
         </div>
       </div>
     );
