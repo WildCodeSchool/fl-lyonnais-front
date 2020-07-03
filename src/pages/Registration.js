@@ -48,15 +48,14 @@ export default function SignUp () {
   });
 
   const handlesubmit = (e) => {
-    // Function à créer pour gérer champs vides, sensibilité de la case
     e.preventDefault();
-    const url = process.env.REACT_APP_API_URL + '/user';
-    console.log(infosRegistration);
-    if (validateEmail(infosRegistration.email) || isSiret(infosRegistration.siret)) {
+    const url = process.env.REACT_APP_API_URL + '/users';
+    console.log(isSiret(infosRegistration.siret), infosRegistration.siret)
+    if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret)) {
       axios
         .post(url, infosRegistration)
         .then(res => res.data)
-        .then(data => alert('yooooooooooo')
+        .then(data => alert('Vous avez bien été enregistré !')
         )
         .catch(error => {
           console.log(error);

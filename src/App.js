@@ -54,7 +54,7 @@ function App () {
 
   return (
     <Apps>
-      <UserIdContextProvider>
+      {/* <UserIdContextProvider> */}
       <AuthContext.Provider value={{ token: token, saveToken: (token) => (setTokenInLocalStorage(token)) }}>
         {userNameFromToken && <div><p>Welcome back {userNameFromToken} !</p><button onClick={() => setTokenInLocalStorage('')}>Log out</button></div>}
         <Router>
@@ -72,7 +72,7 @@ function App () {
           <Footer />
         </Router>
       </AuthContext.Provider>
-      </UserIdContextProvider>
+      {/* </UserIdContextProvider> */}
     </Apps>
   );
 }

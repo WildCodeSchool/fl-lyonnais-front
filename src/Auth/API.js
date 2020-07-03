@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://localhost:7777/user'
+  baseURL: 'http://localhost:3000/user'
 });
 
 const placeTokenInRequestHeaders = req => {
