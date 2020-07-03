@@ -13,9 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import '../styles/Registration.scss';
-import { validateEmail, isSiret } from '../functionshelper';
+import { validateEmail, isSiret, onlyLetters } from '../functionshelper';
 import axios from 'axios';
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -52,17 +51,16 @@ export default function SignUp () {
     e.preventDefault();
     const url = process.env.REACT_APP_API_URL + '/user';
     console.log(infosRegistration);
-    if (validateEmail(infosRegistration.email) || isSiret(infosRegistration.siret)) {
+    if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret) && onlyLetters(infosRegistration.firstname) && onlyLetters(infosRegistration.lastname)) {
       axios
         .post(url, infosRegistration)
         .then(res => res.data)
-        .then(data => alert('yooooooooooo')
-        )
+        .then(data => alert('Inscrit !!!'))
         .catch(error => {
           console.log(error);
         });
     } else {
-      alert('Champ manquant ou un email valide');
+      alert('Champ manquant, email non valide, siret invalide');
     }
   };
 
