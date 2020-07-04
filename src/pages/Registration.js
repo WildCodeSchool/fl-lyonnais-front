@@ -55,8 +55,7 @@ export default function SignUp() {
         .post(url, infosRegistration)
         .then(res => res.data)
         .then(data => {
-          alert('Inscrit !!!');
-          history.push('/compte');
+          history.push('/reception_email');
         })
         .catch(error => {
           console.log(error);

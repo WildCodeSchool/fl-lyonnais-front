@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
 import Listing from './pages/Listing';
+import MailInfo from './pages/MailInfo';
 import Registration from './pages/Registration';
 import LegalDisclaimer from './pages/LegalDisclaimer';
 import SignIn from './pages/SignIn';
@@ -69,6 +70,7 @@ function App () {
               <Route path='/compte'><Edition /></Route>
               <Route path='/edition_compte'><Edition /></Route>
               <Route path='/mentions_legales'><LegalDisclaimer /></Route>
+              <Route path='/reception_email'><MailInfo /></Route>
             </Switch>
           </main>
           <Footer />
