@@ -66,7 +66,8 @@ export default function SignIn(props) {
     const payload = { email, password };
     const url = process.env.REACT_APP_API_URL + '/users/connexion'
     axios.post(url, payload).then((res) => {
-      history.push('/');
+      history.push(`/detail/${res.data.data.id}`);
+      console.log(res.data)
       // res.data.token;
       saveToken(res.data.token);
     })
