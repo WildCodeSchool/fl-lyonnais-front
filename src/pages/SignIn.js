@@ -13,6 +13,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import AuthContext from '../Auth/AuthContext';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -34,7 +41,20 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SignIn (props) {
+export default function SignIn(props) {
+  const [open, setOpen] = React.useState(false);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
   const { saveToken } = useContext(AuthContext);
   const history = useHistory();
   const classes = useStyles();
@@ -51,7 +71,7 @@ export default function SignIn (props) {
       saveToken(res.data.token);
     })
       .catch(err => {
-        console.log(err)
+        handleClickOpen();
       });
   };
 
@@ -64,7 +84,7 @@ export default function SignIn (props) {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component='h1' variant='h5'>
-          Connexion
+            Connexion
           </Typography>
           <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <TextField
@@ -105,7 +125,7 @@ export default function SignIn (props) {
               className={classes.submit}
               style={{ backgroundColor: 'var(--red)' }}
             >
-            Se connecter
+              Se connecter
             </Button>
             <Grid container>
               <Grid item xs>
@@ -121,6 +141,28 @@ export default function SignIn (props) {
             </Grid>
           </form>
         </div>
+        <Dialog
+          fullScreen={fullScreen}
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="responsive-dialog-title"
+        >
+          <DialogTitle id="responsive-dialog-title">{'Problème de connexion'}</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Les identifiants renseignés sont incorrects.
+          </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            {/* <Button autoFocus onClick={handleClose} color="primary">
+              Disagree
+          </Button> */}
+            <Button onClick={handleClose} color="primary" autoFocus>
+              Fermer
+          </Button>
+          </DialogActions>
+        </Dialog>
+
       </Container>
     </div>
   );
