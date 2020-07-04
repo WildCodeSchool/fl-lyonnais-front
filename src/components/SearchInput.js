@@ -17,14 +17,15 @@ export default function SearchInput () {
     <div style={{ width: 300 }}>
       <Autocomplete
         freeSolo
-        id='free-solo-2-demo'
+        id='search'
         disableClearable
         options={tags.map((option) => option.name)}
         renderInput={(params) => (
           <TextField
+            style={{ backgroundColor: '#eef9fe', borderRadius: '15px' }}
             {...params}
-            label='Search input'
-            margin='normal'
+            placeholder='Search input'
+            margin='small'
             variant='outlined'
             InputProps={{ ...params.InputProps, type: 'search' }}
           />
