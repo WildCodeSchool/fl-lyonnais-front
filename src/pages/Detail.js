@@ -10,7 +10,8 @@ class Detail extends Component {
     super(props);
     this.state = {
       freelances: [],
-      tags: []
+      tags: [],
+      references: []
     };
   }
 
@@ -21,18 +22,19 @@ class Detail extends Component {
       .then(data => {
         this.setState({
           freelances: data.data,
-          tags: data.tags
+          tags: data.tags,
+          references: data.references,
         });
       });
   }
 
   render () {
-    const { freelances, tags } = this.state;
+    const { freelances, tags, references } = this.state;
     return (
       <div>
         <div className='Detail'>
           <DetailBio freelances={freelances} />
-          <DetailReferences freelances={freelances} />
+          <DetailReferences references={references} />
           <div className='responsiveSkillsContact'>
             <DetailSkills tags={tags} freelances={freelances} />
             <DetailContact freelances={freelances} />
