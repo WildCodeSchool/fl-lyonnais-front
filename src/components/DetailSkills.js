@@ -9,9 +9,9 @@ function detailSkills (props) {
       <div className='detailskills'>
         <div className='mainSkills'>
           <ul>
-              {props.tags.map(tag => {
-                return (<li key={generateKey(tag.id)}>{tag.name}</li>);
-              })}
+            {props.tags.map(tag => {
+              return (<li key={generateKey(tag.id)}>{tag.name}</li>);
+            })}
           </ul>
         </div>
         <p id='detailskillstjm'>TJM : à partir de <span className='detailskillstjmprice'>{props.freelances.average_daily_rate}</span> € par jour.</p>

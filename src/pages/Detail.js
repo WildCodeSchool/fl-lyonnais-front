@@ -33,7 +33,7 @@ class Detail extends Component {
         <div className='Detail'>
           <DetailBio freelances={freelances} />
           <DetailReferences freelances={freelances} />
-          <div className="responsiveSkillsContact">
+          <div className='responsiveSkillsContact'>
             <DetailSkills tags={tags} freelances={freelances} />
             <DetailContact freelances={freelances} />
           </div>

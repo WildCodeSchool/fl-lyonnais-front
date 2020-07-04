@@ -50,7 +50,7 @@ export default function SignUp () {
   const handlesubmit = (e) => {
     e.preventDefault();
     const url = process.env.REACT_APP_API_URL + '/users';
-    console.log(isSiret(infosRegistration.siret), infosRegistration.siret)
+    console.log(isSiret(infosRegistration.siret), infosRegistration.siret);
     if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret)) {
       axios
         .post(url, infosRegistration)

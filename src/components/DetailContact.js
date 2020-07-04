@@ -12,7 +12,7 @@ function DetailContact (props) {
           <p>{props.freelances.zip_code} - {props.freelances.city} - {props.freelances.country}</p>
         </div>
         <div className='Detailcontactemail'>
-          <a href="mailto: {props.freelances.email}"><p>email</p></a>
+          <a href='mailto: {props.freelances.email}'><p>email</p></a>
           <a href={props.freelances.url_web_site}><p>Site web</p></a>
         </div>
         <div className='Detailcontactsiret'>

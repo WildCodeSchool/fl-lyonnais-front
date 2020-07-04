@@ -8,8 +8,7 @@ function Home () {
       <div className='logo'>
         <img src={logo} alt='Logo du site Freelance Lyonnais' className='logoHome' />
       </div>
-      <div className='form'>
-      </div>
+      <div className='form' />
       <main className='homepage'>
         <h1> Bienvenue chez Les Freelances Lyonnais </h1>
 

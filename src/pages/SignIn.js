@@ -47,7 +47,7 @@ export default function SignIn (props) {
     const url = process.env.REACT_APP_API_URL + '/users/connexion';
     axios.post(url, payload).then((res) => {
       history.push('/');
-      alert('Vous etes connecté à votre compte et allez être redirigé vers votre page de détail')
+      alert('Vous etes connecté à votre compte et allez être redirigé vers votre page de détail');
       saveToken(res.data.token);
     })
       .catch(err => alert('Les identifiants renseignés sont incorrects.'));

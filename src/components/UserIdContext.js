@@ -1,4 +1,4 @@
-import {createContext} from 'react';
-const UserIdContext = createContext()
+import { createContext } from 'react';
+const UserIdContext = createContext();
 
-export default UserIdContext
+export default UserIdContext;

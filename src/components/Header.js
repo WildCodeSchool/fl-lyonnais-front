@@ -28,7 +28,7 @@ export default function PrimarySearchAppBar (props) {
           <Typography className={classes.title} variant='h6' noWrap>
             <Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/'>Freelances Lyonnais</Link>
           </Typography>
-          <SearchInput/>
+          <SearchInput />
           <div className={classes.grow} />
           <div>
             <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/inscription'>M'inscrire</Link></Button>
