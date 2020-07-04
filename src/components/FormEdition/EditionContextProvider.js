@@ -35,12 +35,7 @@ class EditionContextProvider extends React.Component {
   }
 
   handleAdressFormChange = (e) => {
-    //Vérification tel et url
-    const {phone_number, url_web_site} = this.state;
     const targetProp = e.target.name.toLowerCase();
-    if ((targetProp === phone_number) && !isFrenchMobile(phone_number)) {
-      alert('Wrong tel')
-    }
     this.setState({ ...this.state, [targetProp]: e.target.value });
   }
 
@@ -60,16 +55,9 @@ class EditionContextProvider extends React.Component {
     } else {
       newtagName.push(e.target.innerText);
       this.setState({ tagNameChosen: newtagName });
-    }
+    } 
   }
 
-  // fetchDataToApi = () => {
-  //   const payload = idTagList;
-  //   console.log(idTagList);
-  //   API.post('/freelances/account',payload).then( (res) => {
-  //     history.push('/');
-  //     alert('Ready to post')
-  // }
 
   render () {
     return (

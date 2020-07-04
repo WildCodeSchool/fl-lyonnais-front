@@ -67,7 +67,7 @@ export default function Tags() {
           variant="body2"
           onClick={handleLinkClic}
         >
-          Il manque une compétence ?
+          Il vous manque une compétence ?
           </Link>
       </div>
     </>

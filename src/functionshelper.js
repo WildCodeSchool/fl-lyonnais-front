@@ -27,7 +27,7 @@ return !! str.match(expression)
 
 // Avec espaces et chiffres :
 export function isFrenchMobile(mob) {
-  var re = /^[0-9 ]+$/
+  var re = /^0[1-6]{1}(([0-9]{2}){4})|((\s[0-9]{2}){4})|((-[0-9]{2}){4})$/
   return !! mob.match(re)
 }
 

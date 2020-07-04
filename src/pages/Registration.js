@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
+import { useHistory, Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -35,9 +35,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SignUp () {
+export default function SignUp() {
   const classes = useStyles();
-
+  const history = useHistory();
   const [infosRegistration, setInfosRegistration] = useState({
     firstname: '',
     lastname: '',
@@ -49,13 +49,15 @@ export default function SignUp () {
   const handlesubmit = (e) => {
     // Function à créer pour gérer champs vides, sensibilité de la case
     e.preventDefault();
-    const url = process.env.REACT_APP_API_URL + '/user';
-    console.log(infosRegistration);
+    const url = process.env.REACT_APP_API_URL + '/users';
     if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret) && onlyLetters(infosRegistration.firstname) && onlyLetters(infosRegistration.lastname)) {
       axios
         .post(url, infosRegistration)
         .then(res => res.data)
-        .then(data => alert('Inscrit !!!'))
+        .then(data => {
+          alert('Inscrit !!!');
+          history.push('/compte');
+        })
         .catch(error => {
           console.log(error);
         });
@@ -70,18 +72,18 @@ export default function SignUp () {
         <h1>Freelance à Lyon inscris toi dans l'annuaire</h1>
         <br />
         <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aliquid, at cum cumque deleniti eligendi
-        error eveniet expedita, in minima molestias nesciunt pariatur quae qui quo quos tempore voluptas?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad cumque eos libero molestias
-        necessitatibus numquam pariatur quas quo, sequi. Ab consequatur, delectus dolor hic nemo numquam quaerat!
-        Ducimus, maiores.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi, cumque dolorem enim, est fugiat
-        id illum labore libero nesciunt nisi officiis quas quo quos recusandae voluptate? Est, rerum!
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores et sunt tempora veniam. Aliquam animi
-        asperiores, aspernatur facilis magnam minima minus neque optio, quidem sequi totam veritatis! Obcaecati
-        officia, reiciendis.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, aperiam aspernatur assumenda autem, esse
-        et ipsum magnam modi odio quidem quo repudiandae sint, suscipit unde vel velit voluptates. Corporis, harum?
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aliquid, at cum cumque deleniti eligendi
+          error eveniet expedita, in minima molestias nesciunt pariatur quae qui quo quos tempore voluptas?
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad cumque eos libero molestias
+          necessitatibus numquam pariatur quas quo, sequi. Ab consequatur, delectus dolor hic nemo numquam quaerat!
+          Ducimus, maiores.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi, cumque dolorem enim, est fugiat
+          id illum labore libero nesciunt nisi officiis quas quo quos recusandae voluptate? Est, rerum!
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores et sunt tempora veniam. Aliquam animi
+          asperiores, aspernatur facilis magnam minima minus neque optio, quidem sequi totam veritatis! Obcaecati
+          officia, reiciendis.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, aperiam aspernatur assumenda autem, esse
+          et ipsum magnam modi odio quidem quo repudiandae sint, suscipit unde vel velit voluptates. Corporis, harum?
         </p>
       </div>
       <Container component='main' maxWidth='xs'>
@@ -179,7 +181,7 @@ export default function SignUp () {
               style={{ backgroundColor: 'var(--red)' }}
               to='/edition_compte'
             >
-                Créer ma fiche freelance
+              Créer ma fiche freelance
             </Button>
             <Grid container justify='flex-end'>
               <Grid item>

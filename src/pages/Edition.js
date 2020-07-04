@@ -13,50 +13,16 @@ import AddressForm from '../components/FormEdition/AddressForm';
 import References from '../components/FormEdition/References';
 import Tags from '../components/FormEdition/Tags';
 import InfosPro from '../components/FormEdition/InfosPro';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import EditionContext from '../components/FormEdition/EditionContext';
 import API from '../API';
+import { isFrenchMobile } from '../functionshelper';
+import useStyles from '../components/FormEdition/useStyles'
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    position: 'relative'
-  },
-  layout: {
-    width: 'auto',
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-      width: 600,
-      marginLeft: 'auto',
-      marginRight: 'auto'
-    }
-  },
-  paper: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
-    padding: theme.spacing(2),
-    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-      marginTop: theme.spacing(6),
-      marginBottom: theme.spacing(6),
-      padding: theme.spacing(3)
-    }
-  },
-  stepper: {
-    padding: theme.spacing(3, 0, 5)
-  },
-  buttons: {
-    display: 'flex',
-    justifyContent: 'flex-end'
-  },
-  button: {
-    marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(1)
-  }
-}));
 
 const steps = ['Informations', 'Références', 'Compétences', 'Infos Personnelles'];
-function getStepContent (step) {
+function getStepContent(step) {
   switch (step) {
     case 0:
       return <AddressForm />;
@@ -71,22 +37,24 @@ function getStepContent (step) {
   }
 }
 
-export default function Edition (props) {
-  const history = useHistory();
+export default function Edition(props) {
+  // const history = useHistory();
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const payload = useContext(EditionContext);
 
+  const payload = useContext(EditionContext);
   const handleNext = (e) => {
     setActiveStep(activeStep + 1);
     if (e.target.innerText.toLowerCase() === 'enregistrer') {
+
       console.log(payload);
       API.post('http://localhost:3000/freelances/account', payload).then((res) => {
-        history.push('/');
-        alert('Informations enregistrées vous allez être redirigés vers votre fiche de détail');
-      });
-    }
+        // history.push('/');
+        // alert('Informations enregistrées vous allez être redirigés vers votre fiche de détail');
+      })
+    };
   };
+
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
@@ -119,26 +87,26 @@ export default function Edition (props) {
                 </Typography>
               </>
             ) : (
-              <>
-                {getStepContent(activeStep)}
-                <div className={classes.buttons}>
-                  {activeStep !== 0 && (
-                    <Button onClick={handleBack} className={classes.button}>
-                          Retour
+                <>
+                  {getStepContent(activeStep)}
+                  <div className={classes.buttons}>
+                    {activeStep !== 0 && (
+                      <Button onClick={handleBack} className={classes.button}>
+                        Retour
+                      </Button>
+                    )}
+                    <Button
+                      variant='contained'
+                      name='enregistrer'
+                      color='primary'
+                      onClick={handleNext}
+                      className={classes.button}
+                    >
+                      {activeStep === steps.length - 1 ? 'Enregistrer' : 'Suivant'}
                     </Button>
-                  )}
-                  <Button
-                    variant='contained'
-                    name='enregistrer'
-                    color='primary'
-                    onClick={handleNext}
-                    className={classes.button}
-                  >
-                    {activeStep === steps.length - 1 ? 'Enregistrer' : 'Suivant'}
-                  </Button>
-                </div>
-              </>
-            )}
+                  </div>
+                </>
+              )}
           </>
         </Paper>
       </main>
