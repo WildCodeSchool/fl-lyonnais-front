@@ -1,0 +1,115 @@
+/* GLOBAL */
+
+* .Detail {
+background-color:white ;
+} 
+
+.detailh2 {
+  text-align: center;
+  font-size: 1.5em;
+  border-top: solid 1px black;
+  margin-top: 10px;
+  background-color: #24A198;
+  margin: 60px;
+}
+
+/* BIO */
+
+.detailBioPhotoName {
+  display: flex;
+  
+}
+.detailBio {
+  background-color: #d3d3d385;
+  margin:60px;
+
+}
+.detailtextebio {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 30px;
+}
+
+.detailnametitle {
+  align-self: center;
+  justify-content: center;
+  margin: auto;
+}
+
+
+.detailPhoto {
+  height: 100px;
+  width: 18vw;
+  margin: 10px 10px 25px;
+}
+
+/* REFERENCES */
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  margin: 60px;
+  background-color: #d3d3d385;
+}
+
+.carousel img {
+  width: 15vw;
+  margin: 10px 10px;
+  border: solid 1px black;
+}
+
+.carousel p {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* COMPETENCES */
+.detailskills {
+  background-color: #d3d3d385;
+  margin:60px;
+}
+.detailtable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 3px solid #EB483E;
+}
+
+/* CONTACT */
+
+.detailcontact {
+  background-color: #d3d3d385;
+  margin: 60px;
+}
+
+/* /////////////////////////////// MEDIA QUERIES 750 PX /////////////////////////////// */
+
+@media screen and (min-width: 750px) {
+  /* MEDIA QUERIES BIO */
+
+  .detailnametitle {
+    font-size: 1.5em;
+    margin: auto;
+  }
+
+
+  .detailPhoto {
+    margin-left: 5px;
+    margin-top: 3vw;
+    height: 250px;
+    width: 20vw;
+    margin-bottom: 10px;
+  }
+
+  .detailtextebio {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 2px;
+  }
+}
