@@ -18,26 +18,25 @@ import EditionContext from '../components/FormEdition/EditionContext';
 import API from '../API';
 import { isFrenchMobile } from '../functionshelper';
 import useStyles from '../components/FormEdition/useStyles'
-// const { nameReferenceList, handleNameReferenceList } = useContext(EditionContext);
 
-const steps = ['Informations', 'Références', 'Compétences', 'Infos Personnelles'];
+
+const steps = ['Informations(1/2)', 'Informations(2/2)', 'Compétences', 'Références'];
 function getStepContent(step, propsToPass) {
   switch (step) {
     case 0:
       return <AddressForm />;
     case 1:
-      return <References />;
+      return <InfosPro />;
     case 2:
       return <Tags />;
     case 3:
-      return <InfosPro />;
+      return <References />;
     default:
       throw new Error('Unknown step');
   }
 }
 
 export default function Edition(props) {
-  // const history = useHistory();
 
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
@@ -45,6 +44,10 @@ export default function Edition(props) {
     const payload = useContext(EditionContext);
     const handleNext = (e) => {
       setActiveStep(activeStep + 1);
+      if (e.target.innerText.toLowerCase() === 'suivant') {
+        payload.cleanProjectState();
+      }
+
       if (e.target.innerText.toLowerCase() === 'enregistrer') {
 
         console.log(payload);

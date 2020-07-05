@@ -7,14 +7,14 @@ import EditionContext from '../EditionContext';
 
 
 const References = (props) => {
-  const { handleNameReferenceList } = useContext(EditionContext);
-  const { inputValue, changeInput, clearInput, keyInput } = useInputValue();
+  const { handleNameReferenceList,setNameReferenceList } = useContext(EditionContext);
+  let { inputValue, changeInput, clearInput, keyInput } = useInputValue();
   const { todos, addTodo, checkTodo, removeTodo } = useTodos();
 
   const clearInputAndAddTodo = () => {
     clearInput();
     addTodo(inputValue);
-    handleNameReferenceList((inputValue));
+    handleNameReferenceList(inputValue)
   };
 
   return (

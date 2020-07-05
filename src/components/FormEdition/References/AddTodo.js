@@ -1,6 +1,5 @@
 import React, { memo, useContext } from "react";
 import { TextField, Paper, Button, Grid } from "@material-ui/core";
-import EditionContext from '../EditionContext';
 
 
 const AddTodo = (props) => (
