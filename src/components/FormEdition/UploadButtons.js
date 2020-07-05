@@ -34,7 +34,7 @@ export default function UploadButtons () {
       </label>
       <input accept='image/*' className={classes.input} id='icon-button-file' type='file' />
       <label htmlFor='icon-button-file'>
-        <IconButton color='primary' aria-label='upload picture' component='span'>
+        <IconButton aria-label='upload picture' component='span'>
           <PhotoCamera />
         </IconButton>
       </label>

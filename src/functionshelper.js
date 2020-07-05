@@ -16,6 +16,11 @@ export function isSiret(siret) {
   return !!(validateNumber(siret) && siret.toString().length === 14);
 }
 
+export function isPwMore8cha(pw) {
+  return !!(validateNumber(pw) && (isPwMore8cha.toString().length <= 8));
+}
+
+
 export function onlyLetters(input) {
   return input.match(/[A-Za-zÀ-ÿ]/);
 }

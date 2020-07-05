@@ -13,8 +13,17 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import '../styles/Registration.scss';
-import { validateEmail, isSiret, onlyLetters } from '../functionshelper';
+import { validateEmail, isSiret, onlyLetters, isPwMore8cha } from '../functionshelper';
 import axios from 'axios';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -36,8 +45,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+  const [open, setOpen] = React.useState(false);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
   const history = useHistory();
+  const [checked, setChecked] = useState(true);
   const [infosRegistration, setInfosRegistration] = useState({
     firstname: '',
     lastname: '',
@@ -46,45 +59,47 @@ export default function SignUp() {
     siret: 0
   });
 
+  const handleCheckbox = (e) => {
+    console.log(e.target.value);
+    setChecked(!checked);
+  }
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
   const handlesubmit = (e) => {
     // Function à créer pour gérer champs vides, sensibilité de la case
     e.preventDefault();
     const url = process.env.REACT_APP_API_URL + '/users';
-    if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret) && onlyLetters(infosRegistration.firstname) && onlyLetters(infosRegistration.lastname)) {
-      axios
-        .post(url, infosRegistration)
-        .then(res => res.data)
-        .then(data => {
-          history.push('/reception_email');
-        })
-        .catch(error => {
-          console.log(error);
-        });
+    if (!isPwMore8cha(infosRegistration.password)) {
+      handleClickOpen();
     } else {
-      alert('Champ manquant, email non valide, siret invalide');
+      if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret) && onlyLetters(infosRegistration.firstname) && onlyLetters(infosRegistration.lastname && checked)) {
+        axios
+          .post(url, infosRegistration)
+          .then(res => res.data)
+          .then(data => {
+            history.push('/reception_email');
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      } else {
+        alert('Champ manquant, email non valide, siret invalide, conditions générales non acceptées');
+      }
     }
   };
 
   return (
     <div>
-      <div className='concept'>
+      {/* <div className='concept'>
         <h1>Freelance à Lyon inscris toi dans l'annuaire</h1>
-        <br />
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aliquid, at cum cumque deleniti eligendi
-          error eveniet expedita, in minima molestias nesciunt pariatur quae qui quo quos tempore voluptas?
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad cumque eos libero molestias
-          necessitatibus numquam pariatur quas quo, sequi. Ab consequatur, delectus dolor hic nemo numquam quaerat!
-          Ducimus, maiores.
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi, cumque dolorem enim, est fugiat
-          id illum labore libero nesciunt nisi officiis quas quo quos recusandae voluptate? Est, rerum!
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores et sunt tempora veniam. Aliquam animi
-          asperiores, aspernatur facilis magnam minima minus neque optio, quidem sequi totam veritatis! Obcaecati
-          officia, reiciendis.
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, aperiam aspernatur assumenda autem, esse
-          et ipsum magnam modi odio quidem quo repudiandae sint, suscipit unde vel velit voluptates. Corporis, harum?
-        </p>
-      </div>
+      </div> */}
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <div className={classes.paper}>
@@ -166,8 +181,10 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
-                  control={<Checkbox value='allowExtraEmails' color='primary' />}
+                  control={<Checkbox color='primary' />}
                   label="J'accepte les conditions générales"
+                  onChange={handleCheckbox}
+                  value={checked}
                 />
               </Grid>
             </Grid>
@@ -192,6 +209,24 @@ export default function SignUp() {
           </form>
         </div>
         <Box mt={5} />
+        <Dialog
+          fullScreen={fullScreen}
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="responsive-dialog-title"
+        >
+          <DialogTitle id="responsive-dialog-title">{'Mot de passe : '}</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              8 caractères minimum sont recquis.
+          </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary" autoFocus>
+              Fermer
+          </Button>
+          </DialogActions>
+        </Dialog>
       </Container>
     </div>
   );

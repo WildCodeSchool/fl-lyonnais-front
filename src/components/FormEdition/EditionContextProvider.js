@@ -34,6 +34,12 @@ class EditionContextProvider extends React.Component {
     };
   }
 
+  handleNameReferenceList = (e) => {
+    const projectNameList = this.state.nameReferenceList;
+    projectNameList.push(e)
+    this.setState({nameReferenceList: projectNameList})
+  }
+
   handleAdressFormChange = (e) => {
     const targetProp = e.target.name.toLowerCase();
     this.setState({ ...this.state, [targetProp]: e.target.value });
@@ -62,7 +68,7 @@ class EditionContextProvider extends React.Component {
   render () {
     return (
       <div>
-        <EditionContext.Provider value={{ ...this.state, handleAdressFormChange: this.handleAdressFormChange, handleTag: this.handleTag, handleTagId: this.handleTagId, addIdTagIdsChosen: this.addIdTagIdsChosen, handleReferencesName: this.handleReferencesName }}>
+        <EditionContext.Provider value={{ ...this.state, handleAdressFormChange: this.handleAdressFormChange, handleTag: this.handleTag, handleTagId: this.handleTagId, addIdTagIdsChosen: this.addIdTagIdsChosen, handleReferencesName: this.handleReferencesName, handleNameReferenceList:this.handleNameReferenceList }}>
           {this.props.children}
         </EditionContext.Provider>
       </div>
