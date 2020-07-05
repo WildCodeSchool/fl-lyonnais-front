@@ -21,7 +21,7 @@ class Detail extends Component {
       .then(response => response.data)
       .then(data => {
         this.setState({
-          freelances: data.data,
+          freelances: data.freelances,
           tags: data.tags,
           references: data.references
         });
