@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { createRef, useContext } from "react";
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import UploadButtons from '../UploadButtons';
@@ -13,8 +13,12 @@ import {
 import DeleteOutlined from "@material-ui/icons/DeleteOutlined";
 
 const TodoListItem = (props) => {
-  const { setNameReferenceList,nameReferenceList } = useContext(EditionContext);
-  // const projectRef = createRef();
+  const { handleFile } = useContext(EditionContext)
+  const projectURLRef = createRef();
+  const handleURLClick = (e) => {
+    console.log(e)
+    handleFile(e.target.files);
+  }
   return (
     <Grid container spacing={3}>
 
@@ -33,7 +37,11 @@ const TodoListItem = (props) => {
         {/* <Typography variant='h6' gutterBottom color='primary'>
           Photo des projets
         </Typography> */}
+        
+        <input type="file" onClick={(e) => {handleURLClick(e)}} projectRef={projectURLRef}/>
+        {/* <div>
         <UploadButtons className='Photo du projet' />
+        </div> */}
       </Grid>
 
     </Grid>

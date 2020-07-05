@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import EditionContext from './EditionContext';
 import { isFrenchMobile } from '../../functionshelper';
+import { formatMs } from '@material-ui/core';
 
 class EditionContextProvider extends React.Component {
   constructor (props) {
@@ -26,7 +27,7 @@ class EditionContextProvider extends React.Component {
       city: '',
       // References
       nameReferenceList: [],
-      imageReferenceList: [],
+      imageReferenceList: '',
       urlReferenceList: [],
       // Tag
       tagNameChosen: [],
@@ -41,6 +42,21 @@ class EditionContextProvider extends React.Component {
     this.setNameReferenceList()
   }
 
+  handleFile = (e) => {
+    const fileList = this.state.nameReferenceList.slice()
+    const formData = new FormData();
+    formData.append("file", e);
+    fileList.push({formData})
+
+    // const promiseFile = new Promise((res,rej) => formData.append("file", e));
+    // // promiseFile.then(res => console.log(res.data))
+    this.setState( {nameReferenceList: fileList})
+    // axios.post('/posts', formData, {
+    //     headers: {
+    //       'Content-Type': 'multipart/form-data'
+    //     }
+    
+  }
   cleanProjectState = (e) => {
     this.setState({nameReferenceList: []})
 
@@ -75,10 +91,12 @@ class EditionContextProvider extends React.Component {
   }
 
 
+
+
   render () {
     return (
       <div>
-        <EditionContext.Provider value={{ ...this.state, handleAdressFormChange: this.handleAdressFormChange, handleTag: this.handleTag, handleTagId: this.handleTagId, addIdTagIdsChosen: this.addIdTagIdsChosen, handleReferencesName: this.handleReferencesName, handleNameReferenceList:this.handleNameReferenceList, setNameReferenceList:this.setNameReferenceList, cleanProjectState:this.cleanProjectState }}>
+        <EditionContext.Provider value={{ ...this.state, handleAdressFormChange: this.handleAdressFormChange, handleTag: this.handleTag, handleTagId: this.handleTagId, addIdTagIdsChosen: this.addIdTagIdsChosen, handleReferencesName: this.handleReferencesName, handleNameReferenceList:this.handleNameReferenceList, setNameReferenceList:this.setNameReferenceList, cleanProjectState:this.cleanProjectState, handleFile:this.handleFile }}>
           {this.props.children}
         </EditionContext.Provider>
       </div>
