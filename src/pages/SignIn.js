@@ -76,8 +76,19 @@ export default function SignIn (props) {
       });
   };
 
+  // Traitement du formulaire de demande de renvoi de l'email de validation
   const handleSubmitValidation = (event) => {
     event.preventDefault();
+    const payload = { email };
+    const url = process.env.REACT_APP_API_URL + '/users/renvoi_email_validation/' + email;
+    console.log('url = ', url);
+    axios.post(url, payload)
+    .then((res) => {
+      console.log(payload);
+    })
+    .catch(err => {
+      handleClickOpen();
+    })
   };
 
   // Récupération du paramètre passé dans l'url (connexion?statut=xxx)
@@ -125,17 +136,33 @@ export default function SignIn (props) {
         </div>
         <div style={{ display: `${validation.delayExceeded}` }} className='delay-over'>
           <p>Oups ! le délai de validation de 2 jours est dépassé !</p>
-          <p>Pas de souci, en cliquant sur le lien ci-dessous, tu vas recevoir un nouveau message auquel tu devras répondre dans le deux jours !</p>
+          <p>Pas de souci, en renseignant l'adresse email qui t'a servi pour créer ton compte et en cliquant sur le lien ci-dessous, tu vas recevoir un nouveau message auquel tu devras répondre dans le deux jours !</p>
           <form className={classes.form} noValidate onSubmit={handleSubmitValidation}>
-          <Button
-            type='submit'
-            variant='contained'
-            color='primary'
-            className={classes.submit}
-            style={{ backgroundColor: 'var(--red)' }}
-          >
-            Envoyer de nouveau l'email de validation
-          </Button>
+            <div>
+              <TextField
+                variant='outlined'
+                margin='normal'
+                required
+                id='email'
+                label='Adresse email'
+                name='email'
+                autoComplete='email'
+                autoFocus
+                value={email}
+                onChange={(e) => { setEmail(e.target.value); }}
+              />
+            </div>
+            <div>
+              <Button
+                type='submit'
+                variant='contained'
+                color='primary'
+                className={classes.submit}
+                style={{ backgroundColor: 'var(--red)' }}
+              >
+                Envoyer de nouveau l'email de validation
+              </Button>
+            </div>
           </form>
         </div>
         <div style={{ display: `${validation.wrongKey}` }} className='wrong_key'>
