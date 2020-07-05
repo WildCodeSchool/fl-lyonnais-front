@@ -55,9 +55,8 @@ class EditionContextProvider extends React.Component {
     } else {
       newtagName.push(e.target.innerText);
       this.setState({ tagNameChosen: newtagName });
-    } 
+    }
   }
-
 
   render () {
     return (

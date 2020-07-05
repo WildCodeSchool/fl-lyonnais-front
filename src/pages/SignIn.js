@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory, useParams, Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -9,7 +9,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import AuthContext from '../Auth/AuthContext';
@@ -19,7 +19,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -41,10 +40,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SignIn(props) {
+export default function SignIn (props) {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+  // console.log(props.location.search);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -53,7 +54,6 @@ export default function SignIn(props) {
   const handleClose = () => {
     setOpen(false);
   };
-
 
   const { saveToken } = useContext(AuthContext);
   const history = useHistory();
@@ -64,10 +64,10 @@ export default function SignIn(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const payload = { email, password };
-    const url = process.env.REACT_APP_API_URL + '/users/connexion'
+    const url = process.env.REACT_APP_API_URL + '/users/connexion';
     axios.post(url, payload).then((res) => {
       history.push(`/detail/${res.data.data.id}`);
-      console.log(res.data)
+      console.log(res.data);
       // res.data.token;
       saveToken(res.data.token);
     })
@@ -75,10 +75,26 @@ export default function SignIn(props) {
         handleClickOpen();
       });
   };
-
+  const { status } = useParams();
+  console.log(status);
+  const newFreelance = '';
+  const validated = '';
+  // (!status ? newFreelance = '' : newFreelance = 'none');
+  // (status === 'validated' ? validated = '' : validated = 'none');
   return (
     <div>
       <Container component='main' maxWidth='xs'>
+        <div style={{ display: `${newFreelance}` }} className='alert-freelance-validation'>
+          <Typography component='h2' variant='h5'>
+          Information nouveau freelance
+          </Typography>
+          <div style={{ display: `${validated}` }} className='validated'>
+          La validation de ton email s'est bien passée, tu peux maintenant te connecter à ton compte
+          </div>
+          <div className='delay-over'>
+          Délai de validation de 2 jours dépassé.
+          </div>
+        </div>
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar style={{ backgroundColor: 'var(--red)' }} className={classes.avatar}>
@@ -146,21 +162,21 @@ export default function SignIn(props) {
           fullScreen={fullScreen}
           open={open}
           onClose={handleClose}
-          aria-labelledby="responsive-dialog-title"
+          aria-labelledby='responsive-dialog-title'
         >
-          <DialogTitle id="responsive-dialog-title">{'Problème de connexion'}</DialogTitle>
+          <DialogTitle id='responsive-dialog-title'>Problème de connexion</DialogTitle>
           <DialogContent>
             <DialogContentText>
               Les identifiants renseignés sont incorrects.
-          </DialogContentText>
+            </DialogContentText>
           </DialogContent>
           <DialogActions>
             {/* <Button autoFocus onClick={handleClose} color="primary">
               Disagree
           </Button> */}
-            <Button onClick={handleClose} color="primary" autoFocus>
+            <Button onClick={handleClose} color='primary' autoFocus>
               Fermer
-          </Button>
+            </Button>
           </DialogActions>
         </Dialog>
 

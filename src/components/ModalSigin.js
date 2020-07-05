@@ -8,7 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 
-export default function ModalSigin() {
+export default function ModalSigin () {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -23,16 +23,16 @@ export default function ModalSigin() {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button variant='outlined' color='primary' onClick={handleClickOpen}>
         Open responsive dialog
       </Button>
       <Dialog
         fullScreen={fullScreen}
         open={open}
         onClose={handleClose}
-        aria-labelledby="responsive-dialog-title"
+        aria-labelledby='responsive-dialog-title'
       >
-        <DialogTitle id="responsive-dialog-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogTitle id='responsive-dialog-title'>Use Google's location service?</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Let Google help apps determine location. This means sending anonymous location data to
@@ -40,10 +40,10 @@ export default function ModalSigin() {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
+          <Button autoFocus onClick={handleClose} color='primary'>
             Disagree
           </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
+          <Button onClick={handleClose} color='primary' autoFocus>
             Agree
           </Button>
         </DialogActions>

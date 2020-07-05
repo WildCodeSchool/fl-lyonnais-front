@@ -56,26 +56,26 @@ function App () {
     <Apps>
       <AuthContext.Provider value={{ token: token, saveToken: (token) => (setTokenInLocalStorage(token)) }}>
         {userNameFromToken && <div><p>Welcome back {userNameFromToken} !</p><button onClick={() => setTokenInLocalStorage('')}>Log out</button></div>}
-      <EditionContextProvider>
-        <Router>
-          <Header />
-          <main style={{ flex: '1 0 auto' }}>
-            <Switch>
-              <Route exact path='/'><Home /></Route>
-              <Route path='/detail'><Detail /></Route>
-              <Route path='/detail/:id'><Detail /></Route>
-              <Route path='/liste_freelance'><Listing /></Route>
-              <Route path='/inscription'><Registration /></Route>
-              <Route path='/connexion'><SignIn /></Route>
-              <Route path='/compte'><Edition /></Route>
-              <Route path='/edition_compte'><Edition /></Route>
-              <Route path='/mentions_legales'><LegalDisclaimer /></Route>
-              <Route path='/reception_email'><MailInfo /></Route>
-            </Switch>
-          </main>
-          <Footer />
-        </Router>
-      </EditionContextProvider>
+        <EditionContextProvider>
+          <Router>
+            <Header />
+            <main style={{ flex: '1 0 auto' }}>
+              <Switch>
+                <Route exact path='/'><Home /></Route>
+                <Route path='/detail'><Detail /></Route>
+                <Route path='/detail/:id'><Detail /></Route>
+                <Route path='/liste_freelance'><Listing /></Route>
+                <Route path='/inscription'><Registration /></Route>
+                <Route path='/connexion'><SignIn /></Route>
+                <Route path='/compte'><Edition /></Route>
+                <Route path='/edition_compte'><Edition /></Route>
+                <Route path='/mentions_legales'><LegalDisclaimer /></Route>
+                <Route path='/reception_email'><MailInfo /></Route>
+              </Switch>
+            </main>
+            <Footer />
+          </Router>
+        </EditionContextProvider>
       </AuthContext.Provider>
     </Apps>
   );

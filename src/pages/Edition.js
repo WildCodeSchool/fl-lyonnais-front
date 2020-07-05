@@ -18,11 +18,10 @@ import { useHistory } from 'react-router-dom';
 import EditionContext from '../components/FormEdition/EditionContext';
 import API from '../API';
 import { isFrenchMobile } from '../functionshelper';
-import useStyles from '../components/FormEdition/useStyles'
-
+import useStyles from '../components/FormEdition/useStyles';
 
 const steps = ['Informations', 'Références', 'Compétences', 'Infos Personnelles'];
-function getStepContent(step) {
+function getStepContent (step) {
   switch (step) {
     case 0:
       return <AddressForm />;
@@ -37,7 +36,7 @@ function getStepContent(step) {
   }
 }
 
-export default function Edition(props) {
+export default function Edition (props) {
   // const history = useHistory();
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
@@ -46,15 +45,13 @@ export default function Edition(props) {
   const handleNext = (e) => {
     setActiveStep(activeStep + 1);
     if (e.target.innerText.toLowerCase() === 'enregistrer') {
-
       console.log(payload);
       API.post('http://localhost:3000/freelances/account', payload).then((res) => {
         // history.push('/');
         // alert('Informations enregistrées vous allez être redirigés vers votre fiche de détail');
-      })
-    };
+      });
+    }
   };
-
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
@@ -87,26 +84,26 @@ export default function Edition(props) {
                 </Typography>
               </>
             ) : (
-                <>
-                  {getStepContent(activeStep)}
-                  <div className={classes.buttons}>
-                    {activeStep !== 0 && (
-                      <Button onClick={handleBack} className={classes.button}>
+              <>
+                {getStepContent(activeStep)}
+                <div className={classes.buttons}>
+                  {activeStep !== 0 && (
+                    <Button onClick={handleBack} className={classes.button}>
                         Retour
-                      </Button>
-                    )}
-                    <Button
-                      variant='contained'
-                      name='enregistrer'
-                      color='primary'
-                      onClick={handleNext}
-                      className={classes.button}
-                    >
-                      {activeStep === steps.length - 1 ? 'Enregistrer' : 'Suivant'}
                     </Button>
-                  </div>
-                </>
-              )}
+                  )}
+                  <Button
+                    variant='contained'
+                    name='enregistrer'
+                    color='primary'
+                    onClick={handleNext}
+                    className={classes.button}
+                  >
+                    {activeStep === steps.length - 1 ? 'Enregistrer' : 'Suivant'}
+                  </Button>
+                </div>
+              </>
+            )}
           </>
         </Paper>
       </main>

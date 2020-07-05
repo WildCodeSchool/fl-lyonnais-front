@@ -76,7 +76,7 @@ class References extends React.Component {
 
   componentDidMount () {
     const { nameReferenceList } = this.context;
-    this.setState( {items : nameReferenceList})
+    this.setState({ items: nameReferenceList });
   }
 
   // componentWillUnmount () {
@@ -84,7 +84,6 @@ class References extends React.Component {
   //   // handleReferencesName(this.state.items.slice());
   // }
 
-  
   render () {
     return (
       <div className='references'>

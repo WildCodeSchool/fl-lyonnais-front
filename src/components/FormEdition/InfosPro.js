@@ -4,10 +4,9 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import EditionContext from './EditionContext';
-import { isValidURL } from '../../functionshelper';
-import { isFrenchMobile } from '../../functionshelper';
-import MuiPhoneInput from 'material-ui-phone-number'
+import { isValidURL, isFrenchMobile } from '../../functionshelper';
 
+import MuiPhoneInput from 'material-ui-phone-number';
 
 const useStyles = makeStyles((theme) => ({
   height: {
@@ -24,9 +23,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function InfosPro() {
+function InfosPro () {
   const classes = useStyles();
-  const { average_daily_rate, url_web_site, vat_number, phone_number,blockPhone, handleAdressFormChange } = useContext(EditionContext);
+  const { average_daily_rate, url_web_site, vat_number, phone_number, blockPhone, handleAdressFormChange } = useContext(EditionContext);
   return (
     <>
       <div className={classes.height}>
@@ -52,10 +51,10 @@ function InfosPro() {
         {/* <Grid container spacing={3} alignItems='flex-start' >
           <Grid item xs={12} >
             <MuiPhoneInput
-            justify='start' 
+            justify='start'
               defaultCountry='fr'
               regions={'europe'}
-              name='phone_number' 
+              name='phone_number'
               value={phone_number}
               onChange={(e) => handleAdressFormChange(e)}
             />
