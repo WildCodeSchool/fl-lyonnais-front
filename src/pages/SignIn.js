@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useHistory, useParams, Link } from 'react-router-dom';
+import { useHistory, useLocation, useParams, Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -75,26 +75,75 @@ export default function SignIn (props) {
         handleClickOpen();
       });
   };
-  const { status } = useParams();
-  console.log(status);
-  const newFreelance = '';
-  const validated = '';
-  // (!status ? newFreelance = '' : newFreelance = 'none');
-  // (status === 'validated' ? validated = '' : validated = 'none');
+
+  const handleSubmitValidation = (event) => {
+    event.preventDefault();
+  };
+
+  // Récupération du paramètre passé dans l'url (connexion?statut=xxx)
+  const location = useLocation();
+  const search = location.search;
+  const status = search.toString().substr(8); // ne garde que le paramètre
+  const validation = {
+    validated: '',     // statut=validated
+    revalidation: '',  // statut=revalidation
+    delayExceeded: '', // statut=delay_exceeded
+    wrongKey: '',      // statut=wrong_key
+    displayForm: ''    // en fonction de l'info de validation, il se peut que le formulaire n'ai aucune utilité et se trouve don caché
+  }
+  let newFreelance = '';
+  status ? newFreelance = '' : newFreelance = 'none';
+  status === 'validated' ? validation.validated = '' : validation.validated = 'none';
+  status === 'revalidation' ? validation.revalidation = '' : validation.revalidation = 'none';
+  if (status === 'delay_exceeded') {
+    validation.delayExceeded = '';
+    validation.displayForm = 'none';
+  } else {
+    validation.delayExceeded = 'none';
+  }
+  if (status === 'wrong_key') {
+    validation.wrongKey = '';
+    validation.displayForm = 'none';
+  } else {
+    validation.wrongKey = 'none';
+  }
+
   return (
     <div>
-      <Container component='main' maxWidth='xs'>
-        <div style={{ display: `${newFreelance}` }} className='alert-freelance-validation'>
-          <Typography component='h2' variant='h5'>
-          Information nouveau freelance
-          </Typography>
-          <div style={{ display: `${validated}` }} className='validated'>
-          La validation de ton email s'est bien passée, tu peux maintenant te connecter à ton compte
-          </div>
-          <div className='delay-over'>
-          Délai de validation de 2 jours dépassé.
-          </div>
+      <div style={{ display: `${newFreelance}` }} className='alert-freelance-validation'>
+        <h2>
+        Information nouveau freelance
+        </h2>
+        <div style={{ display: `${validation.validated}` }} className='validated'>
+          <p>Féliciation, tu peux maintenant te connecter à ton compte.</p>
+          <p>N'oublie pas de compléter ta page personnelle afin d'être mieux visible</p>
         </div>
+        <div style={{ display: `${validation.revalidation}` }} className='revalidation'>
+          <p>Il semble que tu ais cliqué plusieurs fois de suite sur le lien pour valider ton adresse email</p>
+          <p>Pas de souci, tu peux te connecter à ton compte en utilisant le formulaire ci-dessous.</p>
+          <p>N'oublie pas d'archiver ou d'effacer l'email...</p>
+        </div>
+        <div style={{ display: `${validation.delayExceeded}` }} className='delay-over'>
+          <p>Oups ! le délai de validation de 2 jours est dépassé !</p>
+          <p>Pas de souci, en cliquant sur le lien ci-dessous, tu vas recevoir un nouveau message auquel tu devras répondre dans le deux jours !</p>
+          <form className={classes.form} noValidate onSubmit={handleSubmitValidation}>
+          <Button
+            type='submit'
+            variant='contained'
+            color='primary'
+            className={classes.submit}
+            style={{ backgroundColor: 'var(--red)' }}
+          >
+            Envoyer de nouveau l'email de validation
+          </Button>
+          </form>
+        </div>
+        <div style={{ display: `${validation.wrongKey}` }} className='wrong_key'>
+          <p>Il semble qu'il y ait eu un petit souci lors de la validation.</p>
+          <p>Tente de nouveau en cliquant sur le lien que tu as reçu par email en prenant garde à ne pas le modifier.</p>
+        </div>
+      </div>
+      <Container style={{ display: `${validation.displayForm}` }} component='main' maxWidth='xs'>
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar style={{ backgroundColor: 'var(--red)' }} className={classes.avatar}>
