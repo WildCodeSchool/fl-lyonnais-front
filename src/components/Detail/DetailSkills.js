@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/Detail.scss';
+import '../../pages/Detail.scss';
 import { generateKey } from '../../functionshelper';
 
 function detailSkills (props) {

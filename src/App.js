@@ -17,8 +17,6 @@ import Header from './components/Header';
 import AuthContext from './components/AuthContext';
 import jwtDecode from 'jwt-decode';
 
-
-
 const Apps = styled.div`
     text-align: center;
     --blue: #1730FF;

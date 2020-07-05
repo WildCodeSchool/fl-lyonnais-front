@@ -23,7 +23,7 @@ class Detail extends Component {
         this.setState({
           freelances: data.data,
           tags: data.tags,
-          references: data.references,
+          references: data.references
         });
       });
   }

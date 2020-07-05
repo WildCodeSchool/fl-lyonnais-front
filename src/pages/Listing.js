@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Freelance from '../components/Freelance';
-import '../styles/Listing.scss';
+import './Listing.scss';
 import Pagination from '../components/Pagination';
 import axios from 'axios';
 
