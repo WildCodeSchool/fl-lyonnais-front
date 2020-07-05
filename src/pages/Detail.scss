@@ -35,8 +35,7 @@
   
 .detailBio {
   background-color: white;
-  margin:20px;
-  margin-bottom: 30px;
+  margin: 20px 20px 30px;
   display: flex;
   flex-direction: column;
 }
@@ -57,7 +56,7 @@
 .detailPhoto {
   height: auto;
   width: 35vw;
-  padding-left: 10 px;
+  padding-left: 10px;
   margin: 15px;
 }
   
@@ -109,6 +108,10 @@
 .detailcontact {
   background-color: white;
   margin: 20px;
+}
+
+a {
+  text-decoration: none;
 }
   
   /* /////////////////////////////// MEDIA QUERIES 750 PX /////////////////////////////// */
