@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Detail.scss';
+import '../../styles/Detail.scss';
 
 function DetailReferences (props) {
   return (

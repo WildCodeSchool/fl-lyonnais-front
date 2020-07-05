@@ -14,7 +14,7 @@ import Regular from './font/BalooBhaina2-Regular.ttf';
 import SemiBold from './font/BalooBhaina2-SemiBold.ttf';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import AuthContext from './Auth/AuthContext';
+import AuthContext from './components/AuthContext';
 import jwtDecode from 'jwt-decode';
 
 
@@ -53,7 +53,6 @@ function App () {
 
   return (
     <Apps>
-      {/* <UserIdContextProvider> */}
       <AuthContext.Provider value={{ token: token, saveToken: (token) => (setTokenInLocalStorage(token)) }}>
         {userNameFromToken && <div><p>Welcome back {userNameFromToken} !</p><button onClick={() => setTokenInLocalStorage('')}>Log out</button></div>}
         <Router>
@@ -71,7 +70,6 @@ function App () {
           <Footer />
         </Router>
       </AuthContext.Provider>
-      {/* </UserIdContextProvider> */}
     </Apps>
   );
 }

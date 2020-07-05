@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/Detail.scss';
-const { generateKey } = require('../functionshelper');
+import '../../styles/Detail.scss';
+import { generateKey } from '../../functionshelper';
 
 function detailSkills (props) {
   return (

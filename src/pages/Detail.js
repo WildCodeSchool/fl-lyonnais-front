@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import DetailBio from '../components/DetailBio';
-import DetailReferences from '../components/DetailReferences';
-import DetailSkills from '../components/DetailSkills';
-import DetailContact from '../components/DetailContact';
+import DetailBio from '../components/Detail/DetailBio';
+import DetailReferences from '../components/Detail/DetailReferences';
+import DetailSkills from '../components/Detail/DetailSkills';
+import DetailContact from '../components/Detail/DetailContact';
 import axios from 'axios';
 
 class Detail extends Component {
