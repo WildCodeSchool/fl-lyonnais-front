@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import axios from 'axios';
+import API from '../API';
 
 export default function SearchInput () {
   const [tags, setTags] = useState([]);
   useEffect(() => {
     const fetchTags = async () => {
-      const res = await axios.get(process.env.REACT_APP_API_URL + '/tags');
+      const res = await API.get('/tags');
       setTags(res.data.data);
     };
     fetchTags();
