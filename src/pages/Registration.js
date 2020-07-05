@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { validateEmail, isSiret } from '../functionshelper';
-import axios from 'axios';
+import API from '../API';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -48,11 +48,9 @@ export default function SignUp () {
 
   const handlesubmit = (e) => {
     e.preventDefault();
-    const url = process.env.REACT_APP_API_URL + '/users';
     console.log(isSiret(infosRegistration.siret), infosRegistration.siret);
     if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret)) {
-      axios
-        .post(url, infosRegistration)
+      API.post('/users', infosRegistration)
         .then(res => res.data)
         .then(data => alert('Vous avez bien été enregistré !')
         )

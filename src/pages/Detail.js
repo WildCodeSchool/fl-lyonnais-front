@@ -3,7 +3,7 @@ import DetailBio from '../components/Detail/DetailBio';
 import DetailReferences from '../components/Detail/DetailReferences';
 import DetailSkills from '../components/Detail/DetailSkills';
 import DetailContact from '../components/Detail/DetailContact';
-import axios from 'axios';
+import API from '../API';
 
 class Detail extends Component {
   constructor (props) {
@@ -16,8 +16,7 @@ class Detail extends Component {
   }
 
   componentDidMount () {
-    axios
-      .get(process.env.REACT_APP_API_URL + '/freelances/2')
+    API.get('/freelances/2')
       .then(response => response.data)
       .then(data => {
         this.setState({

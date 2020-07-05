@@ -11,7 +11,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import axios from 'axios';
+import API from '../API';
 import AuthContext from '../components/AuthContext';
 
 const useStyles = makeStyles((theme) => ({
@@ -44,8 +44,7 @@ export default function SignIn (props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const payload = { email, password };
-    const url = process.env.REACT_APP_API_URL + '/users/connexion';
-    axios.post(url, payload).then((res) => {
+    API.post('/users/connexion', payload).then((res) => {
       history.push('/');
       alert('Vous etes connecté à votre compte et allez être redirigé vers votre page de détail');
       saveToken(res.data.token);
