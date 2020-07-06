@@ -80,15 +80,15 @@ export default function SignIn (props) {
   const handleSubmitValidation = (event) => {
     event.preventDefault();
     const payload = { email };
-    const url = process.env.REACT_APP_API_URL + '/users/renvoi_email_validation/' + email;
+    const url = process.env.REACT_APP_API_URL + '/users/renvoi_email_validation?email=' + email;
     console.log('url = ', url);
     axios.post(url, payload)
-    .then((res) => {
-      console.log(payload);
-    })
-    .catch(err => {
-      handleClickOpen();
-    })
+      .then((res) => {
+        console.log(payload);
+      })
+      .catch(err => {
+        handleClickOpen();
+      });
   };
 
   // Récupération du paramètre passé dans l'url (connexion?statut=xxx)
@@ -96,12 +96,12 @@ export default function SignIn (props) {
   const search = location.search;
   const status = search.toString().substr(8); // ne garde que le paramètre
   const validation = {
-    validated: '',     // statut=validated
-    revalidation: '',  // statut=revalidation
+    validated: '', // statut=validated
+    revalidation: '', // statut=revalidation
     delayExceeded: '', // statut=delay_exceeded
-    wrongKey: '',      // statut=wrong_key
-    displayForm: ''    // en fonction de l'info de validation, il se peut que le formulaire n'ai aucune utilité et se trouve don caché
-  }
+    wrongKey: '', // statut=wrong_key
+    displayForm: '' // en fonction de l'info de validation, il se peut que le formulaire n'ai aucune utilité et se trouve don caché
+  };
   let newFreelance = '';
   status ? newFreelance = '' : newFreelance = 'none';
   status === 'validated' ? validation.validated = '' : validation.validated = 'none';
@@ -127,10 +127,10 @@ export default function SignIn (props) {
         </h2>
         <div style={{ display: `${validation.validated}` }} className='validated'>
           <p>Féliciation, tu peux maintenant te connecter à ton compte.</p>
-          <p>N'oublie pas de compléter ta page personnelle afin d'être mieux visible</p>
+          <p>N'oublie pas de compléter ta page personnelle afin d'être plus visible.</p>
         </div>
         <div style={{ display: `${validation.revalidation}` }} className='revalidation'>
-          <p>Il semble que tu ais cliqué plusieurs fois de suite sur le lien pour valider ton adresse email</p>
+          <p>Il semble que tu ais cliqué plusieurs fois de suite sur le lien pour valider ton adresse email.</p>
           <p>Pas de souci, tu peux te connecter à ton compte en utilisant le formulaire ci-dessous.</p>
           <p>N'oublie pas d'archiver ou d'effacer l'email...</p>
         </div>
