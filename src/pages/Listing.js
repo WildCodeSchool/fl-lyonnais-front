@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Freelance from '../components/Freelance';
+import FilterTags from '../components/Filter';
 import './Listing.scss';
 import Pagination from '../components/Pagination';
 import API from '../API';
@@ -35,6 +36,8 @@ const Listing = () => {
 
   return (
     <div className='Listing'>
+      <h1>Liste de Freelance Lyonnais</h1>
+      <FilterTags />
       <ul className='everyFreelanceCards'>
         <li>
           {currentFreelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))}

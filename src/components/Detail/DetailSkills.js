@@ -5,7 +5,7 @@ import { generateKey } from '../../functionshelper';
 function detailSkills (props) {
   return (
     <div>
-      <h2 className='detailh2'>Mes compétences</h2>
+      <h2 className='detailh2'>Compétences</h2>
       <div className='detailskills'>
         <div className='mainSkills'>
           <ul>

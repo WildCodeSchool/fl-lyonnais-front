@@ -24,7 +24,7 @@ export default function SearchInput () {
           <TextField
             style={{ backgroundColor: '#eef9fe', borderRadius: '15px' }}
             {...params}
-            placeholder='Search input'
+            placeholder='Recherche'
             margin='small'
             variant='outlined'
             InputProps={{ ...params.InputProps, type: 'search' }}
