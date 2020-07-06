@@ -11,6 +11,31 @@ src: url('../font/BalooBhaina2-Regular.ttf') format('truetype');
   }
 }
 
+.ListingFilter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.FilterTags {
+  margin-right: 100px;
+}
+
+.filters {
+  background-color: white; 
+  width: 85%; 
+  border-radius: 5px; 
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+  padding-bottom: 5px;
+}
+
+.FilterTjm {
+  border-right: 1px solid gray;
+}
+
 .everyFreelanceCards {
   margin: auto;
   display: flex;

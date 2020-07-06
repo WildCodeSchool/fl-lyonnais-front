@@ -37,17 +37,21 @@ const Listing = () => {
   return (
     <div className='Listing'>
       <h1>Liste de Freelance Lyonnais</h1>
-      <FilterTags />
-      <ul className='everyFreelanceCards'>
-        <li>
-          {currentFreelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))}
-        </li>
-      </ul>
-      <Pagination
-        freelancesPerPage={freelancesPerPage}
-        totalFreelances={freelances.length}
-        paginate={paginate}
-      />
+      <div className='ListingFilter'>
+        <FilterTags className='FilterTags'/>
+        <div>
+          <ul className='everyFreelanceCards'>
+            <li>
+              {currentFreelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))}
+            </li>
+          </ul>
+          <Pagination
+            freelancesPerPage={freelancesPerPage}
+            totalFreelances={freelances.length}
+            paginate={paginate}
+          />
+        </div>
+      </div>
     </div>
   );
 };
