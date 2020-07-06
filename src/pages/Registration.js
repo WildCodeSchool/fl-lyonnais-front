@@ -71,12 +71,11 @@ export default function SignUp () {
   const handlesubmit = (e) => {
     // Function à créer pour gérer champs vides, sensibilité de la case
     e.preventDefault();
-    console.log(url);
     if (!isPwMore8cha(infosRegistration.password)) {
       handleClickOpen();
     } else {
       if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret) && onlyLetters(infosRegistration.firstname) && onlyLetters(infosRegistration.lastname && checked)) {
-      API.post('/users', infosRegistration)
+        API.post('/users', infosRegistration)
           .then(res => res.data)
           .then(data => {
             history.push('/reception_email');
@@ -94,7 +93,7 @@ export default function SignUp () {
     <div>
       <div style={{ textAlign: 'justify', margin: '5vw' }}>
         <h1>Freelance à Lyon inscris toi dans l'annuaire</h1>
-      </div> */}
+      </div>
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <div className={classes.paper}>

@@ -80,9 +80,7 @@ export default function SignIn (props) {
   const handleSubmitValidation = (event) => {
     event.preventDefault();
     const payload = { email };
-    const url = process.env.REACT_APP_API_URL + '/users/renvoi_email_validation?email=' + email;
-    console.log('url = ', url);
-    axios.post(url, payload)
+    API.post('/users/renvoi_email_validation?email=' + email, payload)
       .then((res) => {
         console.log(payload);
       })
