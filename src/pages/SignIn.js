@@ -4,8 +4,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
@@ -19,6 +17,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import decode from 'jwt-decode';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -66,12 +65,14 @@ export default function SignIn (props) {
     const payload = { email, password };
     const url = process.env.REACT_APP_API_URL + '/users/connexion';
     axios.post(url, payload).then((res) => {
-      history.push(`/detail/${res.data.data.id}`);
+      const decodedToken = decode(res.data.token);
+      history.push(`/detail/${decodedToken.id}`);
       console.log(res.data);
       // res.data.token;
       saveToken(res.data.token);
     })
       .catch(err => {
+        console.error(err);
         handleClickOpen();
       });
   };
@@ -206,10 +207,6 @@ export default function SignIn (props) {
               vlaue={password}
               onChange={(e) => { setPassword(e.target.value); }}
             />
-            <FormControlLabel
-              control={<Checkbox value='remember' color='primary' />}
-              label='Se souvenir de moi'
-            />
             <Button
               type='submit'
               fullWidth
@@ -221,11 +218,11 @@ export default function SignIn (props) {
               Se connecter
             </Button>
             <Grid container>
-              <Grid item xs>
+              {/* <Grid item xs>
                 <Link to='#' variant='body2'>
                   Mot de passe oublié?
                 </Link>
-              </Grid>
+              </Grid> */}
               <Grid item>
                 <Link to='/inscription' variant='body2'>
                   {"Vous n'avez pas de compte? S'inscrire"}

@@ -17,12 +17,14 @@ export function isSiret(siret) {
 }
 
 export function isPwMore8cha(pw) {
-  return !!(validateNumber(pw) && (isPwMore8cha.toString().length <= 8));
+  // return !!(validateNumber(pw) && (isPwMore8cha.toString().length <= 8));
+  return true;
 }
 
 
 export function onlyLetters(input) {
-  return input.match(/[A-Za-zÀ-ÿ]/);
+  // return input.match(/[A-Za-zÀ-ÿ]/);
+  return true;
 }
 
 export function isValidURL(str) {
