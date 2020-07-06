@@ -21,7 +21,7 @@ export default function FilterTags() {
   }, []);
 
   return (
-    <div className='filters' style={{margin: 'auto'}}> 
+    <div className='filters' > 
       <FilterTjm className="FilterTjm" />
       <Autocomplete
         multiple
@@ -31,7 +31,7 @@ export default function FilterTags() {
         getOptionLabel={(option) => option.name}
         renderOption={(option, { selected }) => (
           <React.Fragment>
-            
+
             <Checkbox
               icon={icon}
               checkedIcon={checkedIcon}

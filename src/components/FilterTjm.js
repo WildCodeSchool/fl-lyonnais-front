@@ -22,7 +22,7 @@ export default function DiscreteSlider() {
   return (
     <div className={classes.root} style={{ marginLeft: 30, marginBottom: 30 }}>
       <Typography id="discrete-slider" gutterBottom style={{ marginBottom: 35, fontFamily: 'balooBhaina2Regular', }} >
-       - TJM en euros € +
+       -  TJM en euros €  +
       </Typography>
       <Slider
         style={{}}
