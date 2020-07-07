@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
+import { useHistory, Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { validateEmail, isSiret } from '../functionshelper';
+import { validateEmail, isSiret, onlyLetters, isPwMore8cha } from '../functionshelper';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import API from '../API';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -36,8 +42,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp () {
+  const [open, setOpen] = React.useState(false);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
-
+  const history = useHistory();
+  const [checked, setChecked] = useState(true);
   const [infosRegistration, setInfosRegistration] = useState({
     firstname: '',
     lastname: '',
@@ -46,19 +56,36 @@ export default function SignUp () {
     siret: 0
   });
 
+  const handleCheckbox = (e) => {
+    console.log(e.target.value);
+    setChecked(!checked);
+  };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const handlesubmit = (e) => {
+    // Function à créer pour gérer champs vides, sensibilité de la case
     e.preventDefault();
-    console.log(isSiret(infosRegistration.siret), infosRegistration.siret);
-    if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret)) {
-      API.post('/users', infosRegistration)
-        .then(res => res.data)
-        .then(data => alert('Vous avez bien été enregistré !')
-        )
-        .catch(error => {
-          console.log(error);
-        });
+    if (!isPwMore8cha(infosRegistration.password)) {
+      handleClickOpen();
     } else {
-      alert('Champ manquant ou un email valide');
+      if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret) && onlyLetters(infosRegistration.firstname) && onlyLetters(infosRegistration.lastname && checked)) {
+        API.post('/users', infosRegistration)
+          .then(res => res.data)
+          .then(data => {
+            history.push('/reception_email');
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      } else {
+        alert('Champ manquant, email non valide, siret invalide, conditions générales non acceptées');
+      }
     }
   };
 
@@ -66,21 +93,6 @@ export default function SignUp () {
     <div>
       <div style={{ textAlign: 'justify', margin: '5vw' }}>
         <h1>Freelance à Lyon inscris toi dans l'annuaire</h1>
-        <br />
-        <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam aliquid, at cum cumque deleniti eligendi
-        error eveniet expedita, in minima molestias nesciunt pariatur quae qui quo quos tempore voluptas?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad cumque eos libero molestias
-        necessitatibus numquam pariatur quas quo, sequi. Ab consequatur, delectus dolor hic nemo numquam quaerat!
-        Ducimus, maiores.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque commodi, cumque dolorem enim, est fugiat
-        id illum labore libero nesciunt nisi officiis quas quo quos recusandae voluptate? Est, rerum!
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores et sunt tempora veniam. Aliquam animi
-        asperiores, aspernatur facilis magnam minima minus neque optio, quidem sequi totam veritatis! Obcaecati
-        officia, reiciendis.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, aperiam aspernatur assumenda autem, esse
-        et ipsum magnam modi odio quidem quo repudiandae sint, suscipit unde vel velit voluptates. Corporis, harum?
-        </p>
       </div>
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
@@ -163,8 +175,10 @@ export default function SignUp () {
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
-                  control={<Checkbox value='allowExtraEmails' color='primary' />}
+                  control={<Checkbox color='primary' />}
                   label="J'accepte les conditions générales"
+                  onChange={handleCheckbox}
+                  value={checked}
                 />
               </Grid>
             </Grid>
@@ -177,7 +191,7 @@ export default function SignUp () {
               style={{ backgroundColor: 'var(--red)' }}
               to='/edition_compte'
             >
-                Créer ma fiche freelance
+              Créer ma fiche freelance
             </Button>
             <Grid container justify='flex-end'>
               <Grid item>
@@ -189,6 +203,24 @@ export default function SignUp () {
           </form>
         </div>
         <Box mt={5} />
+        <Dialog
+          fullScreen={fullScreen}
+          open={open}
+          onClose={handleClose}
+          aria-labelledby='responsive-dialog-title'
+        >
+          <DialogTitle id='responsive-dialog-title'>Mot de passe : </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              8 caractères minimum sont recquis.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color='primary' autoFocus>
+              Fermer
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Container>
     </div>
   );

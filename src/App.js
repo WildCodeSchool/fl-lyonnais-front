@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
 import Listing from './pages/Listing';
+import MailInfo from './pages/MailInfo';
 import Registration from './pages/Registration';
 import LegalDisclaimer from './pages/LegalDisclaimer';
 import SignIn from './pages/SignIn';
@@ -13,8 +14,10 @@ import Medium from './font/BalooBhaina2-Medium.ttf';
 import Regular from './font/BalooBhaina2-Regular.ttf';
 import SemiBold from './font/BalooBhaina2-SemiBold.ttf';
 import Footer from './components/Footer';
+import Edition from './pages/Edition.js';
 import Header from './components/Header';
 import AuthContext from './components/AuthContext';
+import EditionContextProvider from './components/FormEdition/EditionContextProvider';
 import jwtDecode from 'jwt-decode';
 
 const Apps = styled.div`
@@ -53,20 +56,25 @@ function App () {
     <Apps>
       <AuthContext.Provider value={{ token: token, saveToken: (token) => (setTokenInLocalStorage(token)) }}>
         {userNameFromToken && <div><p>Welcome back {userNameFromToken} !</p><button onClick={() => setTokenInLocalStorage('')}>Log out</button></div>}
-        <Router>
-          <Header />
-          <main style={{ flex: '1 0 auto' }}>
-            <Switch>
-              <Route exact path='/'><Home /></Route>
-              <Route path='/detail/:id'><Detail /></Route>
-              <Route path='/liste_freelance'><Listing /></Route>
-              <Route path='/inscription'><Registration /></Route>
-              <Route path='/connexion'><SignIn /></Route>
-              <Route path='/mentions_legales'><LegalDisclaimer /></Route>
-            </Switch>
-          </main>
-          <Footer />
-        </Router>
+        <EditionContextProvider>
+          <Router>
+            <Header />
+            <main style={{ flex: '1 0 auto' }}>
+              <Switch>
+                <Route exact path='/'><Home /></Route>
+                <Route path='/detail/:id'><Detail /></Route>
+                <Route path='/liste_freelance'><Listing /></Route>
+                <Route path='/inscription'><Registration /></Route>
+                <Route path='/connexion'><SignIn /></Route>
+                <Route path='/compte'><Edition /></Route>
+                <Route path='/edition_compte'><Edition /></Route>
+                <Route path='/mentions_legales'><LegalDisclaimer /></Route>
+                <Route path='/reception_email'><MailInfo /></Route>
+              </Switch>
+            </main>
+            <Footer />
+          </Router>
+        </EditionContextProvider>
       </AuthContext.Provider>
     </Apps>
   );
