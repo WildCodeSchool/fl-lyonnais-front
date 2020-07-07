@@ -38,7 +38,7 @@ const Listing = () => {
     <div className='Listing'>
       <h1>Liste de Freelance Lyonnais</h1>
       <div className='ListingFilter'>
-        <FilterTags className='FilterTags'/>
+        <FilterTags className='FilterTags' />
         <div>
           <ul className='everyFreelanceCards'>
             <li>

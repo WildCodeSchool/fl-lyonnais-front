@@ -7,10 +7,10 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import API from '../API';
 import FilterTjm from '../components/FilterTjm';
 
-const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
-const checkedIcon = <CheckBoxIcon fontSize="small" />;
+const icon = <CheckBoxOutlineBlankIcon fontSize='small' />;
+const checkedIcon = <CheckBoxIcon fontSize='small' />;
 
-export default function FilterTags() {
+export default function FilterTags () {
   const [tags, setTags] = useState([]);
   useEffect(() => {
     const fetchTags = async () => {
@@ -21,35 +21,37 @@ export default function FilterTags() {
   }, []);
 
   return (
-    <div className='filters' > 
-      <FilterTjm className="FilterTjm" />
+    <div className='filters'>
+      <FilterTjm className='FilterTjm' />
       <Autocomplete
         multiple
-        id="checkboxes-tags"
+        id='checkboxes-tags'
         options={tags}
         disableCloseOnSelect
         getOptionLabel={(option) => option.name}
         renderOption={(option, { selected }) => (
-          <React.Fragment>
+          <>
 
             <Checkbox
               icon={icon}
               checkedIcon={checkedIcon}
               style={{ marginRight: 8 }}
-              checked={selected}/>
+              checked={selected}
+            />
 
             {option.name} ({option.nb})
-          </React.Fragment>
+          </>
         )}
-        style={{ width: '80%',  }}
+        style={{ width: '80%' }}
         renderInput={(params) => (
-          <TextField 
-          style={{backgroundColor: 'white', marginLeft:'30px' }} 
-          {...params} 
-          margin='none' 
-          variant="outlined"
-          label="Filtres" 
-          placeholder="Autres compétences"  />
+          <TextField
+            style={{ backgroundColor: 'white', marginLeft: '30px' }}
+            {...params}
+            margin='none'
+            variant='outlined'
+            label='Filtres'
+            placeholder='Autres compétences'
+          />
         )}
       />
     </div>
