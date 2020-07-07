@@ -24,11 +24,11 @@ const Listing = () => {
     fetchFreelances();
   }, []);
 
-  console.log(freelances)
-  console.log(currentPage)
+  console.log(freelances);
+  console.log(currentPage);
 
-  if (loading) {return <h2>Loading...</h2>;}
-  for (let i = 1; i <= Math.ceil(totalFreelances / freelancesPerPage); i++) {pageNumbers.push(i);}
+  if (loading) { return <h2>Loading...</h2>; }
+  for (let i = 1; i <= Math.ceil(totalFreelances / freelancesPerPage); i++) { pageNumbers.push(i); }
 
   return (
     <div className='Listing'>
