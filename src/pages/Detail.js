@@ -20,7 +20,7 @@ class Detail extends Component {
       .then(response => response.data)
       .then(data => {
         this.setState({
-          freelances: data.freelances,
+          freelances: data.freelance,
           tags: data.tags,
           references: data.references
         });
