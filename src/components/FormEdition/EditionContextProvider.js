@@ -16,10 +16,9 @@ class EditionContextProvider extends React.Component {
       job_title: '',
       bio: '',
       vat_number: '',
-      last_modification_date: '2019-03-15',
+      last_modification_date: new Date().toISOString().slice(0, 10),
       is_active: 1,
       address_id: '',
-      email: '',
 
       street: '',
       zip_code: '',

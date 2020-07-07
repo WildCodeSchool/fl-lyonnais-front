@@ -7,7 +7,7 @@ import UploadButtons from './UploadButtons';
 import EditionContext from './EditionContext';
 
 export default function AddressForm () {
-  const { job_title, firstname, lastname, street, zip_code, city, bio, handleAdressFormChange } = useContext(EditionContext);
+  const { email, job_title, firstname, lastname, street, zip_code, city, bio, handleAdressFormChange } = useContext(EditionContext);
   return (
     <>
       <Grid container spacing={3}>
@@ -32,6 +32,18 @@ export default function AddressForm () {
             fullWidth
             autoComplete='family-name'
             value={lastname}
+            onChange={(e) => handleAdressFormChange(e)}
+            />
+        </Grid>
+        <Grid item xs={12} >
+        <TextField
+            required
+            id='email'
+            name='email'
+            label='email'
+            fullWidth
+            autoComplete='email'
+            value={email}
             onChange={(e) => handleAdressFormChange(e)}
           />
         </Grid>

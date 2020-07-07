@@ -36,14 +36,11 @@ function getStepContent (step, propsToPass) {
 export default function Edition (props) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const payload = useContext(EditionContext);
+  const {firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title,bio,vat_number,last_modification_date, is_active, address_id, street, zip_code, city, nameReferenceList, imageReferenceList, urlReferenceList, tagNameChosen, idTagList } = useContext(EditionContext);
+  const payload = {firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title,bio,vat_number,last_modification_date, is_active, address_id, street, zip_code, city, nameReferenceList, imageReferenceList, urlReferenceList, tagNameChosen, idTagList } 
 
   const handleNext = (e) => {
     setActiveStep(activeStep + 1);
-    // if (e.target.innerText.toLowerCase() === 'suivant') {
-    //   payload.cleanProjectState();
-    // }
-
     if (e.target.innerText.toLowerCase() === 'enregistrer') {
       const url = process.env.REACT_APP_API_URL + '/freelances/account';
       console.log(payload);
@@ -51,7 +48,10 @@ export default function Edition (props) {
         .then((res) => res.data)
         .then(data =>
           alert('Informations enregistrées vous allez être redirigés vers votre fiche de détail')
-        );
+        )
+        .catch(err => {
+          console.error(err)
+        })
     }
   };
     //  En attente Pierre pour upload photo
