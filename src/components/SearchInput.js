@@ -14,7 +14,7 @@ export default function SearchInput () {
   }, []);
 
   return (
-    <div style={{ width: 300 }}>
+    <div style={{ width: 300}}>
       <Autocomplete
         freeSolo
         id='search'
@@ -22,11 +22,10 @@ export default function SearchInput () {
         options={tags.map((option) => option.name)}
         renderInput={(params) => (
           <TextField
-            style={{ backgroundColor: '#eef9fe', borderRadius: '15px' }}
+            style={{ marginLeft:'2px', marginTop:'15px', marginBottom:'15px', backgroundColor: '#eef9fe', borderRadius: '30px', padding: '10px',backgroundColor:'white' }}
             {...params}
-            placeholder='Search input'
+            placeholder='Recherche'
             margin='small'
-            variant='outlined'
             InputProps={{ ...params.InputProps, type: 'search' }}
           />
         )}

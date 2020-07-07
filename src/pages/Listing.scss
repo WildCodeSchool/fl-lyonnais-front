@@ -11,6 +11,32 @@ src: url('../font/BalooBhaina2-Regular.ttf') format('truetype');
   }
 }
 
+.ListingFilter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.FilterTags {
+  margin-right: 100px;
+}
+
+.filters {
+  background-color: white; 
+  width: 85%;
+  max-width: 500px; 
+  border-radius: 5px; 
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  padding-bottom: 5px;
+}
+
+.FilterTjm {
+  border-right: 1px solid gray;
+}
+
 .everyFreelanceCards {
   margin: auto;
   display: flex;
@@ -128,26 +154,40 @@ $font-main: 'balooBhaina2Regular', sans-serif;
     max-width: 1024px;
     list-style: none;
   }
-}
 
-.pagination {
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  padding-left: 0;
-  list-style: none;
-  border-radius: .25rem;
-  margin: auto;
-}
+  .pagination {
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem;
+    margin: auto;
+  }
 
-.page-link {
-  position: relative;
-  display: block;
-  padding: .5rem .75rem;
-  margin-left: -1px;
-  line-height: 1.25;
-  color: var(--blue);
-  text-decoration: none;
-  background-color: #fff;
-  border: 1px solid #dee2e6;
+  .page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: var(--blue);
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+  }
+
+  .ListingFilter {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  
+  .filters {
+    width: 25%;
+    min-width: 400px;
+    margin: 20px 0 0 30px;
+    justify-content: center;
+    height: 300px;
+    
+  }
 }

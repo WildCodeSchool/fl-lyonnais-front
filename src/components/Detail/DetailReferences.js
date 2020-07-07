@@ -4,7 +4,7 @@ import '../../pages/Detail.scss';
 function DetailReferences (props) {
   return (
     <div>
-      <h2 className='detailh2'>Mes Références</h2>
+      <h2 className='detailh2'>Références</h2>
       <div className='carousel'>
         {props.references.map(reference => {
           return (
