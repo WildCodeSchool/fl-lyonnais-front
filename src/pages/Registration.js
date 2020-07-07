@@ -91,9 +91,6 @@ export default function SignUp () {
 
   return (
     <div>
-      <div style={{ textAlign: 'justify', margin: '5vw' }}>
-        <h1>Freelance à Lyon inscris toi dans l'annuaire</h1>
-      </div>
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <div className={classes.paper}>
