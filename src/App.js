@@ -19,7 +19,7 @@ import Header from './components/Header';
 import AuthContext from './components/AuthContext';
 import EditionContextProvider from './components/FormEdition/EditionContextProvider';
 import jwtDecode from 'jwt-decode';
-import Chat from './components/Chat'
+import Chat from './components/Chat';
 
 const Apps = styled.div`
     text-align: center;

@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Tags () {
-  const { chosenTags,setChosenTags, deleteChosenTag, allTags,setAllTags, tagNameChosen, handleTag, idTagList, addIdTagIdsChosen } = useContext(EditionContext);
+  const { chosenTags, setChosenTags, deleteChosenTag, allTags, setAllTags, tagNameChosen, handleTag, idTagList, addIdTagIdsChosen } = useContext(EditionContext);
 
   useEffect(() => {
     async function getData () {
@@ -32,14 +32,14 @@ export default function Tags () {
 
   const classes = useStyles();
 
-  const handleAutocompleteChange = (e,chosenTags) => {
-    console.log(chosenTags)
-    setChosenTags(chosenTags)
+  const handleAutocompleteChange = (e, chosenTags) => {
+    console.log(chosenTags);
+    setChosenTags(chosenTags);
   };
 
   const handleTagDelete = (tag) => {
-    deleteChosenTag(tag.id)
-  }
+    deleteChosenTag(tag.id);
+  };
   return (
 
     <>
@@ -47,7 +47,7 @@ export default function Tags () {
         <Autocomplete
           id='autocomplete'
           multiple
-          getOptionLabel={(tag) =>  tag.name }
+          getOptionLabel={(tag) => tag.name}
           options={allTags}
           value={chosenTags}
           onChange={handleAutocompleteChange}
@@ -55,18 +55,18 @@ export default function Tags () {
             value.map((option, index) => {
               return (
                 <Chip
-              label={option.name}
-              onDelete={() => handleTagDelete(option)}
-              className={classes.chip}
-            />
-              )
+                  label={option.name}
+                  onDelete={() => handleTagDelete(option)}
+                  className={classes.chip}
+                />
+              );
               // <Chip variant='outlined' label={option} {...getTagProps({ index })} />
-          })}
+            })}
           renderInput={(params) => (
             <TextField {...params} variant='filled' label='compétences' />
           )}
         />
-        <Link component='button' variant='body2'> <Chat/> Il vous manque une compétence ?</Link>
+        <Link component='button' variant='body2'> <Chat /> Il vous manque une compétence ?</Link>
       </div>
     </>
   );

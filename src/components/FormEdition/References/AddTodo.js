@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { TextField, Paper, Button, Grid } from '@material-ui/core';
 import EditionContext from '../EditionContext';
 
@@ -22,14 +22,14 @@ const AddTodo = (props) => {
             fullWidt
             color='primary'
             variant='outlined'
-            onClick={() => { addReference(props.inputValueName)}}
+            onClick={() => { addReference(props.inputValueName); }}
           >
             Add
           </Button>
         </Grid>
       </Grid>
     </Paper>
-  )
+  );
 };
 
 export default AddTodo;

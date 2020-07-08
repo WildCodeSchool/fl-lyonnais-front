@@ -31,24 +31,26 @@ class EditionContextProvider extends React.Component {
       urlReferenceList: [],
       // Tag
       tagNameChosen: [],
-      idTagList: [], 
+      idTagList: [],
       allTags: [],
       chosenTags: []
     };
   }
 
   setAllTags = (tags) => {
-    this.setState({ allTags: tags})
+    this.setState({ allTags: tags });
   }
 
   setChosenTags = (tags) => {
-    this.setState({ chosenTags: tags})
+    this.setState({ chosenTags: tags });
   }
 
   deleteChosenTag = (tagId) => {
-    this.setState({ chosenTags: this.state.chosenTags.filter(
-      (tag) => tag.id !== tagId
-    )})
+    this.setState({
+      chosenTags: this.state.chosenTags.filter(
+        (tag) => tag.id !== tagId
+      )
+    });
   }
 
   handleUrlLink = (urlValueAdded) => {
@@ -70,24 +72,25 @@ class EditionContextProvider extends React.Component {
       image: '',
       url: ''
     };
-    this.setState( { references: [...this.state.references, newReference]})
+    this.setState({ references: [...this.state.references, newReference] });
   }
 
   deleteReference = (refId) => {
-    this.setState({ references: this.state.references.filter(
-      (ref) => ref.id !== refId
-    )})
-  }
-  
-  setReferenceField = (refId, fieldName, fieldValue) => {
-    const referencesCopy = this.state.references.slice();
-    const reference = referencesCopy.find( (ref) => {
-      return ref.id === refId 
-    } )
-    reference[fieldName] = fieldValue;
-    this.setState({ references: referencesCopy })
+    this.setState({
+      references: this.state.references.filter(
+        (ref) => ref.id !== refId
+      )
+    });
   }
 
+  setReferenceField = (refId, fieldName, fieldValue) => {
+    const referencesCopy = this.state.references.slice();
+    const reference = referencesCopy.find((ref) => {
+      return ref.id === refId;
+    });
+    reference[fieldName] = fieldValue;
+    this.setState({ references: referencesCopy });
+  }
 
   handleFile = (e) => {
     const imageReferenceListAdded = this.state.imageReferenceList.slice();
@@ -119,7 +122,7 @@ class EditionContextProvider extends React.Component {
   render () {
     return (
       <div>
-        <EditionContext.Provider value={{ ...this.state,deleteChosenTag:this.deleteChosenTag, setChosenTags:this.setChosenTags,setAllTags:this.setAllTags,deleteReference:this.deleteReference,setReferenceField:this.setReferenceField, addReference: this.addReference, handleUrlLink: this.handleUrlLink, handleAdressFormChange: this.handleAdressFormChange, handleTag: this.handleTag, handleTagId: this.handleTagId, addIdTagIdsChosen: this.addIdTagIdsChosen, handleReferencesName: this.handleReferencesName, handleNameReferenceList: this.handleNameReferenceList, setNameReferenceList: this.setNameReferenceList, cleanProjectState: this.cleanProjectState, handleFile: this.handleFile }}>
+        <EditionContext.Provider value={{ ...this.state, deleteChosenTag: this.deleteChosenTag, setChosenTags: this.setChosenTags, setAllTags: this.setAllTags, deleteReference: this.deleteReference, setReferenceField: this.setReferenceField, addReference: this.addReference, handleUrlLink: this.handleUrlLink, handleAdressFormChange: this.handleAdressFormChange, handleTag: this.handleTag, handleTagId: this.handleTagId, addIdTagIdsChosen: this.addIdTagIdsChosen, handleReferencesName: this.handleReferencesName, handleNameReferenceList: this.handleNameReferenceList, setNameReferenceList: this.setNameReferenceList, cleanProjectState: this.cleanProjectState, handleFile: this.handleFile }}>
           {this.props.children}
         </EditionContext.Provider>
       </div>

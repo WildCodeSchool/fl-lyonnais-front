@@ -9,7 +9,6 @@ const References = (props) => {
   const { handleNameReferenceList, handleUrlLink } = useContext(EditionContext);
   const { inputValue, changeInput, clearInput, keyInput } = useInputValue();
 
-
   const clearInputAndAddTodo = () => {
     clearInput();
     handleNameReferenceList(inputValue);
@@ -22,8 +21,7 @@ const References = (props) => {
         onInputChangeName={changeInput}
         onButtonClick={clearInputAndAddTodo}
       />
-      <TodoList
-      />
+      <TodoList />
     </Layout>
   );
 };

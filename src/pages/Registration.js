@@ -76,7 +76,7 @@ export default function SignUp () {
     } else {
       const registration_date = new Date().toISOString().slice(0, 10);
       if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret) && onlyLetters(infosRegistration.firstname) && onlyLetters(infosRegistration.lastname && checked)) {
-        const payload = { ...infosRegistration, registration_date}
+        const payload = { ...infosRegistration, registration_date };
         API.post('/users', payload)
           .then(res => res.data)
           .then(data => {

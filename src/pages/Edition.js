@@ -36,8 +36,8 @@ function getStepContent (step, propsToPass) {
 export default function Edition (props) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const {firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title,bio,vat_number,last_modification_date, is_active, street, zip_code, city, references , chosenTags} = useContext(EditionContext);
-  const payload = {firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title,bio,vat_number,last_modification_date, is_active, street, zip_code, city, references, chosenTags} 
+  const { firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags } = useContext(EditionContext);
+  const payload = { firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags };
 
   const handleNext = (e) => {
     setActiveStep(activeStep + 1);
@@ -50,8 +50,8 @@ export default function Edition (props) {
           alert('Informations enregistrées vous allez être redirigés vers votre fiche de détail')
         )
         .catch(err => {
-          console.error(err)
-        })
+          console.error(err);
+        });
     }
   };
     //  En attente Pierre pour upload photo

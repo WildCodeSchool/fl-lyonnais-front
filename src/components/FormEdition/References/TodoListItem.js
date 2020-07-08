@@ -20,7 +20,7 @@ const TodoListItem = (props) => {
   };
 
   const handleUrlInput = (e) => {
-    setReferenceField(props.reference.id,'url', e.target.value)
+    setReferenceField(props.reference.id, 'url', e.target.value);
   };
 
   return (
