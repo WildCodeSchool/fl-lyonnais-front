@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -48,7 +48,7 @@ export default function SignUp () {
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
   const history = useHistory();
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(false);
   const [infosRegistration, setInfosRegistration] = useState({
     firstname: '',
     lastname: '',
@@ -57,8 +57,12 @@ export default function SignUp () {
     siret: ''
   });
 
+  useEffect(() => {
+    // Permet d'avoir le bon état par défaut
+    setChecked(false);
+  }, []);
+
   const handleCheckbox = (e) => {
-    console.log(e.target.value);
     setChecked(!checked);
   };
   const handleClickOpen = () => {
@@ -85,7 +89,7 @@ export default function SignUp () {
     } else if (infosRegistration.password !== infosRegistration.passwordConfirmation) {
       handleClickOpenPasswordsNotEqual();
     } else {
-      if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret) && onlyLetters(infosRegistration.firstname) && onlyLetters(infosRegistration.lastname && checked)) {
+      if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret) && onlyLetters(infosRegistration.firstname) && onlyLetters(infosRegistration.lastname) && checked) {
         API.post('/users', infosRegistration)
           .then(res => res.data)
           .then(data => {
