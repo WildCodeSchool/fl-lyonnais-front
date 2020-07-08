@@ -65,16 +65,25 @@ export default function SignIn (props) {
     const payload = { email, password };
     API.post('/users/connexion', payload).then((res) => {
       const decodedToken = decode(res.data.token);
-      history.push(`/detail/${decodedToken.id}`);
+      if (! status) {
+        history.push(`/detail/${decodedToken.id}`);
+        saveToken(res.data.token);
+      } else {
+        history.push(`/compte`);
+        saveToken(res.data.token);
+      }
       console.log(res.data);
       // res.data.token;
-      saveToken(res.data.token);
     })
       .catch(err => {
         console.error(err);
         handleClickOpen();
       });
   };
+  const  handleConnexionClick = (e) => {
+    API.get('/users/')
+
+  }
 
   // Traitement du formulaire de demande de renvoi de l'email de validation
   const handleSubmitValidation = (event) => {
@@ -116,6 +125,7 @@ export default function SignIn (props) {
   } else {
     validation.wrongKey = 'none';
   }
+
 
   return (
     <div>
@@ -211,6 +221,7 @@ export default function SignIn (props) {
               color='primary'
               className={classes.submit}
               style={{ backgroundColor: 'var(--red)' }}
+              onClick = {handleConnexionClick}
             >
               Se connecter
             </Button>
