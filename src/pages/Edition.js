@@ -72,14 +72,7 @@ export default function Edition (props) {
 
   return (
     <>
-      <CssBaseline />
-      <AppBar position='absolute' color='default' className={classes.appBar}>
-        <Toolbar>
-          <Typography variant='h6' color='inherit' noWrap>
-              Gestion de votre compte
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <h1>Gestion de votre compte</h1>
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Stepper activeStep={activeStep} className={classes.stepper}>
