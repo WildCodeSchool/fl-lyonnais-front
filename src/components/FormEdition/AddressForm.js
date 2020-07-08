@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import UploadButtons from './UploadButtons';
 import EditionContext from './EditionContext';
-import '../../pages/Home.scss'
+import '../../pages/Home.scss';
 
 export default function AddressForm () {
   const { job_title, firstname, lastname, street, zip_code, city, bio, handleAdressFormChange } = useContext(EditionContext);

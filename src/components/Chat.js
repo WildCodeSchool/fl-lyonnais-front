@@ -16,7 +16,7 @@ class Chat extends React.Component {
   render () {
     return (
       <div>
-        <button hidden onClick="$crisp.push(['do', 'chat:open'])"/>
+        <button hidden onClick="$crisp.push(['do', 'chat:open'])" />
       </div>
     );
   }

@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import EditionContext from './EditionContext';
 import Link from '@material-ui/core/Link';
 import axios from 'axios';
-import Chat from '../Chat'
+import Chat from '../Chat';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,7 +57,7 @@ export default function Tags () {
             <TextField {...params} variant='filled' label='compétences' placeholder='Favorites' />
           )}
         />
-        <Link component='button' variant='body2'> <Chat/> Il vous manque une compétence ?</Link>
+        <Link component='button' variant='body2'> <Chat /> Il vous manque une compétence ?</Link>
       </div>
     </>
   );

@@ -19,9 +19,9 @@ import Header from './components/Header';
 import AuthContext from './components/AuthContext';
 import EditionContextProvider from './components/FormEdition/EditionContextProvider';
 import jwtDecode from 'jwt-decode';
-import Chat from './components/Chat'
-import GeneralConditions from './pages/generic page/GeneralConditions'
-import About from './pages/generic page/About'
+import Chat from './components/Chat';
+import GeneralConditions from './pages/generic page/GeneralConditions';
+import About from './pages/generic page/About';
 
 const Apps = styled.div`
     text-align: center;
