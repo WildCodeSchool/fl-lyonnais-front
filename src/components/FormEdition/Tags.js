@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Chip from '@material-ui/core/Chip';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Tags () {
-  const { chosenTags, setChosenTags, deleteChosenTag, allTags, setAllTags, tagNameChosen, handleTag, idTagList, addIdTagIdsChosen } = useContext(EditionContext);
+  const { chosenTags, setChosenTags, deleteChosenTag, allTags, setAllTags } = useContext(EditionContext);
 
   useEffect(() => {
     async function getData () {
@@ -60,7 +60,6 @@ export default function Tags () {
                   className={classes.chip}
                 />
               );
-              // <Chip variant='outlined' label={option} {...getTagProps({ index })} />
             })}
           renderInput={(params) => (
             <TextField {...params} variant='filled' label='compétences' />

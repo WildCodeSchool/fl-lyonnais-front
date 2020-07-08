@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import EditionContext from './EditionContext';
-import { isValidURL, isFrenchMobile } from '../../functionshelper';
+// import { isValidURL, isFrenchMobile } from '../../functionshelper';
 
 const useStyles = makeStyles((theme) => ({
   height: {

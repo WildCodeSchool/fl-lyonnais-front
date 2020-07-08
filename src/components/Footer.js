@@ -10,7 +10,7 @@ import FaceIcon from '@material-ui/icons/Face';
 const pathMap = [
   '/',
   '/liste_freelance',
-  '/aproposde',
+  '/a_propos',
   '/mentions_legales'
 ];
 

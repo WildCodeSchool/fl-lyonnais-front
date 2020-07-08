@@ -11,8 +11,8 @@ import {
 import DeleteOutlined from '@material-ui/icons/DeleteOutlined';
 
 const TodoListItem = (props) => {
-  const { handleFile, handleUrlLink, setReferenceField, deleteReference } = useContext(EditionContext);
-  const [inputUrlValue, setInputUrlValue] = useState();
+  const { handleFile, setReferenceField, deleteReference } = useContext(EditionContext);
+  const [inputUrlValue] = useState();
 
   const handleFileClick = (e) => {
     console.log(e);

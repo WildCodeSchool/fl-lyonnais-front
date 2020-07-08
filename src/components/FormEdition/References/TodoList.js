@@ -4,7 +4,7 @@ import TodoListItem from './TodoListItem';
 import EditionContext from '../EditionContext';
 
 const TodoList = (props) => {
-  const { references, setReferenceField } = useContext(EditionContext);
+  const { references } = useContext(EditionContext);
 
   console.log(references);
   return (

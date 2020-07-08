@@ -26,12 +26,7 @@ class EditionContextProvider extends React.Component {
       city: '',
       // References
       references: [],
-      nameReferenceList: [],
-      imageReferenceList: [],
-      urlReferenceList: [],
       // Tag
-      tagNameChosen: [],
-      idTagList: [],
       allTags: [],
       chosenTags: []
     };

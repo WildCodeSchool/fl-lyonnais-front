@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import UploadButtons from './UploadButtons';
 import EditionContext from './EditionContext';
+import '../../pages/Home.scss';
 
 export default function AddressForm () {
   const { email, job_title, firstname, lastname, street, zip_code, city, bio, handleAdressFormChange } = useContext(EditionContext);
@@ -107,7 +108,7 @@ export default function AddressForm () {
         </Grid>
         <Grid item xs={12} sm={12} justify='center'>
           <Typography variant='h6' gutterBottom color='primary'>
-            Télécharger votre photo de profil
+            Photo de profil
           </Typography>
           <UploadButtons />
         </Grid>
