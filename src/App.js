@@ -53,10 +53,10 @@ function App () {
   }
 
   return (
-    <Apps>
-      <AuthContext.Provider value={{ token: token, saveToken: (token) => (setTokenInLocalStorage(token)) }}>
-        {userNameFromToken && <div><p>Welcome back {userNameFromToken} !</p><button onClick={() => setTokenInLocalStorage('')}>Log out</button></div>}
-        <EditionContextProvider>
+    <AuthContext.Provider value={{ token: token, saveToken: (token) => (setTokenInLocalStorage(token)) }}>
+      {userNameFromToken && <div><p>Welcome back {userNameFromToken} !</p><button onClick={() => setTokenInLocalStorage('')}>Log out</button></div>}
+      <EditionContextProvider>
+        <Apps>
           <Router>
             <Header />
             <main style={{ flex: '1 0 auto' }}>
@@ -74,9 +74,9 @@ function App () {
             </main>
             <Footer />
           </Router>
-        </EditionContextProvider>
-      </AuthContext.Provider>
-    </Apps>
+        </Apps>
+      </EditionContextProvider>
+    </AuthContext.Provider>
   );
 }
 

@@ -2,37 +2,31 @@ import React, { useState, useEffect } from 'react';
 import Freelance from '../components/Freelance';
 import FilterTags from '../components/Filter';
 import './Listing.scss';
-import Pagination from '../components/Pagination';
+import { Link } from 'react-router-dom';
 import API from '../API';
 
 const Listing = () => {
   const [freelances, setFreelances] = useState([]);
+  const [totalFreelances, setTotalFreelances] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [freelancesPerPage] = useState(15);
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const pageNumbers = [];
 
   useEffect(() => {
     const fetchFreelances = async () => {
       setLoading(true);
-      const res = await API.get('/freelances');
+      const res = await API.get('/freelances/?page=' + currentPage + '&step=' + freelancesPerPage);
       setFreelances(res.data.data);
+      setTotalFreelances(res.data.data2);
       setLoading(false);
     };
-
     fetchFreelances();
-  }, []);
+  }, [currentPage]);
 
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
-
-  // Get current freelances
-  const indexOfLastFreelance = currentPage * freelancesPerPage;
-  const indexOfFirstFreelance = indexOfLastFreelance - freelancesPerPage;
-  const currentFreelances = freelances.slice(indexOfFirstFreelance, indexOfLastFreelance);
-
-  // Change page
-  const paginate = pageNumber => setCurrentPage(pageNumber);
+  if (loading) { return <h2>Loading...</h2>; }
+  for (let i = 1; i <= Math.ceil((totalFreelances.map(tot => tot.totalAmoutOfValidFreelances)) / freelancesPerPage); i++) { pageNumbers.push(i); }
 
   return (
     <div className='Listing'>
@@ -42,14 +36,14 @@ const Listing = () => {
         <div>
           <ul className='everyFreelanceCards'>
             <li>
-              {currentFreelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))}
+              {freelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))}
             </li>
           </ul>
-          <Pagination
-            freelancesPerPage={freelancesPerPage}
-            totalFreelances={freelances.length}
-            paginate={paginate}
-          />
+          <nav>
+            <ul className='pagination'>
+              {pageNumbers.map(number => (<li key={number}><Link onClick={() => paginate(number)} to='#' className='page-link'>{number}</Link></li>))}
+            </ul>
+          </nav>
         </div>
       </div>
     </div>
