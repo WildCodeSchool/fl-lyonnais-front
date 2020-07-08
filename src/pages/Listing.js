@@ -7,28 +7,27 @@ import API from '../API';
 
 const Listing = () => {
   const [freelances, setFreelances] = useState([]);
+  const [totalFreelances, setTotalFreelances] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [freelancesPerPage] = useState(15);
   const paginate = pageNumber => setCurrentPage(pageNumber);
   const pageNumbers = [];
-  const totalFreelances = 60;
 
   useEffect(() => {
     const fetchFreelances = async () => {
       setLoading(true);
-      const res = await API.get('/freelances/page?page=' + currentPage + '&step=' + freelancesPerPage);
+      const res = await API.get('/freelances/?page=' + currentPage + '&step=' + freelancesPerPage);
       setFreelances(res.data.data);
+      setTotalFreelances(res.data.data2);
       setLoading(false);
     };
     fetchFreelances();
   }, []);
 
-  console.log(freelances);
   console.log(currentPage);
-
   if (loading) { return <h2>Loading...</h2>; }
-  for (let i = 1; i <= Math.ceil(totalFreelances / freelancesPerPage); i++) { pageNumbers.push(i); }
+  for (let i = 1; i <= Math.ceil((totalFreelances.map(tot => tot.totalAmoutOfValidFreelances)) / freelancesPerPage); i++) { pageNumbers.push(i); }
 
   return (
     <div className='Listing'>
