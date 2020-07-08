@@ -4,7 +4,7 @@ import Detail from './pages/Detail';
 import Listing from './pages/Listing';
 import MailInfo from './pages/MailInfo';
 import Registration from './pages/Registration';
-import LegalDisclaimer from './pages/LegalDisclaimer';
+import LegalDisclaimer from './pages/generic page/LegalDisclaimer';
 import SignIn from './pages/SignIn';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
@@ -20,6 +20,8 @@ import AuthContext from './components/AuthContext';
 import EditionContextProvider from './components/FormEdition/EditionContextProvider';
 import jwtDecode from 'jwt-decode';
 import Chat from './components/Chat'
+import GeneralConditions from './pages/generic page/GeneralConditions'
+import About from './pages/generic page/About'
 
 const Apps = styled.div`
     text-align: center;
@@ -71,6 +73,8 @@ function App () {
                 <Route path='/edition_compte'><Edition /></Route>
                 <Route path='/mentions_legales'><LegalDisclaimer /></Route>
                 <Route path='/reception_email'><MailInfo /></Route>
+                <Route path='/a_propos'><About /></Route>
+                <Route path='/conditions_générales'><GeneralConditions /></Route>
               </Switch>
             </main>
             <Footer />
