@@ -4,6 +4,7 @@ import DetailReferences from '../components/Detail/DetailReferences';
 import DetailSkills from '../components/Detail/DetailSkills';
 import DetailContact from '../components/Detail/DetailContact';
 import API from '../API';
+import Buttons from '../components/Buttons'
 
 class Detail extends Component {
   constructor (props) {
@@ -34,6 +35,7 @@ class Detail extends Component {
     return (
       <div>
         <h1>Page détail freelance</h1>
+        <Buttons/>
         <div className='Detail'>
           <DetailBio freelances={freelances} />
           <DetailReferences references={references} />
