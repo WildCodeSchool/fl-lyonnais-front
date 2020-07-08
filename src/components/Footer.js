@@ -22,7 +22,7 @@ export default function LabelBottomNavigation () {
   };
 
   return (
-    <BottomNavigation style={{ backgroundColor: 'var(--blue)', fontSize: '0.55rem' }} value={value} onChange={handleChange} showLabels> {/* à revoir plus tard */}
+    <BottomNavigation style={{ backgroundColor: 'var(--blue)', fontSize: '0.55rem' }} value={value} onChange={handleChange} showLabels>
       <BottomNavigationAction style={{ color: 'var(--white)', padding: '6px 0px' }} label='Accueil' value='Accueil' icon={<HomeIcon />} component={Link} to={pathMap[0]} />
       <BottomNavigationAction style={{ color: 'var(--white)', padding: '6px 0px' }} label='Freelances' value='Freelances à Lyon' icon={<FaceIcon />} component={Link} to={pathMap[1]} />
       <BottomNavigationAction style={{ color: 'var(--white)', padding: '6px 0px' }} label='A propos' value='A propos' icon={<InfoIcon />} component={Link} to={pathMap[2]} />
