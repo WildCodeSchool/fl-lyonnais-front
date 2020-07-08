@@ -214,15 +214,10 @@ export default function SignIn (props) {
             >
               Se connecter
             </Button>
-            <Grid container>
-              {/* <Grid item xs>
-                <Link to='#' variant='body2'>
-                  Mot de passe oublié?
-                </Link>
-              </Grid> */}
+            <Grid container justify='flex-end'>
               <Grid item>
                 <Link to='/inscription' variant='body2'>
-                  {"Vous n'avez pas de compte? S'inscrire"}
+                  Vous n'avez pas de compte? S'inscrire
                 </Link>
               </Grid>
             </Grid>
