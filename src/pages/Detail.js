@@ -11,12 +11,13 @@ class Detail extends Component {
     this.state = {
       freelances: [],
       tags: [],
-      references: []
+      references: [],
+      id: this.props.match.params.id
     };
   }
 
   componentDidMount () {
-    API.get('/freelances/2')
+    API.get('/freelances/' + this.state.id)
       .then(response => response.data)
       .then(data => {
         this.setState({
@@ -29,6 +30,7 @@ class Detail extends Component {
 
   render () {
     const { freelances, tags, references } = this.state;
+    
     return (
       <div>
         <div className='Detail'>
