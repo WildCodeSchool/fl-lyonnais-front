@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useHistory, useLocation, useParams, Link } from 'react-router-dom';
+import { useHistory, useLocation, Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -65,7 +65,7 @@ export default function SignIn (props) {
     const payload = { email, password };
     API.post('/users/connexion', payload).then((res) => {
       const decodedToken = decode(res.data.token);
-      history.push(`/detail/${decodedToken.id}`);
+       history.push(status ? `/compte` : `/detail/${decodedToken.id}`);
       console.log(res.data);
       // res.data.token;
       saveToken(res.data.token);
