@@ -26,9 +26,6 @@ import About from './pages/generic page/About'
 const Apps = styled.div`
     text-align: center;
     --blue: #1730FF;
-    --pink: #F4928F;
-    --green: #24A198;
-    --yellow: #F4B432;
     --red: #EB483E;
     --white: #FFFFFF;
     @font-face {font-family: 'BB-bold'; src: url(${Bold});}
