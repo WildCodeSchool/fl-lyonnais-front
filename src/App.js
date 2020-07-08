@@ -62,7 +62,7 @@ function App () {
             <main style={{ flex: '1 0 auto' }}>
               <Switch>
                 <Route exact path='/'><Home /></Route>
-                <Route path='/detail/:id'><Detail /></Route>
+                <Route path='/detail/:id' component={Detail} />
                 <Route path='/liste_freelance'><Listing /></Route>
                 <Route path='/inscription'><Registration /></Route>
                 <Route path='/connexion'><SignIn /></Route>
