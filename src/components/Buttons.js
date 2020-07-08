@@ -6,6 +6,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Switch from '@material-ui/core/Switch';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -72,7 +73,7 @@ export default function Buttons () {
         className={classes.button}
         startIcon={<EditIcon />}
       >
-        Éditer
+        <Link style={{ color: 'var(--white)' }} to='/compte'>Éditer</Link>
       </Button>
       <Typography component='div'>
         <Grid component='label' container alignItems='center' spacing={1}>

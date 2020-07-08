@@ -67,7 +67,6 @@ function App () {
                 <Route path='/inscription'><Registration /></Route>
                 <Route path='/connexion'><SignIn /></Route>
                 <Route path='/compte'><Edition /></Route>
-                <Route path='/edition_compte'><Edition /></Route>
                 <Route path='/mentions_legales'><LegalDisclaimer /></Route>
                 <Route path='/reception_email'><MailInfo /></Route>
                 <Route path='/a_propos'><About /></Route>

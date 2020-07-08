@@ -86,8 +86,8 @@ export default function SignUp () {
     e.preventDefault();
     if (infosRegistration.password.length < 8) {
       handleClickOpen();
-    //} else if (infosRegistration.password !== infosRegistration.passwordConfirmation) {
-      //handleClickOpenPasswordsNotEqual();
+    // } else if (infosRegistration.password !== infosRegistration.passwordConfirmation) {
+      // handleClickOpenPasswordsNotEqual();
     } else {
       const registration_date = new Date().toISOString().slice(0, 10);
       if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret) && onlyLetters(infosRegistration.firstname) && onlyLetters(infosRegistration.lastname && checked)) {
