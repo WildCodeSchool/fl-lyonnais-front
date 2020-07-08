@@ -5,8 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import EditionContext from './EditionContext';
 import Link from '@material-ui/core/Link';
-import axios from 'axios';
-import Chat from '../Chat'
+import API from '../../API';
+import Chat from '../Chat';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,46 +19,51 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Tags () {
-  const [tagList, setTagList] = useState([]);
-  const url = 'http://localhost:3000/tags';
+  const { chosenTags,setChosenTags, deleteChosenTag, allTags,setAllTags, tagNameChosen, handleTag, idTagList, addIdTagIdsChosen } = useContext(EditionContext);
+
   useEffect(() => {
     async function getData () {
-      await axios.get(url)
+      await API.get('/tags')
         .then(res => res.data)
-        .then(data => setTagList(data.data));
+        .then(data => setAllTags(data.data));
     }
     getData();
   }, []);
 
-  const { tagNameChosen, handleTag, idTagList, addIdTagIdsChosen } = useContext(EditionContext);
   const classes = useStyles();
 
-  const handleIdtag = (e) => {
-    console.log(e.target)
-    const tagInputName = e.target.innerText;
-    const ids = tagList.filter(tag => (tag.name === tagInputName))[0].id;
-    ids ? idTagList.push(ids) : alert('Merci de sélectionner une compétence');
-    handleTag(e);
-    addIdTagIdsChosen(idTagList);
+  const handleAutocompleteChange = (e,chosenTags) => {
+    console.log(chosenTags)
+    setChosenTags(chosenTags)
   };
+
+  const handleTagDelete = (tag) => {
+    deleteChosenTag(tag.id)
+  }
   return (
 
     <>
       <div className={classes.root}>
         <Autocomplete
+          id='autocomplete'
           multiple
-          id={tagNameChosen.id}
-          options={tagList.map((option) => option.name)}
-          defaultValue={[]}
-          value={tagNameChosen}
-          onChange={handleIdtag}
-          freeSolo
+          getOptionLabel={(tag) =>  tag.name }
+          options={allTags}
+          value={chosenTags}
+          onChange={handleAutocompleteChange}
           renderTags={(value, getTagProps) =>
-            value.map((option, index) => (
-              <Chip variant='outlined' label={option} {...getTagProps({ index })} />
-            ))}
+            value.map((option, index) => {
+              return (
+                <Chip
+              label={option.name}
+              onDelete={() => handleTagDelete(option)}
+              className={classes.chip}
+            />
+              )
+              // <Chip variant='outlined' label={option} {...getTagProps({ index })} />
+          })}
           renderInput={(params) => (
-            <TextField {...params} variant='filled' label='compétences' placeholder='Favorites' />
+            <TextField {...params} variant='filled' label='compétences' />
           )}
         />
         <Link component='button' variant='body2'> <Chat/> Il vous manque une compétence ?</Link>

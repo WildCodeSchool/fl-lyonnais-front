@@ -31,8 +31,24 @@ class EditionContextProvider extends React.Component {
       urlReferenceList: [],
       // Tag
       tagNameChosen: [],
-      idTagList: []
+      idTagList: [], 
+      allTags: [],
+      chosenTags: []
     };
+  }
+
+  setAllTags = (tags) => {
+    this.setState({ allTags: tags})
+  }
+
+  setChosenTags = (tags) => {
+    this.setState({ chosenTags: tags})
+  }
+
+  deleteChosenTag = (tagId) => {
+    this.setState({ chosenTags: this.state.chosenTags.filter(
+      (tag) => tag.id !== tagId
+    )})
   }
 
   handleUrlLink = (urlValueAdded) => {
@@ -103,7 +119,7 @@ class EditionContextProvider extends React.Component {
   render () {
     return (
       <div>
-        <EditionContext.Provider value={{ ...this.state,deleteReference:this.deleteReference,setReferenceField:this.setReferenceField, addReference: this.addReference, handleUrlLink: this.handleUrlLink, handleAdressFormChange: this.handleAdressFormChange, handleTag: this.handleTag, handleTagId: this.handleTagId, addIdTagIdsChosen: this.addIdTagIdsChosen, handleReferencesName: this.handleReferencesName, handleNameReferenceList: this.handleNameReferenceList, setNameReferenceList: this.setNameReferenceList, cleanProjectState: this.cleanProjectState, handleFile: this.handleFile }}>
+        <EditionContext.Provider value={{ ...this.state,deleteChosenTag:this.deleteChosenTag, setChosenTags:this.setChosenTags,setAllTags:this.setAllTags,deleteReference:this.deleteReference,setReferenceField:this.setReferenceField, addReference: this.addReference, handleUrlLink: this.handleUrlLink, handleAdressFormChange: this.handleAdressFormChange, handleTag: this.handleTag, handleTagId: this.handleTagId, addIdTagIdsChosen: this.addIdTagIdsChosen, handleReferencesName: this.handleReferencesName, handleNameReferenceList: this.handleNameReferenceList, setNameReferenceList: this.setNameReferenceList, cleanProjectState: this.cleanProjectState, handleFile: this.handleFile }}>
           {this.props.children}
         </EditionContext.Provider>
       </div>
