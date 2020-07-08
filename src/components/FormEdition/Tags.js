@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import EditionContext from './EditionContext';
 import Link from '@material-ui/core/Link';
 import axios from 'axios';
+import Chat from '../Chat'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,13 +35,7 @@ export default function Tags () {
 
   const handleIdtag = (e) => {
     handleTag(e);
-    const tagInputName = e.target.innerText.toLowerCase();
-    const ids = tagList.filter(tag => (tag.name.toLowerCase() === tagInputName))[0].id;
-    ids ? idTagList.push(ids) : alert('Merci de sélectionner une compétence');
     addIdTagIdsChosen(idTagList);
-  };
-  const handleLinkClic = () => {
-    alert('Chat de Pierre en attente');
   };
   return (
 
@@ -62,13 +57,7 @@ export default function Tags () {
             <TextField {...params} variant='filled' label='compétences' placeholder='Favorites' />
           )}
         />
-        <Link
-          component='button'
-          variant='body2'
-          onClick={handleLinkClic}
-        >
-          Il vous manque une compétence ?
-        </Link>
+        <Link component='button' variant='body2'> <Chat/> Il vous manque une compétence ?</Link>
       </div>
     </>
   );

@@ -30,9 +30,10 @@ class Detail extends Component {
 
   render () {
     const { freelances, tags, references } = this.state;
-    
+
     return (
       <div>
+        <h1>Page détail freelance</h1>
         <div className='Detail'>
           <DetailBio freelances={freelances} />
           <DetailReferences references={references} />
