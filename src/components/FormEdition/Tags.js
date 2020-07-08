@@ -34,6 +34,10 @@ export default function Tags () {
   const classes = useStyles();
 
   const handleIdtag = (e) => {
+    console.log(e.target)
+    const tagInputName = e.target.innerText;
+    const ids = tagList.filter(tag => (tag.name === tagInputName))[0].id;
+    ids ? idTagList.push(ids) : alert('Merci de sélectionner une compétence');
     handleTag(e);
     addIdTagIdsChosen(idTagList);
   };

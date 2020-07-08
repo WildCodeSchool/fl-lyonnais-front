@@ -1,5 +1,6 @@
 import React from 'react';
 import EditionContext from './EditionContext';
+import uniqid from 'uniqid';
 
 class EditionContextProvider extends React.Component {
   constructor (props) {
@@ -24,6 +25,7 @@ class EditionContextProvider extends React.Component {
       zip_code: '',
       city: '',
       // References
+      references: [],
       nameReferenceList: [],
       imageReferenceList: [],
       urlReferenceList: [],
@@ -34,7 +36,7 @@ class EditionContextProvider extends React.Component {
   }
 
   handleUrlLink = (urlValueAdded) => {
-    const urlReferenceListAdded = this.state.urlReferenceList;
+    const urlReferenceListAdded = this.state.urlReferenceList.slice();
     urlReferenceListAdded.push(urlValueAdded);
     this.setState({ urlReferenceList: urlReferenceListAdded });
   }
@@ -44,6 +46,32 @@ class EditionContextProvider extends React.Component {
     projectNameList.push(e);
     this.setState({ nameReferenceList: projectNameList });
   }
+
+  addReference = (refName) => {
+    const newReference = {
+      id: uniqid(),
+      name: refName,
+      image: '',
+      url: ''
+    };
+    this.setState( { references: [...this.state.references, newReference]})
+  }
+
+  deleteReference = (refId) => {
+    this.setState({ references: this.state.references.filter(
+      (ref) => ref.id !== refId
+    )})
+  }
+  
+  setReferenceField = (refId, fieldName, fieldValue) => {
+    const referencesCopy = this.state.references.slice();
+    const reference = referencesCopy.find( (ref) => {
+      return ref.id === refId 
+    } )
+    reference[fieldName] = fieldValue;
+    this.setState({ references: referencesCopy })
+  }
+
 
   handleFile = (e) => {
     const imageReferenceListAdded = this.state.imageReferenceList.slice();
@@ -75,7 +103,7 @@ class EditionContextProvider extends React.Component {
   render () {
     return (
       <div>
-        <EditionContext.Provider value={{ ...this.state, handleUrlLink: this.handleUrlLink, handleAdressFormChange: this.handleAdressFormChange, handleTag: this.handleTag, handleTagId: this.handleTagId, addIdTagIdsChosen: this.addIdTagIdsChosen, handleReferencesName: this.handleReferencesName, handleNameReferenceList: this.handleNameReferenceList, setNameReferenceList: this.setNameReferenceList, cleanProjectState: this.cleanProjectState, handleFile: this.handleFile }}>
+        <EditionContext.Provider value={{ ...this.state,deleteReference:this.deleteReference,setReferenceField:this.setReferenceField, addReference: this.addReference, handleUrlLink: this.handleUrlLink, handleAdressFormChange: this.handleAdressFormChange, handleTag: this.handleTag, handleTagId: this.handleTagId, addIdTagIdsChosen: this.addIdTagIdsChosen, handleReferencesName: this.handleReferencesName, handleNameReferenceList: this.handleNameReferenceList, setNameReferenceList: this.setNameReferenceList, cleanProjectState: this.cleanProjectState, handleFile: this.handleFile }}>
           {this.props.children}
         </EditionContext.Provider>
       </div>

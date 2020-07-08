@@ -8,11 +8,10 @@ import EditionContext from '../EditionContext';
 const References = (props) => {
   const { handleNameReferenceList, handleUrlLink } = useContext(EditionContext);
   const { inputValue, changeInput, clearInput, keyInput } = useInputValue();
-  const { todos, addTodo, checkTodo, removeTodo } = useTodos();
+
 
   const clearInputAndAddTodo = () => {
     clearInput();
-    addTodo(inputValue);
     handleNameReferenceList(inputValue);
   };
 
@@ -22,12 +21,8 @@ const References = (props) => {
         inputValueName={inputValue}
         onInputChangeName={changeInput}
         onButtonClick={clearInputAndAddTodo}
-        onInputKeyPressName={event => keyInput(event, clearInputAndAddTodo)}
       />
       <TodoList
-        items={todos}
-        onItemCheck={idx => checkTodo(idx)}
-        onItemRemove={idx => removeTodo(idx)}
       />
     </Layout>
   );

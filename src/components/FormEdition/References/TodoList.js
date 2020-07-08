@@ -1,18 +1,23 @@
-import React, { memo } from 'react';
+import React, { useContext } from 'react';
 import { List, Paper } from '@material-ui/core';
-
 import TodoListItem from './TodoListItem';
+import EditionContext from '../EditionContext';
 
-const TodoList = memo(props => (
+const TodoList = (props) =>  {
+  
+const { references, setReferenceField } = useContext(EditionContext);
+
+console.log(references)
+  return(
   <>
-    {props.items.length > 0 && (
+    {references.length > 0 && (
       <Paper style={{ margin: 16 }}>
         <List style={{ overflow: 'scroll' }}>
-          {props.items.map((todo, idx) => (
+          {references.map((reference, idx) => (
             <TodoListItem
-              {...todo}
-              key={`TodoItem.${idx}`}
-              divider={idx !== props.items.length - 1}
+              reference={reference}
+              key={references.id}
+              divider={idx !== references.length - 1}
               onButtonClick={() => props.onItemRemove(idx)}
               onCheckBoxToggle={() => props.onItemCheck(idx)}
             />
@@ -21,6 +26,7 @@ const TodoList = memo(props => (
       </Paper>
     )}
   </>
-));
+  )
+}
 
 export default TodoList;

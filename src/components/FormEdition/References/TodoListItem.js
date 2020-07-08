@@ -11,7 +11,7 @@ import {
 import DeleteOutlined from '@material-ui/icons/DeleteOutlined';
 
 const TodoListItem = (props) => {
-  const { handleFile, handleUrlLink } = useContext(EditionContext);
+  const { handleFile, handleUrlLink, setReferenceField, deleteReference } = useContext(EditionContext);
   const [inputUrlValue, setInputUrlValue] = useState();
 
   const handleFileClick = (e) => {
@@ -20,8 +20,7 @@ const TodoListItem = (props) => {
   };
 
   const handleUrlInput = (e) => {
-    setInputUrlValue(e.target.value);
-    handleUrlLink(e.target.value);
+    setReferenceField(props.reference.id,'url', e.target.value)
   };
 
   return (
@@ -29,9 +28,9 @@ const TodoListItem = (props) => {
 
       <Grid item xs={12} justifyContent='center'>
         <ListItem divider={props.divider}>
-          <ListItemText primary={props.text} />
+          <ListItemText primary={props.reference.name} />
           <ListItemSecondaryAction>
-            <IconButton aria-label='Delete Todo' onClick={props.onButtonClick}>
+            <IconButton aria-label='Delete Todo' onClick={() => deleteReference(props.reference.id)}>
               <DeleteOutlined />
             </IconButton>
           </ListItemSecondaryAction>
