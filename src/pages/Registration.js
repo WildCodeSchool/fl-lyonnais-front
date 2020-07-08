@@ -53,7 +53,7 @@ export default function SignUp () {
     lastname: '',
     email: '',
     password: '',
-    siret: 0
+    siret: ''
   });
 
   const handleCheckbox = (e) => {
@@ -173,10 +173,11 @@ export default function SignUp () {
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox color='primary' />}
-                  label="J'accepte les conditions générales"
                   onChange={handleCheckbox}
                   value={checked}
+                  required
                 />
+                J'accepte les <Link to='/conditions_générales'> conditions générales</Link>
               </Grid>
             </Grid>
             <Button
