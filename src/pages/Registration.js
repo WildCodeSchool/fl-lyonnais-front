@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp () {
   const [open, setOpen] = React.useState(false);
+  const [openPasswordsNotEqual, setOpenPasswordsNotEqual] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
@@ -68,11 +69,21 @@ export default function SignUp () {
     setOpen(false);
   };
 
+  const handleClickOpenPasswordsNotEqual = () => {
+    setOpenPasswordsNotEqual(true);
+  };
+
+  const handleClosePasswordsNotEqual = () => {
+    setOpenPasswordsNotEqual(false);
+  };
+
   const handlesubmit = (e) => {
     // Function à créer pour gérer champs vides, sensibilité de la case
     e.preventDefault();
-    if (!isPwMore8cha(infosRegistration.password)) {
+    if (infosRegistration.password.length < 8) {
       handleClickOpen();
+    } else if (infosRegistration.password !== infosRegistration.passwordConfirmation) {
+      handleClickOpenPasswordsNotEqual();
     } else {
       if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret) && onlyLetters(infosRegistration.firstname) && onlyLetters(infosRegistration.lastname && checked)) {
         API.post('/users', infosRegistration)
@@ -159,6 +170,20 @@ export default function SignUp () {
               <Grid item xs={12}>
                 <TextField
                   variant='outlined'
+                  requiredf
+                  fullWidth
+                  name='password Confirmation'
+                  label='Confirmation du mot de passe'
+                  type='password'
+                  id='passwordConfirmation'
+                  autoComplete='current-password'
+                  onChange={(e) => setInfosRegistration({ ...infosRegistration, passwordConfirmation: e.target.value })}
+                  value={infosRegistration.passwordConfirmation}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant='outlined'
                   required
                   fullWidth
                   name='siret'
@@ -215,6 +240,25 @@ export default function SignUp () {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose} color='primary' autoFocus>
+              Fermer
+            </Button>
+          </DialogActions>
+        </Dialog>
+        { /* Lorsque les deux mots de passe ne correspondent pas */ }
+        <Dialog
+          fullScreen={fullScreen}
+          open={openPasswordsNotEqual}
+          onClose={handleClosePasswordsNotEqual}
+          aria-labelledby='responsive-dialog-title'
+        >
+          <DialogTitle id='responsive-dialog-title'>Mot de passe : </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Les mots de passe ne sont pas identiques.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClosePasswordsNotEqual} color='primary' autoFocus>
               Fermer
             </Button>
           </DialogActions>
