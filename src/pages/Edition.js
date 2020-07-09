@@ -39,7 +39,7 @@ export default function Edition (props) {
   const handleNext = (e) => {
     setActiveStep(activeStep + 1);
     if (e.target.innerText.toLowerCase() === 'enregistrer') {
-      const url = process.env.REACT_APP_API_URL + '/freelances/account/102';
+      const url = process.env.REACT_APP_API_URL + '/freelances/account/105';
       console.log(payload);
       API.put(url, payload)
         .then((res) => res.data)
