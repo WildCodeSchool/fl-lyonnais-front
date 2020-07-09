@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp () {
   const [open, setOpen] = React.useState(false);
   const [openPasswordsNotEqual, setOpenPasswordsNotEqual] = useState(false);
+  const [openErrorDuplicateEmail, setOpenErrorDuplicateEmail] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
@@ -81,6 +82,14 @@ export default function SignUp () {
     setOpenPasswordsNotEqual(false);
   };
 
+  const handleOpenErrorDuplicateEmail = () => {
+    setOpenErrorDuplicateEmail(true);
+  };
+
+  const handleCloseErrorDuplicateEmail = () => {
+    setOpenErrorDuplicateEmail(false);
+  };
+
   const handlesubmit = (e) => {
     // Function à créer pour gérer champs vides, sensibilité de la case
     e.preventDefault();
@@ -99,6 +108,7 @@ export default function SignUp () {
           })
           .catch(error => {
             console.log(error);
+            handleOpenErrorDuplicateEmail();
           });
       } else {
         alert('Champ manquant, email non valide, siret invalide, conditions générales non acceptées');
@@ -249,7 +259,7 @@ export default function SignUp () {
               Fermer
             </Button>
           </DialogActions>
-        </Dialog>
+        </Dialog>Lorsque les deux mots de passe ne correspondent pas
         {/* Lorsque les deux mots de passe ne correspondent pas */}
         <Dialog
           fullScreen={fullScreen}
@@ -265,6 +275,26 @@ export default function SignUp () {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClosePasswordsNotEqual} color='primary' autoFocus>
+              Fermer
+            </Button>
+          </DialogActions>
+        </Dialog>
+        {/* Affiche une modale : email déjà présent dans la BDD */}
+        <Dialog
+          fullScreen={fullScreen}
+          open={openErrorDuplicateEmail}
+          onClose={handleCloseErrorDuplicateEmail}
+          aria-labelledby='responsive-dialog-title'
+        >
+          <DialogTitle id='responsive-dialog-title'>Adresse e-mail : </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Cette adresse e-mail est déjà utilisée.
+              Merci d'en choisir une autre, valide.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseErrorDuplicateEmail} color='primary' autoFocus>
               Fermer
             </Button>
           </DialogActions>
