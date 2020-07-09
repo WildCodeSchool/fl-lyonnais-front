@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import EditionContext from './FormEdition/EditionContext';
 import Button from '@material-ui/core/Button';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -7,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Switch from '@material-ui/core/Switch';
 import { Link } from 'react-router-dom';
+import API from '../API';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -48,11 +50,13 @@ const AntSwitch = withStyles((theme) => ({
   checked: {}
 }))(Switch);
 
-export default function Buttons () {
+export default function Buttons (props) {
+  const { sendFlDatasToFormEdition } = useContext(EditionContext);
   const classes = useStyles();
   const [state, setState] = React.useState({
     checked: true
   });
+
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });

@@ -41,11 +41,11 @@ export default function AddressForm () {
             required
             id='email'
             name='email'
+            disabled
             label='email'
             fullWidth
             autoComplete='email'
             value={email}
-            onChange={(e) => handleAdressFormChange(e)}
           />
         </Grid>
         <Grid item xs={12} sm={6}>

@@ -35,7 +35,7 @@ class Detail extends Component {
     return (
       <div>
         <h1>Page détail freelance</h1>
-        <Buttons />
+        <Buttons id={this.state.id} />
         <div className='Detail'>
           <DetailBio freelances={freelances} />
           <DetailReferences references={references} />

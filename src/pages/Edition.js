@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -10,8 +10,11 @@ import References from '../components/FormEdition/References/References';
 import Tags from '../components/FormEdition/Tags';
 import InfosPro from '../components/FormEdition/InfosPro';
 import EditionContext from '../components/FormEdition/EditionContext';
-import API from '../API'
+import API from '../API';
 import useStyles from '../components/FormEdition/useStyles';
+
+//deux clé fl et user
+// fl 0 si pas de compte éditer,
 
 const steps = ['Personnel', 'Entreprise', 'Compétences', 'Références'];
 function getStepContent (step, propsToPass) {
@@ -30,11 +33,23 @@ function getStepContent (step, propsToPass) {
 }
 
 export default function Edition (props) {
-
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const { firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags } = useContext(EditionContext);
+  const { firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags, sendFlDatasToFormEdition } = useContext(EditionContext);
   const payload = { firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags };
+
+  const retrieveAccountInformations = () => {
+    API.get('/freelances/account')
+      .then(res => res.data)
+      .then(data => {
+        console.log(data);
+        sendFlDatasToFormEdition(data);
+      });
+  };
+
+  useEffect( () => {
+    retrieveAccountInformations()
+  }, [] )
 
   const handleNext = (e) => {
     setActiveStep(activeStep + 1);

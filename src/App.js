@@ -46,6 +46,7 @@ function App () {
   const setTokenInLocalStorage = (token) => {
     localStorage.setItem('authToken', token);
     setToken(token);
+    console.log(token);
   };
   let userNameFromToken = null;
   if (token) {
