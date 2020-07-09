@@ -10,7 +10,7 @@ import References from '../components/FormEdition/References/References';
 import Tags from '../components/FormEdition/Tags';
 import InfosPro from '../components/FormEdition/InfosPro';
 import EditionContext from '../components/FormEdition/EditionContext';
-import API from '../API'
+import API from '../API';
 import useStyles from '../components/FormEdition/useStyles';
 
 const steps = ['Personnel', 'Entreprise', 'Compétences', 'Références'];
@@ -30,7 +30,6 @@ function getStepContent (step, propsToPass) {
 }
 
 export default function Edition (props) {
-
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const { firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags } = useContext(EditionContext);
@@ -39,9 +38,9 @@ export default function Edition (props) {
   const handleNext = (e) => {
     setActiveStep(activeStep + 1);
     if (e.target.innerText.toLowerCase() === 'enregistrer') {
-      const url = process.env.REACT_APP_API_URL + '/freelances/account/105';
       console.log(payload);
-      API.put(url, payload)
+      const url = process.env.REACT_APP_API_URL + '/freelances/account';
+      API.post(url, payload)
         .then((res) => res.data)
         .then(data =>
           alert('Informations enregistrées vous allez être redirigés vers votre fiche de détail')

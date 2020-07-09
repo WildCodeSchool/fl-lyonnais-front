@@ -41,7 +41,7 @@ export default function AddressForm () {
             required
             id='email'
             name='email'
-            label='email'
+            label='disabled'
             fullWidth
             autoComplete='email'
             value={email}

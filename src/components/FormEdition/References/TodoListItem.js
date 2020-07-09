@@ -20,7 +20,7 @@ const TodoListItem = (props) => {
   };
 
   const handleUrlInput = (e) => {
-    setReferenceField(props.reference.id, props.references.url, e.target.value);
+    setReferenceField(props.reference.id, 'url', e.target.value);
   };
 
   return (
@@ -39,7 +39,7 @@ const TodoListItem = (props) => {
       <Grid item xs={12}>
         <input type='file' onChange={e => handleFileClick(e.target.files[0])} />
 
-        <input type='text' label='url de votre projet' value={props.reference.url} placeholder='url de votre projet' onChange={handleUrlInput} />
+        <input type='text' label='url de votre projet' value={inputUrlValue} placeholder='url de votre projet' onChange={handleUrlInput} />
       </Grid>
 
     </Grid>
