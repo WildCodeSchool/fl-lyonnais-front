@@ -19,9 +19,7 @@ export function isSiret(siret) {
 }
 
 export function isPwMore8cha(pw) {
-  // return true;
-  console.log(isPwMore8cha.toString().length >= 8);
-  return !!((isPwMore8cha.toString().length >= 8));
+  return pw.toString().length >= 8;
 }
 
 
