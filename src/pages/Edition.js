@@ -39,9 +39,9 @@ export default function Edition (props) {
   const handleNext = (e) => {
     setActiveStep(activeStep + 1);
     if (e.target.innerText.toLowerCase() === 'enregistrer') {
-      const url = process.env.REACT_APP_API_URL + '/freelances/account/105';
+      const url = process.env.REACT_APP_API_URL + '/freelances/account';
       console.log(payload);
-      API.put(url, payload)
+      API.post(url, payload)
         .then((res) => res.data)
         .then(data =>
           alert('Informations enregistrées vous allez être redirigés vers votre fiche de détail')

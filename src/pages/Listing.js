@@ -25,8 +25,8 @@ const Listing = () => {
     fetchFreelances();
   }, [currentPage]);
 
-  if (loading) { return <h2>Loading...</h2>; }
   for (let i = 1; i <= Math.ceil((totalFreelances.map(tot => tot.totalAmoutOfValidFreelances)) / freelancesPerPage); i++) { pageNumbers.push(i); }
+  if (loading) { return <h2>Loading...</h2>; }
 
   return (
     <div className='Listing'>
