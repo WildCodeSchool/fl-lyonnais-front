@@ -17,7 +17,6 @@ class EditionContextProvider extends React.Component {
       job_title: '',
       bio: '',
       vat_number: '',
-      last_modification_date: new Date().toISOString().slice(0, 10),
       is_active: 1,
       address_id: '',
 
@@ -45,6 +44,10 @@ class EditionContextProvider extends React.Component {
     this.setState({ references: dataRetrivedAPI.references || []}) 
     this.setState({ chosenTags: dataRetrivedAPI.tags || []});
     this.setState({ ...dataRetrivedAPI.user });
+    if (dataRetrivedAPI.address) {
+      const { street, zip_code, city } = dataRetrivedAPI.address
+      this.setState( { street, zip_code, city } )
+    }
   }
 
   setAllTags = (tags) => {
