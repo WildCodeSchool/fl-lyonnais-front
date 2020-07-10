@@ -33,7 +33,6 @@ export default function Tags () {
   const classes = useStyles();
 
   const handleAutocompleteChange = (e, chosenTags) => {
-    console.log(chosenTags);
     setChosenTags(chosenTags);
   };
 

@@ -5,8 +5,6 @@ import EditionContext from '../EditionContext';
 
 const TodoList = (props) => {
   const { references } = useContext(EditionContext);
-
-  console.log(references);
   return (
     <>
       {references.length > 0 && (

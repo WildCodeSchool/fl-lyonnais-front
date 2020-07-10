@@ -108,7 +108,6 @@ class EditionContextProvider extends React.Component {
   handleFile = (e) => {
     const imageReferenceListAdded = this.state.imageReferenceList.slice();
     imageReferenceListAdded.push(e);
-    console.log('new state', this.state.imageReferenceList);
     this.setState({ imageReferenceList: imageReferenceListAdded });
   }
 
