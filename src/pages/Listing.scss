@@ -146,6 +146,27 @@ $font-main: 'balooBhaina2Regular', sans-serif;
   }
 }
 
+.pagination {
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  list-style: none;
+  border-radius: .25rem;
+  margin: auto;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: .5rem .75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: var(--blue);
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
 /* ******************************************************************* */
 
 @media screen and (min-width: 1024px) {
@@ -153,28 +174,6 @@ $font-main: 'balooBhaina2Regular', sans-serif;
     align-items: center;
     max-width: 1024px;
     list-style: none;
-  }
-
-  .pagination {
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: center;
-    padding-left: 0;
-    list-style: none;
-    border-radius: .25rem;
-    margin: auto;
-  }
-
-  .page-link {
-    position: relative;
-    display: block;
-    padding: .5rem .75rem;
-    margin-left: -1px;
-    line-height: 1.25;
-    color: var(--blue);
-    text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
   }
 
   .ListingFilter {
