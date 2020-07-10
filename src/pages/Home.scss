@@ -1,5 +1,6 @@
 body {
   margin:0;
+  background: #eef9fe;
 }
 
 .home {
@@ -76,4 +77,12 @@ h1 {
   p {
     font-size: 1.1em;
   }
+}
+
+.MuiStepIcon-active  {
+  color: red !important
+}
+
+.MuiStepIcon-completed  {
+  color: red !important
 }

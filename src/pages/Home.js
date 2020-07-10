@@ -1,6 +1,5 @@
 import React from 'react';
-import '../styles/Home.scss';
-import SearchBar from '../components/SearchBar';
+import './Home.scss';
 import logo from '../images/logo.png';
 
 function Home () {
@@ -9,9 +8,7 @@ function Home () {
       <div className='logo'>
         <img src={logo} alt='Logo du site Freelance Lyonnais' className='logoHome' />
       </div>
-      <div className='form'>
-        <SearchBar />
-      </div>
+      <div className='form' />
       <main className='homepage'>
         <h1> Bienvenue chez Les Freelances Lyonnais </h1>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Listing.scss';
+import '../pages/Listing.scss';
 
 const Freelance = (props) => {
   return (

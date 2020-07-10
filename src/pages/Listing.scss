@@ -4,11 +4,37 @@ src: url('../font/BalooBhaina2-Regular.ttf') format('truetype');
 }
 
 .Listing {
-  background-color: #eeeeff;
-
+  background: #eef9fe;
+  
   ul {
     padding-bottom: 15px;
   }
+}
+
+.ListingFilter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.FilterTags {
+  margin-right: 100px;
+}
+
+.filters {
+  background-color: white; 
+  width: 85%;
+  max-width: 500px; 
+  border-radius: 5px; 
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  padding-bottom: 5px;
+}
+
+.FilterTjm {
+  border-right: 1px solid gray;
 }
 
 .everyFreelanceCards {
@@ -23,10 +49,6 @@ src: url('../font/BalooBhaina2-Regular.ttf') format('truetype');
   list-style: none;
   padding-left: 0;
 }
-
-body {
-  background: #eef9fe;
-  }
 
 $card-width: 170px;
 $image-size: 100%;
@@ -46,7 +68,6 @@ $font-main: 'balooBhaina2Regular', sans-serif;
   left:0;
   width:100%;
   height:calc(100% - 13px);
-  background-image:linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
 }
 
 .freelance2 {
@@ -59,7 +80,7 @@ $font-main: 'balooBhaina2Regular', sans-serif;
 
     .card {
       width: $card-width;
-      background-color: #eef9fe;
+      background-color: white;
       box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
       border-radius: 5px;
 
@@ -125,16 +146,6 @@ $font-main: 'balooBhaina2Regular', sans-serif;
   }
 }
 
-/* ******************************************************************* */
-
-@media screen and (min-width: 1024px) {
-  .Listing ul {
-    align-items: center;
-    max-width: 1024px;
-    list-style: none;
-  }
-}
-
 .pagination {
   display: -ms-flexbox;
   display: flex;
@@ -155,4 +166,27 @@ $font-main: 'balooBhaina2Regular', sans-serif;
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #dee2e6;
+}
+/* ******************************************************************* */
+
+@media screen and (min-width: 1024px) {
+  .Listing ul {
+    align-items: center;
+    max-width: 1024px;
+    list-style: none;
+  }
+
+  .ListingFilter {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  
+  .filters {
+    width: 25%;
+    min-width: 400px;
+    margin: 20px 0 0 30px;
+    justify-content: center;
+    height: 300px;
+    
+  }
 }

@@ -11,11 +11,11 @@ function detailBio (props) {
 
           <h1>{props.freelances.firstname} {props.freelances.lastname}</h1>
           <h1>{props.freelances.job_title}</h1>
-          <fieldset className='detailtextebio'>
+          <div className='detailtextebio'>
 
             <p>{props.freelances.bio}</p>
 
-          </fieldset>
+          </div>
         </div>
       </div>
     </div>

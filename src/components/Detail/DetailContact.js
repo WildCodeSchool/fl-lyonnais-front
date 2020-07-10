@@ -1,10 +1,10 @@
 import React from 'react';
-import '../styles/Detail.scss';
+import '../../pages/Detail.scss';
 
 function DetailContact (props) {
   return (
     <div>
-      <h3 className='detailh2'>Mes coordonnées</h3>
+      <h2 className='detailh2'>Coordonnées</h2>
       <div className='detailcontact'>
 
         <div className='detailcompany'>
@@ -12,8 +12,8 @@ function DetailContact (props) {
           <p>{props.freelances.zip_code} - {props.freelances.city} - {props.freelances.country}</p>
         </div>
         <div className='Detailcontactemail'>
-          <p>email : {props.freelances.email}</p>
-          <p>Site web : {props.freelances.url_web_site}</p>
+          <a href={'mailto:' + props.freelances.email}><p>Email</p></a>
+          <a href={props.freelances.url_web_site}><p>Site web</p></a>
         </div>
         <div className='Detailcontactsiret'>
           <p>SIRET : {props.freelances.siret}</p>
