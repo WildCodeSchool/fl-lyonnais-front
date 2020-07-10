@@ -28,7 +28,8 @@ class EditionContextProvider extends React.Component {
       references: [],
       // Tag
       allTags: [],
-      chosenTags: []
+      chosenTags: [], 
+      freelanceExists: false
     };
   }
 
@@ -37,6 +38,9 @@ class EditionContextProvider extends React.Component {
   // }
 
   sendFlDatasToFormEdition = (dataRetrivedAPI) => {
+    if (dataRetrivedAPI.freelance) {
+      this.setState({ freelanceExists : true});
+    }
     this.setState({ ...dataRetrivedAPI.freelance });
     this.setState({ references: dataRetrivedAPI.references || []}) 
     this.setState({ chosenTags: dataRetrivedAPI.tags || []});

@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SignIn (props) {
+export default function SignIn(props) {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -66,7 +66,7 @@ export default function SignIn (props) {
     API.post('/users/connexion', payload).then((res) => {
       const decodedToken = decode(res.data.token);
       saveToken(res.data.token);
-      history.push(status ? '/compte' : `/detail/${decodedToken.id}`);
+      history.push(status ? '/compte' : `/detail/${res.data.user.freelance_id}`);
       console.log(res.data);
       // res.data.token;
     })
@@ -124,7 +124,7 @@ export default function SignIn (props) {
     <div>
       <div style={{ display: `${newFreelance}` }} className='alert-freelance-validation'>
         <h2>
-        Information nouveau freelance
+          Information nouveau freelance
         </h2>
         <div style={{ display: `${validation.validated}` }} className='validated'>
           <p>Féliciation, tu peux maintenant te connecter à ton compte.</p>

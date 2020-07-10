@@ -35,7 +35,7 @@ function getStepContent (step, propsToPass) {
 export default function Edition (props) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const { firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags, sendFlDatasToFormEdition } = useContext(EditionContext);
+  const { freelanceExists, firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags, sendFlDatasToFormEdition } = useContext(EditionContext);
   const payload = { firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags };
 
   const retrieveAccountInformations = () => {
@@ -56,14 +56,28 @@ export default function Edition (props) {
     if (e.target.innerText.toLowerCase() === 'enregistrer') {
       const url = process.env.REACT_APP_API_URL + '/freelances/account';
       console.log(payload);
-      API.post(url, payload)
+      
+      if (freelanceExists) {
+        API.put(url, payload)
         .then((res) => res.data)
         .then(data =>
-          alert('Informations enregistrées vous allez être redirigés vers votre fiche de détail')
+          alert('Informations modifiées')
         )
         .catch(err => {
           console.error(err);
         });
+
+      }
+      else {
+        API.post(url, payload)
+          .then((res) => res.data)
+          .then(data =>
+            alert('Informations enregistrées')
+          )
+          .catch(err => {
+            console.error(err);
+          });
+      }
     }
   };
     //  En attente Pierre pour upload photo
