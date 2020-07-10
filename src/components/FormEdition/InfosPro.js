@@ -29,7 +29,7 @@ function InfosPro () {
         <Grid container spacing={3} alignItems='flex-start'>
           <Grid item xs={12}>
             <TextField
-              required id='url_web_site' name='url_web_site' label='url site pro' value={url_web_site} fullWidth autoComplete='cc-projet'
+              id='url_web_site' name='url_web_site' label='url site pro' value={url_web_site} fullWidth autoComplete='cc-projet'
               onChange={(e) => handleAdressFormChange(e)}
             />
           </Grid>
@@ -37,7 +37,7 @@ function InfosPro () {
         <Grid container spacing={3} alignItems='flex-start'>
           <Grid item xs={12}>
             <TextField
-              required id='phone_number' name='phone_number' label='N° téléphone' value={phone_number}
+              id='phone_number' name='phone_number' label='N° téléphone' value={phone_number}
               onChange={(e) => handleAdressFormChange(e)} fullWidth autoComplete='cc-projet'
             />
           </Grid>
@@ -45,7 +45,7 @@ function InfosPro () {
         <Grid container spacing={3} alignItems='flex-start'>
           <Grid item xs={12}>
             <TextField
-              required id='vat_number' type='number' name='vat_number' label='Numéro de TVA' value={vat_number} fullWidth autoComplete='cc-projet'
+              id='vat_number' type='number' name='vat_number' label='Numéro de TVA' value={vat_number} fullWidth autoComplete='cc-projet'
               onChange={(e) => handleAdressFormChange(e)}
             />
           </Grid>
@@ -53,7 +53,7 @@ function InfosPro () {
         <Grid container spacing={3} alignItems='flex-start'>
           <Grid item xs={12}>
             <TextField
-              required id='average_daily_rate' type='number' name='average_daily_rate' label='Taux journalier moyen en € HT' value={average_daily_rate} fullWidth autoComplete='cc-projet'
+              id='average_daily_rate' type='number' name='average_daily_rate' label='Taux journalier moyen en € HT' value={average_daily_rate} fullWidth autoComplete='cc-projet'
               onChange={(e) => handleAdressFormChange(e)}
             />
           </Grid>
