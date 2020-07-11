@@ -21,6 +21,7 @@ class Detail extends Component {
     API.get('/freelances/' + this.state.id)
       .then(response => response.data)
       .then(data => {
+        console.log(data)
         this.setState({
           freelances: data.freelance,
           tags: data.tags,
