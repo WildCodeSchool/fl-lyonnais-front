@@ -17,7 +17,7 @@ import useStyles from '../components/FormEdition/useStyles';
 // fl 0 si pas de compte éditer,
 
 const steps = ['Personnel', 'Entreprise', 'Compétences', 'Références'];
-function getStepContent(step, propsToPass) {
+function getStepContent (step, propsToPass) {
   switch (step) {
     case 0:
       return <AddressForm />;
@@ -32,75 +32,46 @@ function getStepContent(step, propsToPass) {
   }
 }
 
-export default function Edition(props) {
+export default function Edition (props) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const { freelanceExists, firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city,
-    references, chosenTags, sendFlDatasToFormEdition } = useContext(EditionContext);
-
-  const formData = new FormData();
-  let { image } = references[0] ? references[0] : {}
-  formData.append('title', 'titre');
-  formData.append("image", image);
-
-  // console.log('ref à envoyer sans image', referencesToSend);
-  // console.log(formData) 
-
-  // let imagesArrayToSend = []
-  // for (let i=0; i<= references.length; i++) {
-  //   if (references[i]) {
-  //     imagesArrayToSend.push(references[i].image)
-  //     delete references[i].image
-  //   }
-  // }
-  // console.log(imagesArrayToSend)
-
-  let payload = { firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags };
-
-
+  const { freelanceExists, firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags, sendFlDatasToFormEdition } = useContext(EditionContext);
+  const payload = { firstname, lastname, email, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags };
 
   const retrieveAccountInformations = () => {
     API.get('/freelances/account')
       .then(res => res.data)
       .then(data => {
+        console.log(data);
         sendFlDatasToFormEdition(data);
       });
   };
 
-  useEffect(() => {
+  useEffect( () => {
     retrieveAccountInformations()
-  }, [])
+  }, [] )
 
   const handleNext = (e) => {
     setActiveStep(activeStep + 1);
     if (e.target.innerText.toLowerCase() === 'enregistrer') {
       const url = process.env.REACT_APP_API_URL + '/freelances/account';
-
+      console.log(payload);
+      const formData = new FormData();
+      const image = url_photo;
+      console.log(image)
+      formData.append('title', 'titre');
+      formData.append("image", image);
+      
       if (freelanceExists) {
-
-        API.put(url, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        }
+        API.patch(url, payload)
+        .then((res) => res.data)
+        .then(data =>
+          alert('Informations modifiées')
         )
-          .then(() => alert('Succes'))
-          .catch(err => {
-            console.error(err);
-          });
-        API.put(url, payload)
-          .then((res) => res.data)
-          .then(data => {
-            alert('Informations modifiées')
-          })
-          .catch(err => {
-            alert('Erreur upload')
-            console.error(err);
-          });
-        //image
-
+        .catch(err => {
+          console.error('error Parch FL',err);
+        });
       }
-
       else {
         API.post(url, payload)
           .then((res) => res.data)
@@ -113,8 +84,17 @@ export default function Edition(props) {
       }
     }
   };
-
-
+    //  En attente Pierre pour upload photo
+    // handleFile = (e) => {
+    //   const imageReferenceListAdded = this.state.imageReferenceList;
+    //   imageReferenceListAdded.push(e)
+    //   this.setState( {imageReferenceList: imageReferenceListAdded})
+    //   console.log(this.state.imageReferenceList)
+    //   // axios.post('/posts', formData, {
+    //   //     headers: {
+    //   //       'Content-Type': 'multipart/form-data'
+    //   //     }
+    // }
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
@@ -136,31 +116,31 @@ export default function Edition(props) {
             {activeStep === steps.length ? (
               <>
                 <Typography variant='h5' gutterBottom>
-                  Vos informations ont bien été prises en compte
+                    Vos informations ont bien été prises en compte
                 </Typography>
               </>
             ) : (
-                <>
-                  {getStepContent(activeStep)}
-                  <div className={classes.buttons}>
-                    {activeStep !== 0 && (
-                      <Button onClick={handleBack} className={classes.button}>
-                        Retour
-                      </Button>
-                    )}
-                    <Button
-                      variant='contained'
-                      name='enregistrer'
-                      color='primary'
-                      onClick={handleNext}
-                      className={classes.button}
-                      style={{ backgroundColor: 'var(--red)' }}
-                    >
-                      {activeStep === steps.length - 1 ? 'Enregistrer' : 'Suivant'}
+              <>
+                {getStepContent(activeStep)}
+                <div className={classes.buttons}>
+                  {activeStep !== 0 && (
+                    <Button onClick={handleBack} className={classes.button}>
+                          Retour
                     </Button>
-                  </div>
-                </>
-              )}
+                  )}
+                  <Button
+                    variant='contained'
+                    name='enregistrer'
+                    color='primary'
+                    onClick={handleNext}
+                    className={classes.button}
+                    style={{ backgroundColor: 'var(--red)' }}
+                  >
+                    {activeStep === steps.length - 1 ? 'Enregistrer' : 'Suivant'}
+                  </Button>
+                </div>
+              </>
+            )}
           </>
         </Paper>
       </main>
