@@ -18,11 +18,13 @@ export default function Buttons (props) {
   const useStyles = makeStyles((theme) => ({ button: { margin: theme.spacing(1) } }));
   const classes = useStyles();
   const history = useHistory();
-  const [state, setState] = useState({ checkedA: true, });
-  const handleChange = (event) => {setState({ ...state, [event.target.name]: event.target.checked });};
+  const [state, setState] = useState({ checkedA: props.is_active === 1, });
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {setOpen(true);};
   const handleClose = () => {setOpen(false);};
+  console.log(state.checkedA)
+  console.log(props.is_active)
+  console.log(props.is_active === 1)
 
   const handleDelete = (e) => {
     API.delete('/freelances/' + props.id + '?deleted=1')
@@ -33,6 +35,26 @@ export default function Buttons (props) {
         console.error(err)
       })
   }
+
+  const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+    if (state.checkedA === true) {
+      API.put('/freelances/' + props.id + '?activated=0')
+        .then((res) => {
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    }
+    if (state.checkedA === false) {
+      API.put('/freelances/' + props.id + '?activated=1')
+        .then((res) => {
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    }
+  };
 
   return (
     <div>

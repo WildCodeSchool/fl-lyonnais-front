@@ -24,18 +24,19 @@ class Detail extends Component {
         this.setState({
           freelances: data.freelance,
           tags: data.tags,
-          references: data.references
+          references: data.references,
+          is_active: data.freelance.is_active
         });
       });
   }
 
   render () {
-    const { freelances, tags, references } = this.state;
+    const { freelances, tags, references, is_active } = this.state;
 
     return (
       <div>
         <h1>Page détail freelance</h1>
-        <Buttons id={this.state.id} />
+        <Buttons id={this.state.id} is_active={is_active}/>
         <div className='Detail'>
           <DetailBio freelances={freelances} />
           <DetailReferences references={references} />
