@@ -50,7 +50,6 @@ export default function AddressForm () {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
             id='job_title'
             name='job_title'
             label='Poste'
@@ -62,7 +61,6 @@ export default function AddressForm () {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
             id='address1'
             name='street'
             label='Rue'
@@ -74,7 +72,6 @@ export default function AddressForm () {
         </Grid>
         <Grid item xs={12}>
           <TextField
-            required
             id='city'
             name='city'
             label='Ville'
@@ -86,7 +83,6 @@ export default function AddressForm () {
         </Grid>
         <Grid item xs={12}>
           <TextField
-            required
             id='zip'
             name='zip_code'
             label='Code Postal'
