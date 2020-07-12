@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
 import DeleteIcon from '@material-ui/icons/Delete'
@@ -18,9 +18,9 @@ export default function Buttons (props) {
   const useStyles = makeStyles((theme) => ({ button: { margin: theme.spacing(1) } }));
   const classes = useStyles();
   const history = useHistory();
-  const [state, setState] = React.useState({ checkedA: true, });
+  const [state, setState] = useState({ checkedA: true, });
   const handleChange = (event) => {setState({ ...state, [event.target.name]: event.target.checked });};
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleClickOpen = () => {setOpen(true);};
   const handleClose = () => {setOpen(false);};
 

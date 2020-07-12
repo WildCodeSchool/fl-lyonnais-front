@@ -240,9 +240,6 @@ export default function SignIn(props) {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            {/* <Button autoFocus onClick={handleClose} color="primary">
-              Disagree
-          </Button> */}
             <Button onClick={handleClose} color='primary' autoFocus>
               Fermer
             </Button>
