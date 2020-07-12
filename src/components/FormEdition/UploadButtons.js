@@ -22,23 +22,24 @@ export default function UploadButtons() {
 
   const handlePictureProfileUpload = (e) => {
     const image = e.target.files[0];
+            // // url Photo
+          let url = process.env.REACT_APP_API_URL + '/freelances/account';
+          const formData = new FormData();
+          formData.append('title', 'titre');
+          formData.append("image", image);
+          API.patch(url + '/image', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          })
+            .then(data =>
+              alert('Photo de profil envoyée')
+            )
+            .catch(err => {
+              console.error(err);
+            });
+    console.log(image)
 
-    const formData = new FormData();
-    formData.append('title', 'titre');
-    formData.append("image", image);
-    if (freelanceExists) {
-      const url = process.env.REACT_APP_API_URL + '/freelances/account/image';
-      API.patch(url, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }
-      )
-        .then(() => alert('Succes'))
-        .catch(err => {
-          console.error(err);
-        });
-    }
     setUrlPhoto(image);
   }
 
