@@ -17,7 +17,7 @@ import useStyles from '../components/FormEdition/useStyles';
 // fl 0 si pas de compte éditer,
 
 const steps = ['Personnel', 'Entreprise', 'Compétences', 'Références'];
-function getStepContent (step, propsToPass) {
+function getStepContent(step, propsToPass) {
   switch (step) {
     case 0:
       return <AddressForm />;
@@ -32,7 +32,7 @@ function getStepContent (step, propsToPass) {
   }
 }
 
-export default function Edition (props) {
+export default function Edition(props) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const { freelanceExists, firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags, sendFlDatasToFormEdition } = useContext(EditionContext);
@@ -47,54 +47,77 @@ export default function Edition (props) {
       });
   };
 
-  useEffect( () => {
+  useEffect(() => {
     retrieveAccountInformations()
-  }, [] )
+  }, [])
 
   const handleNext = (e) => {
     setActiveStep(activeStep + 1);
     if (e.target.innerText.toLowerCase() === 'enregistrer') {
-      const url = process.env.REACT_APP_API_URL + '/freelances/account';
-      console.log(payload);
+      let url = process.env.REACT_APP_API_URL + '/freelances/account';
       const formData = new FormData();
       const image = url_photo;
       console.log(image)
       formData.append('title', 'titre');
       formData.append("image", image);
-      
+
       if (freelanceExists) {
         API.patch(url, payload)
-        .then((res) => res.data)
-        .then(data =>
-          alert('Informations modifiées')
-        )
-        .catch(err => {
-          console.error('error Parch FL',err);
-        });
-      }
-      else {
-        API.post(url, payload)
           .then((res) => res.data)
           .then(data =>
-            alert('Informations enregistrées')
+            alert('Informations modifiées')
           )
           .catch(err => {
-            console.error(err);
+            console.error('error Parch FL', err);
           });
       }
+      else {
+        if (!url_photo) {
+          //payload sans photo
+          API.post(url, payload)
+            .then((res) => res.data)
+            .then(data =>
+              alert('Informations enregistrées')
+            )
+            .catch(err => {
+              console.error(err);
+            });
+        }
+        else {
+          API.post(url, payload)
+            .then((res) => res.data)
+            .then(data =>
+              alert('Informations enregistrées')
+            )
+            .catch(err => {
+              console.error(err);
+            });
+          API.patch(url + '/image', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }
+          )
+            .catch(err => {
+              console.error(err);
+            });
+        }
+        //seulement photo
+      }
     }
+
   };
-    //  En attente Pierre pour upload photo
-    // handleFile = (e) => {
-    //   const imageReferenceListAdded = this.state.imageReferenceList;
-    //   imageReferenceListAdded.push(e)
-    //   this.setState( {imageReferenceList: imageReferenceListAdded})
-    //   console.log(this.state.imageReferenceList)
-    //   // axios.post('/posts', formData, {
-    //   //     headers: {
-    //   //       'Content-Type': 'multipart/form-data'
-    //   //     }
-    // }
+  //  En attente Pierre pour upload photo
+  // handleFile = (e) => {
+  //   const imageReferenceListAdded = this.state.imageReferenceList;
+  //   imageReferenceListAdded.push(e)
+  //   this.setState( {imageReferenceList: imageReferenceListAdded})
+  //   console.log(this.state.imageReferenceList)
+  //   // axios.post('/posts', formData, {
+  //   //     headers: {
+  //   //       'Content-Type': 'multipart/form-data'
+  //   //     }
+  // }
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
@@ -116,31 +139,31 @@ export default function Edition (props) {
             {activeStep === steps.length ? (
               <>
                 <Typography variant='h5' gutterBottom>
-                    Vos informations ont bien été prises en compte
+                  Vos informations ont bien été prises en compte
                 </Typography>
               </>
             ) : (
-              <>
-                {getStepContent(activeStep)}
-                <div className={classes.buttons}>
-                  {activeStep !== 0 && (
-                    <Button onClick={handleBack} className={classes.button}>
-                          Retour
+                <>
+                  {getStepContent(activeStep)}
+                  <div className={classes.buttons}>
+                    {activeStep !== 0 && (
+                      <Button onClick={handleBack} className={classes.button}>
+                        Retour
+                      </Button>
+                    )}
+                    <Button
+                      variant='contained'
+                      name='enregistrer'
+                      color='primary'
+                      onClick={handleNext}
+                      className={classes.button}
+                      style={{ backgroundColor: 'var(--red)' }}
+                    >
+                      {activeStep === steps.length - 1 ? 'Enregistrer' : 'Suivant'}
                     </Button>
-                  )}
-                  <Button
-                    variant='contained'
-                    name='enregistrer'
-                    color='primary'
-                    onClick={handleNext}
-                    className={classes.button}
-                    style={{ backgroundColor: 'var(--red)' }}
-                  >
-                    {activeStep === steps.length - 1 ? 'Enregistrer' : 'Suivant'}
-                  </Button>
-                </div>
-              </>
-            )}
+                  </div>
+                </>
+              )}
           </>
         </Paper>
       </main>
