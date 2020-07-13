@@ -8,6 +8,7 @@ import EditionContext from './EditionContext';
 import '../../pages/generic page/Home.scss'
 const url = process.env.REACT_APP_API_URL +'/'
 
+
 export default function AddressForm () {
   const { url_photo, email, job_title, firstname, lastname, street, zip_code, city, bio, handleAdressFormChange } = useContext(EditionContext);
   return (

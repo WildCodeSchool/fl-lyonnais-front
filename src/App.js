@@ -43,17 +43,22 @@ const Apps = styled.div`
 
 function App () {
   const [token, setToken] = useState(localStorage.getItem('authToken'));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user') || '{}'))
   const setTokenInLocalStorage = (token) => {
-    localStorage.setItem('authToken', token);
+    localStorage.setItem('authToken', token)
     setToken(token);
   };
   let userNameFromToken = null;
   if (token) {
     userNameFromToken = jwtDecode(token).sub || null;
   }
+  const saveUser = (user) => {
+    localStorage.setItem('user',JSON.stringify(user));
+    setUser(user);
+  }
 
   return (
-    <AuthContext.Provider value={{ token: token, saveToken: (token) => (setTokenInLocalStorage(token)) }}>
+    <AuthContext.Provider value={{user,saveUser, token: token, saveToken: (token) => (setTokenInLocalStorage(token)), setToken: setTokenInLocalStorage }}>
       {userNameFromToken && <div><p>Welcome back {userNameFromToken} !</p><button onClick={() => setTokenInLocalStorage('')}>Log out</button></div>}
       <EditionContextProvider>
         <Apps>

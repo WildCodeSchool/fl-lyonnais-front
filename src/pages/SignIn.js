@@ -54,7 +54,7 @@ export default function SignIn(props) {
     setOpen(false);
   };
 
-  const { saveToken } = useContext(AuthContext);
+  const { saveToken, saveUser } = useContext(AuthContext);
   const history = useHistory();
   const classes = useStyles();
   const [email, setEmail] = useState('');
@@ -66,6 +66,7 @@ export default function SignIn(props) {
     API.post('/users/connexion', payload).then((res) => {
       const decodedToken = decode(res.data.token);
       saveToken(res.data.token);
+      saveUser(res.data.user);
       history.push(status ? '/compte' : `/detail/${res.data.user.freelance_id}`);
       // res.data.token;
     })
@@ -238,9 +239,6 @@ export default function SignIn(props) {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            {/* <Button autoFocus onClick={handleClose} color="primary">
-              Disagree
-          </Button> */}
             <Button onClick={handleClose} color='primary' autoFocus>
               Fermer
             </Button>
