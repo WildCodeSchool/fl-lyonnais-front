@@ -5,8 +5,10 @@ import DetailSkills from '../components/Detail/DetailSkills';
 import DetailContact from '../components/Detail/DetailContact';
 import API from '../API';
 import Buttons from '../components/Buttons';
+import AuthContext from '../components/AuthContext';
 
 class Detail extends Component {
+  static contextType = AuthContext
   constructor (props) {
     super(props);
     this.state = {
@@ -32,10 +34,11 @@ class Detail extends Component {
 
   render () {
     const { freelances, tags, references, is_active } = this.state;
+    const { user } = this.context
 
     return (
       <div>
-        {(is_active === 1 || is_active === 0) && <Buttons id={this.state.id} is_active={is_active}/>}
+        {(is_active === 1 || is_active === 0) && (user && user.freelance_id == this.state.id) && <Buttons id={this.state.id} is_active={is_active}/>}
         <h1>Page détail freelance</h1>
         <div className='Detail'>
           <DetailBio freelances={freelances} />

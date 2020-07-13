@@ -61,6 +61,12 @@ const useStyles = makeStyles((theme) => ({
 export default function PrimarySearchAppBar (props) {
   const classes = useStyles();
   const setTokenInLocalStorage = useContext(AuthContext).setToken;
+  const setUserInLocalStorage = useContext(AuthContext).saveUser;
+
+  const handleLogout = () => {
+    setUserInLocalStorage('{}');
+    setTokenInLocalStorage('');
+  }
   return (
     <div className={classes.grow}>
       <AppBar position='static'>
@@ -85,7 +91,7 @@ export default function PrimarySearchAppBar (props) {
           <div>
             <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/inscription'>Inscription</Link></Button>
             <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Connexion</Link></Button>
-            <Button color='inherit'><Link onClick={() => setTokenInLocalStorage('')} style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Déconnexion</Link></Button>
+            <Button color='inherit'><Link onClick={handleLogout} style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Déconnexion</Link></Button>
           </div>
         </Toolbar>
       </AppBar>
