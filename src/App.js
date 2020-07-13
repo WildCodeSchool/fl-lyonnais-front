@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Home from './pages/Home';
+import Home from './pages/generic page/Home';
 import Detail from './pages/Detail';
 import Listing from './pages/Listing';
 import MailInfo from './pages/MailInfo';
@@ -46,7 +46,6 @@ function App () {
   const setTokenInLocalStorage = (token) => {
     localStorage.setItem('authToken', token);
     setToken(token);
-    console.log(token);
   };
   let userNameFromToken = null;
   if (token) {

@@ -10,7 +10,7 @@ import Chat from '../Chat';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 500,
+    width: '100%',
     '& > * + *': {
       marginTop: theme.spacing(3)
     },
@@ -33,7 +33,6 @@ export default function Tags () {
   const classes = useStyles();
 
   const handleAutocompleteChange = (e, chosenTags) => {
-    console.log(chosenTags);
     setChosenTags(chosenTags);
   };
 

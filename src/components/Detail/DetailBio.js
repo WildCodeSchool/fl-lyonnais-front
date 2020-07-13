@@ -1,11 +1,13 @@
 import React from 'react';
-
+import avatar from  '../../images/avatar.png'
 function detailBio (props) {
+  console.log('url photo',props.freelances.url_photo);
+  const url = process.env.REACT_APP_API_URL +'/'
   return (
     <div className='detailBio'>
       <div className='detailBioPhotoName'>
 
-        <img src={props.freelances.url_photo} alt={`${props.freelances.lastname}`} className='detailPhoto' />
+        <img src={props.freelances.url_photo ? url+ props.freelances.url_photo : avatar} alt={`${props.freelances.lastname}`} className='detailPhoto' />
 
         <div className='detailnametitle'>
 

@@ -36,6 +36,10 @@ class EditionContextProvider extends React.Component {
 
   // }
 
+  setUrlPhoto = (image) => {
+    this.setState({url_photo: image})
+  }
+
   sendFlDatasToFormEdition = (dataRetrivedAPI) => {
     if (dataRetrivedAPI.freelance) {
       this.setState({ freelanceExists : true});
@@ -108,7 +112,6 @@ class EditionContextProvider extends React.Component {
   handleFile = (e) => {
     const imageReferenceListAdded = this.state.imageReferenceList.slice();
     imageReferenceListAdded.push(e);
-    console.log('new state', this.state.imageReferenceList);
     this.setState({ imageReferenceList: imageReferenceListAdded });
   }
 
@@ -135,7 +138,7 @@ class EditionContextProvider extends React.Component {
   render () {
     return (
       <div>
-        <EditionContext.Provider value={{ ...this.state, sendFlDatasToFormEdition: this.sendFlDatasToFormEdition, deleteChosenTag: this.deleteChosenTag, setChosenTags: this.setChosenTags, setAllTags: this.setAllTags, deleteReference: this.deleteReference, setReferenceField: this.setReferenceField, addReference: this.addReference, handleUrlLink: this.handleUrlLink, handleAdressFormChange: this.handleAdressFormChange, handleTag: this.handleTag, handleTagId: this.handleTagId, addIdTagIdsChosen: this.addIdTagIdsChosen, handleReferencesName: this.handleReferencesName, handleNameReferenceList: this.handleNameReferenceList, setNameReferenceList: this.setNameReferenceList, cleanProjectState: this.cleanProjectState, handleFile: this.handleFile }}>
+        <EditionContext.Provider value={{ ...this.state,setUrlPhoto: this.setUrlPhoto, sendFlDatasToFormEdition: this.sendFlDatasToFormEdition, deleteChosenTag: this.deleteChosenTag, setChosenTags: this.setChosenTags, setAllTags: this.setAllTags, deleteReference: this.deleteReference, setReferenceField: this.setReferenceField, addReference: this.addReference, handleUrlLink: this.handleUrlLink, handleAdressFormChange: this.handleAdressFormChange, handleTag: this.handleTag, handleTagId: this.handleTagId, addIdTagIdsChosen: this.addIdTagIdsChosen, handleReferencesName: this.handleReferencesName, handleNameReferenceList: this.handleNameReferenceList, setNameReferenceList: this.setNameReferenceList, cleanProjectState: this.cleanProjectState, handleFile: this.handleFile }}>
           {this.props.children}
         </EditionContext.Provider>
       </div>
