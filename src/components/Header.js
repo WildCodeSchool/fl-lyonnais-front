@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -57,8 +57,27 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+  
 export default function PrimarySearchAppBar (props) {
   const classes = useStyles();
+  const [search, setSearch] = useState('');
+  const baseURL = process.env.REACT_APP_API_URL;
+
+  // Traitement du champ de recherche
+  const handleSubmitSearch = (event) => {
+    event.preventDefault();
+    const apiUrl = baseURL + '/search?recherche=' + search;
+    console.log('URL pour axios : ', apiUrl);
+    axios.get(apiUrl)
+      .then((searchResults) => {
+        const searchResultsTable = searchResults.data.searchResults
+        console.log(searchResultsTable);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <div className={classes.grow}>
       <AppBar position='static'>
@@ -66,19 +85,20 @@ export default function PrimarySearchAppBar (props) {
           <Typography className={classes.title} variant='h6' noWrap>
             <Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/'>Freelances Lyonnais</Link>
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder='Recherche…'
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput
-              }}
-              inputProps={{ 'aria-label': 'search' }}
+          <form className={classes.form} noValidate  onSubmit={handleSubmitSearch}>
+            <TextField
+            variant='outlined'
+            margin='normal'
+            fullWidth
+            id='search'
+            label='Recherche...'
+            name='search'
+            autoComplete='search'
+            autoFocus
+            value={search}
+            onChange={(e) => { setSearch(e.target.value); }}
             />
-          </div>
+          </form>
           <div className={classes.grow} />
           <div>
             <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/inscription'>M'inscrire</Link></Button>
