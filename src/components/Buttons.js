@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
 import DeleteIcon from '@material-ui/icons/Delete'
@@ -11,7 +11,9 @@ import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
-import DialogTitle from '@material-ui/core/DialogTitle'
+import DialogTitle from '@material-ui/core/DialogTitle';
+import AuthContext from './AuthContext';
+
 
 
 export default function Buttons (props) {
@@ -22,10 +24,13 @@ export default function Buttons (props) {
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {setOpen(true);};
   const handleClose = () => {setOpen(false);};
-
+  const setTokenInLocalStorage = useContext(AuthContext).setToken;
+  const setUserInLocalStorage = useContext(AuthContext).saveUser;
   const handleDelete = (e) => {
-    API.delete('/freelances/' + props.id + '?deleted=1')
+    API.delete('/freelances/account')
       .then((res) => {
+        setUserInLocalStorage('{}');
+        setTokenInLocalStorage('');
         history.push(`/connexion`)
       })
       .catch(err => {
