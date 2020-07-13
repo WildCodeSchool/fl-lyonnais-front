@@ -5,9 +5,12 @@ import DetailSkills from '../components/Detail/DetailSkills';
 import DetailContact from '../components/Detail/DetailContact';
 import API from '../API';
 import Buttons from '../components/Buttons';
+import AuthContext from '../components/AuthContext';
+import decode from 'jwt-decode';
 
 
 class Detail extends Component {
+  static contextType = AuthContext
   constructor (props) {
     super(props);
     this.state = {
@@ -33,6 +36,8 @@ class Detail extends Component {
 
   render () {
     const { freelances, tags, references } = this.state;
+    const { token } = this.context;
+    console.log('Token decodé Détail', decode(token))
 
     return (
       <div>

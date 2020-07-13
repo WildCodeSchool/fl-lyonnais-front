@@ -87,7 +87,7 @@ export default function Edition(props) {
 
   return (
     <>
-      <h1>Gestion de votre compte</h1>
+      {/* <h1>Gestion de votre compte</h1> */}
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Stepper activeStep={activeStep} className={classes.stepper}>

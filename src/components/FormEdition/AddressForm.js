@@ -70,7 +70,7 @@ export default function AddressForm () {
             onChange={(e) => handleAdressFormChange(e)}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
           <TextField
             id='city'
             name='city'
@@ -81,11 +81,11 @@ export default function AddressForm () {
             onChange={(e) => handleAdressFormChange(e)}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
           <TextField
             id='zip'
             name='zip_code'
-            label='Code Postal'
+            label='Code Postal' 
             fullWidth
             autoComplete='shipping postal-code'
             value={zip_code}
