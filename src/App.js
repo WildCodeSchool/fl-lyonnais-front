@@ -18,7 +18,6 @@ import Edition from './pages/Edition.js';
 import Header from './components/Header';
 import AuthContext from './components/AuthContext';
 import EditionContextProvider from './components/FormEdition/EditionContextProvider';
-import jwtDecode from 'jwt-decode';
 import Chat from './components/Chat';
 import GeneralConditions from './pages/generic page/GeneralConditions';
 import About from './pages/generic page/About';
@@ -48,10 +47,7 @@ function App () {
     localStorage.setItem('authToken', token)
     setToken(token);
   };
-  let userNameFromToken = null;
-  if (token) {
-    userNameFromToken = jwtDecode(token).sub || null;
-  }
+
   const saveUser = (user) => {
     localStorage.setItem('user',JSON.stringify(user));
     setUser(user);
@@ -59,7 +55,6 @@ function App () {
 
   return (
     <AuthContext.Provider value={{user,saveUser, token: token, saveToken: (token) => (setTokenInLocalStorage(token)), setToken: setTokenInLocalStorage }}>
-      {userNameFromToken && <div><p>Welcome back {userNameFromToken} !</p><button onClick={() => setTokenInLocalStorage('')}>Log out</button></div>}
       <EditionContextProvider>
         <Apps>
           <Router>

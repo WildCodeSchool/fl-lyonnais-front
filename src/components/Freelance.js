@@ -2,7 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../pages/Listing.scss';
 
+import avatar from '../images/avatar.png'
+
 const Freelance = (props) => {
+  const url = process.env.REACT_APP_API_URL +'/'
+
   return (
     <div className='freelance2'>
       <div className='container'>
@@ -10,7 +14,7 @@ const Freelance = (props) => {
           <div className='card'>
 
             <div className='card-image'>
-              <img src={props.urlPhoto} alt='Orange' />
+              <img src={props.urlPhoto ? url+ props.urlPhoto : avatar} alt='Orange' />
             </div>
 
             <div className='card-body'>
