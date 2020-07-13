@@ -68,9 +68,8 @@ export default function PrimarySearchAppBar (props) {
     event.preventDefault();
     const searchTable = search.split(' ');
     const searchList = searchTable.join(';');
-    console.log(searchTable);
     const apiUrl = baseURL + '/search?recherche=' + searchList;
-    console.log('URL pour axios : ', apiUrl);
+    // console.log('URL pour axios : ', apiUrl);
     axios.get(apiUrl)
       .then((searchResults) => {
         const searchResultsTable = searchResults.data.searchResults
