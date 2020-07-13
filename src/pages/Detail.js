@@ -35,8 +35,8 @@ class Detail extends Component {
 
     return (
       <div>
-        <h1>Page détail freelance</h1>
         {(is_active === 1 || is_active === 0) && <Buttons id={this.state.id} is_active={is_active}/>}
+        <h1>Page détail freelance</h1>
         <div className='Detail'>
           <DetailBio freelances={freelances} />
           <DetailReferences references={references} />

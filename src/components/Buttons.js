@@ -55,6 +55,7 @@ export default function Buttons (props) {
 
   return (
     <div>
+      <h1>Gérer mon compte</h1>
       <Button
         variant='contained'
         color='secondary'
