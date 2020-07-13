@@ -22,9 +22,6 @@ export default function Buttons (props) {
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {setOpen(true);};
   const handleClose = () => {setOpen(false);};
-  console.log(state.checkedA)
-  console.log(props.is_active)
-  console.log(props.is_active === 1)
 
   const handleDelete = (e) => {
     API.delete('/freelances/' + props.id + '?deleted=1')
