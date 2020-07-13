@@ -66,7 +66,10 @@ export default function PrimarySearchAppBar (props) {
   // Traitement du champ de recherche
   const handleSubmitSearch = (event) => {
     event.preventDefault();
-    const apiUrl = baseURL + '/search?recherche=' + search;
+    const searchTable = search.split(' ');
+    const searchList = searchTable.join(';');
+    console.log(searchTable);
+    const apiUrl = baseURL + '/search?recherche=' + searchList;
     console.log('URL pour axios : ', apiUrl);
     axios.get(apiUrl)
       .then((searchResults) => {
