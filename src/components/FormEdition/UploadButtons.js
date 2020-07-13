@@ -27,7 +27,7 @@ export default function UploadButtons() {
     let url = process.env.REACT_APP_API_URL + '/freelances/account/image';
     const formData = new FormData();
     formData.append('title', 'titre');
-    formData.append("image", image);
+    formData.append("image", image);  
     API.post(url, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
