@@ -1,0 +1,88 @@
+body {
+  margin:0;
+  background: #eef9fe;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.homepage {
+  // border: 1px solid var(--blue);
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10vh;
+  height: auto;
+  width: calc(90% - 60px);
+  max-width: 1024px;
+  background-color:white;
+  padding:30px;
+}
+
+.home .form {
+  margin-top: 30px;
+  margin-bottom: 60px;
+  
+}
+
+.home main p {
+  text-align: justify;
+  padding-top: 0px;
+}
+
+.home .logo {
+  margin-top: 10px;
+  padding-top: 30px;
+}
+
+.logoHome {
+  height: 100px;
+}
+
+.paragraphe {
+  margin-bottom: 5vh;
+  height: auto;
+}
+
+.paragraphe h3 {
+  letter-spacing: 2px;
+  position: relative;
+  text-align:left;
+  color: var(--blue);
+}
+
+.paragraphe h3::after {
+  position:absolute;
+  content:'';
+  left:0px;
+  bottom:-8px;
+  width:20px;
+  height:1px;
+  background-color:var(--blue);
+}
+
+h1 {
+  color:#1730FF;
+  text-align: center;
+}
+
+
+
+//////////////          MEDIA QUERIE          /////////////////////////
+
+@media screen and (min-width: 750px) { 
+
+  p {
+    font-size: 1.1em;
+  }
+}
+
+.MuiStepIcon-active  {
+  color: red !important
+}
+
+.MuiStepIcon-completed  {
+  color: red !important
+}

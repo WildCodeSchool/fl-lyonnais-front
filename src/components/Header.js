@@ -54,12 +54,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       width: '20ch'
     }
-  },
-  sectionDesktop: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'flex'
-    }
   }
 }));
 
@@ -69,28 +63,26 @@ export default function PrimarySearchAppBar (props) {
     <div className={classes.grow}>
       <AppBar position='static'>
         <Toolbar style={{ backgroundColor: 'var(--blue)' }}>
-          {/* ICI LOGO */}
           <Typography className={classes.title} variant='h6' noWrap>
             <Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/'>Freelances Lyonnais</Link>
           </Typography>
-          {!props.isHomePage &&
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder='Search…'
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </div>}
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              placeholder='Recherche…'
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </div>
           <div className={classes.grow} />
           <div>
-            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/registration'>M'inscrire</Link></Button>
-            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/signin'>Me connecter</Link></Button>
+            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/inscription'>M'inscrire</Link></Button>
+            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Me connecter</Link></Button>
           </div>
         </Toolbar>
       </AppBar>

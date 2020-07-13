@@ -1,0 +1,183 @@
+/* GLOBAL */
+  
+.detailh2 {
+  letter-spacing: 2px;
+  position: relative;
+  text-align: center;
+  color: var(--blue);
+}
+
+.detailh2::after {
+  width: 20px;
+  display: inline-block;
+  height: 1px;
+  content: " "; 
+  background: var(--blue);
+  vertical-align: middle;
+  position: relative;
+  top: -3px;
+  margin: 5px;
+}
+
+.detailh2::before {
+  width: 20px;
+  display: inline-block;
+  height: 1px;
+  content: " ";
+  background: var(--blue);
+  vertical-align: middle;
+  position: relative;
+  top: -3px;
+  margin: 5px;
+}
+  
+  /* BIO */
+  
+.detailBio {
+  background-color: white;
+  margin: 20px 20px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.detailtextebio {
+  margin-left: 10px;;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+  
+.detailnametitle {
+  align-self: center;
+  justify-content: center;
+  margin: auto;
+}
+  
+.detailPhoto {
+  height: auto;
+  width: 35vw;
+  padding-left: 10px;
+  margin: 15px;
+}
+  
+  /* REFERENCES */
+  
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  margin: 20px;
+  background-color: white;
+}
+
+.reference {
+  margin-top: 10px;
+}
+  
+.carousel img {
+  width: 15vw;
+  margin: 0 10px;
+  border: solid 1px lightgray;
+}
+  
+.carousel p {
+  text-align: center;
+  margin: 0;
+}
+  
+  /* COMPETENCES */
+
+.detailskills {
+  background-color: white;
+  margin:20px;
+}
+
+.mainSkills ul {
+  list-style: none;
+  padding: 0;
+}
+
+.mainSkills ul li {
+  text-align: left;
+  padding-left: 10px;
+}
+  
+  /* CONTACT */
+  
+.detailcontact {
+  background-color: white;
+  margin: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+  
+  /* /////////////////////////////// MEDIA QUERIES 750 PX /////////////////////////////// */
+  
+@media screen and (min-width: 750px) {
+  /* MEDIA QUERIES BIO */
+  
+  .detailnametitle {
+    font-size: 1.5em;
+    margin-top: 80px;
+  }
+
+  .detailBio {
+    flex-direction: column;
+    margin: 20px 100px;
+    font-size: 0.9em;
+  }
+
+  .detailPhoto {
+    max-width: 200px;
+    width: 19vw;
+    float: left;
+  }
+  
+  /* MEDIA QUERIES REFERENCES*/
+
+  .carousel {
+    overflow-x: visible;
+    overflow-y: visible;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .carousel img {
+    width: 120px;
+    height: 120px;
+    margin: 13px;
+  }
+  
+  
+  /* MEDIA QUERIES COMPETENCES */
+  
+  .detailskills {
+    // display: flex;
+    margin: auto;
+    width: 300px;
+    height: 375px;
+  }
+  
+  
+  /* MEDIA QUERIES CONTACT */
+  
+  .detailcontact {
+    margin: auto;
+    width: 300px;
+    height: 375px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* MEDIA QUERIES COMPETENCES + CONTACT */
+
+  .responsiveSkillsContact {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+}

@@ -1,41 +1,33 @@
 import React from 'react';
-import { Card, Image } from 'semantic-ui-react';
-import '../styles/Freelance.scss';
+import { Link } from 'react-router-dom';
+import '../pages/Listing.scss';
 
 const Freelance = (props) => {
-  const { urlPhoto, firstname, lastname, mainSkills } = props.freelance;
-
   return (
-    <div className='card'>
-      <Card className='freelance'>
+    <div className='freelance2'>
+      <div className='container'>
+        <Link style={{ textDecoration: 'none' }} to={`/detail/${props.id}`}>
+          <div className='card'>
 
-        <Image className='photo' src={urlPhoto} wrapped ui={false} />
-        <Card.Content>
-          <Card.Header className='card-header'>{firstname} {lastname}</Card.Header>
-          <Card.Meta>
-            <span className='mainSkills'>{mainSkills[0]} | {mainSkills[1]} | {mainSkills[2]}</span>
-          </Card.Meta>
-          {/* <Card.Description className="card-informations">
-            {bio}
-          </Card.Description> */}
-        </Card.Content>
-        {/*
-        <Card.Content extra>
-          <p>
-            <Icon name='contact' />
-            {email}
-          </p>
-          <p>
-            <Icon name='contact' />
-            {phone}
-          </p>
+            <div className='card-image'>
+              <img src={props.urlPhoto} alt='Orange' />
+            </div>
 
-          <button> + Plus d'informations </button>
-        </Card.Content>
-        */}
-      </Card>
+            <div className='card-body'>
+
+              <div className='card-name'>
+                <h4>{props.firstname} {props.lastname}</h4>
+              </div>
+
+              <div className='card-title'>
+                <p>{props.job_title}</p>
+              </div>
+
+            </div>
+          </div>
+        </Link>
+      </div>
     </div>
-
   );
 };
 

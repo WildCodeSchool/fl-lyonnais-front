@@ -1,22 +1,53 @@
-import React from 'react';
-import Freelance from '../components/Freelance2';
-import '../styles/Listing.scss';
-import freelances from '../test/people';
+import React, { useState, useEffect } from 'react';
+import Freelance from '../components/Freelance';
+import FilterTags from '../components/Filter';
+import './Listing.scss';
+import { Link } from 'react-router-dom';
+import API from '../API';
 
-function Listing () {
-  // Construit une liste des freelances
-  const outputFreelances = freelances.map(freelance => <Freelance key={freelance.id} freelance={freelance} />);
+const Listing = () => {
+  const [freelances, setFreelances] = useState([]);
+  const [totalFreelances, setTotalFreelances] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [freelancesPerPage] = useState(15);
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const pageNumbers = [];
+
+  useEffect(() => {
+    const fetchFreelances = async () => {
+      setLoading(true);
+      const res = await API.get('/freelances/?page=' + currentPage + '&step=' + freelancesPerPage);
+      setFreelances(res.data.data);
+      setTotalFreelances(res.data.data2);
+      setLoading(false);
+    };
+    fetchFreelances();
+  }, [currentPage]);
+
+  for (let i = 1; i <= Math.ceil((totalFreelances.map(tot => tot.totalAmoutOfValidFreelances)) / freelancesPerPage); i++) { pageNumbers.push(i); }
+  if (loading) { return <h2>Loading...</h2>; }
 
   return (
     <div className='Listing'>
-      <div className='everyFreelanceCards'>
-        {outputFreelances}
-        {outputFreelances}
-        {outputFreelances}
-        {outputFreelances}
+      <h1>Liste de Freelance Lyonnais</h1>
+      <div className='ListingFilter'>
+        <FilterTags className='FilterTags' />
+        <div>
+          <ul className='everyFreelanceCards'>
+            <li>
+              {freelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))}
+            </li>
+          </ul>
+          <nav>
+            <ul className='pagination'>
+              {pageNumbers.map(number => (<li key={number}><Link onClick={() => paginate(number)} to='#' className='page-link'>{number}</Link></li>))}
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default Listing;
