@@ -9,7 +9,6 @@ import API from '../API';
 import Buttons from '../components/Buttons';
 import AuthContext from '../components/AuthContext';
 
-
 function Detail (props){
 
   const [freelance,setFreelance] = useState({})
