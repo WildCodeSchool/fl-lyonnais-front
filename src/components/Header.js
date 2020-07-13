@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -7,6 +7,7 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import AuthContext from './AuthContext';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -59,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PrimarySearchAppBar (props) {
   const classes = useStyles();
+  const setTokenInLocalStorage = useContext(AuthContext).setToken;
   return (
     <div className={classes.grow}>
       <AppBar position='static'>
@@ -81,8 +83,9 @@ export default function PrimarySearchAppBar (props) {
           </div>
           <div className={classes.grow} />
           <div>
-            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/inscription'>M'inscrire</Link></Button>
-            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Me connecter</Link></Button>
+            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/inscription'>Inscription</Link></Button>
+            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Connexion</Link></Button>
+            <Button color='inherit'><Link onClick={() => setTokenInLocalStorage('')} style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Déconnexion</Link></Button>
           </div>
         </Toolbar>
       </AppBar>

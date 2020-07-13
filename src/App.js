@@ -54,7 +54,7 @@ function App () {
   }
 
   return (
-    <AuthContext.Provider value={{ token: token, saveToken: (token) => (setTokenInLocalStorage(token)) }}>
+    <AuthContext.Provider value={{ token: token, saveToken: (token) => (setTokenInLocalStorage(token)), setToken: setTokenInLocalStorage }}>
       {userNameFromToken && <div><p>Welcome back {userNameFromToken} !</p><button onClick={() => setTokenInLocalStorage('')}>Log out</button></div>}
       <EditionContextProvider>
         <Apps>
