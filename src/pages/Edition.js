@@ -36,8 +36,7 @@ export default function Edition(props) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const { freelanceExists, firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags, sendFlDatasToFormEdition } = useContext(EditionContext);
-  const payload = { firstname, lastname, email, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags };
-  const referencesObjectWithImageReferences = references.filter(ref => ref.image);
+  const payload = { firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags };
 
 
   const retrieveAccountInformations = () => {
@@ -57,11 +56,7 @@ export default function Edition(props) {
     setActiveStep(activeStep + 1);
     if (e.target.innerText.toLowerCase() === 'enregistrer') {
       let url = process.env.REACT_APP_API_URL + '/freelances/account';
-      const image = url_photo;
-      console.log('réference Obj before post', referencesObjectWithImageReferences)
-
       if (freelanceExists) {
-        //patch hors photo qui se fait au clic sur le bouton photo et hors références 
         API.patch(url, payload) 
           .then((res) => res.data)
           .then(data =>
@@ -70,49 +65,9 @@ export default function Edition(props) {
           .catch(err => {
             console.error('error Parch FL', err);
           });
-
-        // // url Photo
-        //   const formData = new FormData();
-        //   formData.append('title', 'titre');
-        //   formData.append("image", image);
-        //   API.patch(url + '/image', formData, {
-        //     headers: {
-        //       'Content-Type': 'multipart/form-data'
-        //     }
-        //   })
-        //     .then(data =>
-        //       alert('Photo de profil envoyée')
-        //     )
-        //     .catch(err => {
-        //       console.error(err);
-        //     });
-
-        //Patch des références seulement
-        if (referencesObjectWithImageReferences.length) {
-          const formData = new FormData();
-
-          referencesObjectWithImageReferences.forEach(ref => {
-            formData.append('referenceID', ref.id);
-            formData.append('name', ref.name);
-            formData.append('url', ref.url);
-            formData.append("image", ref.image);
-          });
-
-          API.patch(url + '/imageReferences', formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          })
-            .then(data =>
-              alert(`Référence envoyée`)
-            )
-            .catch(err => {
-              console.error(err);
-            });
         }
-      }
+
       else {
-        //Pas de freelance existant yc références: Post de tout sauf photo de profil 
         API.post(url, payload)
           .then((res) => res.data)
           .then(data =>
@@ -120,39 +75,11 @@ export default function Edition(props) {
           )
           .catch(err => {
             console.error(err);
-          });
-        //Post de la photo de profil, pas possiblde de le faire au clic Upload photo car pas de fl existant à ce moment du formulaire
-        if (url_photo) {
-          const formData = new FormData();
-          formData.append('title', 'titre');
-          formData.append("image", image);
-          API.patch(url + '/image', formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          })
-            .then(data =>
-              alert('Photo de profil envoyée')
-            )
-            .catch(err => {
-              console.error(err);
-            });
+          }); 
         }
-      }
-    }
   }
+}
 
-  //  En attente Pierre pour upload photo
-  // handleFile = (e) => {
-  //   const imageReferenceListAdded = this.state.imageReferenceList;
-  //   imageReferenceListAdded.push(e)
-  //   this.setState( {imageReferenceList: imageReferenceListAdded})
-  //   console.log(this.state.imageReferenceList)
-  //   // axios.post('/posts', formData, {
-  //   //     headers: {
-  //   //       'Content-Type': 'multipart/form-data'
-  //   //     }
-  // }
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);

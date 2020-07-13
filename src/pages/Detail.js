@@ -6,6 +6,7 @@ import DetailContact from '../components/Detail/DetailContact';
 import API from '../API';
 import Buttons from '../components/Buttons';
 
+
 class Detail extends Component {
   constructor (props) {
     super(props);

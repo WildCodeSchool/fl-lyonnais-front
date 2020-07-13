@@ -18,26 +18,31 @@ const useStyles = makeStyles((theme) => ({
 
 export default function UploadButtons() {
   const classes = useStyles();
-  const { freelanceExists, setUrlPhoto } = useContext(EditionContext)
+  const { setUrlPhoto } = useContext(EditionContext)
 
   const handlePictureProfileUpload = (e) => {
     const image = e.target.files[0];
-            // // url Photo
-          let url = process.env.REACT_APP_API_URL + '/freelances/account';
-          const formData = new FormData();
-          formData.append('title', 'titre');
-          formData.append("image", image);
-          API.patch(url + '/image', formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          })
-            .then(data =>
-              alert('Photo de profil envoyée')
-            )
-            .catch(err => {
-              console.error(err);
-            });
+    console.log(image)
+    // // url Photo
+    let url = process.env.REACT_APP_API_URL + '/freelances/account/image';
+    const formData = new FormData();
+    formData.append('title', 'titre');
+    formData.append("image", image);
+    API.post(url, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+      .then(res => {
+        console.log('Photo de Profil res.data',res.data) 
+        setUrlPhoto(res.data.image) // image :url 'uploads/
+
+        alert('Photo de profil envoyée dans le fichier API Uploads')
+      }
+      )
+      .catch(err => {
+        console.error(err);
+      });
     console.log(image)
 
     setUrlPhoto(image);

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../pages/Detail.scss';
+import avatar from '../../images/reficon.png'
 
 function DetailReferences (props) {
   console.log(props.references)
@@ -11,7 +12,7 @@ function DetailReferences (props) {
         {props.references.map(reference => {
           return (
             <a href={reference.url} className='reference' key={reference.id}>
-              <img src={url + reference.image} alt={reference.name} />
+              <img src={reference.image ? url + reference.image : avatar} alt={reference.name} />
               <p>{reference.name}</p>
             </a>
           );
