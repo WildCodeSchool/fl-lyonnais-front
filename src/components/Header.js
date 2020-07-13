@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
+import AuthContext from './AuthContext';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -80,6 +81,15 @@ export default function PrimarySearchAppBar (props) {
       });
   };
 
+  const setTokenInLocalStorage = useContext(AuthContext).setToken;
+  const setUserInLocalStorage = useContext(AuthContext).saveUser;
+  const isConnected = !!useContext(AuthContext).token;
+  const { user } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    setUserInLocalStorage('{}');
+    setTokenInLocalStorage('');
+  }
   return (
     <div className={classes.grow}>
       <AppBar position='static'>
@@ -103,8 +113,16 @@ export default function PrimarySearchAppBar (props) {
           </form>
           <div className={classes.grow} />
           <div>
-            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/inscription'>M'inscrire</Link></Button>
-            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Me connecter</Link></Button>
+            { isConnected && user && user.freelance_id && <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to={`/detail/${user.freelance_id}`}>Mon Compte</Link></Button>}
+
+            {isConnected && <Button color='inherit'><Link onClick={handleLogout} style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Déconnexion</Link></Button>}
+
+            {!isConnected && 
+            <>
+              <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/inscription'>Inscription</Link></Button>
+              <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Connexion</Link></Button>
+            </>
+            }
           </div>
         </Toolbar>
       </AppBar>

@@ -19,6 +19,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import decode from 'jwt-decode';
 
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -44,7 +45,6 @@ export default function SignIn(props) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  // console.log(props.location.search);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -54,7 +54,7 @@ export default function SignIn(props) {
     setOpen(false);
   };
 
-  const { saveToken } = useContext(AuthContext);
+  const { saveToken, saveUser } = useContext(AuthContext);
   const history = useHistory();
   const classes = useStyles();
   const [email, setEmail] = useState('');
@@ -66,8 +66,8 @@ export default function SignIn(props) {
     API.post('/users/connexion', payload).then((res) => {
       const decodedToken = decode(res.data.token);
       saveToken(res.data.token);
+      saveUser(res.data.user);
       history.push(status ? '/compte' : `/detail/${res.data.user.freelance_id}`);
-      console.log(res.data);
       // res.data.token;
     })
       .catch(err => {
@@ -85,7 +85,6 @@ export default function SignIn(props) {
     const payload = { email };
     API.post('/users/renvoi_email_validation?email=' + email, payload)
       .then((res) => {
-        console.log(payload);
       })
       .catch(err => {
         handleClickOpen();
