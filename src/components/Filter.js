@@ -28,7 +28,7 @@ export default function FilterTags () {
 
   return (
     <div className='filters'>
-     {/*<FilterTjm className='FilterTjm' />*/}
+     <FilterTjm className='FilterTjm' />
       <Autocomplete
         multiple
         id='checkboxes-tags'
