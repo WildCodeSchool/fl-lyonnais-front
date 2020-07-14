@@ -4,10 +4,12 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
-import TextField from '@material-ui/core/TextField';
 import AuthContext from './AuthContext';
+import SearchContext from './Detail/SearchContext'
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -62,7 +64,9 @@ const useStyles = makeStyles((theme) => ({
 export default function PrimarySearchAppBar (props) {
   const classes = useStyles();
   const [search, setSearch] = useState('');
+  const { uploadSearch } = useContext(SearchContext);
   const baseURL = process.env.REACT_APP_API_URL;
+  const history = useHistory();
 
   // Traitement du champ de recherche
   const handleSubmitSearch = (event) => {
@@ -74,7 +78,8 @@ export default function PrimarySearchAppBar (props) {
     axios.get(apiUrl)
       .then((searchResults) => {
         const searchResultsTable = searchResults.data.searchResults
-        console.log(searchResultsTable);
+        uploadSearch(searchResultsTable);
+        history.push('/liste_freelance')
       })
       .catch((err) => {
         console.error(err);
@@ -98,18 +103,21 @@ export default function PrimarySearchAppBar (props) {
             <Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/'>Freelances Lyonnais</Link>
           </Typography>
           <form className={classes.form} noValidate  onSubmit={handleSubmitSearch}>
-            <TextField
-            variant='outlined'
-            margin='normal'
-            fullWidth
-            id='search'
-            label='Recherche...'
-            name='search'
-            autoComplete='search'
-            autoFocus
-            value={search}
-            onChange={(e) => { setSearch(e.target.value); }}
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              placeholder='Recherche…'
+              value={search}
+              onChange={(e) => { setSearch(e.target.value); }}
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput
+              }}
+              inputProps={{ 'aria-label': 'search' }}
             />
+          </div>
           </form>
           <div className={classes.grow} />
           <div>

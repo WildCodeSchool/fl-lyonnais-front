@@ -18,6 +18,7 @@ import Edition from './pages/Edition.js';
 import Header from './components/Header';
 import AuthContext from './components/AuthContext';
 import EditionContextProvider from './components/FormEdition/EditionContextProvider';
+import SearchContextProvider from './components/Detail/SearchContextProvider';
 import Chat from './components/Chat';
 import GeneralConditions from './pages/generic page/GeneralConditions';
 import About from './pages/generic page/About';
@@ -56,6 +57,7 @@ function App () {
   return (
     <AuthContext.Provider value={{user,saveUser, token: token, saveToken: (token) => (setTokenInLocalStorage(token)), setToken: setTokenInLocalStorage }}>
       <EditionContextProvider>
+        <SearchContextProvider>
         <Apps>
           <Router>
             <Header />
@@ -77,6 +79,7 @@ function App () {
             <Chat />
           </Router>
         </Apps>
+        </SearchContextProvider>
       </EditionContextProvider>
     </AuthContext.Provider>
   );

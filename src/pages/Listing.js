@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Freelance from '../components/Freelance';
 import FilterTags from '../components/Filter';
 import './Listing.scss';
 import { Link } from 'react-router-dom';
 import API from '../API';
+import SearchContext from '../components/Detail/SearchContext';
 
 const Listing = () => {
   const [freelances, setFreelances] = useState([]);
@@ -13,6 +14,7 @@ const Listing = () => {
   const [freelancesPerPage] = useState(20);
   const paginate = pageNumber => setCurrentPage(pageNumber);
   const pageNumbers = [];
+  const { resultOfSearch } = useContext(SearchContext);
 
   useEffect(() => {
     const fetchFreelances = async () => {
@@ -36,12 +38,16 @@ const Listing = () => {
         <div>
           <ul className='everyFreelanceCards'>
             <li>
-              {freelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))}
+              {resultOfSearch.length ? 
+              resultOfSearch.map(freelance => (<Freelance id={freelance.freelance_id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
+              :
+              freelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
+              }
             </li>
           </ul>
           <nav>
             <ul className='pagination'>
-              {pageNumbers.map(number => (<li key={number}><Link onClick={() => paginate(number)} to='#' className='page-link'>{number}</Link></li>))}
+              {!resultOfSearch.length && pageNumbers.map(number => (<li key={number}><Link onClick={() => paginate(number)} to='#' className='page-link'>{number}</Link></li>))}
             </ul>
           </nav>
         </div>
