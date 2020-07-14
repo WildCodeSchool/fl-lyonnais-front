@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
+import SearchContext from './Detail/SearchContext'
 
 const useStyles = makeStyles({
   root: {
@@ -15,10 +16,12 @@ function valuetext(value) {
 
 export default function RangeSlider() {
   const classes = useStyles();
-  const [value, setValue] = React.useState([100, 350]);
+  const [value, setValue] = useState([100, 350]);
+  const { handleTjmMarkers } = useContext(SearchContext);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    handleTjmMarkers(value);
   };
 
   return (
