@@ -71,10 +71,21 @@ export default function PrimarySearchAppBar (props) {
   // Traitement du champ de recherche
   const handleSubmitSearch = (event) => {
     event.preventDefault();
-    const searchTable = search.split(' ');
-    const searchList = searchTable.join(';');
+    let searchList = search.split(' ');
+
+    // Retrait des espaces en trop
+    // Pour n'avoir que des critères utiles entre les ';'
+    const searchListeTableWithoutSpace = [];
+    for (let i = 0; i < searchList.length; i++) { 
+      if (searchList[i]) {
+        console.log('searchList', i, searchList[i]);
+        searchListeTableWithoutSpace.push(searchList[i]);
+      }
+    };
+    searchList = searchListeTableWithoutSpace.join(';');
+
     const apiUrl = baseURL + '/search?recherche=' + searchList;
-    // console.log('URL pour axios : ', apiUrl);
+    console.log('URL pour axios : ', apiUrl);
     axios.get(apiUrl)
       .then((searchResults) => {
         const searchResultsTable = searchResults.data.searchResults
