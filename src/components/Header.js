@@ -78,11 +78,11 @@ export default function PrimarySearchAppBar (props) {
     let searchList = search.split(/\W+/).join(';');
 
     const apiUrl = baseURL + '/search?recherche=' + searchList;
-    console.log('URL pour axios : ', apiUrl);
     axios.get(apiUrl)
       .then((searchResults) => {
         const searchResultsTable = searchResults.data.searchResults
         uploadSearch(searchResultsTable);
+        // console.log('résultat de la recherche',searchResultsTable)
         history.push('/liste_freelance')
       })
       .catch((err) => {

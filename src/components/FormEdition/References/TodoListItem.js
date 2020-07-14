@@ -31,8 +31,6 @@ const TodoListItem = (props) => {
       }
     })
       .then(res => {
-        console.log('Photo reférence res', res)
-        console.log('Photo reférence  res.data', res.data)
         alert('Photo de profil envoyée')
         setReferenceField(props.reference.id, 'image', res.data.image)
       }

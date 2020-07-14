@@ -22,7 +22,7 @@ const Listing = () => {
       const res = await API.get('/freelances/?page=' + currentPage + '&step=' + freelancesPerPage);
       setFreelances(res.data.freelances);
       setTotalFreelances(res.data.freelanceTotalAmount);
-      console.log(res.data.freelances);
+      console.log('tagssssssssssss',res.data.freelances);
       setLoading(false);
     };
     fetchFreelances();
@@ -30,8 +30,44 @@ const Listing = () => {
 
   for (let i = 1; i <= Math.ceil((totalFreelances.map(tot => tot.totalAmoutOfValidFreelances)) / freelancesPerPage); i++) { pageNumbers.push(i); }
   if (loading) { return <h2>Loading...</h2>; }
-  // console.log(tagsFilter)
-  console.log(freelances);
+
+  //Code Pascal
+  const tagsFilterArray = tagsFilter.map(tagObject => tagObject.name)
+
+  console.log('tagsfilterArray', tagsFilterArray)
+
+  let result = []
+
+  const filterMultipleFreelanceByFlId = (arrayOfObjects) => {
+    let resArr = [];
+    arrayOfObjects.forEach(function(item){
+      let i = resArr.findIndex(x => x.freelance_id == item.freelance_id);
+      if(i <= -1){
+        resArr.push({freelance_id: item.freelance_id, name: item.name});
+      }
+    });
+    return resArr
+  }
+
+  if (tagsFilterArray.length) {
+    console.log('yooooooooooo')
+      resultOfSearch.map( freelance => {
+        if (freelance.tags.length !== 0 ) {
+          for (let i=0; i < freelance.tags.length;i++) {
+            if ((tagsFilterArray.indexOf(freelance.tags[i].name)) !== -1) {
+              // if ((result.indexOf( freelance )) !== -1) {
+                result.push(freelance)
+                // }
+              }
+            }
+          }
+        })
+        if (result.length !==0) {
+        } 
+      }
+
+const arrayOfFreelanceWithChosenTags = filterMultipleFreelanceByFlId(result)
+
   return (
     <div className='Listing'>
       <h1>Liste de Freelance Lyonnais</h1>
@@ -42,12 +78,13 @@ const Listing = () => {
             <li>
               {resultOfSearch.length ?
 
-                // tableau avec FL qui ont tags séléectionnés
-                //resultOfSearch.filter( freelance => {
-                // let arrayOfFreelanceWithChosenTags = [];
-                // resultOfSearch.forEach( freelance => {
-                //   if ( tagsFilter.indexOf(freelance.tag) !== -1) {
-                //     arrayOfFreelanceWithChosenTags.push(freelance)
+                //tableau avec FL qui ont tags séléectionnés
+                // resultOfSearch.filter( freelance => {
+                // const arrayOfFreelanceWithChosenTags = resultOfSearch.map( freelance => {
+                //   for (let i=0; i < freelance.tag.length;i++) {
+                //     if ( tagsFilter.indexOf(freelance.tag.name) !== -1) {
+                //       arrayOfFreelanceWithChosenTags.push(freelance)
+                //     }
                 //   }
                 // })
               

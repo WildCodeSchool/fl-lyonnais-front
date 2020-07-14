@@ -90,6 +90,7 @@ class EditionContextProvider extends React.Component {
       url: ''
     };
     this.setState({ references: [...this.state.references, newReference] });
+    window.scrollTo(0,0)
   }
 
   deleteReference = (refId) => {

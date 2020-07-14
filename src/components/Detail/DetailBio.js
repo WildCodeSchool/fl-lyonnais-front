@@ -1,7 +1,6 @@
 import React from 'react';
 import avatar from  '../../images/avatar.png'
 function detailBio (props) {
-  console.log('url photo',props.freelances.url_photo);
   const url = process.env.REACT_APP_API_URL +'/'
   return (
     <div className='detail-bio-container'>
