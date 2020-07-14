@@ -61,7 +61,8 @@ export default function Buttons (props) {
   return (
     <div>
       <h1>Gérer mon compte</h1>
-      <Button
+      <div className='accountManagement'>
+        <Button
         variant='contained'
         color='secondary'
         className={classes.button}
@@ -105,6 +106,7 @@ export default function Buttons (props) {
         label="Désactiver / Activer"
         labelPlacement="top"
       />
+      </div>
     </div>
   );
 }

@@ -1,5 +1,12 @@
 /* GLOBAL */
 
+.accountManagement {
+  background-color: white;
+  margin: 20px auto;
+  width: 500px;
+  border-radius: 5px;
+}
+
 .detailh2 {
   letter-spacing: 2px;
   position: relative;
@@ -39,6 +46,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  border-radius: 5px;
 }
 
 .info-container {
