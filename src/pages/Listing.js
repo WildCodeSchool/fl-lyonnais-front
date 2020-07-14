@@ -24,7 +24,6 @@ const Listing = () => {
       setTotalFreelances(res.data.freelanceTotalAmount);
       console.log('tagssssssssssss', res.data.freelances);
       setLoading(false);
-      console.log(API);
     };
     fetchFreelances();
   }, [currentPage]);
@@ -63,8 +62,8 @@ const Listing = () => {
     return newArr;
   }
 
-  if (tagsFilterArray.length) {
-    console.log('yooooooooooo')
+   if (tagsFilterArray.length) {
+    // console.log('result of search : ', resultOfSearch)
     resultOfSearch.map(freelance => {
       if (freelance.tags.length !== 0) {
         for (let i = 0; i < freelance.tags.length; i++) {
@@ -75,26 +74,35 @@ const Listing = () => {
           }
         }
       }
+      return result;
     })
-    if (result.length !== 0) {
-    }
   }
+console.log('result : ', result);
 
   const compareIdApparitionsAndTagsFilterArrayLength = (flArray, tagArray) => {
-    let countApparition = 0;
-    let resultId = []
+    let resultId = [];
     let list = [];
+    list[1] = 5;
+    console.log('fl array : ', flArray);
     flArray.forEach(freelance => {
-      if (list[freelance.freelance_id]) {
-        list[freelance.freelance_id] = list[freelance.freelance_id] + 1
+      const id = freelance.freelance_id;
+      console.log('freelance id : ', id);
+      if (list[id] < 1) {
+        let counter = list[id];
+        counter++;
+        list[id] = counter;
       }
       else {
-        list[freelance.freelance_id] = 1
+        list[id] = 1
       }
     })
 
-      && list.forEach(flId => {
-        if (flId === tagArray.length) {
+    const tagArrayLength = tagArray.length
+    console.log('tagArrayLength : ', tagArrayLength);
+    console.log('longueur de liste : ', list.length, list);
+      list.forEach(flId => {
+        console.log('liste de freelance : ', flId, list[flId]);
+        if (list[flId] === tagArray.length) {
           resultId.push(flId)
         }
       })
@@ -102,9 +110,12 @@ const Listing = () => {
 
   }
 
-  console.log('Cb', compareIdApparitionsAndTagsFilterArrayLength(result, tagsFilterArray))
-  const arrayOfFreelanceWithChosenTags = filterMultipleFreelanceByFlId(result)
-  console.log(arrayOfFreelanceWithChosenTags)
+  const freelancesIdMatchAllTags = compareIdApparitionsAndTagsFilterArrayLength(result, tagsFilterArray);
+  console.log('Liste des freelance qui ont tous les tags sélectionnés : ',freelancesIdMatchAllTags);
+
+  //const arrayOfFreelanceWithChosenTags = filterMultipleFreelanceByFlId(result)
+  //console.log(arrayOfFreelanceWithChosenTags)
+  const arrayOfFreelanceWithChosenTags = freelancesIdMatchAllTags;
 
   return (
     <div className='Listing'>
