@@ -20,9 +20,9 @@ const Listing = () => {
     const fetchFreelances = async () => {
       setLoading(true);
       const res = await API.get('/freelances/?page=' + currentPage + '&step=' + freelancesPerPage);
-      setFreelances(res.data.Freelances);
-      setTotalFreelances(res.data.FreelanceTotalAmount);
-      console.log(res.data.Freelances);
+      setFreelances(res.data.freelances);
+      setTotalFreelances(res.data.freelanceTotalAmount);
+      console.log(res.data.freelances);
       setLoading(false);
     };
     fetchFreelances();
