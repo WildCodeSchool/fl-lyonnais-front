@@ -31,7 +31,9 @@ function Detail (props){
   return(
 
     <div>
-    {(is_active === 1 || is_active === 0) && (user && user.freelance_id == id) && <Buttons id={id} is_active={is_active}/>}
+      <div className=''>
+        {(is_active === 1 || is_active === 0) && (user && user.freelance_id == id) && <Buttons id={id} is_active={is_active}/>}
+      </div>
     <h1>Page détail freelance</h1>
     <div className='Detail'>
       <DetailBio freelances={freelance} />

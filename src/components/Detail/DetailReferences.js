@@ -8,15 +8,17 @@ function DetailReferences (props) {
   return (
     <div>
       <h2 className='detailh2'>Références</h2>
-      <div className='carousel'>
-        {props.references.map(reference => {
-          return (
-            <a href={reference.url} className='reference' key={reference.id}>
-              <img src={reference.image ? url + reference.image : avatar} alt={reference.name} />
-              <p>{reference.name}</p>
-            </a>
-          );
-        })}
+      <div className='carousel-container'>
+        <div className='carousel'>
+          {props.references.map(reference => {
+            return (
+              <a href={reference.url} className='reference' key={reference.id}>
+                <img src={reference.image ? url + reference.image : avatar} alt={reference.name} />
+                <p>{reference.name}</p>
+              </a>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

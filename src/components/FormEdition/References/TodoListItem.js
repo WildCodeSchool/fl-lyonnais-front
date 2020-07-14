@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import EditionContext from '../EditionContext';
 import API from '../../../API'
 import './TodoLisItem.css'
+import avatar from '../../../images/reficon.png';
 
 import {
   ListItem,
@@ -58,7 +59,7 @@ const TodoListItem = (props) => {
         <Grid item xs={12}>
           <div className="referencesEtPhoto">
             <div className='RefPhoto'>
-              {props.reference.image && <img src={url + props.reference.image} alt={props.reference.name} />}
+              {props.reference.image ? <img src={url + props.reference.image} alt={props.reference.name} /> : <img src={avatar} alt ='avatar par défaut' />}
             </div>
           <div>
             <input type='file' onChange={handleFileClick} />

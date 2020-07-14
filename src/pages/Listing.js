@@ -24,6 +24,7 @@ const Listing = () => {
       setTotalFreelances(res.data.freelanceTotalAmount);
       console.log('tagssssssssssss', res.data.freelances);
       setLoading(false);
+      console.log(API);
     };
     fetchFreelances();
   }, [currentPage]);
