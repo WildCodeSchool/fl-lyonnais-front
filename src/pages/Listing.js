@@ -24,6 +24,7 @@ const Listing = () => {
       setTotalFreelances(res.data.freelanceTotalAmount);
       console.log(res.data.freelances);
       setLoading(false);
+      console.log(API);
     };
     fetchFreelances();
   }, [currentPage]);
@@ -31,6 +32,7 @@ const Listing = () => {
   for (let i = 1; i <= Math.ceil((totalFreelances.map(tot => tot.totalAmoutOfValidFreelances)) / freelancesPerPage); i++) { pageNumbers.push(i); }
   if (loading) { return <h2>Loading...</h2>; }
   // console.log(tagsFilter)
+  
   console.log(freelances);
   return (
     <div className='Listing'>
