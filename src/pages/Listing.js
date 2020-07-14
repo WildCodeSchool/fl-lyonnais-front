@@ -14,7 +14,7 @@ const Listing = () => {
   const [freelancesPerPage] = useState(20);
   const paginate = pageNumber => setCurrentPage(pageNumber);
   const pageNumbers = [];
-  const { resultOfSearch } = useContext(SearchContext);
+  const { resultOfSearch, tagsFilter } = useContext(SearchContext);
 
   useEffect(() => {
     const fetchFreelances = async () => {
@@ -29,7 +29,7 @@ const Listing = () => {
 
   for (let i = 1; i <= Math.ceil((totalFreelances.map(tot => tot.totalAmoutOfValidFreelances)) / freelancesPerPage); i++) { pageNumbers.push(i); }
   if (loading) { return <h2>Loading...</h2>; }
-
+  console.log(tagsFilter)
   return (
     <div className='Listing'>
       <h1>Liste de Freelance Lyonnais</h1>
@@ -38,7 +38,17 @@ const Listing = () => {
         <div>
           <ul className='everyFreelanceCards'>
             <li>
-              {resultOfSearch.length ? 
+              {resultOfSearch.length ?
+
+                // tableau avec FL qui ont tags séléectionnés
+                //resultOfSearch.filter( freelance => {
+                // let arrayOfFreelanceWithChosenTags = [];
+                // resultOfSearch.forEach( freelance => {
+                //   if ( tagsFilter.indexOf(freelance.tag) !== -1) {
+                //     arrayOfFreelanceWithChosenTags.push(freelance)
+                //   }
+                // })
+              
               resultOfSearch.map(freelance => (<Freelance id={freelance.freelance_id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
               :
               freelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
