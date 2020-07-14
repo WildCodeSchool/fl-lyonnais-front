@@ -9,7 +9,7 @@ const TodoList = (props) => {
     <>
       {references.length > 0 && (
         <Paper style={{ margin: 16, minWidth: '500px' }}>
-          <List style={{ overflow: 'auto', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <List style={{ overflow: 'auto', display: 'flex', flexWrap: 'wrap-reverse', justifyContent: 'center' }}>
             {references.map((reference, idx) => (
               <TodoListItem
                 reference={reference}

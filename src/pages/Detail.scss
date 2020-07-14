@@ -89,7 +89,12 @@
   padding:0px;
 }
 /* REFERENCES */
+.carousel-container {
+  width:calc(100% - 20px);
+  margin-left:20px;
+  position:relative;
 
+}
 .carousel {
   display: flex;
   overflow-x: auto;
@@ -97,6 +102,15 @@
   white-space: nowrap;
   margin: 20px;
   background-color: white;
+}
+.carousel-container::after {
+  position:absolute;
+  content:'';
+  top:0;
+  right:20px;
+  height:100%;
+  width:40px;
+  background-image:linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
 }
 
 .reference {
@@ -208,6 +222,9 @@ a {
 
   /* MEDIA QUERIES REFERENCES*/
 
+  .carousel-container::after {
+    display:none;
+  }
   .carousel {
     overflow-x: visible;
     overflow-y: visible;
