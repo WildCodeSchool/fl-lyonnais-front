@@ -38,8 +38,9 @@
   margin: 20px 20px 30px;
   display: flex;
   flex-direction: column;
-  justify-content:center;
+  justify-content: flex-start;
 }
+
 .info-container {
   display:flex;
   flex-direction:column;
@@ -110,9 +111,11 @@
 
 .carousel p {
   text-align: center;
-  margin: 0;
-  overflow-x: hidden;
+  margin: 0 0 0 10px;
   width: 120px;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
 }
 
 /* COMPETENCES */
@@ -124,7 +127,7 @@
 }
 
 .mainSkills {
-  overflow-y: auto;
+  overflow-y: overlay;
   height: 345px;
 }
 
@@ -188,9 +191,10 @@ a {
     max-width:200px;
   }
   .avatar-container img {
-    height:100%;
-    margin:0px;
-    padding:0px;
+    height: auto;
+    margin: 0px;
+    padding: 0px;
+    min-width: 200px;
   }
 
   .info-container {
@@ -209,6 +213,7 @@ a {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin: 20px 100px;
   }
 
   .carousel img {
@@ -216,11 +221,6 @@ a {
     height: 120px;
     margin: 13px;
   }
-
-  .carousel p {
-    margin: 0;
-  }
-
 
   /* MEDIA QUERIES COMPETENCES */
 
