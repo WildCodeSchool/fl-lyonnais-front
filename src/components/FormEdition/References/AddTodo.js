@@ -6,7 +6,7 @@ const AddTodo = (props) => {
   const { addReference } = useContext(EditionContext);
 
   return (
-    <Paper style={{ margin: 16, padding: 16 }}>
+    <Paper style={{ margin: 16, padding: 16, minWidth: '500px' }}>
       <Grid container>
         <Grid xs={9} md={11} item style={{ paddingRight: 16 }}>
           <TextField
