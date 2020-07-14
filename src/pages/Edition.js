@@ -89,7 +89,7 @@ export default function Edition(props) {
     <>
       {/* <h1>Gestion de votre compte</h1> */}
       <main className={classes.layout}>
-        <Paper className={classes.paper}>
+        <Paper className={classes.paper} >
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (
               <Step key={label}>
