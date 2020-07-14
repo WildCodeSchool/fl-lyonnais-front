@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import SearchContext from './SearchContext';
 
 
@@ -7,7 +7,8 @@ class SearchContextProvider extends React.Component {
     super(props);
     this.state = {
       resultOfSearch :[],
-      tagsFilter: []
+      tagsFilter: [],
+      tjmMarkers: []
     };
   }
   uploadSearch = (ser) => {
@@ -18,9 +19,13 @@ class SearchContextProvider extends React.Component {
     this.setState({tagsFilter})
   }
 
+  handleTjmMarkers = (tjmMarkers) => {
+    this.setState({ tjmMarkers })
+  }
+
   render() {
     return (
-        <SearchContext.Provider value={{...this.state,handleTagsFilter:this.handleTagsFilter,uploadSearch: this.uploadSearch}}>
+        <SearchContext.Provider value={{...this.state,handleTagsFilter:this.handleTagsFilter,uploadSearch: this.uploadSearch, handleTjmMarkers: this.handleTjmMarkers}}>
         {this.props.children}
         </SearchContext.Provider>
     );
