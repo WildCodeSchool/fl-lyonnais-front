@@ -22,7 +22,7 @@ const Listing = () => {
       const res = await API.get('/freelances/?page=' + currentPage + '&step=' + freelancesPerPage);
       setFreelances(res.data.freelances);
       setTotalFreelances(res.data.freelanceTotalAmount);
-      console.log('tagssssssssssss',res.data.freelances);
+      console.log('tagssssssssssss', res.data.freelances);
       setLoading(false);
     };
     fetchFreelances();
@@ -38,35 +38,72 @@ const Listing = () => {
 
   let result = []
 
-  const filterMultipleFreelanceByFlId = (arrayOfObjects) => {
-    let resArr = [];
-    arrayOfObjects.forEach(function(item){
-      let i = resArr.findIndex(x => x.freelance_id == item.freelance_id);
-      if(i <= -1){
-        resArr.push({freelance_id: item.freelance_id, name: item.name});
+  // const filterMultipleFreelanceByFlId = (arrayOfObjects) => {
+  //   let resArr = [];
+  //   arrayOfObjects.forEach(function(item){
+  //     let i = resArr.findIndex(x => x.freelance_id == item.freelance_id);
+  //     if(i <= -1){
+  //       resArr.push({freelance_id: item.freelance_id, name: item.name});
+  //     }
+  //   });
+  //   return resArr
+  // }
+
+  function filterMultipleFreelanceByFlId(arr) {
+    const seen = {};
+    const newArr = [];
+    //Une seule itération pour chaque élement de arr
+    for (const freelance of arr) {
+      if (seen[freelance.freelance_id] == undefined) {
+        newArr.push(freelance);
+        seen[freelance.freelance_id] = true;
       }
-    });
-    return resArr
+    }
+    return newArr;
   }
 
   if (tagsFilterArray.length) {
     console.log('yooooooooooo')
-      resultOfSearch.map( freelance => {
-        if (freelance.tags.length !== 0 ) {
-          for (let i=0; i < freelance.tags.length;i++) {
-            if ((tagsFilterArray.indexOf(freelance.tags[i].name)) !== -1) {
-              // if ((result.indexOf( freelance )) !== -1) {
-                result.push(freelance)
-                // }
-              }
-            }
+    resultOfSearch.map(freelance => {
+      if (freelance.tags.length !== 0) {
+        for (let i = 0; i < freelance.tags.length; i++) {
+          if ((tagsFilterArray.indexOf(freelance.tags[i].name)) !== -1) {
+            // if ((result.indexOf( freelance )) !== -1) {
+            result.push(freelance)
+            // }
           }
-        })
-        if (result.length !==0) {
-        } 
+        }
       }
+    })
+    if (result.length !== 0) {
+    }
+  }
 
-const arrayOfFreelanceWithChosenTags = filterMultipleFreelanceByFlId(result)
+  const compareIdApparitionsAndTagsFilterArrayLength = (flArray, tagArray) => {
+    let countApparition = 0;
+    let resultId = []
+    let list = [];
+    flArray.forEach(freelance => {
+      if (list[freelance.freelance_id]) {
+        list[freelance.freelance_id] = list[freelance.freelance_id] + 1
+      }
+      else {
+        list[freelance.freelance_id] = 1
+      }
+    })
+
+      && list.forEach(flId => {
+        if (flId === tagArray.length) {
+          resultId.push(flId)
+        }
+      })
+    return (resultId)
+
+  }
+
+  console.log('Cb', compareIdApparitionsAndTagsFilterArrayLength(result, tagsFilterArray))
+  const arrayOfFreelanceWithChosenTags = filterMultipleFreelanceByFlId(result)
+  console.log(arrayOfFreelanceWithChosenTags)
 
   return (
     <div className='Listing'>
@@ -76,21 +113,12 @@ const arrayOfFreelanceWithChosenTags = filterMultipleFreelanceByFlId(result)
         <div>
           <ul className='everyFreelanceCards'>
             <li>
-              {resultOfSearch.length ?
-
-                //tableau avec FL qui ont tags séléectionnés
-                // resultOfSearch.filter( freelance => {
-                // const arrayOfFreelanceWithChosenTags = resultOfSearch.map( freelance => {
-                //   for (let i=0; i < freelance.tag.length;i++) {
-                //     if ( tagsFilter.indexOf(freelance.tag.name) !== -1) {
-                //       arrayOfFreelanceWithChosenTags.push(freelance)
-                //     }
-                //   }
-                // })
-              
-              resultOfSearch.map(freelance => (<Freelance id={freelance.freelance_id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
-              :
-              freelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
+              {resultOfSearch.length && (arrayOfFreelanceWithChosenTags.length === 0) ?
+                resultOfSearch.map(freelance => (<Freelance id={freelance.freelance_id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
+                : arrayOfFreelanceWithChosenTags.length !== 0 ?
+                  arrayOfFreelanceWithChosenTags.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
+                  : freelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
+              }
               }
             </li>
           </ul>
