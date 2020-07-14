@@ -71,18 +71,11 @@ export default function PrimarySearchAppBar (props) {
   // Traitement du champ de recherche
   const handleSubmitSearch = (event) => {
     event.preventDefault();
-    let searchList = search.split(' ');
 
-    // Retrait des espaces en trop
-    // Pour n'avoir que des critères utiles entre les ';'
-    const searchListeTableWithoutSpace = [];
-    for (let i = 0; i < searchList.length; i++) { 
-      if (searchList[i]) {
-        console.log('searchList', i, searchList[i]);
-        searchListeTableWithoutSpace.push(searchList[i]);
-      }
-    };
-    searchList = searchListeTableWithoutSpace.join(';');
+    // Utilise les espaces comme séparateur dans le champ de recherche
+    // Puis les remplace par un point-virgule dans l'URL
+    // De plus, les espace et autres caractères du même acabit, en trop, sont éliminés.
+    let searchList = search.split(/\W+/).join(';');
 
     const apiUrl = baseURL + '/search?recherche=' + searchList;
     console.log('URL pour axios : ', apiUrl);
