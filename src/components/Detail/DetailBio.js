@@ -4,21 +4,14 @@ function detailBio (props) {
   console.log('url photo',props.freelances.url_photo);
   const url = process.env.REACT_APP_API_URL +'/'
   return (
-    <div className='detailBio'>
-      <div className='detailBioPhotoName'>
-
+    <div className='detail-bio-container'>
+      <div className='avatar-container'>
         <img src={props.freelances.url_photo ? url+ props.freelances.url_photo : avatar} alt={`${props.freelances.lastname}`} className='detailPhoto' />
-
-        <div className='detailnametitle'>
-
-          <h1>{props.freelances.firstname} {props.freelances.lastname}</h1>
-          <h1>{props.freelances.job_title}</h1>
-          <div className='detailtextebio'>
-
-            <p>{props.freelances.bio}</p>
-
-          </div>
-        </div>
+      </div>
+      <div className='info-container'>
+        <h2>{props.freelances.firstname} {props.freelances.lastname}</h2>
+        <h2>{props.freelances.job_title}</h2>
+        <p>{props.freelances.bio}</p>
       </div>
     </div>
   );
