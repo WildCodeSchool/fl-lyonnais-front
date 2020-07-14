@@ -2,33 +2,36 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-// import AddIcon from '@material-ui/icons/Add';
-// import RemoveIcon from '@material-ui/icons/Remove';
 
 const useStyles = makeStyles({
   root: {
-    width: '80%'
-  }
+    width: '80%',
+  },
 });
 
-function valuetext (value) {
+function valuetext(value) {
   return `${value}€`;
 }
 
-export default function DiscreteSlider () {
+export default function RangeSlider() {
   const classes = useStyles();
+  const [value, setValue] = React.useState([100, 350]);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
     <div className={classes.root} style={{ marginLeft: 30, marginBottom: 30 }}>
-      <Typography id='discrete-slider' gutterBottom style={{ marginBottom: 35, fontFamily: 'balooBhaina2Regular' }}>
-       -  TJM en euros €  +
+      <Typography id="range-slider" gutterBottom style={{ marginBottom: 35, fontFamily: 'balooBhaina2Regular' }}>
+        TJM
       </Typography>
       <Slider
-        style={{}}
-        defaultValue={500}
+        value={value}
+        onChange={handleChange}
+        valueLabelDisplay="auto"
+        aria-labelledby="range-slider"
         getAriaValueText={valuetext}
-        aria-labelledby='discrete-slider'
-        valueLabelDisplay='auto'
         step={100}
         marks
         min={0}
