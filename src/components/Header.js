@@ -75,8 +75,8 @@ export default function PrimarySearchAppBar (props) {
     // Utilise les espaces comme séparateur dans le champ de recherche
     // Puis les remplace par un point-virgule dans l'URL
     // De plus, les espace et autres caractères du même acabit, en trop, sont éliminés.
-    let searchList = search.split(/\W+/).join(';');
-    updateSearch(searchList);
+    //let searchList = search.split(/\W+/).join(';');
+    updateSearch(search);
     history.push('/liste_freelance')
     
 
