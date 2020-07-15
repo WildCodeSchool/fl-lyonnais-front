@@ -60,9 +60,6 @@ const Listing = () => {
     })
     arrayOfFreelanceWithChosenTags = results;
     console.log('Results : ', results);
-  } else {
-    // Aucun tag sélectionné, alors on copie le contenu du tableau freelance sans le modifier
-    arrayOfFreelanceWithChosenTags = freelances;
   }
 
 
