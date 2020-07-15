@@ -81,16 +81,14 @@ const Listing = () => {
     <div className='Listing'>
       <h1>Liste de Freelance Lyonnais</h1>
       <div className='ListingFilter'>
-        {resultOfSearch.length !==0 && <FilterTags className='FilterTags' />}
+        <FilterTags className='FilterTags' />
         <div>
           <ul className='everyFreelanceCards'>
             <li>
-              {!resultOfSearch.length ?
-                  freelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
-                : !arrayOfFreelanceWithChosenTags.length ?
-                  resultOfSearch.map(freelance => (<Freelance id={freelance.freelance_id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
+              {arrayOfFreelanceWithChosenTags.length !==0 ?
+                 arrayOfFreelanceWithChosenTags.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
                 :
-                  arrayOfFreelanceWithChosenTags.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
+                freelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
               }
             </li>
           </ul>
