@@ -20,7 +20,7 @@ export default function RangeSlider() {
   const { handleTjmMarkers } = useContext(SearchContext);
  // const url = process.env.REACT_APP_API_URL +'/'
 
- /*class FilterTjm extends React.Component {
+  /*class FilterTjm extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
