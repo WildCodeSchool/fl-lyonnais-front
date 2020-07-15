@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
 export default function PrimarySearchAppBar (props) {
   const classes = useStyles();
   const [search, setSearch] = useState('');
-  const { uploadSearch } = useContext(SearchContext);
+  const { upLoadResultOfSearch, updateSearch } = useContext(SearchContext);
   const baseURL = process.env.REACT_APP_API_URL;
   const history = useHistory();
 
@@ -76,18 +76,21 @@ export default function PrimarySearchAppBar (props) {
     // Puis les remplace par un point-virgule dans l'URL
     // De plus, les espace et autres caractères du même acabit, en trop, sont éliminés.
     let searchList = search.split(/\W+/).join(';');
+    updateSearch(searchList);
+    history.push('/liste_freelance')
+    
 
-    const apiUrl = baseURL + '/search?recherche=' + searchList;
+    /* const apiUrl = baseURL + '/search?recherche=' + searchList;
     axios.get(apiUrl)
       .then((searchResults) => {
         const searchResultsTable = searchResults.data.searchResults
-        uploadSearch(searchResultsTable);
+        upLoadResultOfSearch(searchResultsTable);
         // console.log('résultat de la recherche',searchResultsTable)
         history.push('/liste_freelance')
       })
       .catch((err) => {
         console.error(err);
-      });
+      }); */
   };
 
   const setTokenInLocalStorage = useContext(AuthContext).setToken;

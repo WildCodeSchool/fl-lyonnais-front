@@ -15,20 +15,22 @@ const Listing = () => {
   const [freelancesPerPage] = useState(20);
   const paginate = pageNumber => setCurrentPage(pageNumber);
   const pageNumbers = [];
-  const { resultOfSearch, tagsFilter, tjmMarkers } = useContext(SearchContext);
+  const { resultOfSearch, tagsFilter, tjmMarkers, search } = useContext(SearchContext);
   // const { resetTagsFilter } = useContext(SearchContext);
 
   useEffect(() => {
     const fetchFreelances = async () => {
       setLoading(true);
-      const res = await API.get('/freelances/?page=' + currentPage + '&step=' + freelancesPerPage);
+      const res = await API.get('/freelances/?page=' + currentPage + '&flperpage=' + freelancesPerPage + '&search=' + search);
+      console.log(res.data);
       setFreelances(res.data.freelances);
       setTotalFreelances(res.data.freelanceTotalAmount);
+      console.log('Total FL in useEffect',totalFreelances)
       console.log('tagssssssssssss', res.data.freelances);
       setLoading(false);
     };
     fetchFreelances();
-  }, [currentPage]);
+  }, [currentPage, search]);
 
   // Filtrage sur les tags
   function tagFilters(freelances, tagsFilterArray) {
@@ -58,9 +60,10 @@ const Listing = () => {
     }
     return resultsArray;
   }
+    console.log(totalFreelances)
+    for (let i = 1; i <= Math.ceil(totalFreelances/ freelancesPerPage); i++) { pageNumbers.push(i); }
+    if (loading) { return <h2>Loading...</h2>; }
   
-  for (let i = 1; i <= Math.ceil((totalFreelances.map(tot => tot.totalAmoutOfValidFreelances)) / freelancesPerPage); i++) { pageNumbers.push(i); }
-  if (loading) { return <h2>Loading...</h2>; }
 
   // Conversion du tableau d'objets des tags sélectionnés en tableau "simple" de noms de tags
   const tagsFilterArray = tagsFilter.map(tagObject => tagObject.name)

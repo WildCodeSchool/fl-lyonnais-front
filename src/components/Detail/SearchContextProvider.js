@@ -8,10 +8,11 @@ class SearchContextProvider extends React.Component {
     this.state = {
       resultOfSearch :[],
       tagsFilter: [],
-      tjmMarkers: []
+      tjmMarkers: [],
+      search: ''
     };
   }
-  uploadSearch = (ser) => {
+  upLoadResultOfSearch = (ser) => {
     this.setState({resultOfSearch: ser})
   }
 
@@ -28,14 +29,19 @@ class SearchContextProvider extends React.Component {
     this.setState({ tjmMarkers })
   }
 
+  updateSearch = (search) => {
+    this.setState({ search })
+  }
+  
   render() {
     return (
         <SearchContext.Provider value={{
           ...this.state,
           handleTagsFilter: this.handleTagsFilter,
-          uploadSearch: this.uploadSearch,
+          upLoadResultOfSearch: this.upLoadResultOfSearch,
           handleTjmMarkers: this.handleTjmMarkers,
-          resetTagsFilter: this.resetTagsFilter
+          resetTagsFilter: this.resetTagsFilter,
+          updateSearch: this.updateSearch
         }}>
         {this.props.children}
         </SearchContext.Provider>
