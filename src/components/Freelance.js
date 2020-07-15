@@ -14,7 +14,7 @@ const Freelance = (props) => {
           <div className='card'>
 
             <div className='card-image'>
-              <img src={props.urlPhoto ? url+ props.urlPhoto : avatar} alt='Orange' />
+              <img src={props.urlPhoto ? url+ props.urlPhoto : avatar} alt='avatar' />
             </div>
 
             <div className='card-body'>
