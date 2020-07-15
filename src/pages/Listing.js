@@ -55,9 +55,6 @@ const Listing = () => {
         alert('Aucun freelance ne correspond à votre recherche !');
         // resetTagsFilter();
       }
-    } else {
-      // Aucun tag sélectionné, alors on copie le contenu du tableau freelance sans le modifier
-      resultsArray = freelances;
     }
     return resultsArray;
   }
