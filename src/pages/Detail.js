@@ -41,7 +41,7 @@ function Detail (props){
       </div>
     </div>
   </div>
-      
+
   );
 };
 

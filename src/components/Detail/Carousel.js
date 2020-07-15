@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
@@ -14,19 +14,19 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 400,
-    margin:'auto 0',
+    maxWidth: 250,
+    margin:'auto 0 50px 0px',
     flexGrow: 1,
   },
   header: {
     display: 'flex',
     alignItems: 'center',
-    height: 50,
+    height: 0,
     paddingLeft: theme.spacing(4),
     backgroundColor: theme.palette.background.default,
   },
   img: {
-    height: 255,
+    height: 'auto',
     display: 'block',
     maxWidth: 400,
     overflow: 'hidden',
@@ -54,42 +54,46 @@ function SwipeableTextMobileStepper(props) {
 
   return (
     <div className={classes.root}>
-      <Paper square elevation={0} className={classes.header}>
-        {/*<Typography>{props.references[activeStep].name}</Typography>*/}
-      </Paper>
-      <AutoPlaySwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        enableMouseEvents
-      >
-        {props.references.map((step, index) => (
-          <div key={step.label}>
-            {Math.abs(activeStep - index) <= 2 ? (
-              <img className={classes.img} src={step.image ? process.env.REACT_APP_API_URL + '/' + step.image : avatar} alt={step.name} />
-            ) : null}
-          </div>
-        ))}
-      </AutoPlaySwipeableViews>
-      <MobileStepper
-        steps={maxSteps}
-        position="static"
-        variant="text"
-        activeStep={activeStep}
-        nextButton={
-          <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
-            Next
-            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-            Back
-          </Button>
-        }
-      />
+      <h2 className='detailh2'>Références</h2>
+      <div>
+        <Paper square elevation={0} className={classes.header}>
+          {/*<Typography>{props.references[activeStep].name}</Typography>*/}
+        </Paper>
+        <AutoPlaySwipeableViews
+          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          index={activeStep}
+          onChangeIndex={handleStepChange}
+          enableMouseEvents
+        >
+          {props.references.map((step, index) => (
+            <div key={step.label}>
+              {Math.abs(activeStep - index) <= 2 ? (
+                <img className={classes.img} src={step.image ? process.env.REACT_APP_API_URL + '/' + step.image : avatar} alt={step.name} />
+              ) : null}
+            </div>
+          ))}
+        </AutoPlaySwipeableViews>
+        <MobileStepper
+          steps={maxSteps}
+          position="static"
+          variant="text"
+          activeStep={activeStep}
+          nextButton={
+            <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+              Next
+              {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+            </Button>
+          }
+          backButton={
+            <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+              {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+              Back
+            </Button>
+          }
+        />
+      </div>
     </div>
+    
   );
 }
 
