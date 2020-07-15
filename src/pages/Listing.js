@@ -5,7 +5,7 @@ import './Listing.scss';
 import { Link } from 'react-router-dom';
 import API from '../API';
 import SearchContext from '../components/Detail/SearchContext';
-var lodash = require('lodash/array');
+const lodash = require('lodash/array');
 
 const Listing = () => {
   const [freelances, setFreelances] = useState([]);
@@ -34,32 +34,28 @@ const Listing = () => {
 
   //Code Pascal
   const tagsFilterArray = tagsFilter.map(tagObject => tagObject.name)
-
-  // console.log('tagsfilterArray', tagsFilterArray)
-  // console.log('freelances', freelances);
   
+  // Filtrage sur les tags
   let arrayOfFreelanceWithChosenTags = [];
   let results = [];
   if (tagsFilterArray.length !== 0) {
     // Lorsqu'il y a au moins un tag sélectionné
     freelances.forEach(f => {
       // Pour chaque élément du tableau freelances...
-      //console.log('freelance : ', f);
       if (f.tags.length > 0) {
         // ... et que son tableau tags n'est pas vide... 
         // ... il y a comparaison entre les tableau des tags sélectionnés : tagsFilterArray
-        // et ceux du freelance : f.tags arrangés dans un tableau
+        // et ceux du freelance : f.tags...
         const freelanceTags = f.tags.map(t => t.name);
-        //console.log('tags sélectionnés : ', tagsFilterArray);
+        // ... arrangés dans un tableau (au départ c'était un tableau d'objets)
         const r = lodash.difference(tagsFilterArray, freelanceTags);
-        // si le tableau résultant est vide => le freelance a tous les tags sélectionnés activés
+        // si le tableau résultant est vide => le freelance a tous les tags sélectionnés activés => OK
         // le freelance est alors poussé dans le tableau results
-        console.log('OK');
         if (r.length === 0) results.push(f);
       }
     })
     arrayOfFreelanceWithChosenTags = results;
-    console.log('Results : ', results);
+    if (results.length === 0) alert('Aucun freelance ne correspond à votre recherche !')
   } else {
     // Aucun tag sélectionné, alors on copie le contenu du tableau freelance sans le modifier
     arrayOfFreelanceWithChosenTags = freelances;
