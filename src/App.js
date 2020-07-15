@@ -61,7 +61,7 @@ function App () {
         <Apps>
           <Router>
             <Header />
-            <main style={{ flex: '100 0 auto' }}>
+            <main style={{ flex: '1 0 auto' }}>
               <Switch>
                 <Route exact path='/'><Home /></Route>
                 <Route path='/detail/:id' component={Detail} />
