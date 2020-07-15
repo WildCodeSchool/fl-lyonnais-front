@@ -8,26 +8,14 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
+import avatar from '../../images/reficon.png'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-
-const tutorialSteps = [
-  props.references.map(reference => {
-    label: `${reference.name}`,
-    imgPath: `${reference.image ? url + reference.image : avatar}`,
-    // return (
-      // <a href={reference.url} className='reference' key={reference.id}>
-      //   <img src={reference.image ? url + reference.image : avatar} alt={reference.name} />
-      //   <p>{reference.name}</p>
-      // </a>
-    // );
-  })
-];  
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 400,
-    minWidth: 400,
+    margin:'auto 0',
     flexGrow: 1,
   },
   header: {
@@ -46,11 +34,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SwipeableTextMobileStepper() {
+function SwipeableTextMobileStepper(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = tutorialSteps.length;
+  const maxSteps = props.references.length;
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -67,7 +55,7 @@ function SwipeableTextMobileStepper() {
   return (
     <div className={classes.root}>
       <Paper square elevation={0} className={classes.header}>
-        <Typography>{tutorialSteps[activeStep].label}</Typography>
+        {/*<Typography>{props.references[activeStep].name}</Typography>*/}
       </Paper>
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -75,10 +63,10 @@ function SwipeableTextMobileStepper() {
         onChangeIndex={handleStepChange}
         enableMouseEvents
       >
-        {tutorialSteps.map((step, index) => (
+        {props.references.map((step, index) => (
           <div key={step.label}>
             {Math.abs(activeStep - index) <= 2 ? (
-              <img className={classes.img} src={step.imgPath} alt={step.label} />
+              <img className={classes.img} src={step.image ? process.env.REACT_APP_API_URL + '/' + step.image : avatar} alt={step.name} />
             ) : null}
           </div>
         ))}
