@@ -99,7 +99,6 @@
 /* REFERENCES */
 
 .detailReference {
-  // margin: auto;
   width: 300px;
   height: 375px;
   display: flex;
@@ -134,6 +133,7 @@
 
 .reference {
   margin-top: 10px;
+  overflow-y: hidden;
 }
 
 .carousel img {
@@ -262,7 +262,6 @@ a {
   /* MEDIA QUERIES COMPETENCES */
 
   .detailskills {
-    // display: flex;
     margin: auto;
     width: 300px;
     height: 375px;

@@ -14,9 +14,6 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // maxWidth: 250,
-    // margin:'auto',
-    // flexGrow: 1,
     margin: 'auto',
     width: '300px',
     height: '375px',
@@ -24,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   header: {
-    // margin: 'auto',
     display: 'flex',
     alignItems: 'center',
     height: 0,
@@ -35,14 +31,13 @@ const useStyles = makeStyles((theme) => ({
     height: 'auto',
     display: 'block',
     maxWidth: 400,
-    overflow: 'hidden',
     width: '100%',
   },
   img: {
     height: 'auto',
     display: 'block',
-    overflow: 'hidden',
     width: '100%',
+    objectFit: 'cover',
   },
 }));
 
@@ -73,7 +68,8 @@ function SwipeableTextMobileStepper(props) {
           index={activeStep}
           onChangeIndex={handleStepChange}
           enableMouseEvents
-        >
+          style={{overflowY: 'hidden'}}
+          >
           {props.references.map((step, index) => (
             <div key={step.label} className={classes.divImg}>
               {Math.abs(activeStep - index) <= 2 ? (
