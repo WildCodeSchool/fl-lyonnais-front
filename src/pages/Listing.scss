@@ -120,6 +120,9 @@ $font-main: 'balooBhaina2Regular', sans-serif;
           margin: 0px;
           text-decoration: none;
           color:var(--blue);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          padding: 0 6px;
         }
       } 
 
@@ -129,8 +132,12 @@ $font-main: 'balooBhaina2Regular', sans-serif;
             color:#222222;
             margin: 0;
             padding-bottom: 15px;
-        }
-      }
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0 6px;
+          }
+        } 
 
         .card-name, .card-title {
           text-align: center;

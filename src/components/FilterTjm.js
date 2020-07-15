@@ -16,7 +16,7 @@ function valuetext(value) {
 
 export default function RangeSlider() {
   const classes = useStyles();
-  const [value, setValue] = useState([100, 350]);
+  const [value, setValue] = useState([100, 2400]);
   const { handleTjmMarkers } = useContext(SearchContext);
 
   const handleChange = (event, newValue) => {
@@ -27,7 +27,7 @@ export default function RangeSlider() {
   return (
     <div className={classes.root} style={{ marginLeft: 30, marginBottom: 30 }}>
       <Typography id="range-slider" gutterBottom style={{ marginBottom: 35, fontFamily: 'balooBhaina2Regular' }}>
-        TJM
+       - TJM en euros € +
       </Typography>
       <Slider
         value={value}
