@@ -5,6 +5,7 @@ import './Listing.scss';
 import { Link } from 'react-router-dom';
 import API from '../API';
 import SearchContext from '../components/Detail/SearchContext';
+var lodash = require('lodash/array');
 
 const Listing = () => {
   const [freelances, setFreelances] = useState([]);
@@ -34,88 +35,36 @@ const Listing = () => {
   //Code Pascal
   const tagsFilterArray = tagsFilter.map(tagObject => tagObject.name)
 
-  console.log('tagsfilterArray', tagsFilterArray)
-
-  let result = []
-
-  // const filterMultipleFreelanceByFlId = (arrayOfObjects) => {
-  //   let resArr = [];
-  //   arrayOfObjects.forEach(function(item){
-  //     let i = resArr.findIndex(x => x.freelance_id == item.freelance_id);
-  //     if(i <= -1){
-  //       resArr.push({freelance_id: item.freelance_id, name: item.name});
-  //     }
-  //   });
-  //   return resArr
-  // }
-
-  function filterMultipleFreelanceByFlId(arr) {
-    const seen = {};
-    const newArr = [];
-    //Une seule itération pour chaque élement de arr
-    for (const freelance of arr) {
-      if (seen[freelance.freelance_id] == undefined) {
-        newArr.push(freelance);
-        seen[freelance.freelance_id] = true;
-      }
-    }
-    return newArr;
-  }
-
-   if (tagsFilterArray.length) {
-    // console.log('result of search : ', resultOfSearch)
-    resultOfSearch.map(freelance => {
-      if (freelance.tags.length !== 0) {
-        for (let i = 0; i < freelance.tags.length; i++) {
-          if ((tagsFilterArray.indexOf(freelance.tags[i].name)) !== -1) {
-            // if ((result.indexOf( freelance )) !== -1) {
-            result.push(freelance)
-            // }
-          }
-        }
-      }
-      return result;
-    })
-  }
-console.log('result : ', result);
-
-  const compareIdApparitionsAndTagsFilterArrayLength = (flArray, tagArray) => {
-    let resultId = [];
-    let list = [];
-    list[1] = 5;
-    console.log('fl array : ', flArray);
-    flArray.forEach(freelance => {
-      const id = freelance.freelance_id;
-      console.log('freelance id : ', id);
-      if (list[id] < 1) {
-        let counter = list[id];
-        counter++;
-        list[id] = counter;
-      }
-      else {
-        list[id] = 1
+  // console.log('tagsfilterArray', tagsFilterArray)
+  // console.log('freelances', freelances);
+  
+  let arrayOfFreelanceWithChosenTags = [];
+  let results = [];
+  if (tagsFilterArray.length !== 0) {
+    // Lorsqu'il y a au moins un tag sélectionné
+    freelances.forEach(f => {
+      // Pour chaque élément du tableau freelances...
+      //console.log('freelance : ', f);
+      if (f.tags.length > 0) {
+        // ... et que son tableau tags n'est pas vide... 
+        // ... il y a comparaison entre les tableau des tags sélectionnés : tagsFilterArray
+        // et ceux du freelance : f.tags arrangés dans un tableau
+        const freelanceTags = f.tags.map(t => t.name);
+        //console.log('tags sélectionnés : ', tagsFilterArray);
+        const r = lodash.difference(tagsFilterArray, freelanceTags);
+        // si le tableau résultant est vide => le freelance a tous les tags sélectionnés activés
+        // le freelance est alors poussé dans le tableau results
+        console.log('OK');
+        if (r.length === 0) results.push(f);
       }
     })
-
-    const tagArrayLength = tagArray.length
-    console.log('tagArrayLength : ', tagArrayLength);
-    console.log('longueur de liste : ', list.length, list);
-      list.forEach(flId => {
-        console.log('liste de freelance : ', flId, list[flId]);
-        if (list[flId] === tagArray.length) {
-          resultId.push(flId)
-        }
-      })
-    return (resultId)
-
+    arrayOfFreelanceWithChosenTags = results;
+    console.log('Results : ', results);
+  } else {
+    // Aucun tag sélectionné, alors on copie le contenu du tableau freelance sans le modifier
+    arrayOfFreelanceWithChosenTags = freelances;
   }
 
-  const freelancesIdMatchAllTags = compareIdApparitionsAndTagsFilterArrayLength(result, tagsFilterArray);
-  console.log('Liste des freelance qui ont tous les tags sélectionnés : ',freelancesIdMatchAllTags);
-
-  //const arrayOfFreelanceWithChosenTags = filterMultipleFreelanceByFlId(result)
-  //console.log(arrayOfFreelanceWithChosenTags)
-  const arrayOfFreelanceWithChosenTags = freelancesIdMatchAllTags;
 
   return (
     <div className='Listing'>
