@@ -5,7 +5,6 @@ import './Listing.scss';
 import { Link } from 'react-router-dom';
 import API from '../API';
 import SearchContext from '../components/Detail/SearchContext';
-import avatar from '../images/avatar.png'
 
 const Listing = () => {
   const [freelances, setFreelances] = useState([]);
@@ -127,7 +126,7 @@ console.log('result : ', result);
           <ul className='everyFreelanceCards'>
             <li>
               {resultOfSearch.length && (arrayOfFreelanceWithChosenTags.length === 0) ?
-                resultOfSearch.map(freelance => (<Freelance id={freelance.freelance_id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo ? freelance.url_photo : avatar} job_title={freelance.job_title} />))
+                resultOfSearch.map(freelance => (<Freelance id={freelance.freelance_id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
                 : arrayOfFreelanceWithChosenTags.length !== 0 ?
                   arrayOfFreelanceWithChosenTags.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
                   : freelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
