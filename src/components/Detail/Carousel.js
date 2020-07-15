@@ -68,12 +68,12 @@ function SwipeableTextMobileStepper(props) {
           index={activeStep}
           onChangeIndex={handleStepChange}
           enableMouseEvents
-          style={{overflowY: 'hidden'}}
+          style={{ overflowY: 'hidden' }}
           >
           {props.references.map((step, index) => (
             <div key={step.label} className={classes.divImg}>
               {Math.abs(activeStep - index) <= 2 ? (
-                <img className={classes.img} src={step.image ? process.env.REACT_APP_API_URL + '/' + step.image : avatar} alt={step.name} />
+                <a href={step.url}><img className={classes.img} src={step.image ? process.env.REACT_APP_API_URL + '/' + step.image : avatar} alt={step.name} /></a>
               ) : null}
             </div>
           ))}

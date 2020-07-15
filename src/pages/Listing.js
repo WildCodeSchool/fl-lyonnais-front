@@ -36,7 +36,7 @@ const Listing = () => {
   const tagsFilterArray = tagsFilter.map(tagObject => tagObject.name)
 
   // console.log('tagsfilterArray', tagsFilterArray)
-  // console.log('freelances', freelances);
+  console.log('freelances', freelances);
   
   let arrayOfFreelanceWithChosenTags = [];
   let results = [];

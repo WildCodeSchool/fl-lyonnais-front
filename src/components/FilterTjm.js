@@ -18,16 +18,41 @@ export default function RangeSlider() {
   const classes = useStyles();
   const [value, setValue] = useState([100, 2400]);
   const { handleTjmMarkers } = useContext(SearchContext);
+ // const url = process.env.REACT_APP_API_URL +'/'
+
+ /*class FilterTjm extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      tjm: sampleTjm
+    };
+
+    this.getTjm = this.getTjm.bind(this);
+  }
+
+  getTjm () {
+    axios.get(url)
+      .then(response => response.data)
+      .then(data => {
+        this.setState({
+          tjm: data[0]
+        });
+      });
+  }
+
+  */
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
     handleTjmMarkers(value);
   };
 
+
+
   return (
     <div className={classes.root} style={{ marginLeft: 30, marginBottom: 30 }}>
       <Typography id="range-slider" gutterBottom style={{ marginBottom: 35, fontFamily: 'balooBhaina2Regular' }}>
-       - TJM en euros € +
+        - TJM en euros € +
       </Typography>
       <Slider
         value={value}
