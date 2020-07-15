@@ -11,7 +11,7 @@ import SearchContext from './Detail/SearchContext'
 const icon = <CheckBoxOutlineBlankIcon fontSize='small' />;
 const checkedIcon = <CheckBoxIcon fontSize='small' />;
 
-export default function FilterTags () {
+export default function FilterTags (tagsUsed) {
   const { handleTagsFilter } = useContext(SearchContext);
   const [tags, setTags] = useState([]);
   useEffect(() => {
@@ -25,6 +25,9 @@ export default function FilterTags () {
   const handleAutocompleteChangeTags = (e, chosenTags) => {
     handleTagsFilter(chosenTags)
   };
+
+  console.log(tagsUsed.tagsUsed)
+  console.log(tags)
 
   return (
     <div className='filters'>

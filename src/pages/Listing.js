@@ -76,12 +76,13 @@ const Listing = () => {
   // Appel de la fonction de filtrage par tag
   console.log('Résultats de la recherche : ', resultOfSearch);
   const arrayOfFreelanceWithChosenTags = tagFilters(resultOfSearch.length ? resultOfSearch : freelances, tagsFilterArray)
+  const tagsUsed = freelances.map(t => t.tags)
 
   return (
     <div className='Listing'>
       <h1>Liste de Freelance Lyonnais</h1>
       <div className='ListingFilter'>
-        <FilterTags className='FilterTags' />
+        <FilterTags tagsUsed={tagsUsed} className='FilterTags' />
         <div>
           <ul className='everyFreelanceCards'>
             <li>
