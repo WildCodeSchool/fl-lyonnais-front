@@ -19,13 +19,24 @@ class SearchContextProvider extends React.Component {
     this.setState({tagsFilter})
   }
 
+  // Purge du tableau des tags
+  resetTagsFilter = () => {
+    this.setState([]);
+  }
+
   handleTjmMarkers = (tjmMarkers) => {
     this.setState({ tjmMarkers })
   }
 
   render() {
     return (
-        <SearchContext.Provider value={{...this.state,handleTagsFilter:this.handleTagsFilter,uploadSearch: this.uploadSearch, handleTjmMarkers: this.handleTjmMarkers}}>
+        <SearchContext.Provider value={{
+          ...this.state,
+          handleTagsFilter: this.handleTagsFilter,
+          uploadSearch: this.uploadSearch,
+          handleTjmMarkers: this.handleTjmMarkers,
+          resetTagsFilter: this.resetTagsFilter
+        }}>
         {this.props.children}
         </SearchContext.Provider>
     );

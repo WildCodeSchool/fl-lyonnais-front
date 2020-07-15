@@ -16,6 +16,7 @@ const Listing = () => {
   const paginate = pageNumber => setCurrentPage(pageNumber);
   const pageNumbers = [];
   const { resultOfSearch, tagsFilter, tjmMarkers } = useContext(SearchContext);
+  // const { resetTagsFilter } = useContext(SearchContext);
 
   useEffect(() => {
     const fetchFreelances = async () => {
@@ -29,38 +30,46 @@ const Listing = () => {
     fetchFreelances();
   }, [currentPage]);
 
+  // Filtrage sur les tags
+  function tagFilters(freelances, tagsFilterArray) {
+    let resultsArray = [];
+    let freelancesWithMatchingTags = [];
+    if (tagsFilterArray.length !== 0) {
+      // Lorsqu'il y a au moins un tag sélectionné
+      freelances.forEach(f => {
+        // Pour chaque élément du tableau freelances...
+        if (f.tags.length > 0) {
+          // ... et que son tableau tags n'est pas vide... 
+          // ... il y a comparaison entre les tableau des tags sélectionnés : tagsFilterArray
+          // et ceux du freelance : f.tags...
+          const freelanceTags = f.tags.map(t => t.name);
+          // ... arrangés dans un tableau (au départ c'était un tableau d'objets)
+          const r = lodash.difference(tagsFilterArray, freelanceTags);
+          // si le tableau résultant est vide => le freelance a tous les tags sélectionnés activés => OK
+          // le freelance est alors poussé dans le tableau results
+          if (r.length === 0) freelancesWithMatchingTags.push(f);
+        }
+      })
+      resultsArray = freelancesWithMatchingTags;
+      if (freelancesWithMatchingTags.length === 0) {
+        alert('Aucun freelance ne correspond à votre recherche !');
+        // resetTagsFilter();
+      }
+    } else {
+      // Aucun tag sélectionné, alors on copie le contenu du tableau freelance sans le modifier
+      resultsArray = freelances;
+    }
+    return resultsArray;
+  }
+  
   for (let i = 1; i <= Math.ceil((totalFreelances.map(tot => tot.totalAmoutOfValidFreelances)) / freelancesPerPage); i++) { pageNumbers.push(i); }
   if (loading) { return <h2>Loading...</h2>; }
 
-  //Code Pascal
+  // Conversion du tableau d'objets des tags sélectionnés en tableau "simple" de noms de tags
   const tagsFilterArray = tagsFilter.map(tagObject => tagObject.name)
-  
-  // Filtrage sur les tags
-  let arrayOfFreelanceWithChosenTags = [];
-  let results = [];
-  if (tagsFilterArray.length !== 0) {
-    // Lorsqu'il y a au moins un tag sélectionné
-    freelances.forEach(f => {
-      // Pour chaque élément du tableau freelances...
-      if (f.tags.length > 0) {
-        // ... et que son tableau tags n'est pas vide... 
-        // ... il y a comparaison entre les tableau des tags sélectionnés : tagsFilterArray
-        // et ceux du freelance : f.tags...
-        const freelanceTags = f.tags.map(t => t.name);
-        // ... arrangés dans un tableau (au départ c'était un tableau d'objets)
-        const r = lodash.difference(tagsFilterArray, freelanceTags);
-        // si le tableau résultant est vide => le freelance a tous les tags sélectionnés activés => OK
-        // le freelance est alors poussé dans le tableau results
-        if (r.length === 0) results.push(f);
-      }
-    })
-    arrayOfFreelanceWithChosenTags = results;
-    if (results.length === 0) alert('Aucun freelance ne correspond à votre recherche !')
-  } else {
-    // Aucun tag sélectionné, alors on copie le contenu du tableau freelance sans le modifier
-    arrayOfFreelanceWithChosenTags = freelances;
-  }
 
+  // Appel de la fonction de filtrage par tag
+  const arrayOfFreelanceWithChosenTags = tagFilters(freelances, tagsFilterArray)
 
   return (
     <div className='Listing'>
