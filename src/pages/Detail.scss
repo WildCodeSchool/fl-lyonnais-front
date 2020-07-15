@@ -97,6 +97,17 @@
   padding:0px;
 }
 /* REFERENCES */
+
+.detailReference {
+  // margin: auto;
+  width: 300px;
+  height: 375px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
 .carousel-container {
   width:calc(100% - 20px);
   margin-left:20px;

@@ -14,21 +14,33 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 250,
-    margin:'auto 0 50px 0px',
-    flexGrow: 1,
+    // maxWidth: 250,
+    // margin:'auto',
+    // flexGrow: 1,
+    margin: 'auto',
+    width: '300px',
+    height: '375px',
+    display: 'flex',
+    flexDirection: 'column',
   },
   header: {
+    // margin: 'auto',
     display: 'flex',
     alignItems: 'center',
     height: 0,
     paddingLeft: theme.spacing(4),
     backgroundColor: theme.palette.background.default,
   },
-  img: {
+  divImg: {
     height: 'auto',
     display: 'block',
     maxWidth: 400,
+    overflow: 'hidden',
+    width: '100%',
+  },
+  img: {
+    height: 'auto',
+    display: 'block',
     overflow: 'hidden',
     width: '100%',
   },
@@ -53,12 +65,9 @@ function SwipeableTextMobileStepper(props) {
   };
 
   return (
-    <div className={classes.root}>
+    <div>
       <h2 className='detailh2'>Références</h2>
-      <div>
-        <Paper square elevation={0} className={classes.header}>
-          {/*<Typography>{props.references[activeStep].name}</Typography>*/}
-        </Paper>
+      <div className={classes.root}>
         <AutoPlaySwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={activeStep}
@@ -66,7 +75,7 @@ function SwipeableTextMobileStepper(props) {
           enableMouseEvents
         >
           {props.references.map((step, index) => (
-            <div key={step.label}>
+            <div key={step.label} className={classes.divImg}>
               {Math.abs(activeStep - index) <= 2 ? (
                 <img className={classes.img} src={step.image ? process.env.REACT_APP_API_URL + '/' + step.image : avatar} alt={step.name} />
               ) : null}
