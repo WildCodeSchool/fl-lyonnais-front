@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2)
-  }
+  },
 }));
 
 export default function SignIn(props) {
@@ -171,7 +171,8 @@ export default function SignIn(props) {
           <p>Tente de nouveau en cliquant sur le lien que tu as reçu par email en prenant garde à ne pas le modifier.</p>
         </div>
       </div>
-      <Container style={{ display: `${validation.displayForm}` }} component='main' maxWidth='xs'>
+      <Container style={{
+        display: `${validation.displayForm}` }} component='main' maxWidth='xs'>
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar style={{ backgroundColor: 'var(--red)' }} className={classes.avatar}>

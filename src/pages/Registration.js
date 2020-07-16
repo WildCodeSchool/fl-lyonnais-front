@@ -27,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center', 
-    minWidth: '500px'
+    minWidth: '500px',
+    width: '500px'
   },
   avatar: {
     margin: theme.spacing(1),
@@ -119,7 +120,7 @@ export default function SignUp () {
 
   return (
     <div>
-      <Container component='main' maxWidth='xs'>
+      <Container component='div' style={{width: '550px'}}>
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar style={{ backgroundColor: 'var(--red)' }} className={classes.avatar}>
