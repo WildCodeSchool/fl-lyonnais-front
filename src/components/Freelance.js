@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../pages/Listing.scss';
-
 import avatar from '../images/avatar.png'
 
 const Freelance = (props) => {
   const url = process.env.REACT_APP_API_URL +'/'
 
   return (
-    <div className='freelance2'>
+    <div className='freelance2' key={props.id}>
       <div className='container'>
         <Link style={{ textDecoration: 'none' }} to={`/detail/${props.id}`}>
           <div className='card'>

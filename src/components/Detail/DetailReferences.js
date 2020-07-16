@@ -3,7 +3,7 @@ import '../../pages/Detail.scss';
 import avatar from '../../images/reficon.png'
 
 function DetailReferences (props) {
-  console.log(props.references)
+  // console.log(props.references)
   const url = process.env.REACT_APP_API_URL +'/'
   return (
     <div>

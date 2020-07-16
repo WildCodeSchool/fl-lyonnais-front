@@ -77,7 +77,7 @@ const Listing = () => {
   const arrayOfFreelanceWithChosenTags = tagFilters(resultOfSearch.length ? resultOfSearch : freelances, tagsFilterArray)
   const tagsUsed = freelances.map(t => t.tags)
   */
- 
+  
   const arrayOfFreelanceWithChosenTags = freelances;
   
   return (
