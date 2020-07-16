@@ -8,8 +8,7 @@ function DetailContact (props) {
       <div className='detailcontact'>
 
         <div className='detailcompany'>
-          <p>{props.freelances.street}</p>
-          <p>{props.freelances.zip_code} - {props.freelances.city} - {props.freelances.country}</p>
+          <p>{props.freelances.city}, {props.freelances.country}</p>
         </div>
         <div className='Detailcontactemail'>
           <a href={'mailto:' + props.freelances.email}><p>Email</p></a>

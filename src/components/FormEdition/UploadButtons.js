@@ -22,7 +22,6 @@ export default function UploadButtons() {
 
   const handlePictureProfileUpload = (e) => {
     const image = e.target.files[0];
-    console.log(image)
     // // url Photo
     let url = process.env.REACT_APP_API_URL + '/freelances/account/image';
     const formData = new FormData();
