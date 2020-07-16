@@ -6,6 +6,15 @@ import avatar from '../images/avatar.png'
 const Freelance = (props) => {
   const url = process.env.REACT_APP_API_URL +'/'
 
+  let photo = props.urlPhoto;
+  if (props.urlPhoto) {
+    if (props.urlPhoto.substr(0,4) !== 'http') {
+      photo = url + props.urlPhoto;
+    }
+  } else {
+    photo = avatar;
+  }
+
   return (
     <div className='freelance2' key={props.id}>
       <div className='container'>
@@ -13,7 +22,7 @@ const Freelance = (props) => {
           <div className='card'>
 
             <div className='card-image'>
-              <img src={props.urlPhoto ? url+ props.urlPhoto : avatar} alt='avatar' />
+              <img src={photo} alt='avatar' />
             </div>
 
             <div className='card-body'>
