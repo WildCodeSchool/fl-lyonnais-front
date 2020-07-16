@@ -73,7 +73,9 @@ function SwipeableTextMobileStepper(props) {
           {props.references.map((step, index) => (
             <div key={step.label} className={classes.divImg}>
               {Math.abs(activeStep - index) <= 2 ? (
-                <a href={step.url}><img className={classes.img} src={step.image ? process.env.REACT_APP_API_URL + '/' + step.image : avatar} alt={step.name} /></a>
+                <a href={step.url}><img className={classes.img} src={
+                  !step.image ? avatar : (step.image.substr(0,4) === 'http') ? step.image : process.env.REACT_APP_API_URL + '/' + step.image 
+                } alt={step.name} /></a>
               ) : null}
             </div>
           ))}

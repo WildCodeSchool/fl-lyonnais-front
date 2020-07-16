@@ -22,7 +22,6 @@ export default function LabelBottomNavigation () {
   const handleChange = (event, newValue) => {
     setValue(newValue);
     if (newValue === 'Freelances à Lyon') updateSearch([]);
-    console.log('newValue : ', newValue);
   };
 
   return (
