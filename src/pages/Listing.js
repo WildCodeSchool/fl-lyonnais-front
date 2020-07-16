@@ -88,8 +88,14 @@ const Listing = () => {
     <div className='Listing'>
       <h1>Liste de Freelance Lyonnais</h1>
       <div className='ListingFilter'>
+      
         { /* <FilterTags tagsUsed={tagsUsed} className='FilterTags' /> */ }
         <div>
+        <nav>
+            <ul className='pagination'>
+              { pageNumbers.map(number => (<li key={number}><Link onClick={() => paginate(number)} to='#' className='page-link'>{number}</Link></li>)) }
+            </ul>
+          </nav>
           <ul className='everyFreelanceCards'>
             <li>
               {arrayOfFreelanceWithChosenTags.length !==0 ?
