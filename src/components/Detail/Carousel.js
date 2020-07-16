@@ -63,9 +63,9 @@ function SwipeableTextMobileStepper(props) {
     <div>
       <h2 className='detailh2'>Références</h2>
       <div className={classes.root}>
-        <Paper square elevation={0} className={classes.header}>
+        { /* <Paper square elevation={0} className={classes.header}>
           <Typography>{test}</Typography>
-        </Paper>
+  </Paper> */ }
         <AutoPlaySwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={activeStep}
