@@ -5,7 +5,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { useHistory, Link } from 'react-router-dom';
-import axios from 'axios';
 import AuthContext from './AuthContext';
 import SearchContext from './Detail/SearchContext'
 import InputBase from '@material-ui/core/InputBase';
@@ -64,33 +63,14 @@ const useStyles = makeStyles((theme) => ({
 export default function PrimarySearchAppBar (props) {
   const classes = useStyles();
   const [search, setSearch] = useState('');
-  const { upLoadResultOfSearch, updateSearch } = useContext(SearchContext);
-  const baseURL = process.env.REACT_APP_API_URL;
+  const { updateSearch } = useContext(SearchContext);
   const history = useHistory();
 
   // Traitement du champ de recherche
   const handleSubmitSearch = (event) => {
     event.preventDefault();
-
-    // Utilise les espaces comme séparateur dans le champ de recherche
-    // Puis les remplace par un point-virgule dans l'URL
-    // De plus, les espace et autres caractères du même acabit, en trop, sont éliminés.
-    //let searchList = search.split(/\W+/).join(';');
     updateSearch(search);
     history.push('/liste_freelance')
-    
-
-    /* const apiUrl = baseURL + '/search?recherche=' + searchList;
-    axios.get(apiUrl)
-      .then((searchResults) => {
-        const searchResultsTable = searchResults.data.searchResults
-        upLoadResultOfSearch(searchResultsTable);
-        // console.log('résultat de la recherche',searchResultsTable)
-        history.push('/liste_freelance')
-      })
-      .catch((err) => {
-        console.error(err);
-      }); */
   };
 
   const setTokenInLocalStorage = useContext(AuthContext).setToken;

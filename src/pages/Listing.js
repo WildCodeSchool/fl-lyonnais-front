@@ -16,7 +16,7 @@ const Listing = () => {
   const [freelancesPerPage] = useState(20);
   const paginate = pageNumber => setCurrentPage(pageNumber);
   const pageNumbers = [];
-  const { resultOfSearch, tagsFilter, handleTagsFilter, tjmMarkers, search } = useContext(SearchContext);
+  const { resultOfSearch, search } = useContext(SearchContext);
 
   useEffect(() => {
     const fetchFreelances = async () => {

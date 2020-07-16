@@ -8,7 +8,6 @@ function DetailContact (props) {
       <div className='detailcontact'>
 
         <div className='detailcompany'>
-          {/* <p>{props.freelances.street}</p> */}
           <p>{props.freelances.city}, {props.freelances.country}</p>
         </div>
         <div className='Detailcontactemail'>
