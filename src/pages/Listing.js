@@ -16,8 +16,7 @@ const Listing = () => {
   const [freelancesPerPage] = useState(20);
   const paginate = pageNumber => setCurrentPage(pageNumber);
   const pageNumbers = [];
-  const { resultOfSearch, tagsFilter, tjmMarkers, search } = useContext(SearchContext);
-  // const { resetTagsFilter } = useContext(SearchContext);
+  const { resultOfSearch, tagsFilter, handleTagsFilter, tjmMarkers, search } = useContext(SearchContext);
 
   useEffect(() => {
     const fetchFreelances = async () => {
@@ -36,6 +35,17 @@ const Listing = () => {
     };
     fetchFreelances();
   }, [currentPage, search]);
+
+  // Liste de tous les tags des freelances sur la page
+  function tagList(freelances) {
+    let freelanceTags = [];
+    freelances.forEach(f => {
+      if (f.tags.length > 0) {
+        f.tags.map(t => {freelanceTags.push(t.name)});
+      }
+    })
+    return freelanceTags;
+  };
 
   // Filtrage sur les tags
   function tagFilters(freelances, tagsFilterArray) {
@@ -71,12 +81,17 @@ const Listing = () => {
   
 
   // Conversion du tableau d'objets des tags sélectionnés en tableau "simple" de noms de tags
-  const tagsFilterArray = tagsFilter.map(tagObject => tagObject.name)
+  //const tagsFilterArray = tagsFilter.map(tagObject => tagObject.name)
+
+  // Récupération de la list des tags des freelances affichés
+  const tagsFilterArray = tagList(freelances);
+  handleTagsFilter(tagsFilterArray);
 
   // Appel de la fonction de filtrage par tag
-  console.log('Résultats de la recherche : ', resultOfSearch);
-  const arrayOfFreelanceWithChosenTags = tagFilters(resultOfSearch.length ? resultOfSearch : freelances, tagsFilterArray)
-
+  // const arrayOfFreelanceWithChosenTags = tagFilters(freelances, tagsFilterArray);
+  // console.log('arrayOfFreelanceWithChosenTags : ', arrayOfFreelanceWithChosenTags);
+  const arrayOfFreelanceWithChosenTags = freelances;
+  
   return (
     <div className='Listing'>
       <h1>Liste de Freelance Lyonnais</h1>
