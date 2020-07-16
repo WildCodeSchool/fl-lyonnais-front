@@ -69,8 +69,9 @@ const Listing = () => {
   // Création des boutons d'accès aux pages si le nombre de freelance affichés est supérieur au nombre de freelance par page
   if (totalFreelances >= freelancesPerPage) {
     for (let i = 1; i <= Math.ceil(totalFreelances/ freelancesPerPage); i++) { pageNumbers.push(i); }
-    if (loading) { return <h2>Chargement...</h2>; }
   }
+
+  if (loading) { return <h2>Chargement...</h2>; }
 
   /* Ci-dessous : la préparation pour le filtrage par tags :
   // Conversion du tableau d'objets des tags sélectionnés en tableau "simple" de noms de tags
@@ -100,7 +101,7 @@ const Listing = () => {
           </ul>
           <nav>
             <ul className='pagination'>
-              {!resultOfSearch.length && pageNumbers.map(number => (<li key={number}><Link onClick={() => paginate(number)} to='#' className='page-link'>{number}</Link></li>))}
+              { pageNumbers.map(number => (<li key={number}><Link onClick={() => paginate(number)} to='#' className='page-link'>{number}</Link></li>)) }
             </ul>
           </nav>
         </div>
