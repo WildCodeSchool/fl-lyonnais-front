@@ -5,7 +5,7 @@ src: url('../font/BalooBhaina2-Regular.ttf') format('truetype');
 
 .Listing {
   background: #eef9fe;
-  
+
   ul {
     padding-bottom: 15px;
   }
@@ -185,7 +185,6 @@ $font-main: 'balooBhaina2Regular', sans-serif;
 
   .ListingFilter {
     flex-direction: row;
-    justify-content: flex-start;
   }
   
   .filters {

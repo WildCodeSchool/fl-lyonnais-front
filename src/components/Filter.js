@@ -5,7 +5,6 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import API from '../API';
-import FilterTjm from '../components/FilterTjm';
 import SearchContext from './Detail/SearchContext'
 
 const icon = <CheckBoxOutlineBlankIcon fontSize='small' />;
@@ -31,7 +30,6 @@ export default function FilterTags (tagsUsed) {
 
   return (
     <div className='filters'>
-      {/*<FilterTjm className='FilterTjm' />*/}
       <Autocomplete
         multiple
         id='checkboxes-tags'
