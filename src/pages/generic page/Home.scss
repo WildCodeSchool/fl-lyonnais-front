@@ -4,10 +4,18 @@ body {
 }
 
 .home {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: #D0E4F5 url("../../images/background-site.jpg") no-repeat fixed 50% 50%;;
+  
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background: #D0E4F5 url("../../images/background-site.jpg") no-repeat fixed center;
+    padding-bottom: 20px;
+    min-height: 100vh;
+    background-size: cover;
+ 
 }
 
 .homepage {
