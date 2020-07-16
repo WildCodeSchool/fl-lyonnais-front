@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -6,6 +6,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import GavelIcon from '@material-ui/icons/Gavel';
 import InfoIcon from '@material-ui/icons/Info';
 import FaceIcon from '@material-ui/icons/Face';
+import SearchContext from '../components/Detail/SearchContext';
 
 const pathMap = [
   '/',
@@ -16,9 +17,12 @@ const pathMap = [
 
 export default function LabelBottomNavigation () {
   const [value, setValue] = React.useState('recents');
+  const { updateSearch } = useContext(SearchContext);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    if (newValue === 'Freelances à Lyon') updateSearch([]);
+    console.log('newValue : ', newValue);
   };
 
   return (

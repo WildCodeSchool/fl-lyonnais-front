@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -59,11 +59,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-  
 export default function PrimarySearchAppBar (props) {
   const classes = useStyles();
-  const [search, setSearch] = useState('');
-  const { updateSearch } = useContext(SearchContext);
+  const { search, updateSearch } = useContext(SearchContext);
   const history = useHistory();
 
   // Traitement du champ de recherche
@@ -97,7 +95,7 @@ export default function PrimarySearchAppBar (props) {
             <InputBase
               placeholder='Recherche…'
               value={search}
-              onChange={(e) => { setSearch(e.target.value); }}
+              onChange={(e) => { updateSearch(e.target.value); }}
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput

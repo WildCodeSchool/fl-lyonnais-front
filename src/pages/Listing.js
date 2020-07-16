@@ -23,8 +23,11 @@ const Listing = () => {
       setLoading(true);
 
       // Mise en forme du paramètre search pour l'envoi par URL
-      const searchList = queryString.stringify({ search: search.split(/\W+/) }, {arrayFormat: 'index', skipNull: true});
-
+      let searchList = 'search[0]=';
+      if (search.length) {
+        searchList = queryString.stringify({ search: search.split(/\W+/) }, {arrayFormat: 'index', skipNull: true});
+      }
+      
       // Requête à l'API
       const res = await API.get('/freelances/?page=' + currentPage + '&flperpage=' + freelancesPerPage + '&' + searchList);
       setFreelances(res.data.freelances);
