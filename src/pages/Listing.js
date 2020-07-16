@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Freelance from '../components/Freelance';
-import FilterTags from '../components/Filter';
+// import FilterTags from '../components/Filter';
 import './Listing.scss';
 import { Link } from 'react-router-dom';
 import API from '../API';
@@ -23,29 +23,16 @@ const Listing = () => {
       setLoading(true);
 
       // Mise en forme du paramètre search pour l'envoi par URL
-      const searchList = queryString.stringify({ search: search.split(/\W+/) }, {arrayFormat: 'index',skipNull: true});
+      const searchList = queryString.stringify({ search: search.split(/\W+/) }, {arrayFormat: 'index', skipNull: true});
 
+      // Requête à l'API
       const res = await API.get('/freelances/?page=' + currentPage + '&flperpage=' + freelancesPerPage + '&' + searchList);
-      console.log(res.data);
       setFreelances(res.data.freelances);
       setTotalFreelances(res.data.freelanceTotalAmount);
-      console.log('Total FL in useEffect',totalFreelances)
-      console.log('tagssssssssssss', res.data.freelances);
       setLoading(false);
     };
     fetchFreelances();
   }, [currentPage, search]);
-
-  // Liste de tous les tags des freelances sur la page
-  function tagList(freelances) {
-    let freelanceTags = [];
-    freelances.forEach(f => {
-      if (f.tags.length > 0) {
-        f.tags.map(t => {freelanceTags.push(t.name)});
-      }
-    })
-    return freelanceTags;
-  };
 
   // Filtrage sur les tags
   function tagFilters(freelances, tagsFilterArray) {
@@ -75,37 +62,34 @@ const Listing = () => {
     }
     return resultsArray;
   }
-    console.log(totalFreelances)
+
+  // Création des boutons d'accès aux pages si le nombre de freelance affichés est supérieur au nombre de freelance par page
+  if (totalFreelances >= freelancesPerPage) {
     for (let i = 1; i <= Math.ceil(totalFreelances/ freelancesPerPage); i++) { pageNumbers.push(i); }
-    if (loading) { return <h2>Loading...</h2>; }
-  
+    if (loading) { return <h2>Chargement...</h2>; }
+  }
 
+  /* Ci-dessous : la préparation pour le filtrage par tags :
   // Conversion du tableau d'objets des tags sélectionnés en tableau "simple" de noms de tags
-  //const tagsFilterArray = tagsFilter.map(tagObject => tagObject.name)
+  const tagsFilterArray = tagsFilter.map(tagObject => tagObject.name)
 
-  // Récupération de la list des tags des freelances affichés
-  const tagsFilterArray = tagList(freelances);
-  handleTagsFilter(tagsFilterArray);
   // Appel de la fonction de filtrage par tag
-  console.log('Résultats de la recherche : ', resultOfSearch);
   const arrayOfFreelanceWithChosenTags = tagFilters(resultOfSearch.length ? resultOfSearch : freelances, tagsFilterArray)
   const tagsUsed = freelances.map(t => t.tags)
-
-  // Appel de la fonction de filtrage par tag
-  // const arrayOfFreelanceWithChosenTags = tagFilters(freelances, tagsFilterArray);
-  // console.log('arrayOfFreelanceWithChosenTags : ', arrayOfFreelanceWithChosenTags);
+  */
+ 
   const arrayOfFreelanceWithChosenTags = freelances;
   
   return (
     <div className='Listing'>
       <h1>Liste de Freelance Lyonnais</h1>
       <div className='ListingFilter'>
-        <FilterTags tagsUsed={tagsUsed} className='FilterTags' />
+        { /* <FilterTags tagsUsed={tagsUsed} className='FilterTags' /> */ }
         <div>
           <ul className='everyFreelanceCards'>
             <li>
               {arrayOfFreelanceWithChosenTags.length !==0 ?
-                 arrayOfFreelanceWithChosenTags.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
+                arrayOfFreelanceWithChosenTags.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
                 :
                 freelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
               }
