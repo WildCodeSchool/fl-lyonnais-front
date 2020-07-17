@@ -71,10 +71,7 @@ const TodoListItem = (props) => {
             </div>
           <div>
             <div className={classes.root}>
-              <input accept='image/*' className={classes.input} id='contained-button-file' multiple type='file' onChange={handleFileClick} />
-              <label htmlFor='contained-button-file'>
-                <Button style={{ backgroundColor: 'var(--green)' }} variant='contained' color='primary' component='span' className={classes.button} startIcon={<CloudUploadIcon />}>Télécharger</Button>
-              </label>
+              <input type='file' onChange={handleFileClick} />
             <Grid  >
               <TextField
                 autoComplete='fname'
