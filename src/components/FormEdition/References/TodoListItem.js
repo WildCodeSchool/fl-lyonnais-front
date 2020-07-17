@@ -1,21 +1,30 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import Grid from '@material-ui/core/Grid';
 import EditionContext from '../EditionContext';
 import API from '../../../API'
 import './TodoLisItem.css'
-import avatar from '../../../images/reficon.png';
-
-import {
-  ListItem,
-  IconButton,
-  ListItemText,
-  ListItemSecondaryAction
-} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { ListItem, IconButton, ListItemText, ListItemSecondaryAction } from '@material-ui/core';
 import DeleteOutlined from '@material-ui/icons/DeleteOutlined';
+import Button from '@material-ui/core/Button'
+import CloudUploadIcon from '@material-ui/icons/CloudUpload'
+import TextField from '@material-ui/core/TextField'
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1)
+    }
+  },
+  input: {
+    display: 'none'
+  }
+}));
+
 
 const TodoListItem = (props) => {
   const { setReferenceField, deleteReference } = useContext(EditionContext);
-
+  const classes = useStyles();
 
   const handleUrlInput = (e) => {
     setReferenceField(props.reference.id, 'url', e.target.value);
@@ -32,7 +41,6 @@ const TodoListItem = (props) => {
       }
     })
       .then(res => {
-        alert('Photo de profil envoyée')
         setReferenceField(props.reference.id, 'image', res.data.image)
       }
       )
@@ -59,11 +67,25 @@ const TodoListItem = (props) => {
         <Grid item xs={12}>
           <div className="referencesEtPhoto">
             <div className='RefPhoto'>
-              {props.reference.image ? <img src={url + props.reference.image} alt={props.reference.name} /> : <img src={avatar} alt ='avatar par défaut' />}
+              {props.reference.image ? <img src={url + props.reference.image} alt={props.reference.name} /> : <img src="https://img.icons8.com/windows/96/000000/file-upload.png" alt='default'/>}
             </div>
           <div>
-            <input type='file' onChange={handleFileClick} />
-            <input type='text' name='image' label='url de votre projet' value={props.reference.url} placeholder='url de votre projet' onChange={handleUrlInput} />
+            <div className={classes.root}>
+              <input type='file' onChange={handleFileClick} />
+            <Grid  >
+              <TextField
+                autoComplete='fname'
+                name='image'
+                variant='outlined'
+                fullWidth
+                id='url de votre projet'
+                label='url de votre projet'
+                autoFocus
+                onChange={handleUrlInput}
+                value={props.reference.url}
+              />
+            </Grid>
+            </div>
           </div>
           </div>
 
