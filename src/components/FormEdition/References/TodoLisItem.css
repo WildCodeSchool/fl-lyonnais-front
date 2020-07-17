@@ -1,12 +1,9 @@
-
-
 .RefPhoto img {
   width: 30%;
   height: auto;
 }
 
 .referencesForm {
-  border: 2px solid rgb(175,238,238);
   margin : 2%;
   width: 40%;
 } 

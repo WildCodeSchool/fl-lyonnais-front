@@ -59,9 +59,6 @@ export default function Edition(props) {
       if (freelanceExists) {
         API.patch(url, payload) 
           .then((res) => res.data)
-          .then(data =>
-            alert('Informations modifiées')
-          )
           .catch(err => {
             console.error('error Parch FL', err);
           });
@@ -70,9 +67,6 @@ export default function Edition(props) {
       else {
         API.post(url, payload)
           .then((res) => res.data)
-          .then(data =>
-            alert('Informations enregistrées')
-          )
           .catch(err => {
             console.error(err);
           }); 

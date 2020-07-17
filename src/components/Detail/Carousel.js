@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   header: {
     display: 'flex',
     alignItems: 'center',
-    height: 0,
+    height: 50,
     paddingLeft: theme.spacing(4),
     backgroundColor: theme.palette.background.default,
   },
@@ -63,9 +63,9 @@ function SwipeableTextMobileStepper(props) {
     <div>
       <h2 className='detailh2'>Références</h2>
       <div className={classes.root}>
-        { /* <Paper square elevation={0} className={classes.header}>
-          <Typography>{test}</Typography>
-  </Paper> */ }
+        <Paper square elevation={0} className={classes.header}>
+          <Typography>{props.references[activeStep].name}</Typography>
+        </Paper>
         <AutoPlaySwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
           index={activeStep}
@@ -90,14 +90,14 @@ function SwipeableTextMobileStepper(props) {
           activeStep={activeStep}
           nextButton={
             <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
-              Next
+              
               {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
             </Button>
           }
           backButton={
             <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
               {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-              Back
+              
             </Button>
           }
         />

@@ -12,11 +12,11 @@ function DetailContact (props) {
         </div>
         <div className='Detailcontactemail'>
           <a href={'mailto:' + props.freelances.email}><p>Email</p></a>
-          <a href={props.freelances.url_web_site}><p>Site web</p></a>
+          { props.freelances.url_web_site && <a href={props.freelances.url_web_site}><p>Site web</p></a> }
         </div>
         <div className='Detailcontactsiret'>
           <p>SIRET : {props.freelances.siret}</p>
-          <p>Numéro de TVA : {props.freelances.vat_number}</p>
+          { props.freelances.vat_number && <p>Numéro de TVA : {props.freelances.vat_number}</p> }
         </div>
 
       </div>
