@@ -51,7 +51,7 @@ export default function UploadButtons() {
     <div className={classes.root}>
       <input accept='image/*' className={classes.input} id='contained-button-file' multiple type='file' onChange={handlePictureProfileUpload} />
       <label htmlFor='contained-button-file'>
-        <Button style={{ backgroundColor: 'var(--red)' }} variant='contained' color='primary' component='span' className={classes.button} startIcon={<CloudUploadIcon />}>Télécharger</Button>
+        <Button style={{ backgroundColor: 'var(--green)' }} variant='contained' color='primary' component='span' className={classes.button} startIcon={<CloudUploadIcon />}>Photo de profil</Button>
       </label>
     </div>
   );
