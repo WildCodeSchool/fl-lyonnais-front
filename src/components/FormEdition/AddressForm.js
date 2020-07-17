@@ -5,10 +5,12 @@ import TextField from '@material-ui/core/TextField';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import UploadButtons from './UploadButtons';
 import EditionContext from './EditionContext';
-import '../../pages/Home.scss';
+import '../../pages/generic page/Home.scss'
+const url = process.env.REACT_APP_API_URL +'/'
+
 
 export default function AddressForm () {
-  const { email, job_title, firstname, lastname, street, zip_code, city, bio, handleAdressFormChange } = useContext(EditionContext);
+  const { url_photo, email, job_title, firstname, lastname, street, zip_code, city, bio, handleAdressFormChange } = useContext(EditionContext);
   return (
     <>
       <Grid container spacing={3}>
@@ -50,7 +52,6 @@ export default function AddressForm () {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
             id='job_title'
             name='job_title'
             label='Poste'
@@ -62,7 +63,6 @@ export default function AddressForm () {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
             id='address1'
             name='street'
             label='Rue'
@@ -72,9 +72,8 @@ export default function AddressForm () {
             onChange={(e) => handleAdressFormChange(e)}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
           <TextField
-            required
             id='city'
             name='city'
             label='Ville'
@@ -84,12 +83,11 @@ export default function AddressForm () {
             onChange={(e) => handleAdressFormChange(e)}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
           <TextField
-            required
             id='zip'
             name='zip_code'
-            label='Code Postal'
+            label='Code Postal' 
             fullWidth
             autoComplete='shipping postal-code'
             value={zip_code}
@@ -105,6 +103,11 @@ export default function AddressForm () {
             value={bio}
             onChange={(e) => handleAdressFormChange(e)}
           />
+        </Grid>
+        <Grid item xs={12} sm={12} justify='center'>
+        <div className='RefPhoto'>
+              {url_photo && <img src={url + url_photo} alt={url_photo} />}
+            </div>
         </Grid>
         <Grid item xs={12} sm={12} justify='center'>
           <Typography variant='h6' gutterBottom color='primary'>

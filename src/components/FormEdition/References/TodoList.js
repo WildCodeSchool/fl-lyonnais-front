@@ -5,18 +5,16 @@ import EditionContext from '../EditionContext';
 
 const TodoList = (props) => {
   const { references } = useContext(EditionContext);
-
-  console.log(references);
   return (
     <>
       {references.length > 0 && (
-        <Paper style={{ margin: 16 }}>
-          <List style={{ overflow: 'scroll' }}>
+        <Paper style={{ margin: 16, minWidth: '500px' }}>
+          <List style={{ overflow: 'auto', display: 'flex', flexWrap: 'wrap-reverse', justifyContent: 'center' }}>
             {references.map((reference, idx) => (
               <TodoListItem
                 reference={reference}
                 key={references.id}
-                divider={idx !== references.length - 1}
+                // divider={idx !== references.length - 1}
                 onButtonClick={() => props.onItemRemove(idx)}
                 onCheckBoxToggle={() => props.onItemCheck(idx)}
               />

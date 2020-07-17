@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Home from './pages/Home';
+import Home from './pages/generic page/Home';
 import Detail from './pages/Detail';
 import Listing from './pages/Listing';
 import MailInfo from './pages/MailInfo';
@@ -18,7 +18,7 @@ import Edition from './pages/Edition.js';
 import Header from './components/Header';
 import AuthContext from './components/AuthContext';
 import EditionContextProvider from './components/FormEdition/EditionContextProvider';
-import jwtDecode from 'jwt-decode';
+import SearchContextProvider from './components/Detail/SearchContextProvider';
 import Chat from './components/Chat';
 import GeneralConditions from './pages/generic page/GeneralConditions';
 import About from './pages/generic page/About';
@@ -43,20 +43,21 @@ const Apps = styled.div`
 
 function App () {
   const [token, setToken] = useState(localStorage.getItem('authToken'));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user') || '{}'))
   const setTokenInLocalStorage = (token) => {
-    localStorage.setItem('authToken', token);
+    localStorage.setItem('authToken', token)
     setToken(token);
-    console.log(token);
   };
-  let userNameFromToken = null;
-  if (token) {
-    userNameFromToken = jwtDecode(token).sub || null;
+
+  const saveUser = (user) => {
+    localStorage.setItem('user',JSON.stringify(user));
+    setUser(user);
   }
 
   return (
-    <AuthContext.Provider value={{ token: token, saveToken: (token) => (setTokenInLocalStorage(token)) }}>
-      {userNameFromToken && <div><p>Welcome back {userNameFromToken} !</p><button onClick={() => setTokenInLocalStorage('')}>Log out</button></div>}
+    <AuthContext.Provider value={{user,saveUser, token: token, saveToken: (token) => (setTokenInLocalStorage(token)), setToken: setTokenInLocalStorage }}>
       <EditionContextProvider>
+        <SearchContextProvider>
         <Apps>
           <Router>
             <Header />
@@ -78,6 +79,7 @@ function App () {
             <Chat />
           </Router>
         </Apps>
+        </SearchContextProvider>
       </EditionContextProvider>
     </AuthContext.Provider>
   );

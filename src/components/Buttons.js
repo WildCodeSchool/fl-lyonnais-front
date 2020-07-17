@@ -1,76 +1,98 @@
-import React, { useContext } from 'react';
-import EditionContext from './FormEdition/EditionContext';
-import Button from '@material-ui/core/Button';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Switch from '@material-ui/core/Switch';
-import { Link } from 'react-router-dom';
-import API from '../API';
+import React, { useState,useContext } from 'react';
+import Button from '@material-ui/core/Button'
+import { makeStyles } from '@material-ui/core/styles'
+import DeleteIcon from '@material-ui/icons/Delete'
+import EditIcon from '@material-ui/icons/Edit'
+import { Link, useHistory } from 'react-router-dom'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Switch from '@material-ui/core/Switch'
+import API from '../API'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import DialogTitle from '@material-ui/core/DialogTitle';
+import AuthContext from './AuthContext';
 
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1)
-  }
-}));
 
-const AntSwitch = withStyles((theme) => ({
-  root: {
-    width: 28,
-    height: 16,
-    padding: 0,
-    display: 'flex'
-  },
-  switchBase: {
-    padding: 2,
-    color: theme.palette.grey[500],
-    '&$checked': {
-      transform: 'translateX(12px)',
-      color: theme.palette.common.white,
-      '& + $track': {
-        opacity: 1,
-        backgroundColor: theme.palette.primary.main,
-        borderColor: theme.palette.primary.main
-      }
-    }
-  },
-  thumb: {
-    width: 12,
-    height: 12,
-    boxShadow: 'none'
-  },
-  track: {
-    border: `1px solid ${theme.palette.grey[500]}`,
-    borderRadius: 16 / 2,
-    opacity: 1,
-    backgroundColor: theme.palette.common.white
-  },
-  checked: {}
-}))(Switch);
 
 export default function Buttons (props) {
-  const { sendFlDatasToFormEdition } = useContext(EditionContext);
+  const useStyles = makeStyles((theme) => ({ button: { margin: theme.spacing(1) } }));
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    checked: true
-  });
-
+  const history = useHistory();
+  const [state, setState] = useState({ checkedA: props.is_active === 1, });
+  const [open, setOpen] = useState(false);
+  const handleClickOpen = () => {setOpen(true);};
+  const handleClose = () => {setOpen(false);};
+  const setTokenInLocalStorage = useContext(AuthContext).setToken;
+  const setUserInLocalStorage = useContext(AuthContext).saveUser;
+  const handleDelete = (e) => {
+    API.delete('/freelances/account')
+      .then((res) => {
+        setUserInLocalStorage('{}');
+        setTokenInLocalStorage('');
+        history.push(`/connexion`)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
+    if (state.checkedA === true) {
+      API.put('/freelances/' + props.id + '?activated=0')
+        .then((res) => {
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    }
+    if (state.checkedA === false) {
+      API.put('/freelances/' + props.id + '?activated=1')
+        .then((res) => {
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    }
   };
+
   return (
     <div>
-      <Button
+      <h1>Gérer mon compte</h1>
+      <div className='accountManagement'>
+        <Button
         variant='contained'
         color='secondary'
         className={classes.button}
         startIcon={<DeleteIcon />}
+        onClick={handleClickOpen}
       >
         Supprimer
       </Button>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Confirmation de la suppression"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Etes-vous sûr de vouloir supprimer votre compte ?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Annuler
+          </Button>
+          <Button onClick={handleDelete} color="primary" autoFocus>
+            Oui, Supprimer
+          </Button>
+        </DialogActions>
+      </Dialog>
+
       <Button
         variant='contained'
         color='primary'
@@ -79,15 +101,12 @@ export default function Buttons (props) {
       >
         <Link style={{ color: 'var(--white)' }} to='/compte'>Éditer</Link>
       </Button>
-      <Typography component='div'>
-        <Grid component='label' container alignItems='center' spacing={1}>
-          <Grid item>Désactiver</Grid>
-          <Grid item>
-            <AntSwitch checked={state.checked} onChange={handleChange} name='checked' />
-          </Grid>
-          <Grid item>Activer</Grid>
-        </Grid>
-      </Typography>
+      <FormControlLabel
+        control={<Switch checked={state.checkedA} onChange={handleChange} name="checkedA"/>}
+        label="Désactiver / Activer"
+        labelPlacement="top"
+      />
+      </div>
     </div>
   );
 }

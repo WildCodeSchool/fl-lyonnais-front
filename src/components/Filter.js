@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import API from '../API';
-import FilterTjm from '../components/FilterTjm';
+import SearchContext from './Detail/SearchContext'
 
 const icon = <CheckBoxOutlineBlankIcon fontSize='small' />;
 const checkedIcon = <CheckBoxIcon fontSize='small' />;
 
-export default function FilterTags () {
+export default function FilterTags (tagsUsed) {
+  const { handleTagsFilter } = useContext(SearchContext);
   const [tags, setTags] = useState([]);
   useEffect(() => {
     const fetchTags = async () => {
@@ -20,14 +21,21 @@ export default function FilterTags () {
     fetchTags();
   }, []);
 
+  const handleAutocompleteChangeTags = (e, chosenTags) => {
+    handleTagsFilter(chosenTags)
+  };
+
+  console.log('tags used (listing) : ', tagsUsed.tagsUsed)
+  console.log('tags : ', tags)
+
   return (
     <div className='filters'>
-      <FilterTjm className='FilterTjm' />
       <Autocomplete
         multiple
         id='checkboxes-tags'
         options={tags}
         disableCloseOnSelect
+        onChange={handleAutocompleteChangeTags} 
         getOptionLabel={(option) => option.name}
         renderOption={(option, { selected }) => (
           <>

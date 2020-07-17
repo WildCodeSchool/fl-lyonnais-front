@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center', 
   },
   avatar: {
     margin: theme.spacing(1),
@@ -99,7 +99,7 @@ export default function SignUp () {
       handleClickOpenPasswordsNotEqual();
     } else {
       const registration_date = new Date().toISOString().slice(0, 10);
-      if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret) && onlyLetters(infosRegistration.firstname) && onlyLetters(infosRegistration.lastname && checked)) {
+      if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret) && onlyLetters(infosRegistration.firstname) && onlyLetters(infosRegistration.lastname) && checked) {
         const payload = { ...infosRegistration, registration_date };
         API.post('/users', payload)
           .then(res => res.data)
@@ -186,7 +186,7 @@ export default function SignUp () {
               <Grid item xs={12}>
                 <TextField
                   variant='outlined'
-                  requiredf
+                  required
                   fullWidth
                   name='password Confirmation'
                   label='Confirmation du mot de passe'
@@ -259,7 +259,7 @@ export default function SignUp () {
               Fermer
             </Button>
           </DialogActions>
-        </Dialog>Lorsque les deux mots de passe ne correspondent pas
+        </Dialog>
         {/* Lorsque les deux mots de passe ne correspondent pas */}
         <Dialog
           fullScreen={fullScreen}

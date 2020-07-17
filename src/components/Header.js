@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import { useHistory, Link } from 'react-router-dom';
+import AuthContext from './AuthContext';
+import SearchContext from './Detail/SearchContext'
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
-import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -59,6 +61,25 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PrimarySearchAppBar (props) {
   const classes = useStyles();
+  const { search, updateSearch } = useContext(SearchContext);
+  const history = useHistory();
+
+  // Traitement du champ de recherche
+  const handleSubmitSearch = (event) => {
+    event.preventDefault();
+    updateSearch(search);
+    history.push('/liste_freelance')
+  };
+
+  const setTokenInLocalStorage = useContext(AuthContext).setToken;
+  const setUserInLocalStorage = useContext(AuthContext).saveUser;
+  const isConnected = !!useContext(AuthContext).token;
+  const { user } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    setUserInLocalStorage('{}');
+    setTokenInLocalStorage('');
+  }
   return (
     <div className={classes.grow}>
       <AppBar position='static'>
@@ -66,12 +87,15 @@ export default function PrimarySearchAppBar (props) {
           <Typography className={classes.title} variant='h6' noWrap>
             <Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/'>Freelances Lyonnais</Link>
           </Typography>
+          <form className={classes.form} noValidate  onSubmit={handleSubmitSearch}>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
               placeholder='Recherche…'
+              value={search}
+              onChange={(e) => { updateSearch(e.target.value); }}
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
@@ -79,10 +103,19 @@ export default function PrimarySearchAppBar (props) {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
+          </form>
           <div className={classes.grow} />
           <div>
-            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/inscription'>M'inscrire</Link></Button>
-            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Me connecter</Link></Button>
+            { isConnected && user && user.freelance_id && <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to={`/detail/${user.freelance_id}`}>Mon Compte</Link></Button>}
+
+            {isConnected && <Button color='inherit'><Link onClick={handleLogout} style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Déconnexion</Link></Button>}
+
+            {!isConnected && 
+            <>
+              <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/inscription'>Inscription</Link></Button>
+              <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Connexion</Link></Button>
+            </>
+            }
           </div>
         </Toolbar>
       </AppBar>
