@@ -87,7 +87,7 @@ export default function AddressForm () {
           <TextField
             id='zip'
             name='zip_code'
-            label='Code Postal' 
+            label='Code Postal'
             fullWidth
             autoComplete='shipping postal-code'
             value={zip_code}
@@ -95,13 +95,13 @@ export default function AddressForm () {
           />
         </Grid>
         <Grid item xs={12} fullWidth>
-          <Typography variant='h6' gutterBottom color='primary'>
-            Biographie
-          </Typography>
-          <TextareaAutosize
-            name='bio' style={{ width: '100%' }} fullWidtharia-label='minimum height' rowsMin={6} placeholder=''
-            value={bio}
-            onChange={(e) => handleAdressFormChange(e)}
+          <TextField
+            id="outlined-multiline-static"
+            label="Biographie"
+            multiline
+            fullWidth
+            rows={4}
+            variant="outlined"
           />
         </Grid>
         <Grid item xs={12} sm={12} justify='center'>
@@ -110,9 +110,6 @@ export default function AddressForm () {
             </div>
         </Grid>
         <Grid item xs={12} sm={12} justify='center'>
-          <Typography variant='h6' gutterBottom color='primary'>
-            Photo de profil
-          </Typography>
           <UploadButtons />
         </Grid>
       </Grid>
