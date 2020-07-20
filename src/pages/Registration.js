@@ -225,7 +225,7 @@ export default function SignUp() {
                   value={checked}
                   required
                 />
-                J'accepte les <Link to='/conditions_générales'> conditions générales</Link>
+                J'accepte les <Link to='/conditions_generales'> conditions générales</Link>
               </Grid>
             </Grid>
             <Button

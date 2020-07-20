@@ -29,8 +29,7 @@ function Detail(props) {
         setFreelance(data.freelance)
         setTags(data.tags);
         setReferences(data.references);
-        setIsActive(data.freelance.is_active)
-      })
+        setIsActive(data.freelance.is_active)})
   }, [id]);
 
   const { user } = useContext(AuthContext)
@@ -38,7 +37,7 @@ function Detail(props) {
 
     <div>
       {(is_active === 1 || is_active === 0) && ((user && user.freelance_id == id) || ((freelanceId == id)))  && <Buttons id={id} is_active={is_active} />}
-      <h1>Page détail freelance</h1>
+      <h1>{freelance.firstname} {freelance.lastname}</h1>
       <div className='Detail'>
         <DetailBio freelances={freelance} />
         <div className='responsiveSkillsContact'>

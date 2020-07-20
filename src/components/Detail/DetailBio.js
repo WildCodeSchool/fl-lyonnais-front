@@ -25,7 +25,6 @@ function detailBio(props) {
         <img src={photo} alt={`${props.freelances.lastname}`} className='detailPhoto' />
       </div>
       <div className='info-container'>
-        <h2>{props.freelances.firstname} {props.freelances.lastname}</h2>
         <h2>{props.freelances.job_title}</h2>
         <p>{props.freelances.bio}</p>
       </div>

@@ -110,6 +110,7 @@ export default function PrimarySearchAppBar (props) {
           <div className={classes.grow} />
           <div>
             { (isConnected  && (user.freelance_id || freelanceId )) && <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to={ user.freelance_id ? `/detail/${user.freelance_id}` : `/detail/${freelanceId}`}>Mon Compte</Link></Button>}
+            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/liste_freelance'>Freelances</Link></Button>
 
             {isConnected && <Button color='inherit'><Link onClick={handleLogout} style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Déconnexion</Link></Button>}
 
