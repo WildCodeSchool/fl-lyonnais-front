@@ -7,6 +7,8 @@ import API from '../API';
 import Buttons from '../components/Buttons';
 import AuthContext from '../components/AuthContext';
 import Carousel from '../components/Detail/Carousel';
+import EditionContext from '../components/FormEdition/EditionContext';
+
 
 
 
@@ -17,7 +19,8 @@ function Detail(props) {
   const [tags, setTags] = useState([])
   const [references, setReferences] = useState([])
   const [is_active, setIsActive] = useState()
-  const { id } = useParams()
+  const { id } = useParams();
+  const { freelanceId } = useContext(EditionContext)
 
   useEffect(() => {
     API.get('/freelances/' + id)
@@ -34,7 +37,7 @@ function Detail(props) {
   return (
 
     <div>
-      {(is_active === 1 || is_active === 0) && (user && user.freelance_id == id) && <Buttons id={id} is_active={is_active} />}
+      {(is_active === 1 || is_active === 0) && ((user && user.freelance_id == id) || ((freelanceId == id)))  && <Buttons id={id} is_active={is_active} />}
       <h1>Page détail freelance</h1>
       <div className='Detail'>
         <DetailBio freelances={freelance} />

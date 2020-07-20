@@ -51,7 +51,7 @@ export default function Edition(props) {
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const {errorModalMessage, modalOpen, showErrorMessage, closeModal, freelanceExists, firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags, sendFlDatasToFormEdition } = useContext(EditionContext);
+  const {setFreelanceId, freelanceId, errorModalMessage, modalOpen, showErrorMessage, closeModal, freelanceExists, firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags, sendFlDatasToFormEdition } = useContext(EditionContext);
   const payload = { firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags };
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
@@ -87,7 +87,10 @@ export default function Edition(props) {
 
       else {
         API.post(url, payload)
-          .then((res) => res.data)
+          .then((res) => {
+            console.log(res.data)
+            setFreelanceId(res.data.dataFreelance.id)
+          })
           .catch(err => {
             console.error(err);
           });
