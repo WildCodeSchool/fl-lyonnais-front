@@ -11,4 +11,6 @@ ReactDOM.render(
 
 );
 
+console.log('using API URL : ', process.env.REACT_APP_API_BASE_URL);
+
 serviceWorker.unregister();

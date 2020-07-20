@@ -6,7 +6,6 @@ function DetailContact (props) {
     <div>
       <h2 className='detailh2'>Coordonnées</h2>
       <div className='detailcontact'>
-
         <div className='detailcompany'>
           <p>{props.freelances.company}</p>
           <p>{props.freelances.street}</p>
@@ -21,7 +20,6 @@ function DetailContact (props) {
           { props.freelances.siret && <p>SIRET : {props.freelances.siret}</p> }
           { props.freelances.vat_number && <p>Numéro de TVA : {props.freelances.vat_number}</p> }
         </div>
-
       </div>
     </div>
   );
