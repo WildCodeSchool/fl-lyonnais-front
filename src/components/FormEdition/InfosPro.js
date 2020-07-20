@@ -45,7 +45,7 @@ function InfosPro () {
         <Grid container spacing={3} alignItems='flex-start'>
           <Grid item xs={12}>
             <TextField
-              id='vat_number' type='number' name='vat_number' label='Numéro de TVA' value={vat_number} fullWidth autoComplete='cc-projet'
+              id='vat_number' name='vat_number' label='Numéro de TVA' value={vat_number} fullWidth autoComplete='cc-projet'
               onChange={(e) => handleAdressFormChange(e)}
             />
           </Grid>

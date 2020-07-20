@@ -98,10 +98,13 @@ export default function AddressForm () {
           <TextField
             id="outlined-multiline-static"
             label="Biographie"
+            name='bio'
             multiline
             fullWidth
             rows={4}
             variant="outlined"
+            value={bio}
+            onChange={(e) => handleAdressFormChange(e)}
           />
         </Grid>
         <Grid item xs={12} sm={12} justify='center'>
