@@ -51,7 +51,7 @@ export default function Edition(props) {
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const {errorModalMessage, modalOpen, showErrorMessage, closeModal, freelanceExists, firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags, sendFlDatasToFormEdition, clearPhoneNumber, clearUrlPro } = useContext(EditionContext);
+  const {errorModalMessage, modalOpen, showErrorMessage, closeModal, freelanceExists, firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags, sendFlDatasToFormEdition } = useContext(EditionContext);
   const payload = { firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags };
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
@@ -101,17 +101,13 @@ export default function Edition(props) {
     }
     if ((e.target.innerText.toLowerCase() === 'suivant') && activeStep === 1) {
       if (!isFrenchMobile(phone_number) && phone_number) {
-        alert('Merci de rentrer un numéro de téléphone valide');
         showErrorMessage('Merci de rentrer un numéro de téléphone valide')
-
-        // clearPhoneNumber('phone_number');
         setActiveStep(activeStep);
       }
     }
     if ((e.target.innerText.toLowerCase() === 'suivant') && activeStep === 1) {
       if (!isValidURL(url_web_site) && url_web_site) {
-        alert('Merci de rentrer un url valide');
-        clearUrlPro(url_web_site)
+        showErrorMessage('Merci de rentrer un url valide')
         setActiveStep(activeStep)
       }
     }

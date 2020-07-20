@@ -4,10 +4,7 @@ import EditionContext from '../EditionContext';
 
 const AddTodo = (props) => {
   const { addReference, newReferenceName, setNewReferenceName } = useContext(EditionContext);
-  // const hanleAddToDoName = (e) => {
-  //   props.onInputChangeName();
 
-  // }
 const handleInputKeyPress = (e) => {
   const keycode = (e.keyCode ? e.keyCode : e.which);
   if (keycode == '13') {
