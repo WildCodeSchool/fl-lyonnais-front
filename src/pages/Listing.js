@@ -47,6 +47,7 @@ const Listing = () => {
               {pageNumbers.map(number => (<li key={number}><Link onClick={() => paginate(number)} to='#' className='page-link'>{number}</Link></li>))}
             </ul>
           </nav>
+          {search && <p>{totalFreelances} résultat(s) pour votre mot-clé "{search}".</p>}
           <ul className='everyFreelanceCards'>
             <li>
               {freelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))}
