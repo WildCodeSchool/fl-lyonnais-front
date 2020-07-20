@@ -73,7 +73,7 @@ function App () {
                 <Route path='/mentions_legales'><LegalDisclaimer /></Route>
                 <Route path='/reception_email'><MailInfo /></Route>
                 <Route path='/a_propos'><About /></Route>
-                <Route path='/conditions_générales'><GeneralConditions /></Route>
+                <Route path='/conditions_generales'><GeneralConditions /></Route>
               </Switch>
             </main>
             <Footer />
