@@ -58,12 +58,6 @@ export default function Edition(props) {
     setOpen(false);
   };
 
-  // if (alertUrlNonValid) {
-  //   console.log(alertUrlNonValid)
-  //   setOpen(true);
-  // }
-
-
   const retrieveAccountInformations = () => {
     API.get('/freelances/account')
       .then(res => res.data)

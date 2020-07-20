@@ -20,6 +20,7 @@ export default function AddressForm () {
             label='Prenom'
             fullWidth
             autoComplete='given-name'
+            disabled
             value={firstname}
             onChange={(e) => handleAdressFormChange(e)}
           />
@@ -32,6 +33,7 @@ export default function AddressForm () {
             label='Nom'
             fullWidth
             autoComplete='family-name'
+            disabled
             value={lastname}
             onChange={(e) => handleAdressFormChange(e)}
           />
