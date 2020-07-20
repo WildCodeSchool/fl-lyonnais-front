@@ -7,15 +7,15 @@ import GavelIcon from '@material-ui/icons/Gavel';
 import FaceIcon from '@material-ui/icons/Face';
 import SearchContext from '../components/Detail/SearchContext';
 
-const pathMap = [
-  '/',
-  '/liste_freelance',
-  '/mentions_legales'
-];
-
 export default function LabelBottomNavigation () {
   const [value, setValue] = React.useState('recents');
-  const { updateSearch } = useContext(SearchContext);
+  const { updateSearch, currentPage, freelancesPerPage } = useContext(SearchContext);
+
+  const pathMap = [
+    '/',
+    '/liste_freelance/page=' + currentPage + '&flperpage=' + freelancesPerPage + '&search[0]',
+    '/mentions_legales'
+  ];
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
