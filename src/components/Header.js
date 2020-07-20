@@ -9,6 +9,7 @@ import AuthContext from './AuthContext';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import EditionContext from '../components/FormEdition/EditionContext';
+import SearchContext from '../components/Detail/SearchContext';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -63,7 +64,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PrimarySearchAppBar (props) {
   const classes = useStyles();
-  const { search, updateSearch, freelanceId } = useContext(EditionContext);
+  const { search, updateSearch } = useContext(SearchContext);
+  const { freelanceId } = useContext(EditionContext);
   const history = useHistory();
 
   // Traitement du champ de recherche
