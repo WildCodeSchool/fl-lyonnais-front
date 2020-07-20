@@ -5,14 +5,7 @@ import './Listing.scss';
 import { Link, useParams } from 'react-router-dom';
 import API from '../API';
 import SearchContext from '../components/Detail/SearchContext';
-const queryString = require('query-string');
-
-
 const title = 'Liste de freelances';
-
-
-
-
 
 const Listing = () => {
   const [freelances, setFreelances] = useState([]);
@@ -28,14 +21,6 @@ const Listing = () => {
   useEffect(() => {
     const fetchFreelances = async () => {
       setLoading(true);
-
-      // Mise en forme du paramètre search pour l'envoi par URL
-      let searchList = 'search[0]=';
-      if (search.length) {
-        searchList = queryString.stringify({ search: search.split(/\W+/) }, { arrayFormat: 'index', skipNull: true });
-      }
-
-      // Requête à l'API
       const res = await API.get('/freelances/?' + url);
       setFreelances(res.data.freelances);
       setTotalFreelances(res.data.freelanceTotalAmount);
