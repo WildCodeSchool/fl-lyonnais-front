@@ -31,8 +31,8 @@ function Detail (props){
 
     <div>
       {(is_active === 1 || is_active === 0) && (user && user.freelance_id == id) && <Buttons id={id} is_active={is_active}/>}
-    <h1>Page détail freelance</h1>
-    <div className='Detail'>
+      <h1>{freelance.firstname} {freelance.lastname}</h1>
+      <div className='Detail'>
       <DetailBio freelances={freelance} />
       <div className='responsiveSkillsContact'>
         <DetailSkills tags={tags} freelances={freelance} />
