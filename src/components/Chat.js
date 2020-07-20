@@ -12,13 +12,9 @@ class Chat extends React.Component {
       d.getElementsByTagName('head')[0].appendChild(s);
     })();
   }
-
-  render () {
-    return (
-      <div>
-        <button hidden onClick="$crisp.push(['do', 'chat:open'])" />
-      </div>
-    );
-  }
+  render () {return (<></>);}
 }
+
 export default Chat;
+
+
