@@ -1,11 +1,10 @@
 import React from 'react';
 import './Home.scss';
 import { Helmet } from 'react-helmet'
-const title = 'Mentions légales';
 
+const title = 'A propos de';
 
-
-function LegalDisclaimer() {
+function About() {
   return (
     <div className='home'>
       <Helmet>
@@ -13,7 +12,7 @@ function LegalDisclaimer() {
       </Helmet>
       <div className='form' />
       <main className='homepage'>
-        <h1>Mentions légales</h1>
+        <h1>A propos</h1>
 
         <div className='paragraphe'>
           <h3>Dénommination :</h3>
@@ -44,4 +43,4 @@ function LegalDisclaimer() {
   );
 }
 
-export default LegalDisclaimer;
+export default About;

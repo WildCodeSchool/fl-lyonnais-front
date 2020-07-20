@@ -1,10 +1,18 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Helmet } from 'react-helmet'
 import Freelance from '../components/Freelance';
 import './Listing.scss';
 import { Link } from 'react-router-dom';
 import API from '../API';
 import SearchContext from '../components/Detail/SearchContext';
 const queryString = require('query-string');
+
+
+const title = 'Liste de freelances';
+
+
+
+
 
 const Listing = () => {
   const [freelances, setFreelances] = useState([]);
@@ -23,9 +31,9 @@ const Listing = () => {
       // Mise en forme du paramètre search pour l'envoi par URL
       let searchList = 'search[0]=';
       if (search.length) {
-        searchList = queryString.stringify({ search: search.split(/\W+/) }, {arrayFormat: 'index', skipNull: true});
+        searchList = queryString.stringify({ search: search.split(/\W+/) }, { arrayFormat: 'index', skipNull: true });
       }
-      
+
       // Requête à l'API
       const res = await API.get('/freelances/?page=' + currentPage + '&flperpage=' + freelancesPerPage + '&' + searchList);
       setFreelances(res.data.freelances);
@@ -40,12 +48,17 @@ const Listing = () => {
 
   return (
     <div className='Listing'>
+      <Helmet>
+        <title>
+        {title}
+        </title>
+      </Helmet>
       <h1>Les Freelance Lyonnais</h1>
       <div className='ListingFilter'>
         <div>
-        <nav>
+          <nav>
             <ul className='pagination'>
-              { pageNumbers.map(number => (<li key={number}><Link onClick={() => paginate(number)} to='#' className='page-link'>{number}</Link></li>)) }
+              {pageNumbers.map(number => (<li key={number}><Link onClick={() => paginate(number)} to='#' className='page-link'>{number}</Link></li>))}
             </ul>
           </nav>
           <ul className='everyFreelanceCards'>

@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import UploadButtons from './UploadButtons';
 import EditionContext from './EditionContext';
 import '../../pages/generic page/Home.scss'
@@ -22,6 +20,7 @@ export default function AddressForm () {
             label='Prenom'
             fullWidth
             autoComplete='given-name'
+            disabled
             value={firstname}
             onChange={(e) => handleAdressFormChange(e)}
           />
@@ -34,6 +33,7 @@ export default function AddressForm () {
             label='Nom'
             fullWidth
             autoComplete='family-name'
+            disabled
             value={lastname}
             onChange={(e) => handleAdressFormChange(e)}
           />

@@ -12,6 +12,20 @@ import InfosPro from '../components/FormEdition/InfosPro';
 import EditionContext from '../components/FormEdition/EditionContext';
 import API from '../API';
 import useStyles from '../components/FormEdition/useStyles';
+import { Helmet } from 'react-helmet';
+import { isFrenchMobile } from '../functionshelper';
+import { isValidURL } from '../functionshelper';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
+
+
+const title = 'Edition de compte';
+
 
 //deux clé fl et user
 // fl 0 si pas de compte éditer,
@@ -33,11 +47,16 @@ function getStepContent(step, propsToPass) {
 }
 
 export default function Edition(props) {
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const { freelanceExists, firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags, sendFlDatasToFormEdition } = useContext(EditionContext);
+  const {setFreelanceId, freelanceId, errorModalMessage, modalOpen, showErrorMessage, closeModal, freelanceExists, firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags, sendFlDatasToFormEdition } = useContext(EditionContext);
   const payload = { firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags };
-
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const retrieveAccountInformations = () => {
     API.get('/freelances/account')
@@ -57,22 +76,40 @@ export default function Edition(props) {
     if (e.target.innerText.toLowerCase() === 'enregistrer') {
       let url = process.env.REACT_APP_API_URL + '/freelances/account';
       if (freelanceExists) {
-        API.patch(url, payload) 
-          .then((res) => res.data)
+        API.patch(url, payload)
+          .then((res) => {
+            console.log(res.data)
+          })
           .catch(err => {
             console.error('error Parch FL', err);
           });
-        }
+      }
 
       else {
         API.post(url, payload)
-          .then((res) => res.data)
+          .then((res) => {
+            console.log(res.data)
+            setFreelanceId(res.data.dataFreelance.id)
+          })
           .catch(err => {
             console.error(err);
-          }); 
-        }
+          });
+      }
+    }
+    if ((e.target.innerText.toLowerCase() === 'suivant') && activeStep === 1) {
+      if (!isFrenchMobile(phone_number) && phone_number) {
+        showErrorMessage('Merci de rentrer un numéro de téléphone valide')
+        setActiveStep(activeStep);
+      }
+    }
+    if ((e.target.innerText.toLowerCase() === 'suivant') && activeStep === 1) {
+      if (!isValidURL(url_web_site) && url_web_site) {
+        showErrorMessage('Merci de rentrer un url valide')
+        setActiveStep(activeStep)
+      }
+    }
+
   }
-}
 
 
   const handleBack = () => {
@@ -100,6 +137,27 @@ export default function Edition(props) {
               </>
             ) : (
                 <>
+                  <Helmet>
+                    <title>{title}</title>
+                  </Helmet>
+                  <Dialog
+                    fullScreen={fullScreen}
+                    open={modalOpen}
+                    onClose={closeModal}
+                    aria-labelledby='responsive-dialog-title'
+                  >
+                    <DialogTitle id='responsive-dialog-title'>Problème de saisie</DialogTitle>
+                    <DialogContent>
+                      <DialogContentText>
+                        {errorModalMessage}
+                     </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={closeModal} color='primary' autoFocus>
+                        Fermer
+        </Button>
+                    </DialogActions>
+                  </Dialog>
                   {getStepContent(activeStep)}
                   <div className={classes.buttons}>
                     {activeStep !== 0 && (

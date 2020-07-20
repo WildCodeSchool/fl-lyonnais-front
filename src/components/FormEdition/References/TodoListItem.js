@@ -6,8 +6,6 @@ import './TodoLisItem.css'
 import { makeStyles } from '@material-ui/core/styles';
 import { ListItem, IconButton, ListItemText, ListItemSecondaryAction } from '@material-ui/core';
 import DeleteOutlined from '@material-ui/icons/DeleteOutlined';
-import Button from '@material-ui/core/Button'
-import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import TextField from '@material-ui/core/TextField'
 
 const useStyles = makeStyles((theme) => ({

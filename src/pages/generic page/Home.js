@@ -1,10 +1,16 @@
 import React from 'react';
 import './Home.scss';
 import logo from './logo.png';
+import { Helmet } from 'react-helmet'
+
+const title = `Accueil Freelances Lyonnais`
 
 function Home () {
   return (
     <div className='home'>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <div className='logo'><img src={logo} alt='Logo du site Freelance Lyonnais' className='logoHome' /></div>
       <div className='form' />
       <main className='homepage'>
