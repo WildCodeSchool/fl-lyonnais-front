@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Helmet } from 'react-helmet'
 import Freelance from '../components/Freelance';
 // import FilterTags from '../components/Filter';
 import './Listing.scss';
@@ -7,6 +8,9 @@ import API from '../API';
 import SearchContext from '../components/Detail/SearchContext';
 const lodash = require('lodash/array');
 const queryString = require('query-string');
+
+
+
 
 const Listing = () => {
   const [freelances, setFreelances] = useState([]);
@@ -25,9 +29,9 @@ const Listing = () => {
       // Mise en forme du paramètre search pour l'envoi par URL
       let searchList = 'search[0]=';
       if (search.length) {
-        searchList = queryString.stringify({ search: search.split(/\W+/) }, {arrayFormat: 'index', skipNull: true});
+        searchList = queryString.stringify({ search: search.split(/\W+/) }, { arrayFormat: 'index', skipNull: true });
       }
-      
+
       // Requête à l'API
       const res = await API.get('/freelances/?page=' + currentPage + '&flperpage=' + freelancesPerPage + '&' + searchList);
       setFreelances(res.data.freelances);
@@ -68,7 +72,7 @@ const Listing = () => {
 
   // Création des boutons d'accès aux pages si le nombre de freelance affichés est supérieur au nombre de freelance par page
   if (totalFreelances >= freelancesPerPage) {
-    for (let i = 1; i <= Math.ceil(totalFreelances/ freelancesPerPage); i++) { pageNumbers.push(i); }
+    for (let i = 1; i <= Math.ceil(totalFreelances / freelancesPerPage); i++) { pageNumbers.push(i); }
   }
 
   if (loading) { return <h2>Chargement...</h2>; }
@@ -81,24 +85,28 @@ const Listing = () => {
   const arrayOfFreelanceWithChosenTags = tagFilters(resultOfSearch.length ? resultOfSearch : freelances, tagsFilterArray)
   const tagsUsed = freelances.map(t => t.tags)
   */
-  
+
   const arrayOfFreelanceWithChosenTags = freelances;
-  
+  const title = 'Liste de freelances';
+
   return (
     <div className='Listing'>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <h1>Liste de Freelance Lyonnais</h1>
       <div className='ListingFilter'>
-      
-        { /* <FilterTags tagsUsed={tagsUsed} className='FilterTags' /> */ }
+
+        { /* <FilterTags tagsUsed={tagsUsed} className='FilterTags' /> */}
         <div>
-        <nav>
+          <nav>
             <ul className='pagination'>
-              { pageNumbers.map(number => (<li key={number}><Link onClick={() => paginate(number)} to='#' className='page-link'>{number}</Link></li>)) }
+              {pageNumbers.map(number => (<li key={number}><Link onClick={() => paginate(number)} to='#' className='page-link'>{number}</Link></li>))}
             </ul>
           </nav>
           <ul className='everyFreelanceCards'>
             <li>
-              {arrayOfFreelanceWithChosenTags.length !==0 ?
+              {arrayOfFreelanceWithChosenTags.length !== 0 ?
                 arrayOfFreelanceWithChosenTags.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
                 :
                 freelances.map(freelance => (<Freelance id={freelance.id} firstname={freelance.firstname} lastname={freelance.lastname} urlPhoto={freelance.url_photo} job_title={freelance.job_title} />))
@@ -107,7 +115,7 @@ const Listing = () => {
           </ul>
           <nav>
             <ul className='pagination'>
-              { pageNumbers.map(number => (<li key={number}><Link onClick={() => paginate(number)} to='#' className='page-link'>{number}</Link></li>)) }
+              {pageNumbers.map(number => (<li key={number}><Link onClick={() => paginate(number)} to='#' className='page-link'>{number}</Link></li>))}
             </ul>
           </nav>
         </div>

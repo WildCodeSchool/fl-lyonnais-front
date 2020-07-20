@@ -29,15 +29,13 @@ export function onlyLetters(input) {
 }
 
 export function isValidURL(str) {
-  return true;
 let  expression = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/
 return !! str.match(expression)
 }
 
-// Avec espaces et chiffres :
+
+
 export function isFrenchMobile(mob) {
-  return true;
-  var re = /^0[1-6]{1}(([0-9]{2}){4})|((\s[0-9]{2}){4})|((-[0-9]{2}){4})$/
+  var re = /^(?:(?:\+|00)33[\s.-]{0,3}(?:(0)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/
   return !! mob.match(re)
 }
-

@@ -1,9 +1,16 @@
 import React from 'react';
 import './Home.scss';
+import { Helmet } from 'react-helmet'
 
-function GeneralConditions () {
+const title = 'Conditions générales';
+
+
+function GeneralConditions() {
   return (
     <div className='home'>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <div className='form' />
       <main className='homepage'>
         <h1>Conditions générales</h1>

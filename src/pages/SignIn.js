@@ -18,14 +18,16 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import decode from 'jwt-decode';
+import { Helmet } from 'react-helmet'
 
+const title = 'Connexion';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center', 
+    alignItems: 'center',
     minWidth: '50%'
   },
   avatar: {
@@ -76,6 +78,7 @@ export default function SignIn(props) {
         handleClickOpen();
       });
   };
+  
   const handleConnexionClick = (e) => {
     API.get('/users/');
   };
@@ -122,6 +125,9 @@ export default function SignIn(props) {
 
   return (
     <div>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <div style={{ display: `${newFreelance}` }} className='alert-freelance-validation'>
         <h2>
           Information nouveau freelance

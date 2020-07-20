@@ -1,9 +1,16 @@
 import React from 'react';
 import './Home.scss';
+import { Helmet } from 'react-helmet'
+const title = 'Mentions légales';
 
-function LegalDisclaimer () {
+
+
+function LegalDisclaimer() {
   return (
     <div className='home'>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <div className='form' />
       <main className='homepage'>
         <h1>Mentions légales</h1>

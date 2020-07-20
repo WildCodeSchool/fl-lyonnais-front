@@ -25,16 +25,29 @@ class EditionContextProvider extends React.Component {
       city: '',
       // References
       references: [],
+      alertUrlNonValid: false,
       // Tag
       allTags: [],
       chosenTags: [], 
-      freelanceExists: false
+      freelanceExists: false,
+
+      modalOpen :false,
+      newReferenceName: '',
+
+      errorModalMessage:'',
     };
   }
 
-  // componentDidMount () => {
+  showErrorMessage = (message) =>{
+    this.setState({errorModalMessage: message, modalOpen:true})
+  }
+  closeModal = () => {
+    this.setState({modalOpen:false})
+  }
 
-  // }
+  setNewReferenceName = (name) => {
+    this.setState({newReferenceName: name})
+  }
 
   setUrlPhoto = (image) => {
     this.setState({url_photo: image})
@@ -85,12 +98,13 @@ class EditionContextProvider extends React.Component {
   addReference = (refName) => {
     const newReference = {
       id: uniqid(),
-      name: refName,
+      name: this.state.newReferenceName,
       image: '',
       url: ''
     };
     this.setState({ references: [...this.state.references, newReference] });
     window.scrollTo(0,0)
+    this.setNewReferenceName('');
   }
 
   deleteReference = (refId) => {
@@ -121,6 +135,15 @@ class EditionContextProvider extends React.Component {
     this.setState({ ...this.state, [targetProp]: e.target.value });
   }
 
+  clearPhoneNumber = () => {
+    this.setState({phone_number:''})
+  }
+
+  clearUrlPro = () => {
+    this.setState({url_web_site:''});
+    this.setState({alertUrlNonValid : true})
+  }
+
   addIdTagIdsChosen = (id) => {
     this.setState({ idTagList: id });
   }
@@ -139,7 +162,7 @@ class EditionContextProvider extends React.Component {
   render () {
     return (
       <div>
-        <EditionContext.Provider value={{ ...this.state,setUrlPhoto: this.setUrlPhoto, sendFlDatasToFormEdition: this.sendFlDatasToFormEdition, deleteChosenTag: this.deleteChosenTag, setChosenTags: this.setChosenTags, setAllTags: this.setAllTags, deleteReference: this.deleteReference, setReferenceField: this.setReferenceField, addReference: this.addReference, handleUrlLink: this.handleUrlLink, handleAdressFormChange: this.handleAdressFormChange, handleTag: this.handleTag, handleTagId: this.handleTagId, addIdTagIdsChosen: this.addIdTagIdsChosen, handleReferencesName: this.handleReferencesName, handleNameReferenceList: this.handleNameReferenceList, setNameReferenceList: this.setNameReferenceList, cleanProjectState: this.cleanProjectState, handleFile: this.handleFile }}>
+        <EditionContext.Provider value={{ ...this.state,setNewReferenceName:this.setNewReferenceName, closeModal: this.closeModal,showErrorMessage:this.showErrorMessage, clearUrlPro: this.clearUrlPro,clearPhoneNumber:this.clearPhoneNumber, setUrlPhoto: this.setUrlPhoto, sendFlDatasToFormEdition: this.sendFlDatasToFormEdition, deleteChosenTag: this.deleteChosenTag, setChosenTags: this.setChosenTags, setAllTags: this.setAllTags, deleteReference: this.deleteReference, setReferenceField: this.setReferenceField, addReference: this.addReference, handleUrlLink: this.handleUrlLink, handleAdressFormChange: this.handleAdressFormChange, handleTag: this.handleTag, handleTagId: this.handleTagId, addIdTagIdsChosen: this.addIdTagIdsChosen, handleReferencesName: this.handleReferencesName, handleNameReferenceList: this.handleNameReferenceList, setNameReferenceList: this.setNameReferenceList, cleanProjectState: this.cleanProjectState, handleFile: this.handleFile }}>
           {this.props.children}
         </EditionContext.Provider>
       </div>
