@@ -9,7 +9,9 @@ class SearchContextProvider extends React.Component {
       resultOfSearch :[],
       tagsFilter: [],
       tjmMarkers: [],
-      search: ''
+      search: '',
+      currentPage: 1,
+      freelancesPerPage: 20
     };
   }
   upLoadResultOfSearch = (ser) => {

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Helmet } from 'react-helmet'
 import Freelance from '../components/Freelance';
 import './Listing.scss';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import API from '../API';
 import SearchContext from '../components/Detail/SearchContext';
 const queryString = require('query-string');
@@ -23,6 +23,7 @@ const Listing = () => {
   const paginate = pageNumber => setCurrentPage(pageNumber);
   const pageNumbers = [];
   const { search } = useContext(SearchContext);
+  const { url } = useParams();
 
   useEffect(() => {
     const fetchFreelances = async () => {
@@ -35,7 +36,7 @@ const Listing = () => {
       }
 
       // Requête à l'API
-      const res = await API.get('/freelances/?page=' + currentPage + '&flperpage=' + freelancesPerPage + '&' + searchList);
+      const res = await API.get('/freelances/?' + url);
       setFreelances(res.data.freelances);
       setTotalFreelances(res.data.freelanceTotalAmount);
       setLoading(false);

@@ -9,7 +9,8 @@ import AuthContext from './AuthContext';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import EditionContext from '../components/FormEdition/EditionContext';
-import SearchContext from '../components/Detail/SearchContext';
+import SearchContext from './Detail/SearchContext';
+const queryString = require('query-string');
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -56,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       width: '16ch',
       '&:focus': {
-        width: '26ch',
+        width: '28ch',
       },
     },
   },
@@ -64,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PrimarySearchAppBar (props) {
   const classes = useStyles();
-  const { search, updateSearch } = useContext(SearchContext);
+  const { search, updateSearch, currentPage, freelancesPerPage } = useContext(SearchContext);
   const { freelanceId } = useContext(EditionContext);
   const history = useHistory();
 
@@ -72,7 +73,7 @@ export default function PrimarySearchAppBar (props) {
   const handleSubmitSearch = (event) => {
     event.preventDefault();
     updateSearch(search);
-    history.push('/liste_freelance')
+    history.push('/liste_freelance/' + 'page=' + currentPage + '&flperpage=' + freelancesPerPage + '&search[0]=' + search)
   };
 
   const setTokenInLocalStorage = useContext(AuthContext).setToken;
@@ -116,7 +117,7 @@ export default function PrimarySearchAppBar (props) {
 
             {isConnected && <Button color='inherit'><Link onClick={handleLogout} style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Déconnexion</Link></Button>}
 
-            {!isConnected && 
+            {!isConnected &&
             <>
               <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/inscription'>Inscription</Link></Button>
               <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Connexion</Link></Button>
