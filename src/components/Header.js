@@ -6,9 +6,9 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { useHistory, Link } from 'react-router-dom';
 import AuthContext from './AuthContext';
-import SearchContext from './Detail/SearchContext'
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
+import EditionContext from '../components/FormEdition/EditionContext';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PrimarySearchAppBar (props) {
   const classes = useStyles();
-  const { search, updateSearch } = useContext(SearchContext);
+  const { search, updateSearch, freelanceId } = useContext(EditionContext);
   const history = useHistory();
 
   // Traitement du champ de recherche
@@ -82,6 +82,7 @@ export default function PrimarySearchAppBar (props) {
     setUserInLocalStorage('{}');
     setTokenInLocalStorage('');
   }
+
   return (
     <div className={classes.grow}>
       <AppBar position='static'>
@@ -108,7 +109,8 @@ export default function PrimarySearchAppBar (props) {
           </form>
           <div className={classes.grow} />
           <div>
-            { isConnected && user && user.freelance_id && <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to={`/detail/${user.freelance_id}`}>Mon Compte</Link></Button>}
+            { (isConnected  && (user.freelance_id || freelanceId )) && <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to={ user.freelance_id ? `/detail/${user.freelance_id}` : `/detail/${freelanceId}`}>Mon Compte</Link></Button>}
+            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/liste_freelance'>Freelances</Link></Button>
 
             {isConnected && <Button color='inherit'><Link onClick={handleLogout} style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Déconnexion</Link></Button>}
 

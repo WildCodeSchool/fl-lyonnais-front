@@ -20,13 +20,17 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { Helmet } from 'react-helmet'
+
+const title = 'Inscription';
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center', 
+    alignItems: 'center',
   },
   avatar: {
     margin: theme.spacing(1),
@@ -41,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SignUp () {
+export default function SignUp() {
   const [open, setOpen] = React.useState(false);
   const [openPasswordsNotEqual, setOpenPasswordsNotEqual] = useState(false);
   const [openErrorDuplicateEmail, setOpenErrorDuplicateEmail] = useState(false);
@@ -118,6 +122,9 @@ export default function SignUp () {
 
   return (
     <div>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <div className={classes.paper}>
@@ -218,7 +225,7 @@ export default function SignUp () {
                   value={checked}
                   required
                 />
-                J'accepte les <Link to='/conditions_générales'> conditions générales</Link>
+                J'accepte les <Link to='/conditions_generales'> conditions générales</Link>
               </Grid>
             </Grid>
             <Button

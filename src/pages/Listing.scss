@@ -100,7 +100,7 @@ $font-main: 'balooBhaina2Regular', sans-serif;
       border-radius: 5px;
 
       .card-image {
-        width: $image-size;
+        // width: $image-size;
         position: relative;
         overflow: hidden;
         height: auto;
@@ -130,7 +130,7 @@ $font-main: 'balooBhaina2Regular', sans-serif;
         .card-name {
             font-family: $font-main;
 
-        h4 {
+        h2 {
           font-size: 0.9rem;
           margin: 0px;
           text-decoration: none;

@@ -4,9 +4,8 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import EditionContext from './EditionContext';
-import Link from '@material-ui/core/Link';
 import API from '../../API';
-import Chat from '../Chat';
+import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,7 +63,7 @@ export default function Tags () {
             <TextField {...params} variant='filled' label='compétences' />
           )}
         />
-        <Link component='button' variant='body2'> <Chat /> Il vous manque une compétence ?</Link>
+        <Button style={{ backgroundColor: 'var(--green)' }} onClick={ () => {window.$crisp.push(['do', 'chat:open'])}} variant='contained' color='primary' component='span' className={classes.button} >Il vous manque une compétence ?</Button>
       </div>
     </>
   );

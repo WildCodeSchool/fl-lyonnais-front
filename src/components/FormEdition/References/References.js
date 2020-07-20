@@ -9,8 +9,8 @@ const References = () => {
   const { inputValue, changeInput, clearInput } = useInputValue();
 
   const clearInputAndAddTodo = () => {
-    clearInput();
     handleNameReferenceList(inputValue);
+    clearInput();
   };
 
   return (

@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import EditionContext from './EditionContext';
-// import { isValidURL, isFrenchMobile } from '../../functionshelper';
 
 const useStyles = makeStyles((theme) => ({
   height: {
@@ -20,9 +19,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function InfosPro () {
+function InfosPro() {
   const classes = useStyles();
   const { average_daily_rate, url_web_site, vat_number, phone_number, handleAdressFormChange } = useContext(EditionContext);
+
   return (
     <>
       <div className={classes.height}>
@@ -45,7 +45,7 @@ function InfosPro () {
         <Grid container spacing={3} alignItems='flex-start'>
           <Grid item xs={12}>
             <TextField
-              id='vat_number' type='number' name='vat_number' label='Numéro de TVA' value={vat_number} fullWidth autoComplete='cc-projet'
+              id='vat_number' name='vat_number' label='Numéro de TVA' value={vat_number} fullWidth autoComplete='cc-projet'
               onChange={(e) => handleAdressFormChange(e)}
             />
           </Grid>
@@ -61,6 +61,6 @@ function InfosPro () {
       </div>
     </>
   );
-}
+};
 
 export default InfosPro;

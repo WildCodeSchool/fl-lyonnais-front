@@ -1,9 +1,15 @@
 import React from 'react';
 import './Home.scss';
+import { Helmet } from 'react-helmet'
 
-function About () {
+const title = 'A propos de';
+
+function About() {
   return (
     <div className='home'>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <div className='form' />
       <main className='homepage'>
         <h1>A propos</h1>

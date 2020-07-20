@@ -21,7 +21,6 @@ import EditionContextProvider from './components/FormEdition/EditionContextProvi
 import SearchContextProvider from './components/Detail/SearchContextProvider';
 import Chat from './components/Chat';
 import GeneralConditions from './pages/generic page/GeneralConditions';
-import About from './pages/generic page/About';
 
 const Apps = styled.div`
     text-align: center;
@@ -72,8 +71,7 @@ function App () {
                 <Route path='/compte'><Edition /></Route>
                 <Route path='/mentions_legales'><LegalDisclaimer /></Route>
                 <Route path='/reception_email'><MailInfo /></Route>
-                <Route path='/a_propos'><About /></Route>
-                <Route path='/conditions_générales'><GeneralConditions /></Route>
+                <Route path='/conditions_generales'><GeneralConditions /></Route>
               </Switch>
             </main>
             <Footer />
