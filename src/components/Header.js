@@ -71,9 +71,14 @@ export default function PrimarySearchAppBar (props) {
 
   // Traitement du champ de recherche
   const handleSubmitSearch = (event) => {
+    // Mise en forme du paramètre search pour l'envoi par URL
+    let searchList = 'search[0]=';
+    if (search.length) {
+      searchList = queryString.stringify({ search: search.split(/\W+/) }, { arrayFormat: 'index', skipNull: true });
+    }
     event.preventDefault();
     updateSearch(search);
-    history.push('/liste_freelance/' + 'page=' + currentPage + '&flperpage=' + freelancesPerPage + '&search[0]=' + search)
+    history.push('/liste_freelance/page=' + currentPage + '&flperpage=' + freelancesPerPage + '&' + searchList)
   };
 
   const setTokenInLocalStorage = useContext(AuthContext).setToken;
@@ -112,7 +117,7 @@ export default function PrimarySearchAppBar (props) {
           </form>
           <div className={classes.grow} />
           <div>
-            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/liste_freelance'>Freelances</Link></Button>
+            <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to={'/liste_freelance/page=' + currentPage + '&flperpage=' + freelancesPerPage + '&search[0]'}>Freelances</Link></Button>
             { (isConnected  && (user.freelance_id || freelanceId )) && <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to={ user.freelance_id ? `/detail/${user.freelance_id}` : `/detail/${freelanceId}`}>Mon Compte</Link></Button>}
             {isConnected && <Button color='inherit'><Link onClick={handleLogout} style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Déconnexion</Link></Button>}
             {!isConnected &&
