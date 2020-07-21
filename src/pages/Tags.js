@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import API from '../API';
 import { Link } from 'react-router-dom';
+import './Tags.scss';
 
 function Tags() {
   const [tags, setTags] = useState([])
@@ -15,9 +16,13 @@ function Tags() {
   }, []);
 
   return (
-    <div>
-      <h1>Tags</h1>
+    <div className='tags'>
+    <h1>Liste des Tags</h1>
+    <h2>Cliquez sur un tag pour obtenir la liste des fiches de freelance associés:</h2>
+    <div className='listingTags'>
+      
       {tags.map(tag => <Link to={'/liste_freelance/page=' + currentPage + '&flperpage=' + freelancesPerPage + '&search[0]=' + tag.name}><li>{tag.name} ({tag.nb})</li></Link>)}
+    </div>
     </div>
 
   );
