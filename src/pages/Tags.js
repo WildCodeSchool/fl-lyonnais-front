@@ -35,7 +35,7 @@ function Tags () {
       <div className='listingTags'>
 
         {tags.map(tag => {
-          return <li key={tag.id}><a onClick={() => handleTagClick(tag)}>{tag.name} ({tag.nb})</a></li>;
+          return <li key={tag.id}><a onClick={() => handleTagClick(tag)}>{tag.name} <div class='chip'>{tag.nb}</div></a></li>;
         })}
       </div>
     </div>
