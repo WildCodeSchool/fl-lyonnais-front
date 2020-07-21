@@ -4,8 +4,6 @@ import { Helmet } from 'react-helmet';
 
 const title = 'Conditions générales';
 
-const title = 'Conditions générales';
-
 
 function GeneralConditions() {
   return (

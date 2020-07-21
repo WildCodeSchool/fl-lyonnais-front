@@ -9,17 +9,15 @@ import SearchContext from '../components/Detail/SearchContext';
 
 export default function LabelBottomNavigation () {
   const [value, setValue] = React.useState('recents');
-  const { updateSearch, currentPage, freelancesPerPage } = useContext(SearchContext);
 
   const pathMap = [
     '/',
-    '/liste_freelance/page=' + currentPage + '&flperpage=' + freelancesPerPage + '&search[0]',
+    '/liste_freelance/',
     '/mentions_legales'
   ];
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    if (newValue === 'Freelances à Lyon') updateSearch([]);
   };
 
   return (
