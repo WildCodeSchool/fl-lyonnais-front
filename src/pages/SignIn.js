@@ -92,6 +92,7 @@ export default function SignIn (props) {
       .catch(err => {
         handleClickOpen();
       });
+      history.push('/reception_email');
   };
 
   // Récupération du paramètre passé dans l'url (connexion?statut=xxx)
