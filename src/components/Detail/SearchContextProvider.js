@@ -1,23 +1,25 @@
 import React from 'react';
 import SearchContext from './SearchContext';
 
-
 class SearchContextProvider extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
-      resultOfSearch :[],
+      resultOfSearch: [],
       tagsFilter: [],
       tjmMarkers: [],
-      search: ''
+      search: '',
+      currentPage: 1,
+      freelancesPerPage: 20
     };
   }
+
   upLoadResultOfSearch = (ser) => {
-    this.setState({resultOfSearch: ser})
+    this.setState({ resultOfSearch: ser });
   }
 
   handleTagsFilter = (tagsFilter) => {
-    this.setState({tagsFilter})
+    this.setState({ tagsFilter });
   }
 
   // Purge du tableau des tags
@@ -26,27 +28,28 @@ class SearchContextProvider extends React.Component {
   }
 
   handleTjmMarkers = (tjmMarkers) => {
-    this.setState({ tjmMarkers })
+    this.setState({ tjmMarkers });
   }
 
-  updateSearch = (search) => {
-    this.setState({ search })
+  updateSearch = (search, cb = () => {}) => {
+    this.setState({ search }, cb);
   }
-  
-  render() {
+
+  render () {
     return (
-        <SearchContext.Provider value={{
-          ...this.state,
-          handleTagsFilter: this.handleTagsFilter,
-          upLoadResultOfSearch: this.upLoadResultOfSearch,
-          handleTjmMarkers: this.handleTjmMarkers,
-          resetTagsFilter: this.resetTagsFilter,
-          updateSearch: this.updateSearch
-        }}>
+      <SearchContext.Provider value={{
+        ...this.state,
+        handleTagsFilter: this.handleTagsFilter,
+        upLoadResultOfSearch: this.upLoadResultOfSearch,
+        handleTjmMarkers: this.handleTjmMarkers,
+        resetTagsFilter: this.resetTagsFilter,
+        updateSearch: this.updateSearch
+      }}
+      >
         {this.props.children}
-        </SearchContext.Provider>
+      </SearchContext.Provider>
     );
-  };
+  }
 }
 
 export default SearchContextProvider;

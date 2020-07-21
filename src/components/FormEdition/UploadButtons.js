@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import EditionContext from './EditionContext';
-import API from '../../API'
+import API from '../../API';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,32 +16,32 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function UploadButtons() {
+export default function UploadButtons () {
   const classes = useStyles();
-  const { setUrlPhoto } = useContext(EditionContext)
+  const { setUrlPhoto } = useContext(EditionContext);
 
   const handlePictureProfileUpload = (e) => {
     const image = e.target.files[0];
     // // url Photo
-    let url = process.env.REACT_APP_API_URL + '/freelances/account/image';
+    const url = process.env.REACT_APP_API_URL + '/freelances/account/image';
     const formData = new FormData();
     formData.append('title', 'titre');
-    formData.append("image", image);  
+    formData.append('image', image);
     API.post(url, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
     })
       .then(res => {
-        console.log('Photo de Profil res.data',res.data) 
-        setUrlPhoto(res.data.image) // image :url 'uploads/
+        console.log('Photo de Profil res.data', res.data);
+        setUrlPhoto(res.data.image); // image :url 'uploads/
       }
       )
       .catch(err => {
         console.error(err);
       });
     setUrlPhoto(image);
-  }
+  };
 
   return (
     <div className={classes.root}>

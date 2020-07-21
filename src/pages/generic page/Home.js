@@ -1,9 +1,9 @@
 import React from 'react';
 import './Home.scss';
 import logo from './logo.png';
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet';
 
-const title = `Accueil Freelances Lyonnais`
+const title = 'Accueil Freelances Lyonnais';
 
 function Home () {
   return (

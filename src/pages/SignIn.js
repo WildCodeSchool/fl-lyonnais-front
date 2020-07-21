@@ -18,7 +18,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import decode from 'jwt-decode';
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet';
 
 const title = 'Connexion';
 
@@ -43,11 +43,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SignIn(props) {
+export default function SignIn (props) {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -78,7 +77,7 @@ export default function SignIn(props) {
         handleClickOpen();
       });
   };
-  
+
   const handleConnexionClick = (e) => {
     API.get('/users/');
   };

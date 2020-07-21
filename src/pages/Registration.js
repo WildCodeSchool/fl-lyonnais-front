@@ -20,17 +20,16 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet';
 
 const title = 'Inscription';
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   avatar: {
     margin: theme.spacing(1),
@@ -45,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SignUp() {
+export default function SignUp () {
   const [open, setOpen] = React.useState(false);
   const [openPasswordsNotEqual, setOpenPasswordsNotEqual] = useState(false);
   const [openErrorDuplicateEmail, setOpenErrorDuplicateEmail] = useState(false);

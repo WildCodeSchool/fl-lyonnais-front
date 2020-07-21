@@ -12,13 +12,13 @@ function DetailContact (props) {
           <p>{props.freelances.zip_code} - {props.freelances.city} - {props.freelances.country}</p>
         </div>
         <div className='Detailcontactemail'>
-          { props.freelances.phone_number && <a href={'tel:' + props.freelances.phone_number}><p>Téléphone</p></a> }
-          { props.freelances.email && <a href={'mailto:' + props.freelances.email}><p>Email</p></a> }
-          { props.freelances.url_web_site && <a href={props.freelances.url_web_site}><p>Site web</p></a> }
+          {props.freelances.phone_number && <a href={'tel:' + props.freelances.phone_number}><p>Téléphone</p></a>}
+          {props.freelances.email && <a href={'mailto:' + props.freelances.email}><p>Email</p></a>}
+          {props.freelances.url_web_site && <a href={props.freelances.url_web_site}><p>Site web</p></a>}
         </div>
         <div className='Detailcontactsiret'>
-          { props.freelances.siret && <p>SIRET : {props.freelances.siret}</p> }
-          { props.freelances.vat_number && <p>Numéro de TVA : {props.freelances.vat_number}</p> }
+          {props.freelances.siret && <p>SIRET : {props.freelances.siret}</p>}
+          {props.freelances.vat_number && <p>Numéro de TVA : {props.freelances.vat_number}</p>}
         </div>
       </div>
     </div>

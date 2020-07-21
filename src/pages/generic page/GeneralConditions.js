@@ -1,11 +1,10 @@
 import React from 'react';
 import './Home.scss';
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet';
 
 const title = 'Conditions générales';
 
-
-function GeneralConditions() {
+function GeneralConditions () {
   return (
     <div className='home'>
       <Helmet>

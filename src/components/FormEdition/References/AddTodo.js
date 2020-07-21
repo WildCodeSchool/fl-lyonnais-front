@@ -5,12 +5,12 @@ import EditionContext from '../EditionContext';
 const AddTodo = (props) => {
   const { addReference, newReferenceName, setNewReferenceName } = useContext(EditionContext);
 
-const handleInputKeyPress = (e) => {
-  const keycode = (e.keyCode ? e.keyCode : e.which);
-  if (keycode == '13') {
-      addReference()
-  }
-}
+  const handleInputKeyPress = (e) => {
+    const keycode = (e.keyCode ? e.keyCode : e.which);
+    if (keycode == '13') {
+      addReference();
+    }
+  };
   return (
     <Paper style={{ margin: 16, padding: 16, minWidth: '500px' }}>
       <Grid container>
