@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react'
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory, Link, useParams } from 'react-router-dom';
 import AuthContext from './AuthContext';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
@@ -68,18 +68,25 @@ export default function PrimarySearchAppBar (props) {
   const { search, updateSearch, currentPage, freelancesPerPage } = useContext(SearchContext);
   const { freelanceId } = useContext(EditionContext);
   const history = useHistory();
+  const { url } = useParams();
+
 
   // Traitement du champ de recherche
   const handleSubmitSearch = (event) => {
     // Mise en forme du paramètre search pour l'envoi par URL
-    let searchList = 'search[0]=';
-    if (search.length) {
-      searchList = queryString.stringify({ search: search.split(/\W+/) }, { arrayFormat: 'index', skipNull: true });
-    }
+    let urlQuery = queryString.stringify({
+      search: search.length ? search.split(/\W+/) : null,
+      page: 1,
+      flperpage: 20
+    }, { arrayFormat: 'index', skipNull: true });;
     event.preventDefault();
-    updateSearch(search);
-    history.push('/liste_freelance/page=' + currentPage + '&flperpage=' + freelancesPerPage + '&' + searchList)
+    history.push('/liste_freelance?' + urlQuery)
   };
+
+  useEffect(() => {
+    const searchParams = queryString.parse(url, {arrayFormat: 'index', skipNull: true})
+    console.log(url)
+  },[])
 
   const setTokenInLocalStorage = useContext(AuthContext).setToken;
   const setUserInLocalStorage = useContext(AuthContext).saveUser;
