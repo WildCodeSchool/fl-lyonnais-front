@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function InfosPro() {
+function InfosPro () {
   const classes = useStyles();
   const { average_daily_rate, url_web_site, vat_number, phone_number, handleAdressFormChange } = useContext(EditionContext);
 
@@ -61,6 +61,6 @@ function InfosPro() {
       </div>
     </>
   );
-};
+}
 
 export default InfosPro;

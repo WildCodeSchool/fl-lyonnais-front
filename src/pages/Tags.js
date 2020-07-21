@@ -1,31 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import API from '../API';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './Tags.scss';
+import SearchContext from '../components/Detail/SearchContext';
 
-function Tags() {
-  const [tags, setTags] = useState([])
-  const currentPage = 1
-  const freelancesPerPage = 20
+const queryString = require('query-string');
+
+function Tags () {
+  const [tags, setTags] = useState([]);
+  const { updateSearch } = useContext(SearchContext);
+  const history = useHistory();
 
   useEffect(() => {
     API.get('/tags/api/used')
       .then(response => response.data)
       .then(data => {
-        setTags(data.data);})
+        setTags(data.data);
+      });
   }, []);
+
+  const handleTagClick = (tag) => {
+    const urlQuery = queryString.stringify({
+      search: tag.name.split(' ')
+    }, { arrayFormat: 'index', skipNull: true });
+    const url = '/liste_freelance?' + urlQuery;
+    updateSearch(tag.name);
+    history.push(url);
+  };
 
   return (
     <div className='tags'>
-    <h1>Liste des Tags</h1>
-    <h2>Cliquez sur un tag pour obtenir la liste des fiches de freelance associés:</h2>
-    <div className='listingTags'>
-      
-      {tags.map(tag => <Link to={'/liste_freelance/page=' + currentPage + '&flperpage=' + freelancesPerPage + '&search[0]=' + tag.name}><li>{tag.name} ({tag.nb})</li></Link>)}
-    </div>
+      <h1>Liste des Tags</h1>
+      <h2>Cliquez sur un tag pour obtenir la liste des fiches de freelance associés:</h2>
+      <div className='listingTags'>
+
+        {tags.map(tag => {
+          return <li key={tag.id}><a onClick={() => handleTagClick(tag)}>{tag.name} ({tag.nb})</a></li>;
+        })}
+      </div>
     </div>
 
   );
-};
+}
 
 export default Tags;

@@ -44,42 +44,42 @@ const Apps = styled.div`
 
 function App () {
   const [token, setToken] = useState(localStorage.getItem('authToken'));
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user') || '{}'))
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user') || '{}'));
   const setTokenInLocalStorage = (token) => {
-    localStorage.setItem('authToken', token)
+    localStorage.setItem('authToken', token);
     setToken(token);
   };
 
   const saveUser = (user) => {
-    localStorage.setItem('user',JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
     setUser(user);
-  }
+  };
 
   return (
-    <AuthContext.Provider value={{user,saveUser, token: token, saveToken: (token) => (setTokenInLocalStorage(token)), setToken: setTokenInLocalStorage }}>
+    <AuthContext.Provider value={{ user, saveUser, token: token, saveToken: (token) => (setTokenInLocalStorage(token)), setToken: setTokenInLocalStorage }}>
       <EditionContextProvider>
         <SearchContextProvider>
-        <Apps>
-          <Router>
-            <Header />
-            <main style={{ flex: '1 0 auto' }}>
-              <Switch>
-                <Route exact path='/'><Home /></Route>
-                <Route path='/detail/:id' component={Detail} />
-                <Route path='/liste_freelance' component={Listing}/>
-                <Route path='/inscription'><Registration /></Route>
-                <Route path='/connexion'><SignIn /></Route>
-                <Route path='/compte'><Edition /></Route>
-                <Route path='/mentions_legales'><LegalDisclaimer /></Route>
-                <Route path='/reception_email'><MailInfo /></Route>
-                <Route path='/conditions_generales'><GeneralConditions /></Route>
-                <Route path='/tags'><Tags /></Route>
-              </Switch>
-            </main>
-            <Footer />
-            <Chat />
-          </Router>
-        </Apps>
+          <Apps>
+            <Router>
+              <Header />
+              <main style={{ flex: '1 0 auto' }}>
+                <Switch>
+                  <Route exact path='/'><Home /></Route>
+                  <Route path='/detail/:id' component={Detail} />
+                  <Route path='/liste_freelance' component={Listing} />
+                  <Route path='/inscription'><Registration /></Route>
+                  <Route path='/connexion'><SignIn /></Route>
+                  <Route path='/compte'><Edition /></Route>
+                  <Route path='/mentions_legales'><LegalDisclaimer /></Route>
+                  <Route path='/reception_email'><MailInfo /></Route>
+                  <Route path='/conditions_generales'><GeneralConditions /></Route>
+                  <Route path='/tags'><Tags /></Route>
+                </Switch>
+              </main>
+              <Footer />
+              <Chat />
+            </Router>
+          </Apps>
         </SearchContextProvider>
       </EditionContextProvider>
     </AuthContext.Provider>

@@ -3,9 +3,8 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import UploadButtons from './UploadButtons';
 import EditionContext from './EditionContext';
-import '../../pages/generic page/Home.scss'
-const url = process.env.REACT_APP_API_URL +'/'
-
+import '../../pages/generic page/Home.scss';
+const url = process.env.REACT_APP_API_URL + '/';
 
 export default function AddressForm () {
   const { url_photo, email, job_title, firstname, lastname, street, zip_code, city, bio, handleAdressFormChange } = useContext(EditionContext);
@@ -96,21 +95,21 @@ export default function AddressForm () {
         </Grid>
         <Grid item xs={12} fullWidth>
           <TextField
-            id="outlined-multiline-static"
-            label="Biographie"
+            id='outlined-multiline-static'
+            label='Biographie'
             name='bio'
             multiline
             fullWidth
             rows={4}
-            variant="outlined"
+            variant='outlined'
             value={bio}
             onChange={(e) => handleAdressFormChange(e)}
           />
         </Grid>
         <Grid item xs={12} sm={12} justify='center'>
-        <div className='RefPhoto'>
-              {url_photo && <img src={url + url_photo} alt={url_photo} />}
-            </div>
+          <div className='RefPhoto'>
+            {url_photo && <img src={url + url_photo} alt={url_photo} />}
+          </div>
         </Grid>
         <Grid item xs={12} sm={12} justify='center'>
           <UploadButtons />

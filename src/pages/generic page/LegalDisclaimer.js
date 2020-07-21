@@ -1,11 +1,9 @@
 import React from 'react';
 import './Home.scss';
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet';
 const title = 'Mentions légales';
 
-
-
-function LegalDisclaimer() {
+function LegalDisclaimer () {
   return (
     <div className='home'>
       <Helmet>

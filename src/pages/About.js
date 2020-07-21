@@ -1,10 +1,10 @@
 import React from 'react';
 import './Home.scss';
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet';
 
 const title = 'A propos de';
 
-function About() {
+function About () {
   return (
     <div className='home'>
       <Helmet>

@@ -13,8 +13,8 @@ import EditionContext from '../components/FormEdition/EditionContext';
 import API from '../API';
 import useStyles from '../components/FormEdition/useStyles';
 import { Helmet } from 'react-helmet';
-import { isFrenchMobile } from '../functionshelper';
-import { isValidURL } from '../functionshelper';
+import { isFrenchMobile, isValidURL } from '../functionshelper';
+
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -23,15 +23,13 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 
-
 const title = 'Edition de compte';
 
-
-//deux clé fl et user
+// deux clé fl et user
 // fl 0 si pas de compte éditer,
 
 const steps = ['Personnel', 'Entreprise', 'Compétences', 'Références'];
-function getStepContent(step, propsToPass) {
+function getStepContent (step, propsToPass) {
   switch (step) {
     case 0:
       return <AddressForm />;
@@ -46,12 +44,12 @@ function getStepContent(step, propsToPass) {
   }
 }
 
-export default function Edition(props) {
+export default function Edition (props) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const {setFreelanceId, freelanceId, errorModalMessage, modalOpen, showErrorMessage, closeModal, freelanceExists, firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags, sendFlDatasToFormEdition } = useContext(EditionContext);
+  const { setFreelanceId, freelanceId, errorModalMessage, modalOpen, showErrorMessage, closeModal, freelanceExists, firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags, sendFlDatasToFormEdition } = useContext(EditionContext);
   const payload = { firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags };
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
@@ -68,28 +66,26 @@ export default function Edition(props) {
   };
 
   useEffect(() => {
-    retrieveAccountInformations()
-  }, [])
+    retrieveAccountInformations();
+  }, []);
 
   const handleNext = (e) => {
     setActiveStep(activeStep + 1);
     if (e.target.innerText.toLowerCase() === 'enregistrer') {
-      let url = process.env.REACT_APP_API_URL + '/freelances/account';
+      const url = process.env.REACT_APP_API_URL + '/freelances/account';
       if (freelanceExists) {
         API.patch(url, payload)
           .then((res) => {
-            console.log(res.data)
+            console.log(res.data);
           })
           .catch(err => {
             console.error('error Parch FL', err);
           });
-      }
-
-      else {
+      } else {
         API.post(url, payload)
           .then((res) => {
-            console.log(res.data)
-            setFreelanceId(res.data.dataFreelance.id)
+            console.log(res.data);
+            setFreelanceId(res.data.dataFreelance.id);
           })
           .catch(err => {
             console.error(err);
@@ -98,19 +94,17 @@ export default function Edition(props) {
     }
     if ((e.target.innerText.toLowerCase() === 'suivant') && activeStep === 1) {
       if (!isFrenchMobile(phone_number) && phone_number) {
-        showErrorMessage('Merci de rentrer un numéro de téléphone valide')
+        showErrorMessage('Merci de rentrer un numéro de téléphone valide');
         setActiveStep(activeStep);
       }
     }
     if ((e.target.innerText.toLowerCase() === 'suivant') && activeStep === 1) {
       if (!isValidURL(url_web_site) && url_web_site) {
-        showErrorMessage('Merci de rentrer un url valide')
-        setActiveStep(activeStep)
+        showErrorMessage('Merci de rentrer un url valide');
+        setActiveStep(activeStep);
       }
     }
-
-  }
-
+  };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
@@ -120,7 +114,7 @@ export default function Edition(props) {
     <>
       {/* <h1>Gestion de votre compte</h1> */}
       <main className={classes.layout}>
-        <Paper className={classes.paper} >
+        <Paper className={classes.paper}>
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (
               <Step key={label}>
@@ -136,48 +130,48 @@ export default function Edition(props) {
                 </Typography>
               </>
             ) : (
-                <>
-                  <Helmet>
-                    <title>{title}</title>
-                  </Helmet>
-                  <Dialog
-                    fullScreen={fullScreen}
-                    open={modalOpen}
-                    onClose={closeModal}
-                    aria-labelledby='responsive-dialog-title'
-                  >
-                    <DialogTitle id='responsive-dialog-title'>Problème de saisie</DialogTitle>
-                    <DialogContent>
-                      <DialogContentText>
-                        {errorModalMessage}
-                     </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                      <Button onClick={closeModal} color='primary' autoFocus>
+              <>
+                <Helmet>
+                  <title>{title}</title>
+                </Helmet>
+                <Dialog
+                  fullScreen={fullScreen}
+                  open={modalOpen}
+                  onClose={closeModal}
+                  aria-labelledby='responsive-dialog-title'
+                >
+                  <DialogTitle id='responsive-dialog-title'>Problème de saisie</DialogTitle>
+                  <DialogContent>
+                    <DialogContentText>
+                      {errorModalMessage}
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={closeModal} color='primary' autoFocus>
                         Fermer
-        </Button>
-                    </DialogActions>
-                  </Dialog>
-                  {getStepContent(activeStep)}
-                  <div className={classes.buttons}>
-                    {activeStep !== 0 && (
-                      <Button onClick={handleBack} className={classes.button}>
-                        Retour
-                      </Button>
-                    )}
-                    <Button
-                      variant='contained'
-                      name='enregistrer'
-                      color='primary'
-                      onClick={handleNext}
-                      className={classes.button}
-                      style={{ backgroundColor: 'var(--red)' }}
-                    >
-                      {activeStep === steps.length - 1 ? 'Enregistrer' : 'Suivant'}
                     </Button>
-                  </div>
-                </>
-              )}
+                  </DialogActions>
+                </Dialog>
+                {getStepContent(activeStep)}
+                <div className={classes.buttons}>
+                  {activeStep !== 0 && (
+                    <Button onClick={handleBack} className={classes.button}>
+                        Retour
+                    </Button>
+                  )}
+                  <Button
+                    variant='contained'
+                    name='enregistrer'
+                    color='primary'
+                    onClick={handleNext}
+                    className={classes.button}
+                    style={{ backgroundColor: 'var(--red)' }}
+                  >
+                    {activeStep === steps.length - 1 ? 'Enregistrer' : 'Suivant'}
+                  </Button>
+                </div>
+              </>
+            )}
           </>
         </Paper>
       </main>

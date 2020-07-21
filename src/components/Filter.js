@@ -5,7 +5,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import API from '../API';
-import SearchContext from './Detail/SearchContext'
+import SearchContext from './Detail/SearchContext';
 
 const icon = <CheckBoxOutlineBlankIcon fontSize='small' />;
 const checkedIcon = <CheckBoxIcon fontSize='small' />;
@@ -22,11 +22,11 @@ export default function FilterTags (tagsUsed) {
   }, []);
 
   const handleAutocompleteChangeTags = (e, chosenTags) => {
-    handleTagsFilter(chosenTags)
+    handleTagsFilter(chosenTags);
   };
 
-  console.log('tags used (listing) : ', tagsUsed.tagsUsed)
-  console.log('tags : ', tags)
+  console.log('tags used (listing) : ', tagsUsed.tagsUsed);
+  console.log('tags : ', tags);
 
   return (
     <div className='filters'>
@@ -35,7 +35,7 @@ export default function FilterTags (tagsUsed) {
         id='checkboxes-tags'
         options={tags}
         disableCloseOnSelect
-        onChange={handleAutocompleteChangeTags} 
+        onChange={handleAutocompleteChangeTags}
         getOptionLabel={(option) => option.name}
         renderOption={(option, { selected }) => (
           <>
