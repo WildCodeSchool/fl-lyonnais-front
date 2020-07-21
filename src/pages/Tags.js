@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import API from '../API';
 import { Link } from 'react-router-dom';
 import './Tags.scss';
+import ButtonScrollTop from '../components/ButtonScrollTop';
 
 function Tags() {
   const [tags, setTags] = useState([])
@@ -23,6 +24,7 @@ function Tags() {
       
       {tags.map(tag => <Link to={'/liste_freelance/page=' + currentPage + '&flperpage=' + freelancesPerPage + '&search[0]=' + tag.name}><li>{tag.name} ({tag.nb})</li></Link>)}
     </div>
+    <ButtonScrollTop />
     </div>
 
   );
