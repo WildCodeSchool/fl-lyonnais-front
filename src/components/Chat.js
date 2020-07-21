@@ -12,7 +12,8 @@ class Chat extends React.Component {
       d.getElementsByTagName('head')[0].appendChild(s);
     })();
   }
-  render () {return (<></>);}
+
+  render () { return (<></>); }
 }
 
 export default Chat;

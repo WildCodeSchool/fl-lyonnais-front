@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import EditionContext from './EditionContext';
 import API from '../../API';
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,7 +63,7 @@ export default function Tags () {
             <TextField {...params} variant='filled' label='compétences' />
           )}
         />
-        <Button style={{ backgroundColor: 'var(--green)' }} onClick={ () => {window.$crisp.push(['do', 'chat:open'])}} variant='contained' color='primary' component='span' className={classes.button} >Il vous manque une compétence ?</Button>
+        <Button style={{ backgroundColor: 'var(--green)' }} onClick={() => { window.$crisp.push(['do', 'chat:open']); }} variant='contained' color='primary' component='span' className={classes.button}>Il vous manque une compétence ?</Button>
       </div>
     </>
   );

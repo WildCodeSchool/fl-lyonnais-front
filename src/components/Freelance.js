@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../pages/Listing.scss';
-import avatar from '../images/avatar.png'
+import avatar from '../images/avatar.png';
 
 const Freelance = (props) => {
-  const url = process.env.REACT_APP_API_URL +'/'
+  const url = process.env.REACT_APP_API_URL + '/';
 
   let photo = props.urlPhoto;
   if (props.urlPhoto) {
-    if (props.urlPhoto.substr(0,4) !== 'http') {
+    if (props.urlPhoto.substr(0, 4) !== 'http') {
       photo = url + props.urlPhoto;
     }
   } else {

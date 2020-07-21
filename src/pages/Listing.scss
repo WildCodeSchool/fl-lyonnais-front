@@ -4,7 +4,7 @@ src: url('../font/BalooBhaina2-Regular.ttf') format('truetype');
 }
 
 .Listing {
-  
+
     word-wrap: break-word;
     display: flex;
     flex-direction: column;
@@ -37,11 +37,11 @@ src: url('../font/BalooBhaina2-Regular.ttf') format('truetype');
 }
 
 .filters {
-  background-color: white; 
+  background-color: white;
   width: 85%;
-  max-width: 500px; 
-  border-radius: 5px; 
-  display: flex; 
+  max-width: 500px;
+  border-radius: 5px;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   margin: auto;
@@ -105,7 +105,7 @@ $font-main: 'balooBhaina2Regular', sans-serif;
         overflow: hidden;
         height: auto;
         border-radius: 5px;
-        
+
       .card-image::after {
         content: '';
         position: absolute;
@@ -139,7 +139,7 @@ $font-main: 'balooBhaina2Regular', sans-serif;
           text-overflow: ellipsis;
           padding: 0 6px;
         }
-      } 
+      }
 
         .card-title {
           p {
@@ -152,7 +152,7 @@ $font-main: 'balooBhaina2Regular', sans-serif;
             text-overflow: ellipsis;
             padding: 5px 8px;
           }
-        } 
+        }
 
         .card-name, .card-title {
           text-align: center;
@@ -178,7 +178,7 @@ $font-main: 'balooBhaina2Regular', sans-serif;
   margin: auto;
 }
 
-.page-link {
+.currentPage {
   position: relative;
   display: block;
   padding: .5rem .75rem;
@@ -188,6 +188,20 @@ $font-main: 'balooBhaina2Regular', sans-serif;
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #dee2e6;
+  cursor: pointer;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: .5rem .75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: gray;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  cursor: pointer;
 }
 /* ******************************************************************* */
 
@@ -201,13 +215,13 @@ $font-main: 'balooBhaina2Regular', sans-serif;
   .ListingFilter {
     flex-direction: row;
   }
-  
+
   .filters {
     width: 25%;
     min-width: 400px;
     margin: 20px 0 0 30px;
     justify-content: center;
     height: 300px;
-    
+
   }
 }

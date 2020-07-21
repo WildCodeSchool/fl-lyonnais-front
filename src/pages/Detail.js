@@ -9,34 +9,30 @@ import AuthContext from '../components/AuthContext';
 import Carousel from '../components/Detail/Carousel';
 import EditionContext from '../components/FormEdition/EditionContext';
 
-
-
-
-
-function Detail(props) {
-
-  const [freelance, setFreelance] = useState({})
-  const [tags, setTags] = useState([])
-  const [references, setReferences] = useState([])
-  const [is_active, setIsActive] = useState()
+function Detail (props) {
+  const [freelance, setFreelance] = useState({});
+  const [tags, setTags] = useState([]);
+  const [references, setReferences] = useState([]);
+  const [is_active, setIsActive] = useState();
   const { id } = useParams();
-  const { freelanceId } = useContext(EditionContext)
+  const { freelanceId } = useContext(EditionContext);
 
   useEffect(() => {
     API.get('/freelances/' + id)
       .then(response => response.data)
       .then(data => {
-        setFreelance(data.freelance)
+        setFreelance(data.freelance);
         setTags(data.tags);
         setReferences(data.references);
-        setIsActive(data.freelance.is_active)})
+        setIsActive(data.freelance.is_active);
+      });
   }, [id]);
 
-  const { user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   return (
 
     <div>
-      {(is_active === 1 || is_active === 0) && ((user && user.freelance_id == id) || ((freelanceId == id)))  && <Buttons id={id} is_active={is_active} />}
+      {(is_active === 1 || is_active === 0) && ((user && user.freelance_id == id) || ((freelanceId == id))) && <Buttons id={id} is_active={is_active} />}
       <h1>{freelance.firstname} {freelance.lastname}</h1>
       <div className='Detail'>
         <DetailBio freelances={freelance} />
@@ -49,6 +45,6 @@ function Detail(props) {
     </div>
 
   );
-};
+}
 
 export default Detail;

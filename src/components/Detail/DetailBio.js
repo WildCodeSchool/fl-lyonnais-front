@@ -1,11 +1,11 @@
 import React from 'react';
 import avatar from '../../images/avatar.png';
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet';
 
 const title = 'Détail de votre profil';
 
-function detailBio(props) {
-  const url = process.env.REACT_APP_API_URL + '/'
+function detailBio (props) {
+  const url = process.env.REACT_APP_API_URL + '/';
 
   let photo = props.freelances.url_photo;
   if (props.freelances.url_photo) {
@@ -19,7 +19,7 @@ function detailBio(props) {
   return (
     <div className='detail-bio-container'>
       <Helmet>
-        <title>{props.freelances.firstname +' ' + props.freelances.lastname + ' - Annuaire Freelances Lyonnais'}</title>
+        <title>{props.freelances.firstname + ' ' + props.freelances.lastname + ' - Annuaire Freelances Lyonnais'}</title>
       </Helmet>
       <div className='avatar-container'>
         <img src={photo} alt={`${props.freelances.lastname}`} className='detailPhoto' />
