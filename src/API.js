@@ -13,4 +13,15 @@ const placeTokenInRequestHeaders = req => {
 
 API.interceptors.request.use(placeTokenInRequestHeaders);
 
+const logoutIfUnauthorizedOrForbidden = error => {
+  if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+    localStorage.setItem('authToken', '')
+    window.location.replace('/connexion')
+  } else {
+    return Promise.reject(error);
+  }
+}
+
+API.interceptors.response.use(res => res, logoutIfUnauthorizedOrForbidden);
+
 export default API;
