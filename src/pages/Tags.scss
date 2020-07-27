@@ -52,35 +52,29 @@ body {
 
 @media screen and (min-width: 1024px) {
 .listingTags {
-
-    column-count:4;
-    text-align: left;
-    margin: 50px 50px 50px 150px;
-    column-gap: 40px;
-    font-size: larger;
+  column-count:4;
+  text-align: left;
+  margin: 50px 50px 50px 150px;
+  column-gap: 40px;
+  font-size: larger;
 }
 
 .tags h1 {
-
-    letter-spacing: 2px;
-    position: relative;
-    text-align: center;
-    color: var(--blue);
-
+  letter-spacing: 2px;
+  position: relative;
+  text-align: center;
+  color: var(--blue);
   }
 
   .tags h2 {
-
-      text-align: left;
-      margin-left: 150px;
-      margin-top: 80px;
+    text-align: left;
+    margin-left: 150px;
+    margin-top: 80px;
   }
 
-li {
-    
-list-style: none;
-padding: 10px;
+  .tags li {
+    list-style: none;
+    padding: 10px;
+  }
+}
 
-}
-}
-   
