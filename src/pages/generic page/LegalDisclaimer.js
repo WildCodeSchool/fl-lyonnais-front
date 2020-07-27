@@ -14,7 +14,7 @@ function LegalDisclaimer () {
         <h1>Mentions légales</h1>
 
         <div className='paragraphe'>
-          <h3>Dénommination :</h3>
+          <h3>Dénomination :</h3>
           <p>Freelances Lyonnais</p>
         </div>
 
