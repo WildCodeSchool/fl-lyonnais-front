@@ -15,7 +15,7 @@ function About () {
         <h1>A propos</h1>
 
         <div className='paragraphe'>
-          <h3>Dénommination :</h3>
+          <h3>Dénomination :</h3>
           <p>Freelances Lyonnais</p>
         </div>
 
