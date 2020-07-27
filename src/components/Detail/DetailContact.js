@@ -9,10 +9,10 @@ function DetailContact (props) {
         <div className='detailcompany'>
           <p>{props.freelances.company}</p>
           <p>{props.freelances.street}</p>
-          <p>{props.freelances.zip_code} - {props.freelances.city} - {props.freelances.country}</p>
+          <p>{props.freelances.zip_code} {props.freelances.city} {props.freelances.country}</p>
         </div>
         <div className='Detailcontactemail'>
-          {props.freelances.phone_number && <a href={'tel:' + props.freelances.phone_number}><p>Téléphone</p></a>}
+          {props.freelances.phone_number && <a href={'tel:' + props.freelances.phone_number}><p>Tél : {props.freelances.phone_number}</p></a>}
           {props.freelances.email && <a href={'mailto:' + props.freelances.email}><p>Email</p></a>}
           {props.freelances.url_web_site && <a href={props.freelances.url_web_site}><p>Site web</p></a>}
         </div>
