@@ -22,6 +22,7 @@ import SearchContextProvider from './components/Detail/SearchContextProvider';
 import Chat from './components/Chat';
 import GeneralConditions from './pages/generic page/GeneralConditions';
 import Tags from './pages/Tags';
+import AccountDeleted from './pages/AccountDeleted';
 
 const Apps = styled.div`
     text-align: center;
@@ -72,6 +73,7 @@ function App () {
                   <Route path='/compte'><Edition /></Route>
                   <Route path='/mentions_legales'><LegalDisclaimer /></Route>
                   <Route path='/reception_email'><MailInfo /></Route>
+                  <Route path='/account_deleted'><AccountDeleted /></Route>
                   <Route path='/conditions_generales'><GeneralConditions /></Route>
                   <Route path='/tags'><Tags /></Route>
                 </Switch>
