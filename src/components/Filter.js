@@ -25,9 +25,6 @@ export default function FilterTags (tagsUsed) {
     handleTagsFilter(chosenTags);
   };
 
-  console.log('tags used (listing) : ', tagsUsed.tagsUsed);
-  console.log('tags : ', tags);
-
   return (
     <div className='filters'>
       <Autocomplete
