@@ -125,7 +125,6 @@ export default function SignUp () {
         <title>{title}</title>
       </Helmet>
       <Container component='main' maxWidth='xs'>
-        <CssBaseline />
         <div className={classes.paper}>
           <Avatar style={{ backgroundColor: 'var(--red)' }} className={classes.avatar}>
             <LockOutlinedIcon />
