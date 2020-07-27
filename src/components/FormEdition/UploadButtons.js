@@ -33,7 +33,6 @@ export default function UploadButtons () {
       }
     })
       .then(res => {
-        console.log('Photo de Profil res.data', res.data);
         setUrlPhoto(res.data.image); // image :url 'uploads/
       }
       )
