@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import '../../pages/Detail.scss';
 import { generateKey } from '../../functionshelper';
-import { Link } from 'react-router-dom';
+import SearchContext from './SearchContext'
+const queryString = require('query-string');
 
-function detailSkills (props) {
-  const currentPage = 1;
-  const freelancesPerPage = 20;
+
+function DetailSkills (props) {
+  const { updateSearch } = useContext(SearchContext);
+  const history = useHistory();
+
+  const handleTagClick = (tag) => {
+    const urlQuery = queryString.stringify({
+      search: tag.name.split(' ')
+    }, { arrayFormat: 'index', skipNull: true });
+    const url = '/liste_freelance?' + urlQuery;
+    updateSearch(tag.name);
+    history.push(url);
+  };
+
   return (
     <div>
       <h2 className='detailh2'>Compétences</h2>
@@ -13,7 +26,7 @@ function detailSkills (props) {
         <div className='mainSkills'>
           <ul>
             {props.tags.map(tag => {
-              return (<Link to={'/liste_freelance/page=' + currentPage + '&flperpage=' + freelancesPerPage + '&search[0]=' + tag.name}><li key={generateKey(tag.id)}>{tag.name}</li></Link>);
+              return (<li key={generateKey(tag.id)}><a onClick={() => handleTagClick(tag)}>{tag.name}</a></li>);
             })}
           </ul>
         </div>
@@ -22,4 +35,4 @@ function detailSkills (props) {
     </div>
   );
 }
-export default detailSkills;
+export default DetailSkills;

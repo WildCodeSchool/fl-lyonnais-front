@@ -3,9 +3,7 @@ import './Home.scss';
 import { Helmet } from 'react-helmet';
 const title = 'Mentions légales';
 
-
-
-function LegalDisclaimer() {
+function LegalDisclaimer () {
   return (
     <div className='home'>
       <Helmet>
@@ -16,12 +14,13 @@ function LegalDisclaimer() {
         <h1>Mentions légales</h1>
 
         <div className='paragraphe'>
-          <h3>Dénommination :</h3>
+          <h3>Dénomination :</h3>
           <p>Freelances Lyonnais</p>
         </div>
 
         <div className='paragraphe'>
           <h3>Siège Social :</h3>
+          <p>WebAnyOne SAS</p>
           <p>18-20 rue Tronchet 69006 Lyon</p>
           <p>Immatriculée au RCS de LYON : N° 880 240 130 00018</p>
           <p>Numéro individuel d'identification fiscale : FR65880240130</p>

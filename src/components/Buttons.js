@@ -29,7 +29,7 @@ export default function Buttons (props) {
       .then((res) => {
         setUserInLocalStorage('{}');
         setTokenInLocalStorage('');
-        history.push('/connexion');
+        history.push('/account_deleted');
       })
       .catch(err => {
         console.error(err);

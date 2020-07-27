@@ -47,7 +47,7 @@
   flex-direction: column;
   justify-content: flex-start;
   border-radius: 5px;
- 
+
 }
 
 .info-container {
@@ -150,9 +150,9 @@
   text-align: center;
   margin: 0 0 0 10px;
   width: 120px;
-  white-space: nowrap; 
+  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
 }
 
 /* COMPETENCES */
@@ -165,6 +165,7 @@
 
 .mainSkills {
   height: 345px;
+  overflow: scroll;
 }
 
 .mainSkills ul {
@@ -174,7 +175,7 @@
 #detailskillstjm {
   margin-block-end: 0;
   position: absolute;
-  bottom: 0;
+  /* bottom: 0px; */
   left: 0;
   width: 100%;
   height: 50px;
@@ -238,58 +239,58 @@ a {
 
 }
 
-  .info-container {
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-start;
-    align-items:flex-start;
-    margin: 20px;
-  }
+.info-container {
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:flex-start;
+  margin: 20px;
+}
 
-  /* MEDIA QUERIES REFERENCES*/
+/* MEDIA QUERIES REFERENCES*/
 
-  .carousel-container::after {
-    display:none;
-  }
-  .carousel {
-    overflow-x: visible;
-    overflow-y: visible;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 20px 100px;
-  }
+.carousel-container::after {
+  display:none;
+}
+.carousel {
+  overflow-x: visible;
+  overflow-y: visible;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px 100px;
+}
 
-  .carousel img {
-    width: 120px;
-    height: 120px;
-    margin: 13px;
-  }
+.carousel img {
+  width: 120px;
+  height: 120px;
+  margin: 13px;
+}
 
-  /* MEDIA QUERIES COMPETENCES */
+/* MEDIA QUERIES COMPETENCES */
 
-  .detailskills {
-    margin: auto;
-    width: 300px;
-    height: 375px;
-    position:relative;
-  }
+.detailskills {
+  margin: auto;
+  width: 300px;
+  height: 375px;
+  position:relative;
+}
 
 
-  /* MEDIA QUERIES CONTACT */
+/* MEDIA QUERIES CONTACT */
 
-  .detailcontact {
-    margin: auto;
-    width: 300px;
-    height: 375px;
-    display: flex;
-    flex-direction: column;
-  }
+.detailcontact {
+  margin: auto;
+  width: 300px;
+  height: 375px;
+  display: flex;
+  flex-direction: column;
+}
 
-  /* MEDIA QUERIES COMPETENCES + CONTACT */
+/* MEDIA QUERIES COMPETENCES + CONTACT */
 
-  .responsiveSkillsContact {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-  }
+.responsiveSkillsContact {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}

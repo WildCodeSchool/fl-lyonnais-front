@@ -140,7 +140,6 @@ class EditionContextProvider extends React.Component {
     this.setState({ ...this.state, [targetProp]: e.target.value });
   }
 
-
   addIdTagIdsChosen = (id) => {
     this.setState({ idTagList: id });
   }

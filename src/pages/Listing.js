@@ -23,7 +23,6 @@ const Listing = (props) => {
     const urlQuery = queryString.stringify({
       ...searchParams, page: pageNumber
     }, { arrayFormat: 'index', skipNull: true });
-    console.log('/liste_freelance?' + urlQuery);
     // history.push('/liste_freelanc?' + urlQuery)
     history.push('/liste_freelance?' + urlQuery);
   };

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -14,7 +15,6 @@ import API from '../API';
 import useStyles from '../components/FormEdition/useStyles';
 import { Helmet } from 'react-helmet';
 import { isFrenchMobile, isValidURL } from '../functionshelper';
-
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -22,6 +22,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
+import AuthContext from '../components/AuthContext';
+
 
 const title = 'Edition de compte';
 
@@ -29,7 +31,7 @@ const title = 'Edition de compte';
 // fl 0 si pas de compte éditer,
 
 const steps = ['Personnel', 'Entreprise', 'Compétences', 'Références'];
-function getStepContent (step, propsToPass) {
+function getStepContent(step, propsToPass) {
   switch (step) {
     case 0:
       return <AddressForm />;
@@ -44,23 +46,21 @@ function getStepContent (step, propsToPass) {
   }
 }
 
-export default function Edition (props) {
+export default function Edition(props) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const { setFreelanceId, freelanceId, errorModalMessage, modalOpen, showErrorMessage, closeModal, freelanceExists, firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags, sendFlDatasToFormEdition } = useContext(EditionContext);
   const payload = { firstname, lastname, email, url_photo, phone_number, average_daily_rate, url_web_site, job_title, bio, vat_number, last_modification_date, is_active, street, zip_code, city, references, chosenTags };
-  const [open, setOpen] = React.useState(false);
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const { user } = useContext(AuthContext);
+  const isConnected = !!useContext(AuthContext).token;
+
 
   const retrieveAccountInformations = () => {
     API.get('/freelances/account')
       .then(res => res.data)
       .then(data => {
-        console.log(data);
         sendFlDatasToFormEdition(data);
       });
   };
@@ -76,7 +76,6 @@ export default function Edition (props) {
       if (freelanceExists) {
         API.patch(url, payload)
           .then((res) => {
-            console.log(res.data);
           })
           .catch(err => {
             console.error('error Parch FL', err);
@@ -84,7 +83,7 @@ export default function Edition (props) {
       } else {
         API.post(url, payload)
           .then((res) => {
-            console.log(res.data);
+            console.log(res.data.data)
             setFreelanceId(res.data.dataFreelance.id);
           })
           .catch(err => {
@@ -110,15 +109,28 @@ export default function Edition (props) {
     setActiveStep(activeStep - 1);
   };
 
+  const handleStep = (e) => {
+    // setActiveStep(activeStep)
+    const stepperClicked = e.target.textContent;
+
+    for (let i = 0; i < steps.length; i++) {
+      if (stepperClicked == steps[i]) {
+        if (activeStep !== i) {
+          setActiveStep(i);
+        }
+      }
+    }
+  }
+
   return (
     <>
       {/* <h1>Gestion de votre compte</h1> */}
       <main className={classes.layout}>
         <Paper className={classes.paper}>
-          <Stepper activeStep={activeStep} className={classes.stepper}>
+          <Stepper activeStep={activeStep} className={classes.stepper} >
             {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
+              <Step key={label} >
+                <StepLabel style={{ cursor: "pointer" }} onClick={handleStep}>{label}</StepLabel>
               </Step>
             ))}
           </Stepper>
@@ -128,7 +140,9 @@ export default function Edition (props) {
                 <Typography variant='h5' gutterBottom>
                   Vos informations ont bien été prises en compte
                 </Typography>
+                {(isConnected && (user.freelance_id || freelanceId)) && <Button style={{textDecoration: 'none', backgroundColor: 'var(--green)' }}  variant='contained' color='primary' component='span' className={classes.button}><Link style={{textDecoration: 'none', color: 'white'}}  to={user.freelance_id ? `/detail/${user.freelance_id}` : `/detail/${freelanceId}`}>Mon Compte</Link></Button>}
               </>
+
             ) : (
               <>
                 <Helmet>
@@ -148,7 +162,7 @@ export default function Edition (props) {
                   </DialogContent>
                   <DialogActions>
                     <Button onClick={closeModal} color='primary' autoFocus>
-                        Fermer
+                      Fermer
                     </Button>
                   </DialogActions>
                 </Dialog>
@@ -156,7 +170,7 @@ export default function Edition (props) {
                 <div className={classes.buttons}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} className={classes.button}>
-                        Retour
+                      Retour
                     </Button>
                   )}
                   <Button

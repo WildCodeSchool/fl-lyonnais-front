@@ -4,8 +4,7 @@ import { Helmet } from 'react-helmet';
 
 const title = 'Conditions générales';
 
-
-function GeneralConditions() {
+function GeneralConditions () {
   return (
     <div className='home'>
       <Helmet>
