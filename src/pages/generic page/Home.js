@@ -1,7 +1,10 @@
 import React from 'react';
-import './Home.scss';
 import logo from './logo.png';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import './Home.scss';
 
 const title = 'Accueil Freelances Lyonnais';
 
@@ -18,7 +21,10 @@ function Home () {
 
         <div className='paragraphe'>
           <h3>Qui se cache derrière Les Freelances Lyonnais ? </h3>
-          <p>Si vous êtes arrivé.e.s sur cette page, c’est que vous en connaissez au moins un.e :) Vous avez apprécié la qualité de son travail, sa proximité géographique, et sa disponibilité. Imaginez maintenant qu’on vous dise qu’on connaît 1800 autres professionnel.le.s comme ça ?</p>
+          <p style={{ marginTop: '16px', marginBottom: '0' }}>Si vous êtes arrivé.e.s sur cette page, c’est que vous en connaissez au moins un.e :) Vous avez apprécié la qualité de son travail, sa proximité géographique, et sa disponibilité. Imaginez maintenant qu’on vous dise qu’on connaît 1800 autres professionnel.le.s comme ça ?</p>
+          <Button variant="contained" color='primary' style={{ backgroundColor: '#1E2CFB' }}>
+            <Link style={{ color: 'white' }} to='/liste_freelance/'>Les Freelances Lyonnais</Link>
+          </Button>
         </div>
 
         <div className='paragraphe'>
