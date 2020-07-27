@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SignUp() {
+export default function SignUp () {
   const [open, setOpen] = React.useState(false);
   const [openPasswordsNotEqual, setOpenPasswordsNotEqual] = useState(false);
   const [openErrorDuplicateEmail, setOpenErrorDuplicateEmail] = useState(false);
@@ -241,7 +241,7 @@ export default function SignUp() {
             <Grid container justify='flex-end'>
               <Grid item>
                 <Link to='/connexion' variant='body2'>
-                  Vous avez déjà un compte? Se connecter
+                  Vous avez déjà un compte ? Se connecter
                 </Link>
               </Grid>
             </Grid>

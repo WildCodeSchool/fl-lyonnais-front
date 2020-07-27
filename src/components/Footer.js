@@ -13,6 +13,7 @@ export default function LabelBottomNavigation () {
   const pathMap = [
     '/',
     '/liste_freelance/',
+
     '/mentions_legales'
   ];
 

@@ -4,9 +4,7 @@ import { Helmet } from 'react-helmet';
 
 const title = 'A propos de';
 
-const title = 'A propos de';
-
-function About() {
+function About () {
   return (
     <div className='home'>
       <Helmet>
