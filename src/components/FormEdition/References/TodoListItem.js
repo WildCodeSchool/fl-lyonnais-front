@@ -96,8 +96,6 @@ const TodoListItem = (props) => {
                   </div>
               }
             />
-              
-
             <Grid  >
               <TextField
                 autoComplete='fname'

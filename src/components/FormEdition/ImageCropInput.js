@@ -1,7 +1,6 @@
 import React from 'react'
 import Cropper from 'react-easy-crop'
 import { getOrientation } from 'get-orientation/browser'
-//import './ImageCropInput.css'
 import Modal from 'react-modal'
 
 const ORIENTATION_TO_ANGLE = {

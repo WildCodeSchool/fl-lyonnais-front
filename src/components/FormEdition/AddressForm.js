@@ -107,7 +107,7 @@ export default function AddressForm () {
           <TextField
             id='address1'
             name='street'
-            label='Rue'
+            label='Numéro et Rue'
             fullWidth
             autoComplete='shipping address-line1'
             value={street}

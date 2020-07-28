@@ -12,17 +12,12 @@ const AddTodo = (props) => {
     }
   };
 
-
   return (
     <Paper style={{ margin: 16, padding: 16 }}>
       <Grid container>
         <Grid xs={9} md={11} item style={{ paddingRight: 16, maxWidth: 'calc(100% - 90px)' }}>
           <TextField
             placeholder='Nom du projet'
-            // value={props.inputValueName}
-            // onChange={props.onInputChangeName}
-            // onKeyPress={handleInputKeyPress}
-
             value={newReferenceName}
             onChange={(e) => setNewReferenceName(e.target.value)}
             onKeyPress={handleInputKeyPress}
@@ -45,7 +40,6 @@ const AddTodo = (props) => {
               color='primary'
               variant='outlined'
               style={{ backgroundColor: 'grey', color: 'white' }}
-              // onClick={() => { addReference(props.inputValueName); }}
             >
               Ajouter
             </Button>}

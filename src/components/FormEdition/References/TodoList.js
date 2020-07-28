@@ -14,7 +14,6 @@ const TodoList = (props) => {
               <TodoListItem
                 reference={reference}
                 key={references.id}
-                // divider={idx !== references.length - 1}
                 onButtonClick={() => props.onItemRemove(idx)}
                 onCheckBoxToggle={() => props.onItemCheck(idx)}
               />
