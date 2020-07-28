@@ -12,7 +12,9 @@ import EditionContext from '../components/FormEdition/EditionContext';
 import SearchContext from './Detail/SearchContext';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
+import '../pages/generic page/Home.scss';
 const queryString = require('query-string');
+
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -138,7 +140,7 @@ export default function PrimarySearchAppBar (props) {
             </div>
           </form>
           <div className={classes.grow} />
-          <div>
+          <div className='notBurger'>
             <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/liste_freelance/'>Freelances</Link></Button>
             <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/tags'>Tags</Link></Button>
             {(isConnected && (user.freelance_id || freelanceId)) && <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to={user.freelance_id ? `/detail/${user.freelance_id}` : `/detail/${freelanceId}`}>Mon Compte</Link></Button>}
@@ -149,7 +151,7 @@ export default function PrimarySearchAppBar (props) {
                 <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Connexion</Link></Button>
               </>}
           </div>
-          <div>
+          <div className='burger'>
             <Button style={{ color: 'var(--white)' }} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
               <MenuIcon/>
             </Button>
@@ -159,8 +161,9 @@ export default function PrimarySearchAppBar (props) {
               keepMounted
               open={Boolean(anchorEl)}
               onClose={handleClose}
+              style={{top: 45}}
             >
-              <div>
+              <div className='flexBurger'>
                 <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/liste_freelance/'>Freelances</Link></Button>
                 <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/tags'>Tags</Link></Button>
                 {(isConnected && (user.freelance_id || freelanceId)) && <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to={user.freelance_id ? `/detail/${user.freelance_id}` : `/detail/${freelanceId}`}>Mon Compte</Link></Button>}

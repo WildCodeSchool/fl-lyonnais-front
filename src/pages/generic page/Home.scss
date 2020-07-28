@@ -86,7 +86,14 @@ h1 {
   text-align: center;
 }
 
+.notBurger {
+  display: none;
+}
 
+.flexBurger {
+  display: flex;
+  flex-direction: column;
+}
 
 //////////////          MEDIA QUERIE          /////////////////////////
 
@@ -108,5 +115,13 @@ h1 {
   .homepage {
     width: calc(90% - 60px);
     margin-bottom: 10vh;
+  }
+
+  .burger {
+    display: none;
+  }
+
+  .notBurger {
+  display: block;
   }
 }
