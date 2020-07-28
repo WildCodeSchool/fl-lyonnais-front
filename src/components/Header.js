@@ -161,7 +161,7 @@ export default function PrimarySearchAppBar (props) {
               keepMounted
               open={Boolean(anchorEl)}
               onClose={handleClose}
-              style={{top: 45}}
+              style={{top: 30}}
             >
               <div className='flexBurger'>
                 <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/liste_freelance/'>Freelances</Link></Button>
