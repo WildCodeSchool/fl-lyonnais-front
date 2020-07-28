@@ -22,11 +22,14 @@ const useStyles = makeStyles((theme) => ({
       marginTop: theme.spacing(6),
       marginBottom: theme.spacing(6),
       padding: theme.spacing(3),
-      minWidth: '500px'
+      minWidth: '500px' 
     }
   },
   stepper: {
-    padding: theme.spacing(3, 0, 5)
+    padding: theme.spacing(3, 0, 5),
+    display: 'flex',
+    justifyContent: 'flex- start',
+    flexWrap: 'wrap',
   },
   buttons: {
     display: 'flex',

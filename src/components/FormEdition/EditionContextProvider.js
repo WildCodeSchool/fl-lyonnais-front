@@ -88,11 +88,6 @@ class EditionContextProvider extends React.Component {
     });
   }
 
-  handleUrlLink = (urlValueAdded) => {
-    const urlReferenceListAdded = this.state.urlReferenceList.slice();
-    urlReferenceListAdded.push(urlValueAdded);
-    this.setState({ urlReferenceList: urlReferenceListAdded });
-  }
 
   handleNameReferenceList = (e) => {
     const projectNameList = this.state.nameReferenceList.slice();

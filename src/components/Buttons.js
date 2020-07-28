@@ -13,6 +13,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import AuthContext from './AuthContext';
+import '../pages/Detail.scss';
+
+
 
 export default function Buttons (props) {
   const useStyles = makeStyles((theme) => ({ button: { margin: theme.spacing(1) } }));
@@ -66,45 +69,47 @@ export default function Buttons (props) {
           className={classes.button}
           startIcon={<DeleteIcon />}
           onClick={handleClickOpen}
+          className='buttonManagement'
         >
         Supprimer
         </Button>
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          aria-labelledby='alert-dialog-title'
-          aria-describedby='alert-dialog-description'
-        >
-          <DialogTitle id='alert-dialog-title'>Confirmation de la suppression</DialogTitle>
-          <DialogContent>
-            <DialogContentText id='alert-dialog-description'>
-            Etes-vous sûr de vouloir supprimer votre compte ?
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color='primary'>
-            Annuler
-            </Button>
-            <Button onClick={handleDelete} color='primary' autoFocus>
-            Oui, Supprimer
-            </Button>
-          </DialogActions>
-        </Dialog>
-
         <Button
           variant='contained'
           color='primary'
           className={classes.button}
           startIcon={<EditIcon />}
+          className='buttonManagement'
         >
           <Link style={{ color: 'var(--white)' }} to='/compte'>Éditer</Link>
         </Button>
         <FormControlLabel
-          control={<Switch checked={state.checkedA} onChange={handleChange} name='checkedA' />}
-          label='Désactiver / Activer'
-          labelPlacement='top'
+          control={<Switch checked={state.checkedA} onChange={handleChange} name="checkedA"/>}
+          label="Désactiver / Activer"
+          labelPlacement="top"
+          className='buttonManagement'
         />
       </div>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Confirmation de la suppression"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Etes-vous sûr de vouloir supprimer votre compte ?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Annuler
+          </Button>
+          <Button onClick={handleDelete} color="primary" autoFocus>
+            Oui, Supprimer
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

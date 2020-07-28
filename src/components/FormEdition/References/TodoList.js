@@ -8,7 +8,7 @@ const TodoList = (props) => {
   return (
     <>
       {references.length > 0 && (
-        <Paper style={{ margin: 16, minWidth: '500px' }}>
+        <Paper style={{ margin: 16 }}>
           <List style={{ overflow: 'auto', display: 'flex', flexWrap: 'wrap-reverse', justifyContent: 'center' }}>
             {references.map((reference, idx) => (
               <TodoListItem
