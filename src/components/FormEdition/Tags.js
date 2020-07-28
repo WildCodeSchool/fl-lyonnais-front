@@ -13,10 +13,6 @@ const useStyles = makeStyles((theme) => ({
     '& > * + *': {
       marginTop: theme.spacing(3)
     },
-<<<<<<< HEAD
-    // height: 300
-=======
->>>>>>> 817e4f3354c2fea285f7c3ef35307b108aba2786
   }
 }));
 
