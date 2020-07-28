@@ -159,7 +159,7 @@ export default function AddressForm () {
               <div className={classes.root}>
               <input accept='image/*' className={classes.input} id='contained-button-file' multiple type='file' onChange={onChange} />
               <label htmlFor='contained-button-file'>
-                <Button style={{ backgroundColor: 'var(--green)' }} variant='contained' color='primary' component='span' className={classes.button} startIcon={<CloudUploadIcon />}>Photo références</Button>
+                <Button style={{ backgroundColor: 'var(--green)' }} variant='contained' color='primary' component='span' className={classes.button} startIcon={<CloudUploadIcon />}>Photo de profil</Button>
               </label>
             </div>}
               cropSize={ 100, 170 }
