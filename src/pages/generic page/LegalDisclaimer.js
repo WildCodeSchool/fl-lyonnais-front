@@ -38,6 +38,15 @@ function LegalDisclaimer () {
           <p>Hébergeur du site internet : OVH, 2 rue Kellermann, 59100 Roubaix, France</p>
           <p>Directeur de la publication : Pierre Ammeloot</p>
         </div>
+
+        <div className='paragraphe'>
+          <h3>Développement du site par les élèves de la Wild Code School de Lyon :</h3>
+            <p>Ikram Beldjilali : <a href='https://github.com/ikramb-ctrl'>Github</a> / <a href='https://www.linkedin.com/in/ikram-beldjilali-298a501a2/'>Linkedin</a></p>
+            <p>Christophe Crébier : <a href='https://github.com/Rincevent42'>Github</a> / <a href='https://www.linkedin.com/in/christophe-crebier/'>Linkedin</a></p>
+            <p>Armin Saad : <a href='https://github.com/wdwcs'>Github</a> / <a href='https://www.linkedin.com/in/arminsaad/'>Linkedin</a></p>
+            <p>Pascal Pereira : <a href='https://github.com/Pascal-Pereira'>Github</a> / <a href='https://www.linkedin.com/in/pascal-pereira/'>Linkedin</a></p>
+            <p>Florent Houdeillé : <a href='https://github.com/florenthoudeille'>Github</a> / <a href='https://www.linkedin.com/in/florenthoudeille/'>Linkedin</a></p>
+        </div>
       </main>
     </div>
   );
