@@ -8,3 +8,7 @@
 .buttons {
   text-align: center;
 }
+
+.ReactModal__Overlay {
+  z-index: 2000 !important;
+}

@@ -23,6 +23,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import AuthContext from '../components/AuthContext';
+import '../components/FormEdition/ImageCropInput.css'
 
 const title = 'Edition de compte';
 
