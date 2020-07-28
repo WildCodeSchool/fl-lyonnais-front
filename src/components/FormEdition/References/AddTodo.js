@@ -5,6 +5,13 @@ import EditionContext from '../EditionContext';
 const AddTodo = (props) => {
   const { addReference } = useContext(EditionContext);
 
+  const handleInputKeyPress = (e) => {
+    const keycode = (e.keyCode ? e.keyCode : e.which);
+    if (keycode == '13') {
+      addReference();
+    }
+  }
+
   return (
     <Paper style={{ margin: 16, padding: 16 }}>
       <Grid container>
@@ -13,7 +20,8 @@ const AddTodo = (props) => {
             placeholder='Nom du projet'
             value={props.inputValueName}
             onChange={props.onInputChangeName}
-            onKeyPress={props.onInputKeyPressName}
+            onKeyPress={handleInputKeyPress}
+
             fullWidth
           />
         </Grid>
