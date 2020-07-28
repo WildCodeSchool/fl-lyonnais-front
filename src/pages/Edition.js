@@ -23,12 +23,9 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import AuthContext from '../components/AuthContext';
-
+import '../components/FormEdition/ImageCropInput.css'
 
 const title = 'Edition de compte';
-
-// deux clé fl et user
-// fl 0 si pas de compte éditer,
 
 const steps = ['Personnel', 'Entreprise', 'Compétences', 'Références'];
 function getStepContent(step, propsToPass) {
@@ -110,7 +107,6 @@ export default function Edition(props) {
   };
 
   const handleStep = (e) => {
-    // setActiveStep(activeStep)
     const stepperClicked = e.target.textContent;
 
     for (let i = 0; i < steps.length; i++) {
@@ -124,7 +120,6 @@ export default function Edition(props) {
 
   return (
     <>
-      {/* <h1>Gestion de votre compte</h1> */}
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Stepper activeStep={activeStep} className={classes.stepper} >

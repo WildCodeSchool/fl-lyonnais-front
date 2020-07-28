@@ -31,7 +31,7 @@ function Detail (props) {
   const { user } = useContext(AuthContext);
   return (
 
-    <div>
+    <div className='detailContainer'>
       {(is_active === 1 || is_active === 0) && ((user && user.freelance_id == id) || ((freelanceId == id))) && <Buttons id={id} is_active={is_active} />}
       <h1>{freelance.firstname} {freelance.lastname}</h1>
       <div className='Detail'>

@@ -1,10 +1,17 @@
 /* GLOBAL */
 
+.buttonManagement {
+  width: 200px;
+  margin: 5px auto !important;
+}
+
 .accountManagement {
   background-color: white;
   margin: 20px auto;
-  width: 500px;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .detailh2 {
@@ -47,7 +54,6 @@
   flex-direction: column;
   justify-content: flex-start;
   border-radius: 5px;
-
 }
 
 .info-container {
@@ -70,6 +76,8 @@
 }
 .info-container p {
   text-align:left;
+  height: 200px;
+  overflow-y: auto;
 }
 .detailtextebio {
   margin-left: 10px;;
@@ -165,7 +173,8 @@
 
 .mainSkills {
   height: 345px;
-  overflow: scroll;
+  overflow-y: auto;
+  cursor: pointer;
 }
 
 .mainSkills ul {
@@ -173,10 +182,6 @@
   padding: 0;
 }
 #detailskillstjm {
-  margin-block-end: 0;
-  position: absolute;
-  /* bottom: 0px; */
-  left: 0;
   width: 100%;
   height: 50px;
   display: flex;
@@ -202,16 +207,33 @@
   background-color: white;
   margin: 20px;
   padding:20px;
+  overflow-y: auto;
 }
 
 a {
   text-decoration: none;
 }
 
+.responsiveSkillsContact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+
 /* /////////////////////////////// MEDIA QUERIES 750 PX /////////////////////////////// */
 
 @media screen and (min-width: 750px) {
   /* MEDIA QUERIES BIO */
+
+  .buttonManagement {
+  width: 150px;
+  margin: 10px !important;
+  }
+
+  .accountManagement {
+    display: block;
+  }
 
   .detailnametitlepicture {
     font-size: 1.5em;
@@ -236,61 +258,70 @@ a {
     box-shadow: 0 5px 15px -8px rgba(0, 0, 0, 0.24), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
   }
 
+  .info-container {
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:flex-start;
+    margin: 20px;
+  }
+
+  /* MEDIA QUERIES REFERENCES*/
+
+  .carousel-container::after {
+    display:none;
+  }
+  .carousel {
+    overflow-x: visible;
+    overflow-y: visible;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 100px;
+  }
+
+  .carousel img {
+    width: 120px;
+    height: 120px;
+    margin: 13px;
+  }
+
+  /* MEDIA QUERIES COMPETENCES */
+
+  .detailskills {
+    margin: auto;
+    width: 300px;
+    height: 375px;
+    position:relative;
+  }
+
+
+  /* MEDIA QUERIES CONTACT */
+
+  .detailcontact {
+    margin: auto;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* MEDIA QUERIES COMPETENCES + CONTACT */
+
+  .responsiveSkillsContact {
+    flex-direction: row;
+    margin-bottom: 50px;
+  }
 
 }
 
-.info-container {
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-start;
-  align-items:flex-start;
-  margin: 20px;
-}
+/* ////////////////////////////////// MEDIA QUERIES 1800 PX /////////////////////////////////// */
 
-/* MEDIA QUERIES REFERENCES*/
-
-.carousel-container::after {
-  display:none;
-}
-.carousel {
-  overflow-x: visible;
-  overflow-y: visible;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 20px 100px;
-}
-
-.carousel img {
-  width: 120px;
-  height: 120px;
-  margin: 13px;
-}
-
-/* MEDIA QUERIES COMPETENCES */
-
-.detailskills {
-  margin: auto;
-  width: 300px;
-  height: 375px;
-  position:relative;
+@media screen and (min-width: 1800px) {
+  .detailContainer {
+    display: block;
+    margin: auto;
+    max-width: 1800px;
+  }
 }
 
 
-/* MEDIA QUERIES CONTACT */
-
-.detailcontact {
-  margin: auto;
-  width: 300px;
-  height: 375px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* MEDIA QUERIES COMPETENCES + CONTACT */
-
-.responsiveSkillsContact {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
-}

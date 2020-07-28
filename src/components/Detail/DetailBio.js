@@ -2,8 +2,6 @@ import React from 'react';
 import avatar from '../../images/avatar.png';
 import { Helmet } from 'react-helmet';
 
-const title = 'Détail de votre profil';
-
 function detailBio (props) {
   const url = process.env.REACT_APP_API_URL + '/';
 
