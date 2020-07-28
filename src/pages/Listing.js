@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import Freelance from '../components/Freelance';
 import './Listing.scss';
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import API from '../API';
 import SearchContext from '../components/Detail/SearchContext';
 const queryString = require('query-string');
@@ -23,7 +23,6 @@ const Listing = (props) => {
     const urlQuery = queryString.stringify({
       ...searchParams, page: pageNumber
     }, { arrayFormat: 'index', skipNull: true });
-    // history.push('/liste_freelanc?' + urlQuery)
     history.push('/liste_freelance?' + urlQuery);
   };
 

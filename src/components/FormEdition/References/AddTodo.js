@@ -7,14 +7,15 @@ const AddTodo = (props) => {
 
   const handleInputKeyPress = (e) => {
     const keycode = (e.keyCode ? e.keyCode : e.which);
-    if (keycode == '13') {
+    if (keycode == '13' && e.target.value) {
       addReference();
     }
   };
+
   return (
-    <Paper style={{ margin: 16, padding: 16, minWidth: '500px' }}>
+    <Paper style={{ margin: 16, padding: 16 }}>
       <Grid container>
-        <Grid xs={9} md={11} item style={{ paddingRight: 16 }}>
+        <Grid xs={9} md={11} item style={{ paddingRight: 16, maxWidth: 'calc(100% - 90px)' }}>
           <TextField
             placeholder='Nom du projet'
             value={newReferenceName}
@@ -24,14 +25,24 @@ const AddTodo = (props) => {
           />
         </Grid>
         <Grid xs={2} md={1} item>
-          <Button
-            fullWidt
-            color='primary'
-            variant='outlined'
-            onClick={() => { addReference(props.inputValueName); }}
-          >
-            Add
-          </Button>
+          {newReferenceName ?
+            <Button
+              fullWidt
+              color='primary'
+              variant='outlined'
+              onClick={() => { addReference(newReferenceName); }}
+            >
+              Ajouter
+            </Button>
+            :
+            <Button
+              fullWidt
+              color='primary'
+              variant='outlined'
+              style={{ backgroundColor: 'grey', color: 'white' }}
+            >
+              Ajouter
+            </Button>}
         </Grid>
       </Grid>
     </Paper>

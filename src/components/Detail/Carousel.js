@@ -8,7 +8,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
-import avatar from '../../images/reficon.png';
+import avatar from '../../images/logo2.png';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -76,7 +76,7 @@ function SwipeableTextMobileStepper (props) {
           {props.references.map((step, index) => (
             <div key={step.label} className={classes.divImg}>
               {Math.abs(activeStep - index) <= 2 ? (
-                <a href={step.url}><img
+                <a href={step.url} target="_blank"><img
                   className={classes.img} src={
                     !step.image ? avatar : (step.image.substr(0, 4) === 'http') ? step.image : process.env.REACT_APP_API_URL + '/' + step.image
                   } alt={step.name}

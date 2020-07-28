@@ -10,7 +10,11 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import EditionContext from '../components/FormEdition/EditionContext';
 import SearchContext from './Detail/SearchContext';
+import Menu from '@material-ui/core/Menu';
+import MenuIcon from '@material-ui/icons/Menu';
+import '../pages/generic page/Home.scss';
 const queryString = require('query-string');
+
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -69,6 +73,16 @@ export default function PrimarySearchAppBar (props) {
   const { freelanceId } = useContext(EditionContext);
   const history = useHistory();
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   // Traitement du champ de recherche
   const handleSubmitSearch = (event) => {
     event.preventDefault();
@@ -126,7 +140,7 @@ export default function PrimarySearchAppBar (props) {
             </div>
           </form>
           <div className={classes.grow} />
-          <div>
+          <div className='notBurger'>
             <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/liste_freelance/'>Freelances</Link></Button>
             <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/tags'>Tags</Link></Button>
             {(isConnected && (user.freelance_id || freelanceId)) && <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to={user.freelance_id ? `/detail/${user.freelance_id}` : `/detail/${freelanceId}`}>Mon Compte</Link></Button>}
@@ -136,6 +150,31 @@ export default function PrimarySearchAppBar (props) {
                 <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/inscription'>Inscription</Link></Button>
                 <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Connexion</Link></Button>
               </>}
+          </div>
+          <div className='burger'>
+            <Button style={{ color: 'var(--white)' }} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+              <MenuIcon/>
+            </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+              style={{top: 30}}
+            >
+              <div className='flexBurger'>
+                <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/liste_freelance/'>Freelances</Link></Button>
+                <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/tags'>Tags</Link></Button>
+                {(isConnected && (user.freelance_id || freelanceId)) && <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to={user.freelance_id ? `/detail/${user.freelance_id}` : `/detail/${freelanceId}`}>Mon Compte</Link></Button>}
+                {isConnected && <Button color='inherit'><Link onClick={handleLogout} style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Déconnexion</Link></Button>}
+                {!isConnected &&
+                <>
+                  <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/inscription'>Inscription</Link></Button>
+                  <Button color='inherit'><Link style={{ textDecoration: 'none', color: 'var(--white)' }} to='/connexion'>Connexion</Link></Button>
+                </>}
+              </div>
+            </Menu>
           </div>
         </Toolbar>
       </AppBar>

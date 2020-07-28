@@ -1,13 +1,56 @@
-import React, { useContext } from 'react';
+import React, {useContext} from "react";
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import UploadButtons from './UploadButtons';
+import { makeStyles } from '@material-ui/core/styles';
 import EditionContext from './EditionContext';
 import '../../pages/generic page/Home.scss';
-const url = process.env.REACT_APP_API_URL + '/';
+import ImageCropInput from './ImageCropInput';
+import { Button } from '@material-ui/core';
+import API from '../../API';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1)
+    }
+  },
+  input: {
+    display: 'none'
+  }
+}));
+
 
 export default function AddressForm () {
-  const { url_photo, email, job_title, firstname, lastname, street, zip_code, city, bio, handleAdressFormChange } = useContext(EditionContext);
+
+  const { email, job_title,setUrlPhoto, firstname, lastname, street, zip_code, city, bio, handleAdressFormChange, url_photo } = useContext(EditionContext);
+  const url = process.env.REACT_APP_API_URL +'/'
+  const classes = useStyles();
+
+  const uploadPhoto = async (mainPictureBlob) => {
+      const mainPictureFile = await fetch(mainPictureBlob)
+      .then(r => r.blob())
+      .then(blobFile => new File([blobFile], "image.jpg", { type: "image/jpg" }))
+      let url = process.env.REACT_APP_API_URL + '/freelances/account/image';
+      const formData = new FormData();
+      formData.append('title', 'titre');
+      formData.append("image", mainPictureFile);  
+      API.post(url, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+        .then(res => {
+          console.log('Photo de Profil res.data',res.data) 
+          setUrlPhoto(res.data.image) // image :url 'uploads/
+        }
+        )
+        .catch(err => {
+          console.error(err);
+        });
+        console.log(mainPictureFile)
+    }
+  
   return (
     <>
       <Grid container spacing={3}>
@@ -64,7 +107,7 @@ export default function AddressForm () {
           <TextField
             id='address1'
             name='street'
-            label='Rue'
+            label='Numéro et Rue'
             fullWidth
             autoComplete='shipping address-line1'
             value={street}
@@ -108,11 +151,34 @@ export default function AddressForm () {
         </Grid>
         <Grid item xs={12} sm={12} justify='center'>
           <div className='RefPhoto'>
+            <div className = '' >
             {url_photo && <img src={url + url_photo} alt={url_photo} />}
+            </div>
+            <ImageCropInput onValidateCrop={uploadPhoto}
+              renderInput={onChange => 
+              <div className={classes.root}>
+              <input accept='image/*' className={classes.input} id='contained-button-file' multiple type='file' onChange={onChange} />
+              <label htmlFor='contained-button-file'>
+                <Button style={{ backgroundColor: 'var(--green)' }} variant='contained' color='primary' component='span' className={classes.button} startIcon={<CloudUploadIcon />}>Photo de profil</Button>
+              </label>
+            </div>}
+              cropSize={ 100, 170 }
+              renderValidateButton={
+                (onClick, disabled) =>
+                  <Button onClick={onClick} disabled={disabled} variant="contained" color="primary">
+                    Valider
+              </Button>
+              }
+              renderCancelButton={
+                (onClick, disabled) =>
+                  <div style={{ marginRight: 50, display: 'inline-block' }} >
+                    <Button onClick={onClick} disabled={disabled} variant="outlined" color="secondary">
+                      Annuler
+                    </Button>
+                  </div>
+              }
+            />
           </div>
-        </Grid>
-        <Grid item xs={12} sm={12} justify='center'>
-          <UploadButtons />
         </Grid>
       </Grid>
     </>
