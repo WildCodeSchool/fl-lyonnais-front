@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     '& > * + *': {
       marginTop: theme.spacing(3)
     },
-    height: 300
+    // height: 300
   }
 }));
 

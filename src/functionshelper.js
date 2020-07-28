@@ -8,13 +8,11 @@ export function validateEmail(email) {
 }
 
 export function validateNumber(num) {
-  return true;
   const re = /^[0-9]*$/;
   return re.test(Number(num));
 }
 
 export function isSiret(siret) {
-  return true;
   return !!(validateNumber(siret) && siret.toString().length === 14);
 }
 
@@ -29,8 +27,8 @@ export function onlyLetters(input) {
 }
 
 export function isValidURL(str) {
-let  expression = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/
-return !! str.match(expression)
+  let  expression = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/
+  return !! str.match(expression)
 }
 
 

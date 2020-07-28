@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -44,10 +43,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SignUp () {
+export default function SignUp() {
   const [open, setOpen] = React.useState(false);
   const [openPasswordsNotEqual, setOpenPasswordsNotEqual] = useState(false);
   const [openErrorDuplicateEmail, setOpenErrorDuplicateEmail] = useState(false);
+  const [openErrorSiretFormat, setOpenErrorSiretFormat] = useState(false);
+  const [checkboxModalError, setCheckboxModalError] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const classes = useStyles();
@@ -84,6 +85,13 @@ export default function SignUp () {
   const handleClosePasswordsNotEqual = () => {
     setOpenPasswordsNotEqual(false);
   };
+  const handleOpenErrorSiretFormat = () => {
+    setOpenErrorSiretFormat(true);
+  }
+
+  const handlCloseErrorSiretFormat = () => {
+    setOpenErrorSiretFormat(false);
+  }
 
   const handleOpenErrorDuplicateEmail = () => {
     setOpenErrorDuplicateEmail(true);
@@ -93,6 +101,13 @@ export default function SignUp () {
     setOpenErrorDuplicateEmail(false);
   };
 
+  const handleOpenCGError = () => {
+    setCheckboxModalError(true);
+  }
+
+  const handleCloseCGError = () => {
+    setCheckboxModalError(false);
+  }
   const handlesubmit = (e) => {
     // Function à créer pour gérer champs vides, sensibilité de la case
     e.preventDefault();
@@ -100,7 +115,12 @@ export default function SignUp () {
       handleClickOpen();
     } else if (infosRegistration.password !== infosRegistration.passwordConfirmation) {
       handleClickOpenPasswordsNotEqual();
-    } else {
+    } else if (!isSiret(infosRegistration.siret)) {
+      handleOpenErrorSiretFormat();
+    } else if (!checked) {
+      handleOpenCGError();
+    }
+    else {
       const registration_date = new Date().toISOString().slice(0, 10);
       if (validateEmail(infosRegistration.email) && isSiret(infosRegistration.siret) && onlyLetters(infosRegistration.firstname) && onlyLetters(infosRegistration.lastname) && checked) {
         const payload = { ...infosRegistration, registration_date };
@@ -113,8 +133,6 @@ export default function SignUp () {
             console.log(error);
             handleOpenErrorDuplicateEmail();
           });
-      } else {
-        alert('Champ manquant, email non valide, siret invalide, conditions générales non acceptées');
       }
     }
   };
@@ -300,6 +318,44 @@ export default function SignUp () {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleCloseErrorDuplicateEmail} color='primary' autoFocus>
+              Fermer
+            </Button>
+          </DialogActions>
+        </Dialog>
+        {/* Affiche une modale : siret non conforme */}
+        <Dialog
+          fullScreen={fullScreen}
+          open={openErrorSiretFormat}
+          onClose={handleOpenErrorSiretFormat}
+          aria-labelledby='responsive-dialog-title'
+        >
+          <DialogTitle id='responsive-dialog-title'>Numéro de siret : </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Merci de renseigner un numéro de siret conforme.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handlCloseErrorSiretFormat} color='primary' autoFocus>
+              Fermer
+            </Button>
+          </DialogActions>
+        </Dialog>
+        {/* Affiche une modale : conditions générales non acceptées*/}
+        <Dialog
+          fullScreen={fullScreen}
+          open={checkboxModalError}
+          onClose={handleOpenErrorSiretFormat}
+          aria-labelledby='responsive-dialog-title'
+        >
+          <DialogTitle id='responsive-dialog-title'>Conditions générales : </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Merci de cocher la case relative à l'acceptation des conditions générales
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseCGError} color='primary' autoFocus>
               Fermer
             </Button>
           </DialogActions>
